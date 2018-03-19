@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Machine Learning at Belle II</title>
+
+		<meta name="description" content="An overview of Deep Learning">
+		<meta name="author" content="Thomas Keck">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.mod/css/theme/black.css">
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+    <style>
+			.grid_element {
+				display: inline-block;
+				width: 40%;
+				zoom: 1;         /* for IE */
+				display*:inline; /* for IE */
+			}
+    </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" style="height: 100%">
+        <!-- Overview -->
+				<section style="height: 100%">
+				<section>
+          <h1>Deep Learning: Selected Ideas and Concepts</h1>
+
+					<p>
+          Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
+					</p>
+        </section>
+				<section>
+          Problems: Vanishing Gradient Problem, Degradation Problem, Generalization Gap
+          Representation Learning
+          Initalisation (He)
+          Optimizer (SGD, Adam, BFGS)
+          Regularization L1, L2, Dropout
+          Learning Rate and Batch-Size - Statistical Fluctuations and connection to Simulated Annealing, Warm-Starts
+          Activation Functions (Relu, PReLu, Maxout)
+        </section>
+        </section>
+				
+				<section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Convolutional Networks</div> & <div style='color: #f05050'>Image Recognition</div></h2>
+          Convolution
+          Max Pooling
+          Inception
+          ResNet
+          Batch Normalisation
+				</section>
+				</section>
+        
+				<section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Recurrent Networks</div> & <div style='color: #f05050'>Sequential Data Processing</div></h2>
+          LSTM, GRU
+          Backpropagation Through Time
+          Word Embedding
+				</section>
+        </section>
+				
+        <section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Playing Games</div> & <div style='color: #f05050'>Reinforcement Learning</div></h2>
+          Problem: Correlation of Samples
+          Q-Learning and Experience Replace (Value-Based) Bellman-Gleichung
+          Async Advantage Actor Critic (A3C) (Policy-Based)
+          PCL?
+				</section>
+				</section>
+				
+        <section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Adversarials</div> & <div style='color: #f05050'>???</div></h2>
+          Adversarials after Goodfellow
+          Learning To Attack
+				</section>
+				</section>
+
+				<section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Outlook</div> & <div style='color: #f05050'>References</div></h2>
+				</section>
+        </section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controlsTutorial: false,
+        center: false,
+        transition: 'fade',
+        history: true,
+				dependencies: [
+          { src: '../reveal.mod/js/d3.v4.min.js' },
+          { src: '../reveal.mod/plugin/reveal.js-d3js-plugin/d3js.js' },
+					{ src: '../reveal.js/plugin/markdown/marked.js' },
+					{ src: '../reveal.js/plugin/markdown/markdown.js' },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true },
+					{ src: '../reveal.js/plugin/math/math.js', async: true },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

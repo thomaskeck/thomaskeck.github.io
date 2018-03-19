@@ -1,0 +1,34 @@
+In [285]: X, y = sklearn.datasets.make_classification(10000, 2, 2, 0, n_clusters_per_class=2, random_state=937908, shuffle=True)
+
+In [286]: df = pandas.DataFrame(X, columns=['y', 'x'])
+
+In [287]: df['cls'] = y
+
+In [288]: train = df
+
+In [289]: train.loc[(train.cls == 1) & (train.y > 0), 'y'] = train.loc[(train.cls == 1) & (train.y > 0), 'y'] * 0.5 + np.random.normal(0.8, 0.5, size=len(train.loc[(train.cls == 1) & (train.y > 0), 'y']))
+
+In [290]: train.loc[(train.cls == 1) & (train.y < 0), 'y'] = train.loc[(train.cls == 1) & (train.y < 0), 'y'] * 0.5 - np.random.normal(0.5, 0.2, size=len(train.loc[(train.cls == 1) & (train.y < 0), 'y']))
+
+In [291]: train.loc[(train.x > 2), 'x'] = train.loc[(train.x > 2), 'x'] - 3
+
+In [292]: train.loc[(train.x < -2.5), 'x'] = train.loc[(train.x < 2.5), 'x'] + 2
+
+In [293]: train.loc[(train.cls == 1) & (train.y < 0), 'y'] = train.loc[(train.cls == 1) & (train.y < 0), 'y'] - 1
+
+In [294]: plt.scatter(train[train.cls == 0].x, train[train.cls == 0].y)
+Out[294]: <matplotlib.collections.PathCollection at 0x7f906d92fac8>
+
+In [295]: plt.scatter(train[train.cls == 1].x, train[train.cls == 1].y)
+Out[295]: <matplotlib.collections.PathCollection at 0x7f906d922b38>
+
+In [296]: plt.show()
+
+In [297]: train.to_csv('full_dataset.csv', index=False)
+
+In [298]: train = pandas.read_csv('train_dataset.csv')
+
+In [299]: train['cls'] = np.where(np.random.uniform(size=len(train)) > 0.95, 1-train['cls'], train['cls'])
+
+In [300]: train.to_csv('rain_dataset.csv', index=False)
+

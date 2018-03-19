@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Template</title>
+
+		<meta name="description" content="Template">
+		<meta name="author" content="Thomas Keck">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.mod/css/theme/black.css">
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides" style="height: 100%">
+				<section style="height: 100%">
+          <section>
+            <h1>Template</h1>
+
+            <p>
+            Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
+            </p>
+          </section>
+        </section>
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+        controlsTutorial: false,
+        center: false,
+        transition: 'fade',
+        history: true,
+				dependencies: [
+          { src: '../reveal.mod/js/d3.v4.min.js' },
+          { src: '../reveal.mod/plugin/reveal.js-d3js-plugin/d3js.js' },
+					{ src: '../reveal.js/plugin/markdown/marked.js' },
+					{ src: '../reveal.js/plugin/markdown/markdown.js' },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true },
+					{ src: '../reveal.js/plugin/math/math.js', async: true },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width/2]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-1.0, 1.0]);
+y.domain([-1.0, 1.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '100%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+
+svg.append("g").attr("id", "container")
+
+
+var _transitions = [
+
+]
+
+var _inverse_transitions = [
+
+]
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+});
+
+
+
+</script>
+</div>
+</body>

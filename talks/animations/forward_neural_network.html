@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+<script src="neural_network_visualization.js"></script>
+
+<style>
+
+.neuron {
+  stroke: #fff;
+  z-index: 100;
+  stroke-width: 0.4vmin;
+}
+
+.arrow {
+  fill: white;
+  stroke: #000;
+  z-index: 100;
+}
+
+.neuron:hover {
+  stroke: #fff;
+  stroke-width: 0.8vmin;
+}
+
+.link {
+  stroke: #fff;
+  z-index: 50;
+}
+
+table.center {
+  margin-left:20%; 
+  margin-right:auto;
+}
+
+</style>
+
+<body>
+<div class="reveal" id="outer">
+
+<script>
+
+visualization = new NeuralNetworkVisualization("50%", "100%", "32%", "0%")
+
+var _transitions = [
+  () => { visualization.forward_pass(); },
+]
+
+var _inverse_transitions = [
+  () => { },
+]
+
+</script>
+</div>
+</body>

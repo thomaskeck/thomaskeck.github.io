@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style> 
+.train_dot {
+  fill: #fff
+}
+
+.test_dot {
+  fill: #fff
+}
+</style>
+<body>
+<div class="reveal">
+<div id="training_data" style="opacity: 0; position: absolute; top: 5%; left: 5%; color: #50f050">
+  <h3>Training Data</h3>
+</div>
+<div id="test_data" style="opacity: 0; position: absolute; top: 5%; left: 50%; color: #50f050">
+  <h3>Independent Test Data</h3>
+</div>
+<div id="misclassrate" style="opacity: 0; position: absolute; top: 75%; left: 50%; font-size: 6vmin">
+Misclassification Rate: 25%
+</div>
+
+<script>
+
+// set the dimensions and margins of the graph
+var width = 960
+var height = 500
+
+// set the ranges
+var x = d3.scaleLinear().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+x.domain([-2.5, 2.5]);
+y.domain([-3.5, 4.0]);
+
+var train_svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '40%')
+						.style("height", '45%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "20%")
+            .style("opacity", 0)
+						.style("left", "5%");
+
+var test_svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '40%')
+						.style("height", '45%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "20%")
+						.style("left", "25%");
+
+train_svg.append("g").attr("id", "points")
+train_svg.append("g").attr("id", "cuts")
+
+test_svg.append("g").attr("id", "points")
+test_svg.append("g").attr("id", "cuts")
+
+var train_cut = train_svg.select("#cuts").append("line")
+               .attr("x1", x(0))
+               .attr("y1", 0)
+               .attr("x2", x(0))
+               .attr("y2", 0)
+               .style("stroke-width", "0.5vmin")
+               .style("opacity", "0")
+               .style("stroke", "#fff")
+
+var test_cut = test_svg.select("#cuts").append("line")
+               .attr("x1", x(0))
+               .attr("y1", 0)
+               .attr("x2", x(0))
+               .attr("y2", 0)
+               .style("stroke-width", "0.5vmin")
+               .style("opacity", "0")
+               .style("stroke", "#fff")
+ 
+
+
+var _transitions = [
+  () => { d3.selectAll(".test_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 5) },
+  () => { test_svg.transition().duration(500).style("left", "50%"); train_svg.transition().duration(500).style("opacity", 1); },
+  () => { d3.selectAll(".train_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 5) },
+  () => { d3.select("#training_data").transition().duration(300).style("opacity", 1); d3.select("#test_data").transition().duration(300).style("opacity", 1); },
+  () => { train_cut.transition().duration(500).attr("y2", 500).style("opacity", 1); test_cut.transition().duration(500).attr("y2", 500).style("opacity", 1); },
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", function(d) { if (d.x > 0) return '#f55'; else return '#9090f0'; }); },
+  () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 1); },
+]
+var _inverse_transitions = [
+  () => { d3.selectAll(".test_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 0) },
+  () => { test_svg.transition().duration(500).style("left", "25%"); train_svg.transition().duration(500).style("opacity", 0); },
+  () => { d3.selectAll(".train_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 0) },
+  () => { d3.select("#training_data").transition().duration(300).style("opacity", 0); d3.select("#test_data").transition().duration(300).style("opacity", 0); },
+  () => { train_cut.transition().duration(500).attr("y2", 0).style("opacity", 0); test_cut.transition().duration(500).attr("y2", 0).style("opacity", 0); },
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", '#fff'); },
+  () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 0); },
+]
+  
+d3.csv("train_dataset.csv", function(error, data) {
+
+  if (error) throw error;
+  // Scale the range of the data
+  // Add the scatterplot
+      
+  var dots = train_svg.select("#points").selectAll(".train_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "train_dot")
+      .attr("r", 0)
+      .style("fill", function(d) { if (d.cls == 1) return '#f55'; else return '#9090f0';})
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+  // Add the X Axis
+  train_svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  train_svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0,0)")
+      .call(d3.axisLeft(y));
+
+});
+
+d3.csv("test_dataset.csv", function(error, data) {
+
+  if (error) throw error;
+      
+  var dots = test_svg.select("#points").selectAll(".test_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "test_dot")
+      .attr("r", 0)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+  // Add the X Axis
+  test_svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  test_svg.append("g")
+      .attr("class", "axis")
+      .call(d3.axisLeft(y));
+
+});
+
+
+</script>
+</div>
+</body>

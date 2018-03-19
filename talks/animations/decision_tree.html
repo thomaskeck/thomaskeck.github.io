@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+
+.test_dot {
+  fill: #fff
+}
+
+.box {
+  box-sizing: border-box;
+  height: 7%;
+  width: 10%;
+  float: left;
+  background: #111;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+
+.leave_red {
+  box-sizing: border-box;
+  height: 7%;
+  width: 4%;
+  float: left;
+  background: #f55;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+
+.leave_blue {
+  box-sizing: border-box;
+  height: 7%;
+  width: 4%;
+  float: left;
+  background: #9090f0;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+</style>
+<body>
+<div class="reveal">
+
+<div id="root_" class="box" style="position: absolute; left: 71%; top: 20%;">
+  <center>
+                             x<-0.3
+  </center>
+</div>
+
+<div id="root_l" class="box" style="position: absolute; left: 58.5%; top: 30%;">
+  <center>
+                             y<-1.6
+  </center>
+</div>
+
+<div id="root_r" class="box" style="position: absolute; left: 83.5%; top: 30%;">
+  <center>
+                             x<1.2
+  </center>
+</div>
+
+<div id="root_ll" class="box" style="position: absolute; left: 52.25%; top: 40%;">
+  <center>
+                             x<-1.1
+  </center>
+</div>
+
+<div id="root_lr" class="box" style="position: absolute; left: 64.75%; top: 40%;">
+  <center>
+                             x<0.7
+  </center>
+</div>
+
+<div id="root_rl" class="box" style="position: absolute; left: 77.25%; top: 40%;">
+  <center>
+                             y<-1.5
+  </center>
+</div>
+
+<div id="root_rr" class="box" style="position: absolute; left: 89.75%; top: 40%;">
+  <center>
+                             x<-1.9
+  </center>
+</div>
+
+<div id="root_lll" class="leave_blue" style="position: absolute; left: 52.75%; top: 50%;">0.3</div>
+<div id="root_llr" class="leave_red" style="position: absolute; left: 57.75%; top: 50%;">0.7</div>
+
+<div id="root_lrl" class="leave_blue" style="position: absolute; left: 65.25%; top: 50%;">0.0</div>
+<div id="root_lrr" class="leave_blue" style="position: absolute; left: 70.25%; top: 50%;">0.2</div>
+
+<div id="root_rll" class="leave_red" style="position: absolute; left: 77.75%; top: 50%;">0.9</div>
+<div id="root_rlr" class="leave_blue" style="position: absolute; left: 82.75%; top: 50%;">0.4</div>
+
+<div id="root_rrl" class="leave_red" style="position: absolute; left: 90.25%; top: 50%;">0.9</div>
+<div id="root_rrr" class="leave_red" style="position: absolute; left: 95.25%; top: 50%;">1.0</div>
+
+<div id="misclassrate" style="opacity: 0; position: absolute; top: 5%; left: 25%; font-size: 6vmin">
+Misclassification Rate: 17%
+</div>
+
+<script>
+
+// set the dimensions and margins of the graph
+var width = 960
+var height = 500
+
+// set the ranges
+var x = d3.scaleLinear().range([width/10, width/2]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-2.5, 2.5]);
+y.domain([-3.5, 4.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '100%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+
+svg.append("g").attr("id", "points")
+svg.append("g").attr("id", "tree")
+
+function get_x_of_div(name) {
+  return (parseInt(d3.select(name).style('left')) + 3)/100 * width
+}
+function get_y_of_div(name) {
+  return (parseInt(d3.select(name).style('top')) + 3.5)/100 * height
+}
+
+function dt_level_1(d) {
+  if (d.x < -0.26) {
+    return get_x_of_div('#root_l')
+  } else {
+    return get_x_of_div('#root_r')
+  }
+}
+function dt_level_2(d) {
+  if (d.x < -0.26) {
+    if (d.y < -1.61) {
+      return get_x_of_div('#root_ll')
+    } else {
+      return get_x_of_div('#root_lr')
+    }
+  } else {
+    if (d.x < 1.24) {
+      return get_x_of_div('#root_rl')
+    } else {
+      return get_x_of_div('#root_rr')
+    }
+  }
+}
+function dt_level_3(d) {
+  if (d.x < -0.26) {
+    if (d.y < -1.61) {
+      if (d.x < -1.1) {
+        return get_x_of_div('#root_lll')
+      } else {
+        return get_x_of_div('#root_llr')
+      }
+    } else {
+      if (d.x < -0.68) {
+        return get_x_of_div('#root_lrl')
+      } else {
+        return get_x_of_div('#root_lrr')
+      }
+    }
+  } else {
+    if (d.x < 1.24) {
+      if (d.y < -1.5) {
+        return get_x_of_div('#root_rll')
+      } else {
+        return get_x_of_div('#root_rlr')
+      }
+    } else {
+      if (d.x < 1.9) {
+        return get_x_of_div('#root_rrl')
+      } else {
+        return get_x_of_div('#root_rrr')
+      }
+    }
+  }
+}
+
+function dt_cls(d) {
+  if (d.x < -0.26) {
+    if (d.y < -1.61) {
+      if (d.x < -1.1) {
+        return 0
+      } else {
+        return 1
+      }
+    } else {
+      if (d.x < -0.68) {
+        return 0
+      } else {
+        return 0
+      }
+    }
+  } else {
+    if (d.x < 1.24) {
+      if (d.y < -1.5) {
+        return 1
+      } else {
+        return 0
+      }
+    } else {
+      if (d.x < -1.9) {
+        return 1
+      } else {
+        return 1
+      }
+    }
+  }
+}
+
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+
+
+function classify_transition() {
+  d3.selectAll(".test_dot")
+    .transition()
+    .delay(function(d, i) { return Math.log(i+1)*5000; })
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return width/2 + 10*d.x })
+    .attr("cy", function(d) { return 50 + 10*d.y })
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return get_x_of_div('#root_') + 10*d.x})
+    .attr("cy", function(d) { return get_y_of_div('#root_') + 10*d.y })
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return dt_level_1(d) + 10*d.x})
+    .attr("cy", function(d) { return get_y_of_div('#root_l') + 10*d.y })
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return dt_level_3(d) + 5*d.x})
+    .attr("cy", function(d) { return get_y_of_div('#root_ll') + 10*d.y })
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return dt_level_3(d) + 3*d.x})
+    .attr("cy", function(d) { return height-50 + 10*d.y })
+    .transition()
+    .duration(500)
+    .ease(d3.easeLinear)
+    .attr("cx", function(d) { return x(d.x); })
+    .attr("cy", function(d) { return y(d.y); })
+    .style("fill", function(d) { if (dt_cls(d) == 1) return '#f55'; else return '#9090f0';})
+}
+
+var _transitions = [
+  classify_transition,
+  () => { d3.selectAll(".cut").transition().duration(500).style('opacity', 1.0); },
+  () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 1); },
+]
+var _inverse_transitions = [
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", '#fff'); },
+  () => { d3.selectAll(".cut").transition().duration(500).style('opacity', 0.0); },
+  () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 0); },
+]
+  
+d3.csv("test_dataset.csv", function(error, data) {
+
+  if (error) throw error;
+      
+  var dots = svg.select("#points").selectAll(".test_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "test_dot")
+      .attr("r", 3)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+  // Add the X Axis
+  svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height*4/5 + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + width/10 + ",0)")
+      .call(d3.axisLeft(y));
+
+});
+
+
+
+</script>
+</div>
+</body>

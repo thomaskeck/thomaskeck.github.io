@@ -1,0 +1,25 @@
+text {
+  pointer-events: none;
+}
+
+.text {
+  fill: white;
+  stroke: #fff;
+  font-size: 6vmin;
+  z-index: 100;
+}
+
+.axis line{
+  stroke: #fff;
+  stroke-width: 0.3vmin;
+}
+
+.axis path{
+  stroke: #fff;
+  stroke-width: 0.3vmin;
+}
+
+.axis text{
+  fill: #fff;
+  font-size: 3vmin;
+} 

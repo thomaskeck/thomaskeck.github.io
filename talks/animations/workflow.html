@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<div class="reveal">
+<style>
+.box {
+  box-sizing: border-box;
+  height: 35%;
+  width: 30%;
+  float: left;
+  background: #111;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+</style>
+
+
+<body>
+
+<div id="question" class="box" style="opacity: 1; position: absolute; left: 35%; top: 5%;">
+<center><h3>Question</h3></center>
+<ul>
+  <li> <b>Classification</b> Is this a chinese character? </li>
+	<li> <b>Regression</b> How many tomatoes are sold?</li>
+  <li> <b>Others</b> Clustering, Q-Learning, ...</li>
+</ul>
+</div>
+
+<div id="model" class="box" style="opacity: 0; position: absolute; left: 34%; top: 5%;">
+<center><h3>Model</h3></center>
+<ul>
+<li><b>Statistics</b>: Build model using assumptions</li>
+<li><b>Machine Learning</b>: Build model using data</li>
+</ul>
+</div>
+
+<div id="answer" class="box" style="opacity: 0; position: absolute; left: 68%; top: 5%;">
+<center><h3>Answer</h3></center>
+<ul>
+  <li> <b>Classification</b> Probability between 0 and 1 </li>
+	<li> <b>Regression</b> Single (real) number </li>
+  <li> <b>Others</b> label, vector, function, action, ... </li>
+</ul>
+</div>
+
+<div id="training_data" class="box" style="opacity: 0; position: absolute; left: 15%; top: 50%;">
+<center><h3>Training Data</b></center>
+<center><h3 style="color: #9090f0">Answers known</h3></center>
+<ul>
+  <li> <b>Historical Data</b> Industry </li>
+	<li> <b>Simulated Data</b> Physics</li>
+</ul>
+</div>
+
+<div id="test_data" class="box" style="position: absolute; left: 35%; top: 50%;">
+<center><h3>Test Data</h3></center>
+<center><h3 style="color: #f05050">Answers unknown</h3></center>
+</div>
+
+
+<script>
+  var svg = d3.select("body").append("svg")
+              .attr('viewBox','0 0 960 500')
+						  .attr('preserveAspectRatio','none')
+              .attr("overflow", "visible")
+              .style("width", '100%')
+              .style("height", '100%')
+              .style("display", "block")
+              .style("position", "absolute")
+              .style("top", "0%")
+              .style("right", "0%");
+
+  svg.append('defs')
+          .append('marker')
+          .attr('id', 'arrowhead')
+          .attr('viewBox', '-5 -5 10 10')
+          .attr('refX', 0)
+          .attr('refY', 0)
+          .attr('orient', 'auto')
+          .attr('markerWidth', 2)
+          .attr('markerHeight', 2)
+          .attr('xoverflow', 'visible')
+          .append('svg:path')
+          .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
+          .attr('fill', '#fff')
+          .style('stroke','none');
+
+  var arrow = svg.append("g").append("line")
+                 .attr("marker-end", "url(#arrowhead)")
+                 .attr("x1", '0%')
+                 .attr("y1", '45%')
+                 .attr("x2", '10%')
+                 .attr("y2", '45%')
+                 .style("stroke-width", "2vmin")
+                 .style("opacity", "0")
+                 .style("stroke", "#fff")
+
+  var _transitions = [
+     () => {d3.select("#test_data").transition().ease(d3.easeLinear).duration(1000).style("left", "50%"); d3.select("#training_data").transition().duration(1000).style('opacity', '1');},
+     () => {arrow.transition().ease(d3.easeLinear).duration(1000).style("opacity", 1); d3.select("#question").transition().duration(1000).style('left', '0%'); },
+     () => {arrow.transition().ease(d3.easeLinear).duration(1000).attr("x2", '50%'); d3.select("#model").transition().duration(1000).style('opacity', '1');},
+     () => {arrow.transition().ease(d3.easeLinear).duration(1000).attr("x2", '90%'); d3.select("#answer").transition().duration(1000).style('opacity', '1');}]
+  var _inverse_transitions = [
+     () => {d3.select("#test_data").transition().ease(d3.easeLinear).duration(1000).style("left", "35%"); d3.select("#training_data").transition().duration(1000).style('opacity', '0');},
+     () => {arrow.transition().ease(d3.easeLinear).duration(1000).style("opacity", 0); d3.select("#question").transition().duration(1000).style('left', '35%'); },
+                               () => {arrow.transition().ease(d3.easeLinear).duration(1000).attr("x2", '10%'); d3.select("#model").transition().duration(1000).style('opacity', '0');},
+                               () => {arrow.transition().ease(d3.easeLinear).duration(1000).attr("x2", '50%'); d3.select("#answer").transition().duration(1000).style('opacity', '0');}]
+
+</script>
+
+</div>
+</body>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+
+.train_dot {
+  fill: #fff
+}
+
+.box {
+  box-sizing: border-box;
+  height: 7%;
+  width: 10%;
+  float: left;
+  background: #111;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+
+.leave_red {
+  box-sizing: border-box;
+  height: 7%;
+  width: 4%;
+  float: left;
+  background: #f55;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+
+.leave_blue {
+  box-sizing: border-box;
+  height: 7%;
+  width: 4%;
+  float: left;
+  background: #9090f0;
+  border: 0.2vmin solid black !important;
+  box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
+}
+</style>
+<body>
+<div class="reveal">
+
+<div id="root_" class="box" style="position: absolute; left: 71%; top: 20%; opacity: 0;">
+  <center>
+                             x<-0.3
+  </center>
+</div>
+
+<div id="root_l" class="box" style="position: absolute; left: 58.5%; top: 30%; opacity: 0;">
+  <center>
+                             y<-1.6
+  </center>
+</div>
+
+<div id="root_r" class="box" style="position: absolute; left: 83.5%; top: 30%; opacity: 0;">
+  <center>
+                             x<1.2
+  </center>
+</div>
+
+<div id="root_ll" class="box" style="position: absolute; left: 52.25%; top: 40%; opacity: 0;">
+  <center>
+                             x<-1.1
+  </center>
+</div>
+
+<div id="root_lr" class="box" style="position: absolute; left: 64.75%; top: 40%; opacity: 0;">
+  <center>
+                             x<0.7
+  </center>
+</div>
+
+<div id="root_rl" class="box" style="position: absolute; left: 77.25%; top: 40%; opacity: 0;">
+  <center>
+                             y<-1.5
+  </center>
+</div>
+
+<div id="root_rr" class="box" style="position: absolute; left: 89.75%; top: 40%; opacity: 0;">
+  <center>
+                             x<-1.9
+  </center>
+</div>
+
+<div id="root_lll" class="leave_blue" style="position: absolute; left: 52.75%; top: 50%; opacity: 0;">0.3</div>
+<div id="root_llr" class="leave_red" style="position: absolute; left: 57.75%; top: 50%; opacity: 0;">0.7</div>
+
+<div id="root_lrl" class="leave_blue" style="position: absolute; left: 65.25%; top: 50%; opacity: 0;">0.0</div>
+<div id="root_lrr" class="leave_blue" style="position: absolute; left: 70.25%; top: 50%; opacity: 0;">0.2</div>
+
+<div id="root_rll" class="leave_red" style="position: absolute; left: 77.75%; top: 50%; opacity: 0;">0.9</div>
+<div id="root_rlr" class="leave_blue" style="position: absolute; left: 82.75%; top: 50%; opacity: 0;">0.4</div>
+
+<div id="root_rrl" class="leave_red" style="position: absolute; left: 90.25%; top: 50%; opacity: 0;">0.9</div>
+<div id="root_rrr" class="leave_red" style="position: absolute; left: 95.25%; top: 50%; opacity: 0;">1.0</div>
+
+<script>
+
+// set the dimensions and margins of the graph
+var width = 960
+var height = 500
+
+// set the ranges
+var x = d3.scaleLinear().range([width/10, width/2]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-2.5, 2.5]);
+y.domain([-3.5, 4.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '100%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+
+svg.append("g").attr("id", "points")
+svg.append("g").attr("id", "tree")
+
+
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-2.5)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("id", "xcut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(2.5)).attr("y1", y(-3.5)).attr("y2", y(-3.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("id", "ycut")
+
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut").attr('id', 'first_cut')
+svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut").attr('id', 'second_cut')
+svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+
+function fitting_x() {
+
+  d3.select("#xcut").transition().duration(100).style('opacity', 1.0).transition().duration(4000).ease(d3.easeLinear).attr('x1', x(2.5)).attr('x2', x(2.5)).transition().duration(1000).style('opacity', 0.0).transition().attr('x1', x(-2.5)).attr('x2', x(-2.5))
+
+  var t = d3.scaleLinear().domain([0, 10]).range([width/10, width/2]);
+  var data = [-3, -2.8, -2.4, -1.5, 0.0, 3.0, 1.0, -1.9, -2.9, -3.0]
+  var line = d3.line().x(function(d, i) { return t(i); }).y(function(d) { return y(d) }).curve(d3.curveCardinal)
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(4000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0)
+      .transition()
+      .duration(1000)
+      .style("opacity", 0)
+      .remove()
+
+}
+
+function fitting_x2() {
+
+  d3.select("#xcut").transition().duration(100).style('opacity', 1.0).transition().duration(4000).ease(d3.easeLinear).attr('x1', x(-0.26)).attr('x2', x(-0.26)).transition().duration(1000).style('opacity', 0.0).transition().attr('x1', x(-2.5)).attr('x2', x(-2.5))
+
+  var t = d3.scaleLinear().domain([0, 10]).range([width/10, x(-0.26)]);
+  var data = [-3, -2.0, -1.5, -1.2, -1.0, -1.2, -1.4, -1.8, -2.4, -3.0]
+  var line = d3.line().x(function(d, i) { return t(i); }).y(function(d) { return y(d) }).curve(d3.curveCardinal)
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(4000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0)
+      .transition()
+      .duration(1000)
+      .style("opacity", 0)
+      .remove()
+
+}
+
+function fitting_y() {
+
+  d3.select("#ycut").transition().duration(100).style('opacity', 1.0).transition().duration(4000).ease(d3.easeLinear).attr('y1', y(4.0)).attr('y2', y(4.0)).transition().duration(1000).style('opacity', 0.0).transition().attr('y1', y(-3.0)).attr('y2', y(-3.0))
+
+  var t = d3.scaleLinear().domain([0, 10]).range([height*4/5, height*1/5]);
+  var data = [-2.5, -1.0, -0.6, -0.5, -1.0, -1.6, -1.0, -1.5, -2.0, -2.5]
+  var line = d3.line().x(function(d) { return x(d); }).y(function(d, i) { return t(i) }).curve(d3.curveCardinal)
+  console.log(line(data))
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+      .duration(4000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0)
+      .transition()
+      .duration(1000)
+      .style("opacity", 0)
+      .remove()
+
+}
+
+var _transitions = [
+  fitting_x,
+  fitting_y,
+  () => { d3.select("#first_cut").transition().duration(500).style('opacity', 1.0); d3.select("#root_").transition().duration(500).style('opacity', 1.0); },
+  () => { d3.selectAll(".train_dot").transition().duration(500).style('opacity', function(d) { if(d.x < -0.26) return 1.0; else return 0.0 }); },
+  fitting_x2,
+  fitting_y,
+  () => { d3.select("#second_cut").transition().duration(500).style('opacity', 1.0); d3.select("#root_l").transition().duration(500).style('opacity', 1.0); },
+  () => { d3.selectAll(".train_dot").transition().duration(500).style('opacity', 1.0); d3.selectAll(".cut").transition().duration(500).style('opacity', 1.0); d3.selectAll(".box").transition().duration(500).style('opacity', 1.0); },
+  () => { d3.selectAll(".leave_blue").transition().duration(500).style('opacity', 1.0); d3.selectAll(".leave_red").transition().duration(500).style('opacity', 1.0); },
+]
+var _inverse_transitions = [
+  () => { },
+  () => { },
+  () => { d3.select("#first_cut").transition().duration(500).style('opacity', 0.0); d3.select("#root_").transition().duration(500).style('opacity', 0.0); },
+  () => { d3.selectAll(".train_dot").transition().duration(500).style('opacity', 1.0); },
+  () => { },
+  () => { },
+  () => { d3.select("#second_cut").transition().duration(500).style('opacity', 0.0); d3.select("#root_l").transition().duration(500).style('opacity', 0.0); },
+  () => { d3.selectAll(".train_dot").transition().duration(500).style('opacity', function(d) { if(d.x < -0.26) return 1.0; else return 0.0 }); d3.selectAll(".cut").transition().duration(500).style('opacity', 0.0); d3.selectAll(".box").transition().duration(500).style('opacity', 0.0);},
+  () => { d3.selectAll(".leave_blue").transition().duration(500).style('opacity', 0.0); d3.selectAll(".leave_red").transition().duration(500).style('opacity', 0.0); },
+]
+  
+d3.csv("train_dataset.csv", function(error, data) {
+
+  if (error) throw error;
+      
+  var dots = svg.select("#points").selectAll(".train_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "train_dot")
+      .attr("r", 3)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+      .style("fill", function(d) { if (d.cls == 1) return '#f55'; else return '#9090f0';})
+
+  // Add the X Axis
+  svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(0," + height*4/5 + ")")
+      .call(d3.axisBottom(x));
+
+  // Add the Y Axis
+  svg.append("g")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + width/10 + ",0)")
+      .call(d3.axisLeft(y));
+
+});
+
+
+
+</script>
+</div>
+</body>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Machine Learning at Belle II</title>
+
+		<meta name="description" content="An overview of Machine Learning used by Belle II">
+		<meta name="author" content="Thomas Keck">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.mod/css/theme/black.css">
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal.js/css/print/pdf.css' : '../reveal.js/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+    <style>
+    .leftblock
+    {
+      float:left;
+      width: 45%;
+      margin: 2%;
+    }
+    
+    .smallleftblock
+    {
+      float:left;
+      width: 25%;
+      margin: 2%;
+    }
+
+    .rightblock
+    {
+      float:right;
+      width: 45%;
+      margin: 2%;
+    }
+    
+    .bigrightblock
+    {
+      float:right;
+      width: 70%;
+      margin: 2%;
+    }
+
+    .underground
+    {
+      background: rgba(22, 22, 22, .90);
+    }
+    </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <!-- Overview -->
+        <section>
+				<section>
+          <h1>Machine Learning at Belle II</h1>
+
+					<p>
+          Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
+					</p>
+        </section>
+				<section data-background-image="images/Karlsruhe.jpg" data-background-size="100%">
+          <h2>KIT</h2>
+          <p class="fragment">
+            <img data-src="images/etp.png">
+          </p>
+        </section>
+				<section data-background-image="images/Detector.jpg" data-background-size="50%">
+          <div class="underground"><h2>Belle II</h2></div>
+          <p class="fragment">
+            <img data-src="images/event.png" width="60%">
+          </p>
+        </section>
+				<section>
+          <h2>Software</h2>
+          <img data-src="images/success_scheme.png" width="30%">
+          <p class="fragment">
+            <b>Workshop Tomorrow Afternoon!</b>
+          </p>
+        </section>
+        <section>
+          <h2>Local Hardware Setup</h2>
+          <div class="leftblock">
+            <img data-src="images/ekpmaschinenraum.jpg" width="80%">
+          </div>
+          <div class="rightblock">
+          <p class="fragment">
+            <b>Intel Xeon Prozessor E5-2630 v4</b>
+          </p>
+          <p class="fragment">
+            <b>4 x GeForce GTX Titan X</b>
+            <img data-src="images/hardware.jpg">
+          </p>
+          <p class="fragment">
+            <b>378 GB RAM</b>
+          </p>
+          </div>
+        </section>
+        </section>
+
+        <!-- Examples -->
+        <section>
+				<section data-background-image="images/event_background.png" data-background-size="40%">
+					<h1>3 examples</h1>
+					
+					<div style="margin-top: 50%">of machine learning applications in Belle II</div>
+				</section>
+        <section data-background-image="images/cdc.jpg" data-background-size="80%">
+          <div class="underground"><h2>Neuro Z Trigger</h2></div>
+          <div class="fragment">
+           <img data-src="images/fpgaboard.png" width="25%">
+          </div>
+          <div class="fragment underground">
+            <ul>
+              <li>Virtex 6 vhx380 FPGA on Custom Board</li>
+              <li>Identifies tracks originating in the interaction region</li>
+              <li>280 nano-seconds per decision</li>
+            </ul>
+          </div>
+        </section>
+				<section data-background-image="images/event_background.png" data-background-size="50%">
+          <h2>Full Event Interpretation</h2>
+
+          <div class="leftblock fragment">
+            <img data-src="images/fei.png" width="100%">
+          </div>
+          <div class="rightblock fragment">
+            <img data-src="images/fei_comparison.png" width="100%">
+          </div>
+
+        </section>
+				<section data-background-image="images/cpviolation.png" data-background-size="100%">
+          <h2>Deep Flavour Tagger</h2>
+          <p class="fragment">
+          <b>Traditional Approach</b>
+          <img data-src="images/flavortaggercategories.png" width="70%">
+          </p>
+        </section>
+				<section data-background-image="images/cpviolation.png" data-background-size="100%">
+          <h2>Deep Flavour Tagger</h2>
+          <b>Deep Learning Approach</b>
+          <img data-src="images/flavortaggerdeep.png" width="80%">
+        </section>
+				
+        <section data-background-image="images/tsne/input.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer1.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer4.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer6.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer7.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer8.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer8_bbar.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/layer8_bbar_tag.png" data-background-size="80%"></section>
+        </section>
+        
+        <!-- Technologies -->
+        <section>
+				<section>
+          <h1>3 key <font color="red">technologies</font></h1>
+					<p>required to use Deep Learning in physics</p>
+        </section>
+				<section>
+          <h2>Data Driven Algorithms</h2>
+					<p>How-to reduce the dependency on simulated events</p>
+          
+					<div class="leftblock fragment">
+            <img data-src="images/MVABaseline.png" width="100%">
+          </div>
+          <div class="rightblock fragment">
+            <img data-src="images/MVAReweightedTotal.png" width="100%">
+          </div>
+
+					<div class="fragment">
+					<ol>
+					<li> Train classifier: recorded vs. simulated events </li>
+					<li> Reweight simulated events: $ w = \frac{p}{1-p} $</li>
+					<li> Train classifier: signal vs. background events </li>
+					</ol>
+					</div>
+        </section>
+				<section>
+          <h2>Uniformity Constraints</h2>
+					<p>How-to prevent the usage of certain information</p>
+					
+					<div class="fragment" style="float: left; width: 33%">
+            <img data-src="images/dalitz_plot_vertical.png" width="80%">
+          </div>
+          <div class="fragment" style="float: left; width: 33%">
+            <img data-src="images/tensorflow_baseline_dalitz_vertical.png" width="85%">
+          </div>
+          <div class="fragment" style="float: left; width: 33%">
+            <img data-src="images/tensorflow_dalitz_vertical.png" width="85%">
+          </div>
+					<p class="fragment">
+					Adversarial Neural Network
+					</p>
+        </section>
+        
+        <section>
+          <h2>H-parameter Optimization</h2>
+					<p>How-to optimize the large amount of new h-parameters</p>
+					<img data-src="images/nnparameters.png" width="50%">
+        </section>
+        <section>
+          <h2>H-parameter Optimization</h2>
+          <div class="leftblock fragment ">
+            <b>Traditional GridSearch</b>
+            <img data-src="images/gridsearch.png" width="100%">
+          </div>
+          <div class="rightblock fragment ">
+            <b>Bayesian Optimization</b>
+            <img data-src="images/bayes.png" width="100%">
+          </div>
+        </section>
+        </section>
+        
+				<section>
+				<section>
+          <h1>References</h1>
+					<ul>
+					<li><a href="https://publikationen.bibliothek.kit.edu/1000078149">PhD Thesis Thomas Keck</a></li>
+					<li><a href="http://ekp-invenio.physik.uni-karlsruhe.de/record/48849">Master Thesis Jochen Gemmler</a></li>
+					<li><a href="http://iopscience.iop.org/article/10.1088/1742-6596/368/1/012028">Advanced event reweighting using multivariate analysis (D. Martschei et al.)</a></li>
+					<li><a href="https://arxiv.org/abs/1611.01046">Learning to Pivot (G. Louppe et al.)</a></li>
+					<li><a href="https://arxiv.org/abs/1206.2944">Practical Bayesian Optimization of Machine Learning Algorithms (J. Snoek et al.)</a></li>
+					</ul>
+        </section>
+				<section>
+          <h2>Schedule Tomorrow</h2>
+
+					<ul>
+					<li>9:00	Introduction to machine learning</li>
+					<li>10:30	Coffee</li>
+					<li>11:00	Introduction to deep learning</li>
+					<li>12:00	Lunch</li>
+					<li>14:00	Hands-on workshop</li>
+					</ul>
+					
+					<p><a href="http://www2.iap.fr/users/charnock/conferences/ML2018">Workshop Website</a></p>
+        </section>
+				</section>
+        
+			</div>
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        controlsTutorial: false,
+        center: false,
+        transition: 'fade',
+        history: true,
+				dependencies: [
+					{ src: '../reveal.js/plugin/markdown/marked.js' },
+					{ src: '../reveal.js/plugin/markdown/markdown.js' },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true },
+					{ src: '../reveal.js/plugin/math/math.js', async: true },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

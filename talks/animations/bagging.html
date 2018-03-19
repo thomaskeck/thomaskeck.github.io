@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal" id="outer">
+
+<script>
+
+// set the dimensions and margins of the graph
+var width = 1000
+var height = 500
+
+// set the ranges
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height, height/10]);
+x.domain([-2.5, 2.5]);
+y.domain([-3.5, 4.0]);
+
+var _transitions = [
+  () => { d3.selectAll(".sample1").transition().duration(500).style("opacity", 1.0); },
+  () => { 
+    d3.selectAll(".sample2").transition().delay(2000).duration(500).style("opacity", 1.0);
+    d3.selectAll(".dots_sample1").transition().duration(500).style("opacity", function(d) { if (Math.random() > 0.5) return 0; else return 1.0; });
+    d3.selectAll(".cut_sample1").transition().delay(500).duration(500).style("opacity", 1.0);
+    d3.select("#svg_sample1").transition().delay(2000).duration(1000).attr("transform", "scale(0.4)").style("left", "0%").style("top", "50%");
+  },
+  () => { 
+    d3.selectAll(".sample3").transition().delay(2000).duration(500).style("opacity", 1.0);
+    d3.selectAll(".dots_sample2").transition().duration(500).style("opacity", function(d) { if (Math.random() > 0.5) return 0; else return 1.0; });
+    d3.selectAll(".cut_sample2").transition().delay(500).duration(500).style("opacity", 1.0);
+    d3.select("#svg_sample2").transition().delay(2000).duration(1000).attr("transform", "scale(0.4)").style("left", "30%").style("top", "50%");
+  },
+  () => { 
+    d3.selectAll(".sample4").transition().delay(2000).duration(500).style("opacity", 1.0);
+    d3.selectAll(".dots_sample3").transition().duration(500).style("opacity", function(d) { if (Math.random() > 0.5) return 0; else return 1.0; });
+    d3.selectAll(".cut_sample3").transition().delay(500).duration(500).style("opacity", 1.0);
+    d3.select("#svg_sample3").transition().delay(2000).duration(1000).attr("transform", "scale(0.4)").style("left", "60%").style("top", "50%");
+  },
+]
+
+var _inverse_transitions = [
+  () => { d3.selectAll(".sample1").transition().duration(200).style("opacity", 0.0) },
+  () => { 
+    d3.selectAll(".sample2").transition().duration(250).style("opacity", 0.0);
+    d3.selectAll(".dots_sample1").transition().delay(750).duration(250).style("opacity", 1.0);
+    d3.selectAll(".cut_sample1").transition().delay(500).duration(250).style("opacity", 0.0);
+    d3.select("#svg_sample1").transition().duration(500).attr("transform", "scale(1.0)").style("left", "25%").style("top", "0%");
+  },
+  () => { 
+    d3.selectAll(".sample3").transition().duration(250).style("opacity", 0.0);
+    d3.selectAll(".dots_sample2").transition().delay(750).duration(250).style("opacity", 1.0);
+    d3.selectAll(".cut_sample2").transition().delay(500).duration(250).style("opacity", 0.0);
+    d3.select("#svg_sample2").transition().duration(500).attr("transform", "scale(1.0)").style("left", "25%").style("top", "0%");
+  },
+  () => { 
+    d3.selectAll(".sample4").transition().duration(250).style("opacity", 0.0);
+    d3.selectAll(".dots_sample3").transition().delay(750).duration(250).style("opacity", 1.0);
+    d3.selectAll(".cut_sample3").transition().delay(500).duration(250).style("opacity", 0.0);
+    d3.select("#svg_sample3").transition().duration(500).attr("transform", "scale(1.0)").style("left", "25%").style("top", "0%");
+  },
+]
+
+function create_subset(data, classname) {
+
+  var train_svg = d3.select("#outer").append("svg")
+              .attr('id', 'svg_' + classname)
+              .attr('viewBox','0 0 1000 500')
+						  .attr('preserveAspectRatio','none')
+              .attr('overflow', "visible")
+              .style("width", '50%')
+              .style("height", '50%')
+              .style("display", "block")
+              .style("position", "absolute")
+              .style("top", "0%")
+              .style("opacity", 1.0)
+              .style("left", "25%");
+
+  train_svg.append("g").attr("id", "points")
+  train_svg.append("g").attr("id", "cuts")
+      
+  var dots = train_svg.select("#points").selectAll(".dots_" + classname).data(data)
+  dots.enter().append("circle")
+      .attr("class", classname + " dots_" + classname)
+      .attr("r", 5.0)
+      .style("fill", function(d) { if (d.cls == 1) return '#f55'; else return '#9090f0';})
+      .style("opacity", 0.0)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+  train_svg.append("g")
+      .attr("class", "axis " + classname)
+      .attr("transform", "translate(0," + height + ")")
+      .style("opacity", 0)
+      .call(d3.axisBottom(x));
+
+  train_svg.append("g")
+      .attr("class", "axis " + classname)
+      .style("opacity", 0)
+      .attr("transform", "translate(" + width/10 + ",0)")
+      .call(d3.axisLeft(y));
+
+  cuts = []
+  t1 = (Math.random()-1)
+  cuts.push({'x1': x(t1), 'x2': x(t1), 'y1': y(-3.5), 'y2': y(4.0)})
+  t2 = (Math.random()+0.5)
+  cuts.push({'x1': x(t2), 'x2': x(t2), 'y1': y(-3.5), 'y2': y(4.0)})
+  t3 = (Math.random()-2.25)
+  cuts.push({'x1': x(t1), 'x2': x(t2), 'y1': y(t3), 'y2': y(t3)})
+  t4 = (Math.random()+1.5)
+  cuts.push({'x1': x(t4), 'x2': x(t4), 'y1': y(-3.5), 'y2': y(4.0)})
+  t5 = (Math.random()-2.25)
+  cuts.push({'x1': x(-2.5), 'x2': x(t1), 'y1': y(t5), 'y2': y(t5)})
+  t6 = (Math.random()-1.75)
+  cuts.push({'x1': x(t6), 'x2': x(t6), 'y1': y(-3.5), 'y2': y(t5)})
+  t7 = (Math.random()-2.2)
+  cuts.push({'x1': x(t7), 'x2': x(t7), 'y1': y(t5), 'y2': y(4.0)})
+
+  var cutlines = train_svg.select("#cuts").selectAll(".cut_" + classname).data(cuts)
+  cutlines.enter().append("line")
+          .attr("x1", function(d) { return d.x1; })
+          .attr("x2", function(d) { return d.x2; })
+          .attr("y1", function(d) { return d.y1; })
+          .attr("y2", function(d) { return d.y2; })
+          .style("stroke-width", "0.5vmin")
+          .style("opacity", 0)
+          .style("stroke", "#fff")
+          .attr("class", " cut_" + classname)
+
+}
+
+d3.csv("train_dataset.csv", function(error, data) { create_subset(data, "sample1" )});
+d3.csv("train_dataset.csv", function(error, data) { create_subset(data, "sample2" )});
+d3.csv("train_dataset.csv", function(error, data) { create_subset(data, "sample3" )});
+d3.csv("train_dataset.csv", function(error, data) { create_subset(data, "sample4" )});
+
+
+</script>
+</div>
+</body>
