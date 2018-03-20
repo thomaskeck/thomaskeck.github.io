@@ -69,7 +69,7 @@ var _transitions = [
   () => {  start = path.node().getPointAtLength(0.53*path.node().getTotalLength())
 				   circle.attr("transform", "translate(" + start.x + "," + start.y + ")")
                  .transition().duration(500).style("opacity", 1)
-                 .transition().duration(2000).ease(d3.easeCircleInOut).attrTween("transform", translateAlong(0.53, 0.725))
+                 .transition().duration(2000).ease(d3.easeCubicInOut).attrTween("transform", translateAlong(0.53, 0.725))
                  .transition().duration(4000).ease(d3.easeElasticOut).attrTween("transform", translateAlong(0.725, 0.817))
                  .transition().duration(1000).style("opacity", 0)
 	},

@@ -468,7 +468,7 @@
             Misclassification Rate: 19%
           </div>
           <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
-            <div style="color: #50f050">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i \cdot x_j||^2)$</div><br />
+            <div style="color: #50f050">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i - x_j||^2)$</div><br />
             <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
             <br>
             Misclassification Rate: 15%
@@ -713,7 +713,24 @@
           </div>
           </div>
           
-          <div style="display: flex">
+          <div style="display: flex" class="fragment">
+          <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
+          <ul style="font-size: 3vmin">
+            <li style="color: #50f050">Discriminative Models</li>
+            <ul style="font-size: 3vmin">
+              <li>(Boosted) Decision Trees</li>
+              <li>Support Vector Machines</li>
+              <li>Artificial Neural Networks</li>
+            </ul>
+          </ul>
+          </div>
+          <div style="width: 50%; height: 20vh; float:right">
+            <div style="height: 5vh"></div>
+            $$ f\left(\vec{x}\right) \approx \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
+          </div>
+          </div>
+          
+          <div style="display: flex" class="fragment">
           <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li style="color: #50f050">Generative Models</li>
@@ -728,23 +745,6 @@
             <div style="height: 5vh"></div>
             $$ f\left(\vec{x} | \mathrm{S}\right) \approx \mathrm{PDF}\left( \vec{x} | \mathrm{S} \right) $$
             $$ f\left(\vec{x} | \mathrm{B}\right) \approx \mathrm{PDF}\left( \vec{x} | \mathrm{B} \right) $$
-          </div>
-          </div>
-          
-          <div style="display: flex">
-          <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
-          <ul style="font-size: 3vmin">
-            <li style="color: #50f050">Discriminative Models</li>
-            <ul style="font-size: 3vmin">
-              <li>(Boosted) Decision Trees</li>
-              <li>Support Vector Machines</li>
-              <li>Artificial Neural Networks</li>
-            </ul>
-          </ul>
-          </div>
-          <div style="width: 50%; height: 20vh; float:right">
-            <div style="height: 5vh"></div>
-            $$ f\left(\vec{x}\right) \approx \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
           </div>
           </div>
           
