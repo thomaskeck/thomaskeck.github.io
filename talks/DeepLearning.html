@@ -1,8 +1,11 @@
 <!doctype html>
 <html>
 	<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 		<title>Machine Learning at Belle II</title>
 
@@ -112,6 +115,8 @@
         center: false,
         transition: 'fade',
         history: true,
+        width: '80%',
+        height: '100%',
 				dependencies: [
           { src: '../reveal.mod/js/d3.v4.min.js' },
           { src: '../reveal.mod/plugin/reveal.js-d3js-plugin/d3js.js' },

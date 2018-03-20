@@ -5,7 +5,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 		<title>Machine Learning Lecture</title>
 
@@ -25,14 +25,6 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
-    <style>
-			.grid_element {
-				display: inline-block;
-				width: 40%;
-				zoom: 1;         /* for IE */
-				display*:inline; /* for IE */
-			}
-    </style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -124,8 +116,8 @@
 					
         </section>
 		
-        <section>
-          <div style="margin-top: 20%"></div>
+        <section style="height: 100%">
+          <div style="height: 20vh"></div>
           <p>
           Take a moment to appreciate what you just did
           </p>
@@ -137,14 +129,26 @@
           </b>
         </section>
 		
-        <section>
+        <section style="height: 100%">
+          
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 35vmin">
+            <img src="images/go.jpg">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 35vmin">
+            <img src="images/higgs.png">
+          </div>
+          </div>
+          <br>
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 35vmin">
+            <img src="images/stock.jpg">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 35vmin">
+            <img src="images/supermarkt.jpg">
+          </div>
+          </div>
 
-          <table>
-            <tr><td class="grid_element"><img src="images/go.jpg"></td>
-                <td class="grid_element"><img src="images/higgs.png"></td></tr>
-            <tr><td class="grid_element"><img src="images/stock.jpg"></td>
-                <td class="grid_element"><img src="images/supermarkt.jpg"></td></tr>
-          </table>
         </section>
 
 				<section style="height: 100%">
@@ -180,7 +184,7 @@
                    data-file="animations/decision_tree_fitting.html" style="width: 100%; height: 100%"></div>
 				</section>
         
-        <section>
+        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Decision Tree (Summary)</div></h3>
           <div style="display: flex">
           <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
@@ -207,7 +211,7 @@
           </code></pre>
 				</section>
         
-				<section data-background-image="images/tree_visualization_30.png" data-background-size="60%">
+				<section data-background-image="images/tree_visualization_30.png" data-background-size="60%" style="height: 100%">
           <h3><div style='color: #f05050'>Model Complexity</div></h3>
           <div style="width: 50%; height: 50vh; float: left" class="fragment">
             <div style="color: #50f050">Training Dataset</div><br />
@@ -433,12 +437,13 @@
 				</section>
         <section>
           <h3><div style='color: #9090f0'>Support Vector Machine</div></h3>
-          <div style="width: 50%; height: 50vh; float: left;" class="fragment">
+          <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
             <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
           </div>
-          <div style="width: 50%; height: 50vh; float: right;" class="fragment">
+          <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
             <img data-src="images/linear_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br>
             Misclassification Rate: 24%
           </div>
 				</section>
@@ -456,21 +461,23 @@
 				</section>
         <section>
           <h3><div style='color: #f05050'>Kernel Trick</div></h3>
-          <div style="width: 50%; height: 50vh; float: left;" class="fragment">
+          <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
             <div style="color: #50f050">Polynomial Kernel<br /> $k(x_i, x_j) ) = (x_i \cdot x_j)^d$</div><br />
             <img data-src="images/poly_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br>
             Misclassification Rate: 19%
           </div>
-          <div style="width: 50%; height: 50vh; float: right;" class="fragment">
+          <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
             <div style="color: #50f050">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i \cdot x_j||^2)$</div><br />
             <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br>
             Misclassification Rate: 15%
           </div>
 				</section>
         <section>
           <h3><div style='color: #9090f0'>Support Vector Machine (Summary)</div></h3>
           <div style="display: flex">
-          <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
+          <div style="width: 40%; height: 40vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Maximum margin classifier</li>
             <li>Quadratic problem: can be solved efficiently in $O(N^2)$</li>
@@ -479,8 +486,9 @@
             <li>Solution depends only on the support-vectors</li>
           </ul>
           </div>
-          <div style="width: 60%; height: 40vh; float:right">
+          <div style="width: 60%; height: 40vmin; float:right">
             <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br>
             Misclassification Rate: 15%
           </div>
           </div>
@@ -566,7 +574,7 @@
         <section style="height: 100%">
           <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
 
-          <ol style="font-size: 2.5vh">
+          <ol style="font-size: 3vmin">
             <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
             <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
             <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
@@ -625,7 +633,7 @@
         <section>
           <h3><div style='color: #9090f0'>Artificial Neural Network (Summary)</div></h3>
           <div style="display: flex">
-          <div style="width: 50%; float: left; align-items: center; display: flex">
+          <div style="width: 50%; height: 40vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Universal function approximator</li>
             <li>Adjust weights to minimize loss-function</li>
@@ -634,13 +642,13 @@
             <li>Ubiquitous in all modern ML applications</li>
           </ul>
           </div>
-          <div style="width: 50%; float:right;">
+          <div style="width: 50%; height: 40vh; float:right;">
             <img data-src="images/mpl_classifier.png" style="background:none; border:none; box-shadow:none;"><br/>
             Misclassification Rate: 15.5%
           </div>
           </div>
 
-          <div style='height: 2vh'></div>
+          <div style='height: 5vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import neural_network
@@ -686,8 +694,8 @@
             <li>Multiple sources for signal and background</li>
             <li>Mislabelled training data / Simulation uncertainties</li>
           </ul>
-         
-          <img data-src="images/curse_of_dimensionality.png" style="background:none; border:none; box-shadow:none;">
+          <br /> 
+          <img data-src="images/curse_of_dimensionality.png" style="background:none; border:none; box-shadow:none; height:30vh;">
 
 				</section>
         
@@ -745,7 +753,7 @@
         <section>
           <h3><div style='color: #9090f0'>Linear Discriminant Analysis</div></h3>
           <div style="display: flex">
-          <div style="width: 50%; float: left; align-items: center; display: flex">
+          <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Assumes conditional PDFs are normally distributed</li>
             <li>Assumes identical covariances</li>
@@ -756,13 +764,14 @@
           $ f(x) = x^{\mathrm{T}} \cdot \Sigma^{-1} (\mu_{\mathrm{S}} - \mu_{\mathrm{B}}) $
           </ul>
           </div>
-          <div style="width: 50%; float: right;">
-            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;"><br/>
+          <div style="width: 50%; height: 50vmin; float: right;">
+            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br/>
             Misclassification Rate: 24%
           </div>
           </div>
 
-          <div style='height: 2vh'></div>
+          <div style='height: 5vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import lda
@@ -775,7 +784,7 @@
         <section>
           <h3><div style='color: #9090f0'>Quadratic Discriminant Analysis</div></h3>
           <div style="display: flex">
-          <div style="width: 50%; float: left; align-items: center; display: flex">
+          <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Assumes conditional PDFs are normally distributed</li>
             <li>Requires only means and covariances of sample</li>
@@ -785,13 +794,13 @@
           </p>
           </ul>
           </div>
-          <div style="width: 50%; float:right">
+          <div style="width: 50%; height: 50vmin; float:right">
             <img data-src="images/qda_classifier.png" style="background:none; border:none; box-shadow:none;"><br />
             Misclassification Rate: 21%
           </div>
           </div>
 
-          <div style='height: 2vh'></div>
+          <div style='height: 5vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import qda
@@ -804,7 +813,7 @@
         <section>
           <h3><div style='color: #9090f0'>Kernel Density Estimator</div></h3>
           <div style="display: flex">
-          <div style="width: 50%; float: left; align-items: center; display: flex">
+          <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Every training sample is replaced with a small gaussian sphere</li>
             <li>Bandwith (variance of gaussian) is key</li>
@@ -812,13 +821,14 @@
           <br />
           </ul>
           </div>
-          <div style="width: 50%; height: 40vh; float:right">
+          <div style="width: 50%; height: 50vmin; float:right">
             <img data-src="images/kde_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <br>
             Misclassification Rate: 16%
           </div>
           </div>
 
-          <div style='height: 2vh'></div>
+          <div style='height: 5vh'></div>
           <b>SciPy Example</b>
           <pre><code class='python' data-trim>
             from scipy.stats import gaussian_kde
@@ -869,12 +879,12 @@
           <ul  style="font-size: 3vmin">
               <li>Search for maximum-margin hyper-band incorporating all data-points</li>
           </ul>
-          
-          <div style="width: 50%; height: 40vh; float: left;" class="fragment">
+          <br /> 
+          <div style="width: 50%; height: 50vh; float: left;" class="fragment">
             <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
           </div>
-          <div style="width: 50%; height: 40vh; float: right;" class="fragment">
+          <div style="width: 50%; height: 50vh; float: right;" class="fragment">
             <img data-src="images/svr.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
           <small style="width: 100%">
             <a href="https://www.researchgate.net/figure/Visualization-of-support-vector-regression-framework_fig1_272024714">
@@ -964,6 +974,8 @@
         center: false,
         transition: 'fade',
         history: true,
+        width: '80%',
+        height: '100%',
 				dependencies: [
           { src: '../reveal.mod/js/d3.v4.min.js' },
           { src: '../reveal.mod/plugin/reveal.js-d3js-plugin/d3js.js' },

@@ -33,22 +33,18 @@
   z-index: 50;
 }
 
-table.center {
-  margin-left:20%; 
-  margin-right:auto;
-}
-
 </style>
 
 <body>
 <div class="reveal" id="outer">
 
-<table class="center">
-<tr><td>Number of Layers</td><td><input type="range" min="2" max="10" step="1" value="3" id="layerslider" oninput="visualization.set_number_of_layers(this.value)"></td></tr>
-<tr><td>Number of Neurons</td><td><input type="range" min="1" max="6" value="3" id="neuronslider" oninput="visualization.set_number_of_neurons_in_active_layer(this.value)"></td></tr>
-<tr><td>Forward Propagation</td><td><button onclick="visualization.forward_pass()">Start</button></td></tr>
-<tr><td>Backward Propagation</td><td><button onclick="visualization.backward_pass()">Start</button></td></tr>
-</table>
+<div style="display: flex">
+  <div>Number of Layers <input style="width: 23vmin; height; 4vmin;" type="range" min="2" max="10" step="1" value="3" id="layerslider" oninput="visualization.set_number_of_layers(this.value)"></div>
+  <div>Number of Neurons <input style="width: 23vmin; height; 4vmin;" type="range" min="1" max="6" value="3" id="neuronslider" oninput="visualization.set_number_of_neurons_in_active_layer(this.value)"></div>
+  <div>Forward Propagation <button style="width: 23vmin; height; 4vmin" onclick="visualization.forward_pass()">Start</button></div>
+  <div>Backward Propagation <button style="width: 23vmin; height; 4vmin" onclick="visualization.backward_pass()">Start</button></div>
+  </div>
+</div>
 <script>
 
 visualization = new NeuralNetworkVisualization()

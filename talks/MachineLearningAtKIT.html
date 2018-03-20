@@ -1,8 +1,11 @@
 <!doctype html>
 <html>
 	<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="manifest.json">
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 		<title>Machine Learning at Belle II</title>
 
@@ -23,34 +26,6 @@
 		</script>
 
     <style>
-    .leftblock
-    {
-      float:left;
-      width: 45%;
-      margin: 2%;
-    }
-    
-    .smallleftblock
-    {
-      float:left;
-      width: 25%;
-      margin: 2%;
-    }
-
-    .rightblock
-    {
-      float:right;
-      width: 45%;
-      margin: 2%;
-    }
-    
-    .bigrightblock
-    {
-      float:right;
-      width: 70%;
-      margin: 2%;
-    }
-
     .underground
     {
       background: rgba(22, 22, 22, .90);
@@ -59,9 +34,9 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
+			<div class="slides" style="height: 100%">
         <!-- Overview -->
-        <section>
+        <section style="height: 100%">
 				<section>
           <h1>Machine Learning at Belle II</h1>
 
@@ -69,41 +44,52 @@
           Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
 					</p>
         </section>
-				<section data-background-image="images/Karlsruhe.jpg" data-background-size="100%">
+				<section data-background-image="images/Karlsruhe.jpg" data-background-size="100%" style="height: 100%">
           <h2>KIT</h2>
-          <p class="fragment">
+          <p class="fragment" style="width: 100%; height: 70vmin">
             <img data-src="images/etp.png">
           </p>
         </section>
-				<section data-background-image="images/Detector.jpg" data-background-size="50%">
+				<section data-background-image="images/Detector.jpg" data-background-size="100vmin" style="height: 100%">
           <div class="underground"><h2>Belle II</h2></div>
-          <p class="fragment">
-            <img data-src="images/event.png" width="60%">
+          <p class="fragment" style="width: 100%; height: 60vmin">
+            <img data-src="images/event.png">
           </p>
         </section>
-				<section>
+				<section style="height: 100%">
           <h2>Software</h2>
-          <img data-src="images/success_scheme.png" width="30%">
+          <center>
+          <div style="width: 100%; height: 60vmin">
+          <img data-src="images/success_scheme.png">
+          </div>
+          </center>
+          <br>
           <p class="fragment">
             <b>Workshop Tomorrow Afternoon!</b>
           </p>
         </section>
-        <section>
+        <section style="height: 100%">
           <h2>Local Hardware Setup</h2>
-          <div class="leftblock">
-            <img data-src="images/ekpmaschinenraum.jpg" width="80%">
+          <div style="display: flex">
+          <div style="width: 50%; height: 70vmin; float: left; align-items: center; display: flex">
+            <img data-src="images/ekpmaschinenraum.jpg">
           </div>
-          <div class="rightblock">
-          <p class="fragment">
+          <div style="width: 50%; height: 70vmin; float: left;">
+            <div style="height: 5%"> </div>
+          <div style="height: 10%" class="fragment"> 
             <b>Intel Xeon Prozessor E5-2630 v4</b>
-          </p>
-          <p class="fragment">
-            <b>4 x GeForce GTX Titan X</b>
+          </div>
+          <br>
+          <div style="height: 30%" class="fragment"> 
+            <b>4 x GeForce GTX Titan X</b><br>
             <img data-src="images/hardware.jpg">
-          </p>
-          <p class="fragment">
+          </div>
+          <br>
+          <div style="height: 25%"> </div>
+          <div style="height: 10%" class="fragment"> 
             <b>378 GB RAM</b>
-          </p>
+          </div>
+          </div>
           </div>
         </section>
         </section>
@@ -112,14 +98,15 @@
         <section>
 				<section data-background-image="images/event_background.png" data-background-size="40%">
 					<h1>3 examples</h1>
+          <h3>of machine learning applications in Belle II</h3>
 					
-					<div style="margin-top: 50%">of machine learning applications in Belle II</div>
 				</section>
         <section data-background-image="images/cdc.jpg" data-background-size="80%">
           <div class="underground"><h2>Neuro Z Trigger</h2></div>
-          <div class="fragment">
-           <img data-src="images/fpgaboard.png" width="25%">
+          <div class="fragment" style="width: 100%; height: 60vmin;">
+           <img data-src="images/fpgaboard.png">
           </div>
+          <div style="height: 5vh;"></div>
           <div class="fragment underground">
             <ul>
               <li>Virtex 6 vhx380 FPGA on Custom Board</li>
@@ -131,35 +118,41 @@
 				<section data-background-image="images/event_background.png" data-background-size="50%">
           <h2>Full Event Interpretation</h2>
 
-          <div class="leftblock fragment">
-            <img data-src="images/fei.png" width="100%">
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
+            <img data-src="images/fei.png">
           </div>
-          <div class="rightblock fragment">
-            <img data-src="images/fei_comparison.png" width="100%">
+          <div class="fragment" style="float: right; width: 50%; height: 50vmin">
+            <img data-src="images/fei_comparison.png">
+          </div>
           </div>
 
         </section>
 				<section data-background-image="images/cpviolation.png" data-background-size="100%">
           <h2>Deep Flavour Tagger</h2>
-          <p class="fragment">
+          <div class="fragment" style="width: 100%; height: 70vmin">
           <b>Traditional Approach</b>
-          <img data-src="images/flavortaggercategories.png" width="70%">
-          </p>
+          <br>
+          <img data-src="images/flavortaggercategories.png">
+          </div>
         </section>
 				<section data-background-image="images/cpviolation.png" data-background-size="100%">
           <h2>Deep Flavour Tagger</h2>
+          <div style="width: 100%; height: 70vmin">
           <b>Deep Learning Approach</b>
-          <img data-src="images/flavortaggerdeep.png" width="80%">
+          <br>
+          <img data-src="images/flavortaggerdeep.png">
+          </div>
         </section>
 				
-        <section data-background-image="images/tsne/input.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer1.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer4.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer6.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer7.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer8.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer8_bbar.png" data-background-size="80%"></section>
-        <section data-background-image="images/tsne/layer8_bbar_tag.png" data-background-size="80%"></section>
+        <section data-background-image="images/tsne/input.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer1.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer4.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer6.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer7.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8_bbar.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8_bbar_tag.png" data-background-size="100vmin"></section>
         </section>
         
         <!-- Technologies -->
@@ -172,13 +165,14 @@
           <h2>Data Driven Algorithms</h2>
 					<p>How-to reduce the dependency on simulated events</p>
           
-					<div class="leftblock fragment">
-            <img data-src="images/MVABaseline.png" width="100%">
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
+            <img data-src="images/MVABaseline.png">
           </div>
-          <div class="rightblock fragment">
-            <img data-src="images/MVAReweightedTotal.png" width="100%">
+          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
+            <img data-src="images/MVAReweightedTotal.png">
           </div>
-
+          </div>
 					<div class="fragment">
 					<ol>
 					<li> Train classifier: recorded vs. simulated events </li>
@@ -191,14 +185,16 @@
           <h2>Uniformity Constraints</h2>
 					<p>How-to prevent the usage of certain information</p>
 					
-					<div class="fragment" style="float: left; width: 33%">
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 33%; height: 50vmin">
             <img data-src="images/dalitz_plot_vertical.png" width="80%">
           </div>
-          <div class="fragment" style="float: left; width: 33%">
+          <div class="fragment" style="float: left; width: 33%; height: 50vmin">
             <img data-src="images/tensorflow_baseline_dalitz_vertical.png" width="85%">
           </div>
-          <div class="fragment" style="float: left; width: 33%">
+          <div class="fragment" style="float: left; width: 33%; height: 50vmin">
             <img data-src="images/tensorflow_dalitz_vertical.png" width="85%">
+          </div>
           </div>
 					<p class="fragment">
 					Adversarial Neural Network
@@ -208,17 +204,23 @@
         <section>
           <h2>H-parameter Optimization</h2>
 					<p>How-to optimize the large amount of new h-parameters</p>
-					<img data-src="images/nnparameters.png" width="50%">
+          <div style="width: 100%; height: 70vmin">
+					<img data-src="images/nnparameters.png">
+          </div>
         </section>
         <section>
           <h2>H-parameter Optimization</h2>
-          <div class="leftblock fragment ">
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
             <b>Traditional GridSearch</b>
-            <img data-src="images/gridsearch.png" width="100%">
+            <br>
+            <img data-src="images/gridsearch.png">
           </div>
-          <div class="rightblock fragment ">
+          <div class="fragment" style="float: right; width: 50%; height: 50vmin">
             <b>Bayesian Optimization</b>
-            <img data-src="images/bayes.png" width="100%">
+            <br>
+            <img data-src="images/bayes.png">
+          </div>
           </div>
         </section>
         </section>
@@ -264,6 +266,8 @@
         center: false,
         transition: 'fade',
         history: true,
+        width: '80%',
+        height: '100%',
 				dependencies: [
 					{ src: '../reveal.js/plugin/markdown/marked.js' },
 					{ src: '../reveal.js/plugin/markdown/markdown.js' },
