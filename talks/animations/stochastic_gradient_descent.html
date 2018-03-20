@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-1.0, 1.0]);
+y.domain([0.0, 0.8]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '100%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+
+svg.append("g").attr("id", "loss")
+svg.append("g").attr("id", "point")
+  
+var data = [0.5, 0.4, 0.4, 0.1, 0.4, 0.6, 0.45, 0.3, 0.5, 0.7, 0.6, 0.4, 0.43, 0.45, 0.5, 0.4, 0.25, 0.4, 0.55, 0.7, 0.8]
+var line = d3.line().x(function(d, i) { return x((i-10)/10); }).y(function(d, i) { return y(d) }).curve(d3.curveCardinal)
+var path = svg.select("#loss").append('path').attr('d', line(data)).attr('stroke', '#9090f0').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+
+var circle = svg.select("#point").append("circle")
+    .attr("r", 8)
+    .style("opacity", 0)
+    .style("fill", "#f05050")
+    .style("stroke", "#f05050")
+
+// Returns an attrTween for translating along the specified path element.
+function translateAlong(start, end) {
+  var l = path.node().getTotalLength();
+  start = start*l
+  l = end*l - start
+  return function(d, i, a) {
+    return function(t) {
+      var p = path.node().getPointAtLength(t * l + start);
+      return "translate(" + p.x + "," + p.y + ")";
+    };
+  };
+}
+
+var _transitions = [
+
+  () => {  start = path.node().getPointAtLength(0.53*path.node().getTotalLength())
+				   circle.attr("transform", "translate(" + start.x + "," + start.y + ")")
+                 .transition().duration(500).style("opacity", 1)
+                 .transition().duration(3000).ease(d3.easeQuadOut).attrTween("transform", translateAlong(0.53, 0.635))
+                 .transition().duration(1000).style("opacity", 0)
+	},
+  
+  () => {  start = path.node().getPointAtLength(0.53*path.node().getTotalLength())
+				   circle.attr("transform", "translate(" + start.x + "," + start.y + ")")
+                 .transition().duration(500).style("opacity", 1)
+                 .transition().duration(2000).ease(d3.easeCircleInOut).attrTween("transform", translateAlong(0.53, 0.725))
+                 .transition().duration(4000).ease(d3.easeElasticOut).attrTween("transform", translateAlong(0.725, 0.817))
+                 .transition().duration(1000).style("opacity", 0)
+	},
+
+]
+
+var _inverse_transitions = [
+
+	() => { circle.style("opacity", 0) },
+	() => { circle.style("opacity", 0) },
+
+]
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+
+</script>
+</div>
+</body>

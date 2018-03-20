@@ -190,7 +190,6 @@ function fitting_y() {
   var t = d3.scaleLinear().domain([0, 10]).range([height*4/5, height*1/5]);
   var data = [-2.5, -1.0, -0.6, -0.5, -1.0, -1.6, -1.0, -1.5, -2.0, -2.5]
   var line = d3.line().x(function(d) { return x(d); }).y(function(d, i) { return t(i) }).curve(d3.curveCardinal)
-  console.log(line(data))
   var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
   var totalLength = path.node().getTotalLength();
   path.attr("stroke-dasharray", totalLength + " " + totalLength)
