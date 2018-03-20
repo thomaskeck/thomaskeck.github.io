@@ -981,9 +981,9 @@
           { src: '../reveal.mod/plugin/reveal.js-d3js-plugin/d3js.js' },
 					{ src: '../reveal.js/plugin/markdown/marked.js' },
 					{ src: '../reveal.js/plugin/markdown/markdown.js' },
-					{ src: '../reveal.js/plugin/notes/notes.js' },
-					{ src: '../reveal.js/plugin/math/math.js' },
-					{ src: '../reveal.mod/plugin/highlight/highlight.js' }
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true },
+					{ src: '../reveal.js/plugin/math/math.js', async: true },
+					//{ src: '../reveal.js/plugin/highlight/highlight.js', async: false, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
 		</script>
