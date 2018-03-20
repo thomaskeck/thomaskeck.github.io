@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+.test_dot {
+  fill: #fff
+}
+</style>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-5.1, 10.1]);
+y.domain([0.0, 120.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '50%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "25%");
+
+svg.append("g").attr("id", "points")
+svg.append("g").attr("id", "fits")
+
+var x_values = d3.range(16).map(function(i) { return i-5; })
+
+var linear_regression = d3.line().x(function(d) { return x(d); }).y(function(d) { return y(4.93*d + 27.4) }).curve(d3.curveCardinal)
+var linear_regression_path = svg.select("#fits").append('path').attr('d', linear_regression(x_values)).attr('stroke', '#9090f0').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
+
+var linear_regression2 = d3.line().x(function(d) { return x(d); }).y(function(d) { return y(0.96*d*d + 14.3) }).curve(d3.curveCardinal)
+var linear_regression2_path = svg.select("#fits").append('path').attr('d', linear_regression2(x_values)).attr('stroke', '#f05050').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
+
+var _transitions = [
+  () => { linear_regression_path.transition().duration(500).style("opacity", 1.0); },
+  () => { linear_regression2_path.transition().duration(500).style("opacity", 1.0); }
+
+]
+
+var _inverse_transitions = [
+  () => { linear_regression_path.transition().duration(500).style("opacity", 0.0); },
+  () => { linear_regression2_path.transition().duration(500).style("opacity", 0.0); }
+
+]
+
+d3.csv("regression.csv", function(error, data) {
+
+  if (error) throw error;
+      
+  var dots = svg.select("#points").selectAll(".test_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "test_dot")
+      .attr("r", 5)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+});
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+
+</script>
+</div>
+</body>

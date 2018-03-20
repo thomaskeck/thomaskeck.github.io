@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+.test_dot {
+  fill: #fff
+}
+</style>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-5.1, 10.1]);
+y.domain([0.0, 120.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '50%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "25%");
+
+svg.append("g").attr("id", "points")
+svg.append("g").attr("id", "fits")
+
+var avgl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(30)).attr("y2", y(30)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var avgr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(42)).attr("y2", y(42)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+
+var avgl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(5)).attr("y1", y(22)).attr("y2", y(22)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
+var avgr_best = svg.select("#fits").append("line").attr("x1", x(5)).attr("x2", x(10)).attr("y1", y(75)).attr("y2", y(75)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
+
+var fitl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(10)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var fitr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(10)).attr("y2", y(90)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+
+var fitl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(0)).attr("y1", y(45)).attr("y2", y(15)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
+var fitr_best = svg.select("#fits").append("line").attr("x1", x(0)).attr("x2", x(10)).attr("y1", y(15)).attr("y2", y(115)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
+
+var _transitions = [
+  () => { 
+    avgl.transition().duration(500).style("opacity", 1.0)
+        .transition().duration(2000).ease(d3.easeLinear).attr("x2", x(5)).attr("y2", y(22)).attr("y1", y(22))
+        .transition().duration(1000).ease(d3.easeLinear).attr("x2", x(9)).attr("y2", y(30)).attr("y1", y(30))
+        .transition().duration(500).style("opacity", 0.0)
+    avgr.transition().duration(500).style("opacity", 1.0)
+        .transition().duration(2000).ease(d3.easeLinear).attr("x1", x(5)).attr("y2", y(75)).attr("y1", y(75))
+        .transition().duration(1000).ease(d3.easeLinear).attr("x1", x(9)).attr("y2", y(95)).attr("y1", y(95))
+        .transition().duration(500).style("opacity", 0.0)
+
+    avgl_best.transition().delay(2500).duration(100).style("opacity", 1.0)
+    avgr_best.transition().delay(2500).duration(100).style("opacity", 1.0)
+  
+  },
+  
+  () => {
+    avgl.transition().attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(30)).attr("y2", y(30)).style("opacity", 0)
+    avgr.transition().attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(42)).attr("y2", y(42)).style("opacity", 0)
+    avgl_best.transition().duration(500).style("opacity", 0.0)
+    avgr_best.transition().duration(500).style("opacity", 0.0)
+  },
+
+  () => { 
+    fitl.transition().duration(500).style("opacity", 1.0)
+        .transition().duration(1000).ease(d3.easeLinear).attr("x2", x(0)).attr("y2", y(15)).attr("y1", y(40))
+        .transition().duration(2000).ease(d3.easeLinear).attr("x2", x(7)).attr("y2", y(65)).attr("y1", y(20))
+        .transition().duration(500).style("opacity", 0.0)
+    fitr.transition().duration(500).style("opacity", 1.0)
+        .transition().duration(1000).ease(d3.easeLinear).attr("x1", x(0)).attr("y2", y(115)).attr("y1", y(15))
+        .transition().duration(2000).ease(d3.easeLinear).attr("x1", x(7)).attr("y2", y(120)).attr("y1", y(65))
+        .transition().duration(500).style("opacity", 0.0)
+
+    fitl_best.transition().delay(1500).duration(100).style("opacity", 1.0)
+    fitr_best.transition().delay(1500).duration(100).style("opacity", 1.0)
+  
+  },
+
+]
+
+var _inverse_transitions = [
+  () => {
+    avgl.transition().attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(30)).attr("y2", y(30)).style("opacity", 0)
+    avgr.transition().attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(42)).attr("y2", y(42)).style("opacity", 0)
+    avgl_best.transition().duration(500).style("opacity", 0.0)
+    avgr_best.transition().duration(500).style("opacity", 0.0)
+  },
+
+  () => {
+    avgl_best.transition().duration(500).style("opacity", 1.0)
+    avgr_best.transition().duration(500).style("opacity", 1.0)
+  },
+
+  () => {
+    fitl.transition().attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(10)).style("opacity", 0)
+    fitr.transition().attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(10)).attr("y2", y(90)).style("opacity", 0)
+    fitl_best.transition().duration(500).style("opacity", 0.0)
+    fitr_best.transition().duration(500).style("opacity", 0.0)
+  },
+
+]
+
+d3.csv("regression.csv", function(error, data) {
+
+  if (error) throw error;
+      
+  var dots = svg.select("#points").selectAll(".test_dot").data(data)
+  dots.enter().append("circle")
+      .attr("class", "test_dot")
+      .attr("r", 5)
+      .attr("cx", function(d) { return x(d.x); })
+      .attr("cy", function(d) { return y(d.y); })
+
+});
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+
+</script>
+</div>
+</body>

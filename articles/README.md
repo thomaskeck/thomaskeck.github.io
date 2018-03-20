@@ -112,36 +112,29 @@ With sPlot you can train a classifier directly on data, other similar methods ar
 ## On Machine Learning Tools and Frameworks
 
 [**FastBDT**](https://github.com/thomaskeck/FastBDT)
-
 [Thomas Keck. „FastBDT: A Speed-Optimized Multivariate Classification Algorithm for the Belle II Experiment“.](https://link.springer.com/article/10.1007/s41781-017-0002-8)
 
 [**TMVA**](http://tmva.sourceforge.net/)
-
 [Andreas Hoecker et al. „TMVA: Toolkit for Multivariate Data Analysis“.](https://arxiv.org/abs/physics/0703039)
 
 [**FANN**](http://fann.sourceforge.net/)
 [S. Nissen. Implementation of a Fast Artificial Neural Network Library (fann).](http://fann.sourceforge.net/fann.pdf)
 
 [**SKLearn**](http://scikit-learn.org/)
-
 [F. Pedregosa et al. „Scikit-learn: Machine Learning in Python“.](http://www.jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf)
 
 [**hep_ml**](https://arogozhnikov.github.io/hep_ml/)
 
 [**XGBoost**](https://xgboost.readthedocs.io/en/latest/)
-
 [Tianqi Chen and Carlos Guestrin. „XGBoost: A Scalable Tree Boosting System“.](https://arxiv.org/abs/1603.02754)
 
 [**Tensorflow**](https://www.tensorflow.org/)
-
 [Martin Abadi et al. „TensorFlow: A system for large-scale machine learning“](https://arxiv.org/abs/1605.08695)
 
 [**Theano**](http://deeplearning.net/software/theano/)
-
 [Rami Al-Rfou et al. „Theano: A Python framework for fast computation of mathematical expressions“](https://arxiv.org/abs/1605.02688)
 
 [**NeuroBayes**](https://github.com/blue-yonder/NeurobayesCppInterface)
-
 [M. Feindt and U. Kerzel. „The NeuroBayes neural network package“](http://www-ekp.physik.uni-karlsruhe.de/~feindt/acat05-neurobayes)
 
 

@@ -431,7 +431,7 @@
         <section>
           <h3><div style='color: #9090f0'>Support Vector Machine</div></h3>
           <div style="width: 50%; height: 50vh; float: left;" class="fragment">
-            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
           </div>
           <div style="width: 50%; height: 50vh; float: right;" class="fragment">
@@ -473,6 +473,7 @@
             <li>Quadratic problem: can be solved efficiently in $O(N^2)$</li>
             <li>Optimal for linearly separable problems</li>
             <li>Kernel trick allows solving of non-linear problems</li>
+            <li>Solution depends only on the support-vectors</li>
           </ul>
           </div>
           <div style="width: 60%; height: 40vh; float:right">
@@ -494,7 +495,7 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Deep Learning</div></h2>
+          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Stochastic Gradient Descent</div></h2>
 				</section>
 
         <section style="height: 100%">
@@ -504,72 +505,129 @@
                    data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
         </section>
 				
-        <section>
-          <h3><div style='color: #f05050'>Theory</div></h3>
-          <div style="height: 5vh"></div>
-          <b>Universal Function Approximator</b><br />
+        <section  style="height: 100%">
+          <h3><div style='color: #f05050'>Universal Function Approximator</div></h3>
   
-          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow [0, 1]$</b>
-
-          <div style='height: 5vh'></div>
+          <div style='height: 2vh'></div>
+          <div style='color: #50f050'>
           $$f(\vec{x}) = \sigma \left(\sum_h w_{oh} \sigma \left( \sum_i w_{hi} x_i \right) \right)$$
-          <div style='height: 5vh'></div>
+          </div>
+          <div style='height: 1vh'></div>
+          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow [0, 1]$</b>
+          <div style='height: 2vh'></div>
 
-          <div style="color: #50f050">Usually visualized as a network (think Feynman Diagrams!)</div>
+          Usually visualized as a network
+          <div style="display: flex; height: 50%">
+          <div style="width: 50%; float: left; height: 100%">
+          <div style='height: 2vh'></div>
           <table>
             <tr><td>Link</td><td> $\hat{=}$</td><td>$w_{ij}$</td></tr>
             <tr><td>Neuron</td><td> $\hat{=}$</td><td>$\sigma \left( \sum \dots \right)$</td></tr>
           </table>
+          </div>
+          <div style="width: 50%; float: right; height: 100%">
           <div class="fig-container"
                data-fig-id="forward_neural_network"
                data-file="animations/forward_neural_network.html" style="width: 100%; height: 100%"></div>
+          </div>
+          </div>
 				</section>
         
-        <section>
-          <h3><div style='color: #f05050'>Theory</div></h3>
-          <div style="height: 5vh"></div>
-          <b>Backpropagation of Error</b><br />
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Backpropagation of Error</div></h3>
   
-          <b>Choose weights so that they minimize a loss-function</b>
+          <div style='height: 2vh'></div>
+          <div style='color: #50f050'>
+          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
+          </div>
+          <div style='height: 1vh'></div>
+          <b>→ choose weights so that they minimize a loss-function</b>
+          <div style='height: 2vh'></div>
 
-          <div style='height: 5vh'></div>
+          <div style="display: flex; height: 50%">
+          <div style="width: 55%; float: left; height: 100% ">
+          <div style='height: 2vh'></div>
           <table>
-            <tr><td>Classification</td><td>$ \mathcal{L} = - y \log \left( f(\vec{x}) \right) - (1-y) \log \left(1 - f(\vec{x}) \right) $</td></tr>
+            <tr><td>Classification</td><td>$ \mathcal{L} = H\left(y, f(\vec{x})\right) $</td></tr>
             <tr><td>Regression</td><td>$ \mathcal{L} = \left( y  - f(\vec{x}) \right)^2 $</td></tr>
           </table>
-          <div style='height: 5vh'></div>
-
-          <div style="color: #50f050">Adapt weights of the network using the gradient</div>
-          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
+          </div>
+          <div style="width: 45%; float: right; height: 100%">
           <div class="fig-container"
                data-fig-id="backward_neural_network"
                data-file="animations/backward_neural_network.html" style="width: 100%; height: 100%"></div>
+          </div>
+          </div>
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Selected Aspects of Training</div></h3>
+ 
+          <div style="display: flex; height: 50%">
+          <div style="width: 50%; float: left; height: 100% ">
+          <ul  style="font-size: 3vmin">
+            <li style='color: #50f050' class="fragment" data-fragment-index="1">Stochastic gradient-descent</li>
+            <ul class="fragment" data-fragment-index="1">
+              <li>Batch-size and Learning rate</li>
+              <li>Momentum term</li>
+              <li>Second Order: Hesse Matrix (BFGS)</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="2">Regularization</li>
+            <ul  class="fragment" data-fragment-index="2">
+              <li>Early stopping</li>
+              <li>Weight decay: $\alpha \sum |w|^2$</li>
+              <li>Dropout (ensemble)</li>
+            </ul>
+          </ul>
+          </div>
+          <div style="width: 50%; float: right; height: 100%">
+          <ul  style="font-size: 3vmin">
+            <li style='color: #50f050' class="fragment" data-fragment-index="3">Architecture</li>
+            <ul class="fragment" data-fragment-index="3">
+              <li>Number of neurons</li>
+              <li>Number of layers</li>
+              <li>Activation function</li>
+              <li>Loss function</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="4">Initialization</li>
+            <ul class="fragment" data-fragment-index="4">
+              <li>Distribution: Gaussian or Uniform</li>
+              <li>Variance: Glorot, He</li>
+            </ul>
+          </ul>
+          </div>
+          </div>
+
+          <div style='height: 10vh'></div>
+          <p class="fragment" data-fragment-index="5" style='color: #f05050'>
+          See Deep Learning Lecture
+          </p>
 				</section>
         
         <section>
           <h3><div style='color: #9090f0'>Artificial Neural Network (Summary)</div></h3>
           <div style="display: flex">
-          <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
+          <div style="width: 50%; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
-            <li>Neurons sum up inputs and apply non-linear activation function</li>
-            <li>The gradient of the loss-function adjusts the weights (back-propagation)</li>
+            <li>Universal function approximator</li>
+            <li>Adjust weights to minimize loss-function</li>
             <li>Fast and small model</li>
             <li>Fitting can be challenging</li>
             <li>Ubiquitous in all modern ML applications</li>
           </ul>
           </div>
-          </center>
-          <div style="width: 60%; height: 40vh; float:right">
-            <img data-src="images/mpl_classifier.png" style="background:none; border:none; box-shadow:none;">
+          <div style="width: 50%; float:right;">
+            <img data-src="images/mpl_classifier.png" style="background:none; border:none; box-shadow:none;"><br/>
             Misclassification Rate: 15.5%
           </div>
           </div>
 
-          <div style='height: 10vh'></div>
+          <div style='height: 2vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import neural_network
-            ann = neural_network.MLPClassifier(activation='tanh', hidden_layer_sizes=(3,))
+            ann = neural_network.MLPClassifier(activation='tanh',
+                                               hidden_layer_sizes=(3,))
             ann.fit(X, y)
             ann.predict(X)
           </code></pre>
@@ -578,31 +636,115 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Analytical Solutions</div> & <div style='color: #f05050'>Neyman-Pearson Lemma</div></h2>
+          <h2><div style='color: #9090f0'>Generative Models</div> & <div style='color: #f05050'>Neyman-Pearson Lemma</div></h2>
 				</section>
+        
         <section>
-          <h3><div style='color: #9090f0'>Linear Discriminant Analysis (Summary)</div></h3>
+          <h3><div style='color: #f05050'>Neyman-Pearson Lemma</div></h3>
+          
+          <blockquote>
+          On the Problem of the most Efficient Tests of Statistical Hypotheses
+          <br>
+          By J. Neyman and E. S. Pearson
+          </blockquote>
+          </pre>
+
+          $$ f\left(\vec{x}\right) = \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
+
+          <p style='color: #50f050'>
+          Most powerful test at a given significance level to distinguish between two simple hypotheses (signal or background)
+          </p>
+				</section>
+        
+        <section>
+          <h3><div style='color: #f05050'>Problem solved? No!</div></h3>
+          
+          <p>
+          Signal and Background PDF are usually unknown
+          </p>
+
+          <ul style="font-size: 3vmin">
+            <li>High dimensional $\rightarrow$ cannot be sampled due to the <b>curse of dimensionality</b></li>
+            <li>Multiple sources for signal and background</li>
+            <li>Mislabelled training data / Simulation uncertainties</li>
+          </ul>
+         
+          <img data-src="images/curse_of_dimensionality.png" style="background:none; border:none; box-shadow:none;">
+
+				</section>
+        
+        <section>
+          <h3><div style='color: #f05050'>Solution: Approximate Neyman-Pearson Lemma</div></h3>
+          
           <div style="display: flex">
-          <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
+          <div style="width: 50%; height: 10vh; float: left; align-items: center; display: flex">
+          <ul style="font-size: 3vmin">
+            <li style="color: #50f050">Neyman-Pearson Lemma</li>
+          </ul>
+          </div>
+          <div style="width: 50%; height: 10vh; float:right">
+            $$ f\left(\vec{x}\right) = \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
+          </div>
+          </div>
+          
+          <div style="display: flex">
+          <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
+          <ul style="font-size: 3vmin">
+            <li style="color: #50f050">Generative Models</li>
+            <ul style="font-size: 3vmin">
+              <li>Analytical approx. (LDA, QDA)</li>
+              <li>Kernel density estimator</li>
+              <li>Gaussian mixture model</li>
+            </ul>
+          </ul>
+          </div>
+          <div style="width: 50%; height: 20vh; float:right">
+            <div style="height: 5vh"></div>
+            $$ f\left(\vec{x} | \mathrm{S}\right) \approx \mathrm{PDF}\left( \vec{x} | \mathrm{S} \right) $$
+            $$ f\left(\vec{x} | \mathrm{B}\right) \approx \mathrm{PDF}\left( \vec{x} | \mathrm{B} \right) $$
+          </div>
+          </div>
+          
+          <div style="display: flex">
+          <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
+          <ul style="font-size: 3vmin">
+            <li style="color: #50f050">Discriminative Models</li>
+            <ul style="font-size: 3vmin">
+              <li>(Boosted) Decision Trees</li>
+              <li>Support Vector Machines</li>
+              <li>Artificial Neural Networks</li>
+            </ul>
+          </ul>
+          </div>
+          <div style="width: 50%; height: 20vh; float:right">
+            <div style="height: 5vh"></div>
+            $$ f\left(\vec{x}\right) \approx \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
+          </div>
+          </div>
+          
+				</section>
+        
+        <section>
+          <h3><div style='color: #9090f0'>Linear Discriminant Analysis</div></h3>
+          <div style="display: flex">
+          <div style="width: 50%; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Assumes conditional PDFs are normally distributed</li>
-            <li>Assumes identical covariances of signal and background</li>
-            <li>Equivalent to commonly used Fisher’s discriminant</li>
+            <li>Assumes identical covariances</li>
+            <li>Equivalent to Fisher’s discriminant</li>
             <li>Requires only means and covariances of sample</li>
             <li>Separating hyperplane is linear</li>
-          <br />
+            <br />
           $ f(x) = x^{\mathrm{T}} \cdot \Sigma^{-1} (\mu_{\mathrm{S}} - \mu_{\mathrm{B}}) $
           </ul>
           </div>
-          </center>
-          <div style="width: 60%; height: 40vh; float:right">
-            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;">
+          <div style="width: 50%; float: right;">
+            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;"><br/>
             Misclassification Rate: 24%
           </div>
-          </center>
           </div>
 
-          <div style='height: 10vh'></div>
+          <div style='height: 2vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import lda
@@ -613,26 +755,25 @@
 				</section>
 
         <section>
-          <h3><div style='color: #9090f0'>Quadratic Discriminant Analysis (Summary)</div></h3>
+          <h3><div style='color: #9090f0'>Quadratic Discriminant Analysis</div></h3>
           <div style="display: flex">
-          <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
+          <div style="width: 50%; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
             <li>Assumes conditional PDFs are normally distributed</li>
             <li>Requires only means and covariances of sample</li>
             <li>Separating hyperplane is quadratic</li>
-          <br />
+          <p style="font-size: 2.5vmin">
           $ f(x) = \frac{\sqrt{2 \pi | \Sigma_{\mathrm{B}} |} \exp\left( - \frac{1}{2} \left(x - \mu_{\mathrm{S}}\right)^{\mathrm{T}} \Sigma^{-1}_{\mathrm{S}} \left(x - \mu_{\mathrm{S}}\right)  \right) }{ \sqrt{2 \pi | \Sigma_{\mathrm{S}} |}  \exp\left( - \frac{1}{2} \left(x - \mu_{\mathrm{B}}\right)^{\mathrm{T}} \Sigma^{-1}_{\mathrm{B}} \left(x - \mu_{\mathrm{B}}\right)  \right)  }$
+          </p>
           </ul>
           </div>
-          </center>
-          <div style="width: 60%; height: 40vh; float:right">
-            <img data-src="images/qda_classifier.png" style="background:none; border:none; box-shadow:none;">
+          <div style="width: 50%; float:right">
+            <img data-src="images/qda_classifier.png" style="background:none; border:none; box-shadow:none;"><br />
             Misclassification Rate: 21%
           </div>
-          </center>
           </div>
 
-          <div style='height: 10vh'></div>
+          <div style='height: 2vh'></div>
           <b>SKLearn Example</b>
           <pre><code class='python' data-trim>
             from sklearn import qda
@@ -641,11 +782,153 @@
             qd.predict(X)
           </code></pre>
 				</section>
-        </section>
+        
+        <section>
+          <h3><div style='color: #9090f0'>Kernel Density Estimator</div></h3>
+          <div style="display: flex">
+          <div style="width: 50%; float: left; align-items: center; display: flex">
+          <ul style="font-size: 3vmin">
+            <li>Every training sample is replaced with a small gaussian sphere</li>
+            <li>Bandwith (variance of gaussian) is key</li>
+            <li>Works well for low dimensions</li>
+          <br />
+          </ul>
+          </div>
+          <div style="width: 50%; height: 40vh; float:right">
+            <img data-src="images/kde_classifier.png" style="background:none; border:none; box-shadow:none;">
+            Misclassification Rate: 16%
+          </div>
+          </div>
 
+          <div style='height: 2vh'></div>
+          <b>SciPy Example</b>
+          <pre><code class='python' data-trim>
+            from scipy.stats import gaussian_kde
+            signal = gaussian_kde(signal_samples)
+            background = gaussian_kde(background_samples)
+          </code></pre>
+				</section>
+        </section>
+				
 				<section style="height: 100%">
 				<section>
+          <h2><div style='color: #9090f0'>Extensions</div> & <div style='color: #f05050'>Multivariate Regression</div></h2>
+				</section>
+				<section style="height: 100%">
+          <h3><div style='color: #9090f0'>(Generalized) Linear Regression</div></h3>
+          <ul  style="font-size: 3vmin">
+            <li>Linear Regression of Base-Functions</li>
+            <li>$y = \beta_0 + \beta_1 \phi_1(x_1) + \dots \beta_n \phi_n(x_n)$</li>
+            <li>Fitted with least-square method</li>
+          </ul>
+          
+          <div style="width: 100%; height: 100%">
+          <div class="fig-container"
+               data-fig-id="linear_regression"
+               data-file="animations/linear_regression.html" style="width: 100%; height: 100%"></div>
+          </div>
+
+				</section>
+				
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>(Boosted) Decision Trees</div></h3>
+          <ul  style="font-size: 3vmin">
+              <li>Various different algorithms exists</li>
+              <li>Easiest: calculate average and right of each possible split points</li>
+              <li>Minimize $\left(y - \bar{y}_{\mathrm{L}}\right)^2 + \left(y - \bar{y}_{\mathrm{R}}\right)^2$</li>
+          </ul>
+          
+          <div style="width: 100%; height: 100%">
+          <div class="fig-container"
+               data-fig-id="decision_tree_regression"
+               data-file="animations/decision_tree_regression.html" style="width: 100%; height: 100%"></div>
+          </div>
+
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Support Vector Regression</div></h3>
+          <ul  style="font-size: 3vmin">
+              <li>Search for maximum-margin hyper-band incorporating all data-points</li>
+          </ul>
+          
+          <div style="width: 50%; height: 40vh; float: left;" class="fragment">
+            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
+            <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
+          </div>
+          <div style="width: 50%; height: 40vh; float: right;" class="fragment">
+            <img data-src="images/svr.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
+          <small style="width: 100%">
+            <a href="https://www.researchgate.net/figure/Visualization-of-support-vector-regression-framework_fig1_272024714">
+              M. Alamaniotis and V. Agarwal: Fuzzy Integration of Support Vector Regressor Models for Anticipatory Control of Complex Energy Systems
+            </a>
+          </small>
+          </div>
+
+				</section>
+				
+        <section>
+          <h3><div style='color: #9090f0'>Artificial Neural Networks</div></h3>
+          <ul>
+            <li>Neural Networks are still <b>universal</b> function approximators</li>
+            <li>Loss function: $\left(y - f(\vec{x})\right)^2$</li>
+            <li>Output activation function: linear</li>
+          </ul>
+          
+          <div style='height: 5vh'></div>
+          <div style='color: #50f050'>
+          $$f(\vec{x}) = \sum_h w_{oh} \sigma \left( \sum_i w_{hi} x_i \right)$$
+          </div>
+          <div style='height: 2vh'></div>
+          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow \mathrm{R}$</b>
+
+				</section>
+        
+        <section>
+          <h3><div style='color: #f05050'>Summary</div></h3>
+          <div style='height: 10vh'></div>
+
+          <p style='color: #50f050'>
+          All concepts we encountered are still valid
+          </p>
+          <ul>
+            <li>Model Complexity - Bias Variance Tradeoff</li>
+            <li>Ensemble Methods - Boosting und Bagging</li>
+            <li>SVM: Kernel Trick</li>
+            <li>ANN: Stochastic Gradient Descent</li>
+          </ul>
+
+				</section>
+        </section>
+				
+        <section style="height: 100%">
+				<section>
           <h2><div style='color: #9090f0'>Outlook</div> & <div style='color: #f05050'>References</div></h2>
+				</section>
+				<section>
+          <h3><div style='color: #9090f0'>Outlook</div></h3>
+
+          <div style='height: 10vh'></div>
+          There will be a second lecture on <div style='color: #50f050; display: inline'>Deep Learning</div> after a short break<br />
+          <div style='height: 4vh'></div>
+          There will be workshop on <div style='color: #50f050; display: inline'>Tensorflow</div> in the afternoon
+				</section>
+				<section data-markdown>
+          <h3><div style='color: #f05050'>References</div></h3>
+
+            <textarea data-template>
+                An (incomplete) list of interesting books:
+
+                  - Christopher M. Bishop. Pattern Recognition and Machine Learning
+                  - Trevor Hastie, Robert Tibshirani, and Jerome Friedman. The Elements of Statistical Learning.
+                  - J. Han, M. Kamber, J. Pei. Data Mining: Concepts and Techniques 
+                  - O. Behnke, K. Kröninger, G. Scott, T. Schörner-Sadenius. Data Analysis in High Energy Physics: A Practical Guide to Statistical Methods
+                  - [I. Goodfellow, Y. Bengio, A. Courville. Deep Learning (Adaptive Computation and Machine Learning)](http://www.deeplearningbook.org/)
+                  - [R. S. Sutton, and A. G. Barto. Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
+
+
+                You can find a list of research publications I enjoyed reading [here](https://thomaskeck.github.io/articles/)
+            </textarea>
 				</section>
         </section>
 			</div>

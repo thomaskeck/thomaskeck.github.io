@@ -13,7 +13,7 @@ sns.set_style("white")
 
 train = pd.read_csv('../../talks/animations/train_dataset.csv')
 test = pd.read_csv('../../talks/animations/test_dataset.csv')
-full = pd.read_csv('../../tals/animations/full_dataset.csv')
+full = pd.read_csv('../../talks/animations/full_dataset.csv')
 
 def savePlot(filename):
     figure = plt.gcf()
@@ -28,8 +28,8 @@ def plotData(X):
     plt.ylim((-3.5, 4))
     sns.despine()
 
-def plotContour(response):
-    support = np.arange(-5.0, 5.0, 0.01)
+def plotContour(response, stepsize=0.01):
+    support = np.arange(-5.0, 5.0, stepsize)
     R = np.array([[float(response(np.array([[x,y]]))[:, 1]) for x in support] for y in support])
     X, Y = np.meshgrid(support, support)
     return plt.contourf(X, Y, R ,alpha=0.35, cmap=plt.cm.Greys)

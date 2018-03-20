@@ -8,7 +8,7 @@ This repository contains an updated version of my lectures and workshops given a
   - The [Machine learning workshop in Paris 2018](http://www2.iap.fr/users/charnock/conferences/ML2018)
 
 The talks are javascript and html-based using [reveal.js](https://revealjs.com/) and [d3.js](https://d3js.org/). They can be viewed online via github pages:
-  - On traditional [Machine Learning](https://thomaskeck.github.io/talks/MachineLearning.html)
+  - On [Traditional Machine Learning](https://thomaskeck.github.io/talks/MachineLearning.html)
   - On [Deep Learning](https://thomaskeck.github.io/talks/DeepLearning.html)
   - On [Machine Learning at KIT and Belle II](https://thomaskeck.github.io/talks/MachineLearningAtKIT.html)
 
@@ -34,5 +34,5 @@ An (incomplete) list of interesting books:
   - [R. S. Sutton, and A. G. Barto. Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
 
 
-You can find a list of research publications I enjoyed reading [here](https://thomaskeck.github.io/articles/README.md)
+You can find a list of research publications I enjoyed reading [here](https://thomaskeck.github.io/articles/)
 

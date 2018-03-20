@@ -15,7 +15,7 @@
 var width = 960
 var height = 500
 
-var x = d3.scaleLinear().range([width/10, width/2]);
+var x = d3.scaleLinear().range([width/10, width]);
 var y = d3.scaleLinear().range([height*4/5, height*1/5]);
 x.domain([-1.0, 1.0]);
 y.domain([-1.0, 1.0]);
@@ -51,9 +51,6 @@ svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + width/10 + ",0)")
     .call(d3.axisLeft(y));
-
-});
-
 
 
 </script>
