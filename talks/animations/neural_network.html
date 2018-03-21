@@ -40,7 +40,7 @@
 
 <div style="display: flex">
   <div>Number of Layers <input style="width: 23vmin; height; 4vmin;" type="range" min="2" max="10" step="1" value="3" id="layerslider" oninput="visualization.set_number_of_layers(this.value)"></div>
-  <div>Number of Neurons <input style="width: 23vmin; height; 4vmin;" type="range" min="1" max="6" value="3" id="neuronslider" oninput="visualization.set_number_of_neurons_in_active_layer(this.value)"></div>
+  <div>Number of Neurons <input style="width: 23vmin; height; 4vmin;" type="range" min="1" max="9" value="3" id="neuronslider" oninput="visualization.set_number_of_neurons_in_active_layer(this.value)"></div>
   <div>Forward Propagation <button style="width: 23vmin; height; 4vmin" onclick="visualization.forward_pass()">Start</button></div>
   <div>Backward Propagation <button style="width: 23vmin; height; 4vmin" onclick="visualization.backward_pass()">Start</button></div>
   </div>

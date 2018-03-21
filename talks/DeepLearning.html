@@ -49,6 +49,51 @@
         </section>
         
         <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Artificial Neural Network</div></h3>
+              <div class="fig-container"
+                   data-fig-id="neural_network"
+                   data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
+        </section>
+				
+        <section  style="height: 100%">
+          <h3><div style='color: #f05050'>Universal Function Approximator</div></h3>
+  
+          <div style='height: 5vh'></div>
+          <div style='color: #50f050'>
+            $$f(\vec{x}) = \sigma \left(\sum_{h_n} w_{oh_n} \dots \sigma \left( \sum_{h_k} w_{h_{k+1}h_k} \dots \sigma \left( \sum_i w_{h_1i} x_i \right) \right) \right)$$
+          </div>
+          <div style='height: 5vh'></div>
+          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow \mathrm{R}^\mathrm{M}$</b>
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Backpropagation of Error</div></h3>
+  
+          <div style='height: 5vh'></div>
+          <div style='color: #50f050'>
+          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
+          </div>
+          <div style='height: 5vh'></div>
+          <b>→ choose weights so that they minimize a loss-function</b>
+
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
+
+          <ol style="font-size: 3vmin">
+            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
+            <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
+            <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
+            <li>Repeat until convergence</li>
+          </ol>
+          
+          <div class="fig-container"
+               data-fig-id="sgd"
+               data-file="animations/stochastic_gradient_descent.html" style="width: 100%; height: 60%"></div>
+				</section>
+        
+        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Dropout</div></h3>
               <div class="fig-container"
                    data-fig-id="neural_network"
