@@ -46,11 +46,11 @@ var avgr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)
 var avgl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(5)).attr("y1", y(22)).attr("y2", y(22)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
 var avgr_best = svg.select("#fits").append("line").attr("x1", x(5)).attr("x2", x(10)).attr("y1", y(75)).attr("y2", y(75)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
 
-var fitl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(10)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
-var fitr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(10)).attr("y2", y(90)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var fitl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var fitr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(90)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
 
-var fitl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(0)).attr("y1", y(45)).attr("y2", y(15)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
-var fitr_best = svg.select("#fits").append("line").attr("x1", x(0)).attr("x2", x(10)).attr("y1", y(15)).attr("y2", y(115)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
+var fitl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(0)).attr("y1", y(45)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
+var fitr_best = svg.select("#fits").append("line").attr("x1", x(0)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(100)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
 
 var _transitions = [
   () => { 
@@ -77,11 +77,11 @@ var _transitions = [
 
   () => { 
     fitl.transition().duration(500).style("opacity", 1.0)
-        .transition().duration(1000).ease(d3.easeLinear).attr("x2", x(0)).attr("y2", y(15)).attr("y1", y(40))
+        .transition().duration(1000).ease(d3.easeLinear).attr("x2", x(0)).attr("y2", y(0)).attr("y1", y(40))
         .transition().duration(2000).ease(d3.easeLinear).attr("x2", x(7)).attr("y2", y(65)).attr("y1", y(20))
         .transition().duration(500).style("opacity", 0.0)
     fitr.transition().duration(500).style("opacity", 1.0)
-        .transition().duration(1000).ease(d3.easeLinear).attr("x1", x(0)).attr("y2", y(115)).attr("y1", y(15))
+        .transition().duration(1000).ease(d3.easeLinear).attr("x1", x(0)).attr("y2", y(100)).attr("y1", y(0))
         .transition().duration(2000).ease(d3.easeLinear).attr("x1", x(7)).attr("y2", y(120)).attr("y1", y(65))
         .transition().duration(500).style("opacity", 0.0)
 
@@ -106,8 +106,8 @@ var _inverse_transitions = [
   },
 
   () => {
-    fitl.transition().attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(10)).style("opacity", 0)
-    fitr.transition().attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(10)).attr("y2", y(90)).style("opacity", 0)
+    fitl.transition().attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(0)).style("opacity", 0)
+    fitr.transition().attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(90)).style("opacity", 0)
     fitl_best.transition().duration(500).style("opacity", 0.0)
     fitr_best.transition().duration(500).style("opacity", 0.0)
   },

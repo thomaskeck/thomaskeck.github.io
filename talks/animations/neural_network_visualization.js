@@ -138,6 +138,7 @@ class NeuralNetworkVisualization {
           .attr("x2", function(d) { return d.target_x; })
           .attr("y2", function(d) { return d.target_y; })
           .style("stroke-width", "0vmin")
+          .style("opacity", 1)
           .transition()
           .duration(500)
           .style("stroke-width", function(d) { return this.weights[layer][d.source][d.target] + "vmin" }.bind(this));
@@ -163,6 +164,7 @@ class NeuralNetworkVisualization {
           .attr("class", "neuron neuron" + plane)
           .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
           .attr("r", 0)
+          .style("opacity", 1)
           .on("click", function(d) { 
             this.set_active_plane(d.plane);
           }.bind(this))

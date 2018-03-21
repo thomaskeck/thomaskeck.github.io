@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+<script src="neural_network_visualization.js"></script>
+
+<style>
+
+.neuron {
+  stroke: #fff;
+  z-index: 100;
+  stroke-width: 0.4vmin;
+}
+
+.arrow {
+  fill: white;
+  stroke: #000;
+  z-index: 100;
+}
+
+.neuron:hover {
+  stroke: #fff;
+  stroke-width: 0.8vmin;
+}
+
+.link {
+  stroke: #fff;
+  z-index: 50;
+}
+
+</style>
+
+<body>
+<div class="reveal" id="outer">
+
+<script>
+
+visualization = new NeuralNetworkVisualization("100%", "100%", "5%", "0%")
+visualization.number_of_neurons = [3, 8, 8, 8, 8, 8, 0, 0, 0, 1];
+visualization.number_of_layers = 7;
+visualization.update()
+
+
+function dropout() {
+
+  var is_dropped = []
+  var temp_is_dropped = []
+  for(var neuron = 0; neuron < this.number_of_neurons[0]; neuron++) {
+    temp_is_dropped.push(false)
+  }
+  is_dropped.push(temp_is_dropped)
+
+  for (var layer = 1; layer < this.number_of_layers-1; layer++) {
+      var plane = this.layer2plane(layer)
+      var this_number_neurons = this.number_of_neurons[plane]
+
+      var temp_is_dropped = []
+      for(var neuron = 0; neuron < this_number_neurons; neuron++) {
+        temp_is_dropped.push(Math.random() > 0.5);
+      }
+      is_dropped.push(temp_is_dropped)
+  }
+  
+  var temp_is_dropped = []
+  for(var neuron = 0; neuron < this.number_of_neurons[-1]; neuron++) {
+    temp_is_dropped.push(false)
+  }
+  is_dropped.push(temp_is_dropped)
+
+  for (var layer = 0; layer < this.number_of_layers-1; layer++) {
+      var plane = this.layer2plane(layer)
+      var next_plane = this.layer2plane(layer+1)
+      var this_number_neurons = this.number_of_neurons[next_plane]
+      var next_number_neurons = this.number_of_neurons[next_plane]
+
+      var node = this.svg.select("#nodes").selectAll(".neuron" + plane)
+      node.transition()
+          .duration(1000)
+          .style("opacity", function(d, i) { if (is_dropped[layer][i]) return 0.0; else return 1.0;  });
+      
+      var link = this.svg.select("#links").selectAll(".link" + plane);
+      link.transition()
+          .duration(1000)
+          .style("opacity", function(d, i) { 
+            if (is_dropped[layer][Math.floor(i / next_number_neurons)]) {
+              return 0.0;
+            } else {
+              if (is_dropped[layer+1][i % next_number_neurons]) {
+                return 0.0;
+              } else {
+                return 1.0;
+              }
+            }
+          });
+    }
+}
+
+function show_all() {
+
+  this.update()
+  for (var layer = 0; layer < this.number_of_layers; layer++) {
+      var plane = this.layer2plane(layer)
+
+      var node = this.svg.select("#nodes").selectAll(".neuron" + plane)
+      node.transition()
+          .duration(500)
+          .style("fill", function(d) { return this.plane2color(d.plane); }.bind(this))
+          .style("opacity", function(d) { return 1.0;  });
+      
+      var link = this.svg.select("#links").selectAll(".link" + plane);
+      link.transition()
+          .duration(500)
+          .style("stroke", "#fff")
+          .style("opacity", function(d) { return 1.0;  });
+    }
+}
+
+var round = 5
+
+function vis1() {
+    if(round < 4) {
+      dropout.bind(visualization)()
+      window.setTimeout(vis2, 2000)
+    } else {
+      show_all.bind(visualization)() 
+    }
+}
+
+function vis2() {
+    visualization.forward_pass();
+    if(round < 4) {
+      window.setTimeout(vis3, 9000)
+    } else {
+      show_all.bind(visualization)() 
+    }
+}
+function vis3() {
+    visualization.backward_pass();
+    if(round < 4) {
+      round++
+      window.setTimeout(vis1, 9000)
+    } else {
+      show_all.bind(visualization)() 
+    }
+}
+
+
+var _transitions = [
+  () => {
+    round = 0
+    vis1()
+  },
+]
+
+var _inverse_transitions = [
+  () => {
+    round = 5
+    show_all.bind(visualization)() 
+  },
+]
+
+</script>
+</div>
+</body>
