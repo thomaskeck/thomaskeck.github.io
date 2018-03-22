@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-1.0, 1.0]);
+y.domain([-1.0, 1.0]);
+
+var cross_x = d3.scaleLinear().range([width/10, width]);
+var cross_y = d3.scaleLinear().range([height*4/5, height*1/5]);
+cross_x.domain([-1.0, 2.0]);
+cross_y.domain([-2.0, 4.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '50%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "25%");
+
+var cross_svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("opacity", 0)
+						.style("width", '50%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "25%");
+
+svg.append("g").attr("id", "func")
+cross_svg.append("g").attr("id", "func")
+
+var data = d3.range(11).map(function(d) { return d - 5; })
+var square_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y((-d/5)*(-d/5)) }).curve(d3.curveCardinal)
+var square_path = svg.select("#func").append('path').attr('d', square_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var absolute_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(Math.abs(d/5)) }).curve(d3.curveLinear)
+var absolute_path = svg.select("#func").append('path').attr('d', absolute_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+
+var data = d3.range(11).map(function(d) { return d - 5; })
+var hinge_line_sig = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(Math.max(0, -d/10)) }).curve(d3.curveCardinal)
+var hinge_path_sig = svg.select("#func").append('path').attr('d', hinge_line_sig(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var hinge_line_bkg = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(Math.max(0, d/10)) }).curve(d3.curveCardinal)
+var hinge_path_bkg = svg.select("#func").append('path').attr('d', hinge_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+
+var data = d3.range(20).map(function(d) { return d-10; })
+var cross_line_bkg = d3.line().x(function(d) { return cross_x(d/10); }).y(function(d) { return cross_y(-Math.log(1-d/10)) }).curve(d3.curveCardinal)
+var cross_path_bkg = cross_svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var data = d3.range(1,21).map(function(d) { return d; })
+var cross_line_sig = d3.line().x(function(d) { return cross_x(d/10); }).y(function(d) { return cross_y(-Math.log(d/10)) }).curve(d3.curveCardinal)
+var cross_path_sig = cross_svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+
+function show_path(path) {
+    
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .style("opacity", 1.0)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0)
+
+}
+
+function hide_path(path) {
+
+    var totalLength = path.node().getTotalLength();
+    path.attr("stroke-dasharray", totalLength + " " + totalLength)
+        .attr("stroke-dashoffset", 0)
+        .style("opacity", 1.0)
+        .transition()
+        .duration(2000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+        .style("opacity", 0)
+
+}
+
+var _transitions = [
+  () => { show_path(square_path) },
+  () => { hide_path(square_path) },
+
+  () => { show_path(absolute_path) },
+  () => { hide_path(absolute_path) },
+  
+  () => { show_path(hinge_path_sig); show_path(hinge_path_bkg); },
+  () => { hide_path(hinge_path_sig); hide_path(hinge_path_bkg); },
+  
+  () => { 
+    svg.transition().duration(500).style("opacity", 0.0);
+    d3.selectAll('.usual_axis').transition().duration(500).style("opacity", 0.0);
+    cross_svg.transition().delay(500).duration(500).style("opacity", 1.0);
+    d3.selectAll('.cross_axis').transition().delay(500).duration(500).style("opacity", 1.0);
+  },
+  
+  () => { show_path(cross_path_sig); show_path(cross_path_bkg); },
+]
+
+var _inverse_transitions = [
+  () => { hide_path(square_path) },
+  () => { show_path(square_path) },
+
+  () => { hide_path(absolute_path) },
+  () => { show_path(absolute_path) },
+
+  () => { hide_path(hinge_path_sig); hide_path(hinge_path_bkg); },
+  () => { show_path(hinge_path_sig); show_path(hinge_path_bkg);  },
+
+  () => { 
+    svg.transition().delay(500).duration(500).style("opacity", 1.0);
+    d3.selectAll('.cross_axis').transition().delay(500).transition().duration(500).style("opacity", 1.0);
+    cross_svg.transition().duration(500).style("opacity", 0.0);
+    d3.selectAll('.usual_axis').transition().duration(500).style("opacity", 0.0);
+  },
+
+  () => { hide_path(cross_path_sig); hide_path(cross_path_bkg); },
+]
+  
+svg.append("g")
+    .attr("class", "axis usual_axis")
+    .attr("transform", "translate(0," + height*0.5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis usual_axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+cross_svg.append("g")
+    .attr("class", "axis cross_axis")
+    .style("opacity", 0)
+    .attr("transform", "translate(0," + height*3/5 + ")")
+    .call(d3.axisBottom(cross_x));
+
+cross_svg.append("g")
+    .attr("class", "axis cross_axis")
+    .style("opacity", 0)
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(cross_y));
+
+
+</script>
+</div>
+</body>

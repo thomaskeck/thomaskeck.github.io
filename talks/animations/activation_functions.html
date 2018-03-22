@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-3.0, 3.0]);
+y.domain([-1.0, 3.0]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '50%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "25%");
+
+svg.append("g").attr("id", "func")
+
+var data = d3.range(31).map(function(d) { return d - 15; })
+
+var sigmoid_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(1/(1+Math.exp(-d/5))) }).curve(d3.curveCardinal)
+var sigmoid_path = svg.select("#func").append('path').attr('d', sigmoid_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var tanh_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(Math.tanh(d/5)) }).curve(d3.curveCardinal)
+var tanh_path = svg.select("#func").append('path').attr('d', tanh_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+
+var relu_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { if (d <= 0) return y(0); else  return y(d/5) }).curve(d3.curveLinear)
+var relu_path = svg.select("#func").append('path').attr('d', relu_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+
+var prelu_lhs = svg.select("#func").append("line").attr("x1", x(-3.0)).attr("x2", x(0.0)).attr("y1", y(0.0)).attr("y2", y(0.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#50f050").attr("fill", "none")
+var prelu_rhs = svg.select("#func").append("line").attr("x1", x(0.0)).attr("x2", x(3.0)).attr("y1", y(0.0)).attr("y2", y(3.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#50f050").attr("fill", "none")
+
+
+function show_path(path) {
+    
+  var totalLength = path.node().getTotalLength();
+  path.attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .style("opacity", 1.0)
+      .transition()
+      .duration(2000)
+      .ease(d3.easeLinear)
+      .attr("stroke-dashoffset", 0)
+
+}
+
+function hide_path(path) {
+
+    var totalLength = path.node().getTotalLength();
+    path.attr("stroke-dasharray", totalLength + " " + totalLength)
+        .attr("stroke-dashoffset", 0)
+        .style("opacity", 1.0)
+        .transition()
+        .duration(2000)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+        .style("opacity", 0)
+
+}
+
+var _transitions = [
+  () => { show_path(sigmoid_path) },
+  () => { hide_path(sigmoid_path) },
+
+  () => { show_path(tanh_path) },
+  () => { hide_path(tanh_path) },
+
+  () => { show_path(relu_path) },
+  () => { 
+    relu_path.style("opacity", 0.0)
+    prelu_lhs.style("opacity", 1.0)
+    prelu_rhs.style("opacity", 1.0)
+    prelu_lhs.transition()
+             .duration(1000)
+             .ease(d3.easeLinear)
+             .attr("y1", y(-1.0))
+             .transition()
+             .duration(1000)
+             .ease(d3.easeLinear)
+             .attr("y1", y(-0.5))
+  },
+]
+
+var _inverse_transitions = [
+  () => { hide_path(sigmoid_path) },
+  () => { show_path(sigmoid_path) },
+
+  () => { hide_path(tanh_path) },
+  () => { show_path(tanh_path) },
+
+  () => { hide_path(relu_path) },
+  () => { 
+    relu_path.transition()
+             .delay(1000)
+             .style("opacity", 1.0)
+    prelu_rhs.transition()
+             .delay(1000)
+             .style("opacity", 0.0)
+    prelu_lhs.transition()
+             .duration(1000)
+             .ease(d3.easeLinear)
+             .attr("y1", y(0.0))
+             .transition()
+             .style("opacity", 0.0)
+  },
+]
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*0.65 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+
+</script>
+</div>
+</body>
