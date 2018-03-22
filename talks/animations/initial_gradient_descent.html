@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 960
+var height = 500
+
+var x = d3.scaleLinear().range([width/10, width]);
+var y = d3.scaleLinear().range([height*4/5, height*1/5]);
+x.domain([-1.0, 1.0]);
+y.domain([0.0, 0.8]);
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '80%')
+						.style("height", '40%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "50%")
+						.style("left", "10%");
+
+var learn_x = d3.scaleLinear().range([width/10, width]);
+var learn_y = d3.scaleLinear().range([height*4/5, height*1/5]);
+learn_x.domain([0.0, 30.0]);
+learn_y.domain([0.0, 1.0]);
+
+var learn_svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '80%')
+						.style("height", '40%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "10%");
+
+svg.append("g").attr("id", "loss")
+svg.append("g").attr("id", "point")
+learn_svg.append("g").attr("id", "learn")
+  
+var data = [0.5, 0.4, 0.4, 0.1, 0.4, 0.6, 0.45, 0.3, 0.5, 0.7, 0.6, 0.4, 0.43, 0.45, 0.5, 0.4, 0.25, 0.4, 0.55, 0.7, 0.8]
+var line = d3.line().x(function(d, i) { return x((i-10)/10); }).y(function(d, i) { return y(d) }).curve(d3.curveCardinal)
+var path = svg.select("#loss").append('path').attr('d', line(data)).attr('stroke', '#9090f0').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+
+var learn_data = [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,
+                  0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4,
+                  0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]
+var learn_line = d3.line().x(function(d, i) { return learn_x(i); }).y(function(d, i) { return learn_y(d) }).curve(d3.curveStepAfter)
+var learn_path = learn_svg.select("#learn").append('path').attr('d', learn_line(learn_data)).attr('stroke', '#50f050').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
+
+var circle = svg.select("#point").append("circle")
+    .attr("r", 8)
+    .style("opacity", 0)
+    .style("fill", "#f05050")
+    .style("stroke", "#f05050")
+
+function get_point(x) {
+  point = path.node().getPointAtLength(x*path.node().getTotalLength())
+  return "translate(" + point.x + "," + point.y + ")" 
+}
+
+var _transitions = [
+
+  () => { 
+           speed = 500
+				   circle.style("opacity", 1)
+                 .attr("transform", get_point(0.55))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.8))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.9))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.25))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.1))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.35))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.5))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.43))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.32))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.7))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.6))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.71))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.55))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.95))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.75))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.87))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.77))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.83))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.80))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.86))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.78))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.82))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.80))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.85))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.79))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.84))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.80))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.82))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.81))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.83))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.82))
+                 .transition().delay(speed).duration(100).attr("transform", get_point(0.81))
+  
+    var totalLength = learn_path.node().getTotalLength();
+    learn_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+        .attr("stroke-dashoffset", totalLength)
+        .style("opacity", 1.0)
+        .transition()
+        .duration((speed+100)*30)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
+	},
+
+]
+
+var _inverse_transitions = [
+
+	() => { 
+    circle.style("opacity", 0);
+    var totalLength = learn_path.node().getTotalLength();
+    learn_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+        .transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", totalLength)
+        .transition()
+        .style("opacity", 0.0)
+  },
+
+]
+  
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(y));
+
+learn_svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(0," + height*4/5 + ")")
+    .call(d3.axisBottom(learn_x));
+
+learn_svg.append("g")
+    .attr("class", "axis")
+    .attr("transform", "translate(" + width/10 + ",0)")
+    .call(d3.axisLeft(learn_y));
+
+
+</script>
+</div>
+</body>

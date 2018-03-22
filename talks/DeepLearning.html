@@ -53,16 +53,63 @@
                    data-fig-id="neural_network"
                    data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
         </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Selected Aspects of Training</div></h3>
+ 
+          <div style="display: flex; height: 50%">
+          <div style="width: 50%; float: left; height: 100% ">
+          <ul  style="font-size: 3vmin">
+            <li style='color: #50f050' class="fragment" data-fragment-index="1">Stochastic gradient-descent</li>
+            <ul class="fragment" data-fragment-index="1">
+              <li>Batch-size and Learning rate</li>
+              <li>Momentum term</li>
+              <li>Second Order: Hesse Matrix (BFGS)</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="2">Regularization</li>
+            <ul  class="fragment" data-fragment-index="2">
+              <li>Early stopping</li>
+              <li>Weight decay: $\alpha \sum |w|^2$</li>
+              <li>Dropout (ensemble)</li>
+            </ul>
+          </ul>
+          </div>
+          <div style="width: 50%; float: right; height: 100%">
+          <ul  style="font-size: 3vmin">
+            <li style='color: #50f050' class="fragment" data-fragment-index="3">Architecture</li>
+            <ul class="fragment" data-fragment-index="3">
+              <li>Number of neurons</li>
+              <li>Number of layers</li>
+              <li>Activation function</li>
+              <li>Loss function</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="4">Initialization</li>
+            <ul class="fragment" data-fragment-index="4">
+              <li>Distribution: Gaussian or Uniform</li>
+              <li>Variance: Glorot, He</li>
+            </ul>
+          </ul>
+          </div>
+          </div>
+
+				</section>
 				
         <section  style="height: 100%">
           <h3><div style='color: #f05050'>Universal Function Approximator</div></h3>
   
           <div style='height: 5vh'></div>
           <div style='color: #50f050'>
-            $$f(\vec{x}) = \sigma \left(\sum_{h_n} w_{oh_n} \dots \sigma \left( \sum_{h_k} w_{h_{k+1}h_k} \dots \sigma \left( \sum_i w_{h_1i} x_i \right) \right) \right)$$
+            $$f(\vec{x}) = \sigma_{o} \left(\sum_{h_n}^{H_n} w_{oh_n} \dots \sigma_{h_1} \left( \sum_i^I w_{h_1i} x_i \right) \right)$$
           </div>
           <div style='height: 5vh'></div>
-          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow \mathrm{R}^\mathrm{M}$</b>
+          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{I} \rightarrow \mathrm{R}^\mathrm{O}$</b>
+          <br>
+          <ul>
+            <li>number of inputs $I$</li>
+            <li>number of layers $n$</li>
+            <li>number of neurons in layer $H_i$</li>
+            <li>number of outputs $O$</li>
+          </ul>
 				</section>
         
         <section style="height: 100%">
@@ -127,6 +174,14 @@
 				</section>
         
         <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Learn-Rate Schedule</div></h3>
+          
+          <div class="fig-container"
+               data-fig-id="sgd"
+               data-file="animations/initial_gradient_descent.html" style="width: 100%; height: 100%"></div>
+        </section>
+        
+        <section style="height: 100%">
           <h3><div style='color: #f05050'>Learn-Rate vs. Batch-Size vs. Momentum</div></h3>
   
           <div style='height: 2vh'></div>
@@ -141,12 +196,18 @@
           <a href="https://arxiv.org/abs/1711.00489">S. L. Smith, P. Kindermans, C. Ying, Q. V. Le (02/2018)</a>
           
           <div style='height: 5vh'></div>
-          If you increase the learning rate you must decrease the batch size and vice versa!
+          If you increase the Batch-Size you must increase the Learn-Rate!
 
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Initalization</div></h3>
+          <h3><div style='color: #9090f0'>Early Stopping</div></h3>
+          Animation
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>L1 and L2 Regularization</div></h3>
+          Goal: Decrease distance between test and training error (early stopping just stops early if test error rises again!)
         </section>
         
         
@@ -155,6 +216,16 @@
               <div class="fig-container"
                    data-fig-id="neural_network"
                    data-file="animations/dropout.html" style="width: 100%; height: 100%"></div>
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Initalization</div></h3>
+          Vanishing Gradient Problem
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Batch Norm</div></h3>
+          See Paper: Remove Dropout, Reduce L2, ...
         </section>
         
         </section>
