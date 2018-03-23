@@ -47,11 +47,22 @@ svg.append("g")
     .attr("transform", "translate(0," + height*4/5 + ")")
     .call(d3.axisBottom(x));
 
+svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + (width/2) + " ," + (height*9/10) + ")")
+   .style("text-anchor", "middle")
+   .text("x");
+
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + width/10 + ",0)")
     .call(d3.axisLeft(y));
 
+svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (width/10) + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("accuracy"); 
 
 </script>
 </div>

@@ -38,14 +38,6 @@
           Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
 					</p>
         </section>
-				<section>
-          Problems: Vanishing Gradient Problem, Degradation Problem
-          Representation Learning
-          Initalisation (He)
-          Optimizer (SGD, Adam, BFGS)
-          Regularization L1, L2, Dropout
-          Warm-Starts
-        </section>
         
         <section style="height: 100%">
           <h3><div style='color: #9090f0'>Artificial Neural Network</div></h3>
@@ -53,55 +45,52 @@
                    data-fig-id="neural_network"
                    data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
         </section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #f05050'>Selected Aspects of Training</div></h3>
- 
-          <div style="display: flex; height: 50%">
-          <div style="width: 50%; float: left; height: 100% ">
+				
+        <section>
+          <h3><div style='color: #9090f0'>History</div></h3>
           <ul  style="font-size: 3vmin">
-            <li style='color: #50f050' class="fragment" data-fragment-index="1">Stochastic gradient-descent</li>
+            <li style='color: #50f050' class="fragment" data-fragment-index="1">1950-1970</li>
             <ul class="fragment" data-fragment-index="1">
-              <li>Batch-size and Learning rate</li>
-              <li>Momentum term</li>
-              <li>Second Order: Hesse Matrix (BFGS)</li>
+              <li>Simple Perceptron without hidden layers</li>
+              <li>Assumed incapability to perform operations like exclusive-or (Minsky and Papert 1969)</li>
+              <li>Lack of computing power</li>
             </ul>
-            <li style='color: #50f050' class="fragment" data-fragment-index="2">Regularization</li>
+            <li style='color: #50f050' class="fragment" data-fragment-index="2">1980-2000</li>
             <ul  class="fragment" data-fragment-index="2">
-              <li>Early stopping</li>
-              <li>Weight decay: $\alpha \sum |w|^2$</li>
-              <li>Dropout (ensemble)</li>
+              <li>Invention of Backpropagation $\rightarrow$ Multi Layer Perceptrons</li>
+              <li>Assumed incapability to train many layers due to local minima in high-dimensions</li>
+              <li>Lack of computing power</li>
+              <li>Slowly superseded by methods like SVM and BDTs</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="3">2000-2010</li>
+            <ul  class="fragment" data-fragment-index="3">
+              <li>Dawn of Deep-Learning ($\approx 10$ layer networks)</li>
+              <li>Advances it algorithms (e.g. greedy layer-wise training, ReLU)</li>
+              <li>More statistics (big data)</li>
+              <li>Massive boost in computing power (due to GPUs)</li>
+              <li>Assumed that training even more layers is difficult due to vanishing gradient problem</li>
+            </ul>
+            <li style='color: #50f050' class="fragment" data-fragment-index="4">2010-2020</li>
+            <ul  class="fragment" data-fragment-index="4">
+              <li>Deep-Learning (Representation Learning)</li>
+              <li>Batch Normalisation and architectures like ResNet allow for 1000 layer networks</li>
+              <li>Even more statistics (bigger data)</li>
+              <li>Massive boost in computing power (due to dedicated GPUs and TPUs)</li>
+              <li>Networks seem to be fundamentally flawed ($\rightarrow$ adversarials)</li>
             </ul>
           </ul>
-          </div>
-          <div style="width: 50%; float: right; height: 100%">
-          <ul  style="font-size: 3vmin">
-            <li style='color: #50f050' class="fragment" data-fragment-index="3">Architecture</li>
-            <ul class="fragment" data-fragment-index="3">
-              <li>Number of neurons</li>
-              <li>Number of layers</li>
-              <li>Activation function</li>
-              <li>Loss function</li>
-            </ul>
-            <li style='color: #50f050' class="fragment" data-fragment-index="4">Initialization</li>
-            <ul class="fragment" data-fragment-index="4">
-              <li>Distribution: Gaussian or Uniform</li>
-              <li>Variance: Glorot, He</li>
-            </ul>
-          </ul>
-          </div>
-          </div>
-
-				</section>
+        </section>
+        
 				
         <section  style="height: 100%">
-          <h3><div style='color: #f05050'>Universal Function Approximator</div></h3>
+          <h3><div style='color: #f05050'>Reminder</div></h3>
   
           <div style='height: 5vh'></div>
           <div style='color: #50f050'>
-            $$f(\vec{x}) = \sigma_{o} \left(\sum_{h_n}^{H_n} w_{oh_n} \dots \sigma_{h_1} \left( \sum_i^I w_{h_1i} x_i \right) \right)$$
+          Universal Function Approximator
           </div>
-          <div style='height: 5vh'></div>
+            $$f(\vec{x}) = \sigma_{o} \left(\sum_{h_n}^{H_n} w_{oh_n} \dots \sigma_{h_1} \left( \sum_i^I w_{h_1i} x_i \right) \right)$$
+          <div style='height: 3vh'></div>
           <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{I} \rightarrow \mathrm{R}^\mathrm{O}$</b>
           <br>
           <ul>
@@ -110,6 +99,14 @@
             <li>number of neurons in layer $H_i$</li>
             <li>number of outputs $O$</li>
           </ul>
+          
+          <div style='height: 5vh'></div>
+          <div style='color: #50f050'>
+          Stochastic Gradient Descent
+          </div>
+          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
+          <div style='height: 3vh'></div>
+          <b>→ adjust weights iteratively until convergence</b>
 				</section>
         
         <section style="height: 100%">
@@ -174,6 +171,27 @@
 				</section>
         
         <section style="height: 100%">
+          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
+
+          <ol style="font-size: 3vmin">
+            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
+            <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
+            <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
+            <li>Repeat until convergence</li>
+          </ol>
+        
+          <div style="height: 10vmin"></div>
+          <div style="color: #50f050;">
+            Many more advanced variants of Stochastic Gradient Descent exists
+          </div>
+            <ul>
+              <li>Older: L-BFGS, AdaGrad, AdaDelta, RMSProb</li>
+              <li>ADAM: Adaptive moment estimation <a href="https://arxiv.org/abs/1412.6980">D. P. Kingma, J. Ba (12/2014)</a></li>
+              <li>NADAM: ADAM + Nesterov momentum </li>
+            </ul>
+				</section>
+        
+        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Learn-Rate Schedule</div></h3>
           
           <div class="fig-container"
@@ -201,31 +219,165 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Early Stopping</div></h3>
-          Animation
-        </section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #9090f0'>L1 and L2 Regularization</div></h3>
-          Goal: Decrease distance between test and training error (early stopping just stops early if test error rises again!)
-        </section>
-        
-        
-        <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Dropout</div></h3>
+          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Early Stopping</div></h3>
+              <p>
+              Idea: Prevent overfitting by stopping the training before convergence
+              </p>
+              <p style="color: #50f050">
+              Very effective and simple!
+              </p>
               <div class="fig-container"
                    data-fig-id="neural_network"
-                   data-file="animations/dropout.html" style="width: 100%; height: 100%"></div>
+                   data-file="animations/early_stopping.html" style="width: 100%; height: 100%"></div>
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Initalization</div></h3>
-          Vanishing Gradient Problem
+          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>$L_1$ and $L_2$ Penalty Terms</div></h3>
+              <p>
+              Idea: Prevent overfitting by penalize large weights<br>
+              Optimal Brain Damage: Forget unimportant stuff<br>
+              $$\mathcal{L} \rightarrow \mathcal{L} + L_{\textrm{Penalty}}$$
+              </p>
+             
+              <div style="height: 5vmin"></div>
+              <div class="fragment">
+              <div style="color: #50f050">
+              $$L_2 = \beta \sum_i  w_i^2 $$
+              </div>
+              <ul>
+                <li>Requires careful choice of $\beta$</li>
+                <li>Also called Ridge leads to dense representations</li>
+                <li>Equivalent to <div style='color: #50f050; display: inline'>weight-decay</div> for Stochastic Gradient Descent</li>
+              </ul>
+              </div>
+
+              <div style="height: 5vmin"></div>
+              <div class="fragment">
+              <div style="color: #50f050">
+              $$L_1 = \alpha \sum_i | w_i | $$
+              </div>
+              <ul>
+                <li>Requires careful choice of $\alpha$</li>
+                <li>Also called LASSO leads to sparse representations</li>
+              </ul>
+              
+              </div>
+              
+        </section>
+        
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Dropout</div></h3>
+              <p>
+              Idea: Prevent overfitting by randomly dropping neurons during the training
+              </p>
+              <p style="color: #50f050">
+              Prevents co-adaption of neurons: <a href="https://arxiv.org/abs/1207.0580">G. E. Hinton, et. al. (06/2012)</a>
+              </p>
+              <div class="fig-container"
+                   data-fig-id="neural_network"
+                   data-file="animations/dropout.html" style="position: absolute; top: 30%; left: 15%; width: 70%; height: 70%"></div>
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Batch Norm</div></h3>
-          See Paper: Remove Dropout, Reduce L2, ...
+          <h3><div style='color: #f05050'>Going Deep</div></h3>
+              
+              <div>
+                Variance of <div style="color: #f05050; display: inline">activation</div> changes during forward propagation through many layers <br><div style="color: #50f050; display: inline">$\rightarrow$ Activation Vanishes or Explodes</div>
+              </div>
+              
+              <div>
+                Variance of <div style="color: #9090f0; display: inline">gradient</div> changes during backward propagation through many layers <br><div style="color: #50f050; display: inline">$\rightarrow$ Gradient Vanishes or Explodes</div>
+              </div>
+
+              <div>
+              $$ y_{i+1} = \sigma \left( \sum_i w_i y_i \right) $$ 
+              </div>
+              
+              <div class="fig-container"
+                   data-fig-id="neural_network"
+                   data-file="animations/vanishing_gradient_problem.html" style="width: 100%; height: 50%"></div>
+
+              <div>
+                Training becomes unstable $\rightarrow$ very slow or no convergence
+              </div>
+              
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Activation Function</div></h3>
+
+              <div style="height: 30vmin">
+              <img data-src="images/activation_functions.png" style="background:none; border:none; box-shadow:none;">
+              </div>
+              <div style="display: flex; width: 100%;">
+              <div style="float: left; width: 50%; height: 15vmin">
+                $$ \frac{\mathrm{d}}{\mathrm{d}x} \tanh = \frac{1}{\cosh^2} \le 1$$
+             
+                <div style="height: 5vmin"></div>
+                <div class="fragment" style="color: #50f050">Gradient vanishes in deep networks</div>
+              </div>
+              <div style="float: right; width: 50%; height: 15vmin">
+                $$ \frac{\mathrm{d}}{\mathrm{d}x} \max(0, x) = \left\lbrace \begin{array}{l} 1 \quad \textrm{for x } \gt 0  \\ 0 \quad \textrm{otherwise} \end{array} \right.$$
+                <div style="height: 5vmin"></div>
+                <div class="fragment" style="color: #50f050">Gradient does neither vanish nor explode</div>
+              </div>
+              </div> 
+              
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Initialization</div></h3>
+
+          <div style="height: 5vmin"></div>
+              $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
+          <div style="height: 2vmin"></div>
+              
+              <div class="fragment"> 
+                <div style="color: #f05050">
+                  Weights can still lead to exploding or vanishing activations/gradients if
+                </div>
+                $$ \frac{1}{2} H_i \mathrm{Var}(w_i) \neq 1 $$
+              </div>
+
+          <div style="height: 5vmin"></div>
+              
+          <div class="fragment">
+            <div style="color: #50f050">He Initialization (for ReLU)</div><br>
+              $$ w_i \sim \mathcal{N}\left(0, \frac{2}{H_i} \right) $$ <a href="https://arxiv.org/abs/1502.01852">K. He, et. al. (02/2015)</a>
+          </div>
+              
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Batch Normalisation</div></h3>
+
+          <div style="height: 5vmin"></div>
+              $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
+          <div style="height: 2vmin"></div>
+              
+              <div class="fragment"> 
+                Weights are adjustable
+                <div style="color: #f05050">
+                  $\rightarrow$ weights can still lead to exploding or vanishing activations/gradients
+                </div>
+              </div>
+
+          <div style="height: 5vmin"></div>
+              
+          <div class="fragment">
+            <div style="color: #50f050">Batch Normalisation</div><br>
+            $$ \hat{y_i} = \gamma \frac{y_i - \mathrm{E}(y_i)}{\sqrt{\mathrm{Var}(y_i)}} + \beta $$
+            <br> 
+            <ul style="font-size: 3vmin">
+              <li>Normalise inputs of activation function with respect to batch</li>
+              <li>Introduce learnable parameters to restore representation power</li>
+              <li>Regularizes the network (Dropout can be removed)</li>
+            </ul>
+            <br>
+            <a href="https://arxiv.org/abs/1502.03167">S. Ioffe, C. Szegedy (03/2015)</a>
+            </div>
+              
         </section>
         
         </section>
