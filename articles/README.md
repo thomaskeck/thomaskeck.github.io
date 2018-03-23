@@ -48,6 +48,7 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 18.10.2017 [D. Silver et al. „Mastering the game of Go without Human Knowledge“] (https://deepmind.com/research/publications/mastering-game-go-without-human-knowledge/)
   - 02.11.2017 [M. Lanctot et. al „A Unified Game-Theoretic Approach to Multiagent Reinforcement Learning“](https://arxiv.org/abs/1711.00832)
   - 02.01.2018 [Y. Tassa, et. al. „DeepMind Control Suite“](https://arxiv.org/abs/1801.00690)
+  - 10.02.2018 [O. Nachum, Y. Chow, M. Ghavamzadeh „Path Consistency Learning in Tsallis Entropy Regularized MDPs“](https://arxiv.org/abs/1802.03501)
   - 15.02.2018 [G. Barth-Maron et al. „Distributed Distributional Deterministic Policy Gradients“](https://openreview.net/forum?id=SyZipzbCb)
   - 22.02.2018 [D. J. Mankowitz, et al. „Unicorn: Continual Learning with a Universal, Off-policy Agent“](https://arxiv.org/abs/1802.08294)
   - 24.02.2018 [P. Chrabaszcz, I. Loshchilov, F. Hutter „Back to Basics: Benchmarking Canonical Evolution Strategies for Playing Atari“](https://arxiv.org/abs/1802.08842)

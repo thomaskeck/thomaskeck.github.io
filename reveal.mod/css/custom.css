@@ -5,21 +5,43 @@ text {
 .text {
   fill: white;
   stroke: #fff;
-  font-size: 6vmin;
+  font-size: 4vmin;
+  z-index: 100;
+}
+
+.small_text {
+  fill: white;
+  stroke: #fff;
+  font-size: 2vmin;
   z-index: 100;
 }
 
 .axis line{
   stroke: #fff;
-  stroke-width: 0.3vmin;
+  stroke-width: 0.5vmin;
 }
 
 .axis path{
   stroke: #fff;
-  stroke-width: 0.3vmin;
+  stroke-width: 0.5vmin;
 }
 
 .axis text{
   fill: #fff;
   font-size: 3vmin;
+} 
+
+.small_axis line{
+  stroke: #fff;
+  stroke-width: 0.3vmin;
+}
+
+.small_axis path{
+  stroke: #fff;
+  stroke-width: 0.3vmin;
+}
+
+.small_axis text{
+  fill: #fff;
+  font-size: 1.5vmin;
 } 

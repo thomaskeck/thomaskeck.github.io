@@ -129,11 +129,23 @@ d3.csv("train_dataset.csv", function(error, data) {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
+  train_svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (width/2) + " ," + (height + 80) + ")")
+           .style("text-anchor", "middle")
+           .text("x");
+
   // Add the Y Axis
   train_svg.append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0,0)")
       .call(d3.axisLeft(y));
+
+  train_svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (-60) + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("y"); 
 
 });
 
@@ -153,11 +165,23 @@ d3.csv("test_dataset.csv", function(error, data) {
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
-
+  
+  test_svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (width/2) + " ," + (height + 80) + ")")
+           .style("text-anchor", "middle")
+           .text("x");
+  
   // Add the Y Axis
   test_svg.append("g")
       .attr("class", "axis")
       .call(d3.axisLeft(y));
+  
+  test_svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (-60) + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("y"); 
 
 });
 

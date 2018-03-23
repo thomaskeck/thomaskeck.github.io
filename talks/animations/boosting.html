@@ -189,12 +189,26 @@ function create_subset(data, classname) {
       .attr("transform", "translate(0," + height + ")")
       .style("opacity", 0)
       .call(d3.axisBottom(x));
+  
+  train_svg.append("text")
+           .attr("class", "text " + classname)
+           .style("opacity", 0)
+           .attr("transform", "translate(" + (width/2) + " ," + (height + 70) + ")")
+           .style("text-anchor", "middle")
+           .text("x");
 
   train_svg.append("g")
       .attr("class", "axis " + classname)
       .style("opacity", 0)
       .attr("transform", "translate(" + width/10 + ",0)")
       .call(d3.axisLeft(y));
+  
+  train_svg.append("text")
+           .attr("class", "text " + classname)
+           .style("opacity", 0)
+           .attr("transform", "translate(" + 40 + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("y"); 
 
   cuts = []
   shift = global_shift[classname]

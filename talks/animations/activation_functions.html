@@ -125,12 +125,24 @@ var _inverse_transitions = [
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height*0.65 + ")")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x).ticks(5));
+
+svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + (width + 50) + " ," + (height*0.68) + ")")
+   .style("text-anchor", "middle")
+   .text("a");
 
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + width/10 + ",0)")
-    .call(d3.axisLeft(y));
+    .call(d3.axisLeft(y).ticks(5));
+
+svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + 15 + " ," + (height*0.5) + ")" + "rotate(-90)")
+   .style("text-anchor", "middle")
+   .text("sigma value"); 
 
 
 </script>

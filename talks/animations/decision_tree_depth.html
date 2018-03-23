@@ -45,11 +45,23 @@ svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).ticks(20));
+  
+svg.append("text")
+       .attr("class", "text")
+       .attr("transform", "translate(" + (width/2) + " ," + (height + 70) + ")")
+       .style("text-anchor", "middle")
+       .text("depth");
 
 // Add the Y Axis
 svg.append("g")
     .attr("class", "axis")
     .call(d3.axisLeft(y).ticks(8));
+  
+svg.append("text")
+           .attr("class", "text")
+           .attr("transform", "translate(" + (-90) + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("accuracy"); 
 
 var line = d3.line().x(function(d, i) { return x(i+1); }).y(function(d) { return y(d); }).curve(d3.curveCardinal)
 var train_data = [0.251, 0.237, 0.152, 0.132, 0.111, 0.102, 0.077, 0.06, 0.045, 0.038, 0.034, 0.026, 0.024, 0.02, 0.017, 0.014, 0.014, 0.01, 0.01]

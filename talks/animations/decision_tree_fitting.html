@@ -242,15 +242,27 @@ d3.csv("train_dataset.csv", function(error, data) {
 
   // Add the X Axis
   svg.append("g")
-      .attr("class", "axis")
+      .attr("class", "small_axis")
       .attr("transform", "translate(0," + height*4/5 + ")")
       .call(d3.axisBottom(x));
+  
+  svg.append("text")
+           .attr("class", "small_text")
+           .attr("transform", "translate(" + (width/10*3) + " ," + (height - 50) + ")")
+           .style("text-anchor", "middle")
+           .text("x");
 
   // Add the Y Axis
   svg.append("g")
-      .attr("class", "axis")
+      .attr("class", "small_axis")
       .attr("transform", "translate(" + width/10 + ",0)")
       .call(d3.axisLeft(y));
+  
+  svg.append("text")
+           .attr("class", "small_text")
+           .attr("transform", "translate(" + 50 + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("y"); 
 
 });
 

@@ -143,20 +143,44 @@ svg.append("g")
     .attr("transform", "translate(0," + height*4/5 + ")")
     .call(d3.axisBottom(x));
 
+svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + (width/2) + " ," + (height-20) + ")")
+   .style("text-anchor", "middle")
+   .text("weight");
+
 svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + width/10 + ",0)")
     .call(d3.axisLeft(y));
+
+svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + 20 + " ," + (height/2) + ")" + "rotate(-90)")
+   .style("text-anchor", "middle")
+   .text("loss"); 
 
 learn_svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(0," + height*4/5 + ")")
     .call(d3.axisBottom(learn_x));
 
+learn_svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + (width/2) + " ," + (height-20) + ")")
+   .style("text-anchor", "middle")
+   .text("epochs");
+
 learn_svg.append("g")
     .attr("class", "axis")
     .attr("transform", "translate(" + width/10 + ",0)")
     .call(d3.axisLeft(learn_y));
+
+learn_svg.append("text")
+   .attr("class", "text")
+   .attr("transform", "translate(" + 20 + " ," + (height/2) + ")" + "rotate(-90)")
+   .style("text-anchor", "middle")
+   .text("learn-rate"); 
 
 
 </script>
