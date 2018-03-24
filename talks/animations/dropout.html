@@ -60,8 +60,15 @@ function dropout() {
       var this_number_neurons = this.number_of_neurons[plane]
 
       var temp_is_dropped = []
+      var to_drop = d3.shuffle(d3.range(this_number_neurons))
       for(var neuron = 0; neuron < this_number_neurons; neuron++) {
-        temp_is_dropped.push(Math.random() > 0.5);
+        var in_first_half = false;
+        for(var i = 0; i < this_number_neurons/2; i++) {
+          if (to_drop[i] == neuron) {
+            in_first_half = true
+          }
+        }
+        temp_is_dropped.push(in_first_half);
       }
       is_dropped.push(temp_is_dropped)
   }
