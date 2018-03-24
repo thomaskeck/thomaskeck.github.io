@@ -437,6 +437,7 @@
           ResNet
 				</section>
         
+        
         <section style="height: 100%">
           
           <div style="display: flex; width: 100%;">
@@ -472,21 +473,135 @@
           </div>
 
         </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>State of the Art: Inception-ResNet-V2</div></h3>
+              
+          <div style="width: 100%; height: 80vmin">
+            <img src="images/inception_resnet.jpeg">
+            <br>
+            <a href="https://arxiv.org/abs/1602.07261">C. Szegedy, et. al. (08/2016)</a>
+          </div>
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Invariance under Transformations</div></h3>
+
+					<div style="height: 5vmin"></div>
+
+
+					<p align="left">
+             Different strategies to build a classifier which is invariant under given transformations in the input space:
+					</p>
+
+					<ul>
+						<li class="fragment">Extract hand-crafted features that are invariant</li>
+						<li class="fragment">Use transformed copies during the training phase</li>
+						<li class="fragment">Penalize change in the output under input transformation → Tangent propagation</li>
+						<li class="fragment">Build invariance properties into structure of neural network → Convolution</li>
+					</ul>
+					
+					<div style="height: 3vmin"></div>
+          
+					<div style="display: flex; width: 100%;">
+          <div style="float: left; width: 25%; height: 25vmin">
+            <img src="images/bird6.png">
+          </div>
+          <div style="float: right; width: 23%; height: 25vmin">
+            <img src="images/bird2.png">
+          </div>
+          <div style="float: left; width: 25%; height: 25vmin">
+            <img src="images/bird3.png">
+          </div>
+          <div style="float: right; width: 25%; height: 25vmin">
+            <img src="images/bird4.png">
+          </div>
+          </div>
+ 
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Convolution</div></h3>
+           
+					<ul>
+						<li>Learnable filters (e.g. edge detector) organized in feature maps</li>
+						<li>Each filter scans the image and detects a specific pattern</li>
+					</ul>
+ 
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Pooling</div></h3>
+
+					<ul>
+						<li>Takes inputs from small region in the feature maps</li>
+						<li>Reduces resolution and computation in following layers</li>
+						<li>Increases insensitivity against small shifts</li>
+					</ul>
+    
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Inception</div></h3>
+              
+        </section>
 				
-        <section>
-          <h3><div style='color: #9090f0'>State of the Art</div></h3>
-            
-          <a href="https://arxiv.org/abs/1602.07261">C. Szegedy, et. al. (08/2016)</a>
-				</section>
 				</section>
         
 				<section style="height: 100%">
 				<section>
           <h2><div style='color: #9090f0'>Recurrent Networks</div> & <div style='color: #f05050'>Sequential Data Processing</div></h2>
-          LSTM, GRU
-          Backpropagation Through Time
           Word Embedding
 				</section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Animation Recurrent Network</div></h3>
+
+					Animation Recurrent Network          
+
+        </section>
+        
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Backpropagation Through Time</div></h3>
+          
+					<div style="height: 5vmin"></div>
+					<div style="width: 100%; height: 40vmin">
+            <img src="images/Unfold_through_time.png" style="background:none; border:none; box-shadow:none;">
+            <br>
+            <small><a href="https://en.wikipedia.org/wiki/Backpropagation_through_time#/media/File:Unfold_through_time.png">Wikipedia</a></small>
+          </div>
+					<div style="height: 5vmin"></div>
+
+					<p align="left">Problem: Activation function will be applied iteratively ⇒ value (and gradient) vanishes or explodes</p>
+
+        </section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Solution: Long Short-Term Memory (LSTM) Cell</div></h3>
+          
+					<div style="width: 100%; height: 40vmin">
+            <img src="images/lstm.png" style="background:none; border:none; box-shadow:none;">
+            <br>
+            <small><a href="https://commons.wikimedia.org/wiki/File:Long_Short_Term_Memory.png">Wikipedia</a></small>
+          </div>
+
+					<div style="height: 10vmin"></div>
+
+					<b>Can remember a value for a long time period</b>
+					<ul>
+						<li>Input gate decides when to update the stored value</li>
+						<li>Output gate decides when to output the stored value</li>
+						<li>Forget gate decides when to forget the stored value</li>
+					</ul>
+              
+        </section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
+
+					Karpathy
+
+        </section>
         </section>
 				
         <section style="height: 100%">
@@ -497,6 +612,38 @@
           Async Advantage Actor Critic (A3C) (Policy-Based)
           PCL?
 				</section>
+
+				<section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Continuos Control Tasks</div></h3>
+						<iframe width="80%" height="50%" id="ytplayer" type="text/html" src="http://www.youtube.com/embed/rAai4QzcYbs?origin=https://thomaskeck.github.io/" frameborder="0" \>
+						<br>
+            <a href="https://arxiv.org/abs/1801.00690">Y. Tassa, et. al. (01/2018)</a>
+        </section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Reinforcement Learning</div></h3>
+
+					<ul>
+						<li>Agent interacts with environment $\Epsilon$</li>
+						<li>Each time step $t$: receive state $s_t$ and select action $a_t \in \mathcal{A}$ and get a scalar reward $r_t$</li>
+						<li>Goal: Maximize discounted return $R_t = \sum_{k=0}^\infty \gamma^k r_{t+k}$</li>
+					</ul>
+
+        </section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Q-Learning</div></h3>
+
+					<div style="color: #50f050">Action Value Network approximates expected return</div>
+					$$Q^\pi(s, a) = \mathrm{E}(R_t)$$
+        </section>
+				
+				<section style="height: 100%">
+          <h3><div style='color: #f05050'>Advantage Actor-Critic</div></h3>
+
+					<div style="color: #50f050">Action Value Network approximates expected return</div>
+					$$Q^\pi(s, a) = \mathrm{E}(R_t)$$
+        </section>
 				</section>
 				
         <section style="height: 100%">
