@@ -17,8 +17,8 @@ var height = 500
 
 var x = d3.scaleLinear().range([width/10, width]);
 var y = d3.scaleLinear().range([height*4/5, height*1/5]);
-x.domain([-1.0, 1.0]);
-y.domain([-1.0, 1.0]);
+x.domain([0.0, 1.0]);
+y.domain([0.0, 3.0]);
 
 var svg = d3.select("body").append("svg")
             .attr('viewBox','0 0 960 500')
@@ -33,23 +33,11 @@ var svg = d3.select("body").append("svg")
 
 svg.append("g").attr("id", "func")
 
-var data = d3.range(11).map(function(d) { return d - 5; })
-var square_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y((-d/5)*(-d/5)) }).curve(d3.curveCardinal)
-var square_path = svg.select("#func").append('path').attr('d', square_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-var absolute_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(Math.abs(d/5)) }).curve(d3.curveLinear)
-var absolute_path = svg.select("#func").append('path').attr('d', absolute_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-
-var data = d3.range(21).map(function(d) { return d - 10; })
-var hinge_line_sig = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(Math.max(0, -d/10)) }).curve(d3.curveCardinal)
-var hinge_path_sig = svg.select("#func").append('path').attr('d', hinge_line_sig(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-var hinge_line_bkg = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(Math.max(0, d/10)) }).curve(d3.curveCardinal)
-var hinge_path_bkg = svg.select("#func").append('path').attr('d', hinge_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-
-var data = d3.range(10).map(function(d) { return d; })
-var cross_line_bkg = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(-Math.log(1-d/10)) }).curve(d3.curveCardinal)
+var data = d3.range(20).map(function(d) { return d; })
+var cross_line_bkg = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(1-d/20)) }).curve(d3.curveCardinal)
 var cross_path_bkg = svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-var data = d3.range(1,11).map(function(d) { return d; })
-var cross_line_sig = d3.line().x(function(d) { return x(d/10); }).y(function(d) { return y(-Math.log(d/10)) }).curve(d3.curveCardinal)
+var data = d3.range(1,21).map(function(d) { return d; })
+var cross_line_sig = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(d/20)) }).curve(d3.curveCardinal)
 var cross_path_sig = svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 
 function show_path(path) {
@@ -81,39 +69,23 @@ function hide_path(path) {
 }
 
 var _transitions = [
-  () => { show_path(square_path) },
-  () => { hide_path(square_path) },
-
-  () => { show_path(absolute_path) },
-  () => { hide_path(absolute_path) },
-  
-  () => { show_path(hinge_path_sig); show_path(hinge_path_bkg); },
-  () => { hide_path(hinge_path_sig); hide_path(hinge_path_bkg); },
   
   () => { show_path(cross_path_sig); show_path(cross_path_bkg); },
 ]
 
 var _inverse_transitions = [
-  () => { hide_path(square_path) },
-  () => { show_path(square_path) },
-
-  () => { hide_path(absolute_path) },
-  () => { show_path(absolute_path) },
-
-  () => { hide_path(hinge_path_sig); hide_path(hinge_path_bkg); },
-  () => { show_path(hinge_path_sig); show_path(hinge_path_bkg);  },
 
   () => { hide_path(cross_path_sig); hide_path(cross_path_bkg); },
 ]
   
 svg.append("g")
     .attr("class", "axis usual_axis")
-    .attr("transform", "translate(0," + height*0.5 + ")")
+    .attr("transform", "translate(0," + height*4/5 + ")")
     .call(d3.axisBottom(x).ticks(3));
 
 svg.append("text")
    .attr("class", "text")
-   .attr("transform", "translate(" + (width + 80) + " ," + (height*0.53) + ")")
+   .attr("transform", "translate(" + (width/2) + " ," + (height) + ")")
    .style("text-anchor", "middle")
    .text("f(x)");
 

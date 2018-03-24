@@ -506,7 +506,7 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Stochastic Gradient Descent</div></h2>
+          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Universal Function Approximator</div></h2>
 				</section>
 
         <section style="height: 100%">
@@ -576,108 +576,11 @@
           <div style='height: 1vh'></div>
           <b>→ choose weights so that they minimize a loss-function</b>
           <div style='height: 2vh'></div>
-
-          <div style="display: flex; height: 50%">
-          <div style="width: 55%; float: left; height: 100% ">
-          <div style='height: 2vh'></div>
-          <table>
-            <tr><td>Classification</td><td>$ \mathcal{L} = H\left(y, f(\vec{x})\right) $</td></tr>
-            <tr><td>Regression</td><td>$ \mathcal{L} = \left( y  - f(\vec{x}) \right)^2 $</td></tr>
-          </table>
-          </div>
-          <div style="width: 45%; float: right; height: 100%">
-          <div class="fig-container"
-               data-fig-id="backward_neural_network"
-               data-file="animations/backward_neural_network.html" style="width: 100%; height: 100%"></div>
-          </div>
-          </div>
-				</section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #f05050'>Loss functions</div></h3>
-  
-          <div style='height: 2vh'></div>
-          <div style='color: #50f050'>
-          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
-          </div>
-          <div style='height: 2vh'></div>
-          <ul style="font-size: 3vmin">
-           <li><div style='color: #9090f0; display: inline'>Desirable properties</div>: Differentiable</li>
-           <li><div style='color: #9090f0; display: inline'>Examples</div>:</li>
-              <ul>
-                <li>Regression: Square Error $\left((f(\vec{x}) - y\right)^2$</li>
-                <li>Regression: Absolute Error $\left|(f(\vec{x}) - y\right|$</li>
-                <li>Classification: Hinge $\max \left(0, - y \cdot f(\vec{x}) \right)$ (with $y = \pm 1$)</li>
-                <li>Classification: Cross-Entropy $-y \ln (f(\vec{x})) - (1-y) \ln (1 - f(\vec{x}))$ (with $y = 0, 1$)</li>
-              </ul>
-          </ul>
+          $$ \mathcal{L} = H\left(y, f(\vec{x})\right) = -y \ln (f(\vec{x})) - (1-y) \ln (1 - f(\vec{x})) \quad (\textrm{with }\ y = 0, 1)$$
           <div class="fig-container"
                data-fig-id="neural_network"
-               data-file="animations/loss_functions.html" style="width: 100%; height: 100%"></div>
-
+               data-file="animations/classification_loss_functions.html" style="width: 100%; height: 100%"></div>
 				</section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
-
-          <ol style="font-size: 3vmin">
-            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
-            <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
-            <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
-            <li>Repeat until convergence</li>
-          </ol>
-          
-          <div class="fig-container"
-               data-fig-id="sgd"
-               data-file="animations/stochastic_gradient_descent.html" style="width: 100%; height: 60%"></div>
-				</section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Early Stopping</div></h3>
-              <p>
-              Idea: Prevent overfitting by stopping the training before convergence
-              </p>
-              <p style="color: #50f050">
-              Very effective and simple!
-              </p>
-              <div class="fig-container"
-                   data-fig-id="neural_network"
-                   data-file="animations/early_stopping.html" style="width: 100%; height: 100%"></div>
-        </section>
-        
-        <section style="height: 100%">
-          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>$L_1$ and $L_2$ Penalty Terms</div></h3>
-              <p>
-              Idea: Prevent overfitting by penalize large weights<br>
-              Optimal Brain Damage: Forget unimportant stuff<br>
-              $$\mathcal{L} \rightarrow \mathcal{L} + L_{\textrm{Penalty}}$$
-              </p>
-             
-              <div style="height: 5vmin"></div>
-              <div class="fragment">
-              <div style="color: #50f050">
-              $$L_2 = \beta \sum_i  w_i^2 $$
-              </div>
-              <ul>
-                <li>Requires careful choice of $\beta$</li>
-                <li>Also called Ridge leads to dense representations</li>
-                <li>Equivalent to <div style='color: #50f050; display: inline'>weight-decay</div> for Stochastic Gradient Descent</li>
-              </ul>
-              </div>
-
-              <div style="height: 5vmin"></div>
-              <div class="fragment">
-              <div style="color: #50f050">
-              $$L_1 = \alpha \sum_i | w_i | $$
-              </div>
-              <ul>
-                <li>Requires careful choice of $\alpha$</li>
-                <li>Also called LASSO leads to sparse representations</li>
-              </ul>
-              
-              </div>
-              
-        </section>
         
         
         <section>
@@ -708,9 +611,15 @@
             ann.predict(X)
           </code></pre>
 				</section>
+				</section>
+				
+        <section style="height: 100%">
+				<section>
+          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Stochastic Gradient Descent</div></h2>
+				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>More on Stochastic Gradient Descent</div></h3>
+          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
 
           <ol style="font-size: 3vmin">
             <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
@@ -725,7 +634,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>More on Stochastic Gradient Descent</div></h3>
+          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
 
           <ol style="font-size: 3vmin">
             <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
@@ -735,6 +644,7 @@
           </ol>
         
           <div style="height: 10vmin"></div>
+          <div style="text-align: left">
           <div style="color: #50f050;">
             Many more advanced variants of Stochastic Gradient Descent exists
           </div>
@@ -753,6 +663,7 @@
               <li>Batch-Size</li>
               <li>Momentum Term</li>
             </ul>
+          </div>
 				</section>
         
         <section style="height: 100%">
@@ -781,6 +692,55 @@
           If you increase the Batch-Size you must increase the Learn-Rate!
 
 				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Early Stopping</div></h3>
+              <p>
+              Idea: Prevent overfitting by stopping the training before convergence
+              </p>
+              <p style="color: #50f050">
+              Very effective and simple!
+              </p>
+              <div class="fig-container"
+                   data-fig-id="neural_network"
+                   data-file="animations/early_stopping.html" style="width: 100%; height: 100%"></div>
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>$L_1$ and $L_2$ Penalty Terms</div></h3>
+              <p>
+              Idea: Prevent overfitting by penalize large weights<br>
+              Optimal Brain Damage: Forget unimportant stuff<br>
+              $$\mathcal{L} \rightarrow \mathcal{L} + L_{\textrm{Penalty}}$$
+              </p>
+             
+          <div style="text-align: left">
+              <div style="height: 5vmin"></div>
+              <div class="fragment">
+              <div style="color: #50f050">
+              $$L_2 = \beta \sum_i  w_i^2 $$
+              </div>
+              <ul>
+                <li>Requires careful choice of $\beta$</li>
+                <li>Also called Ridge leads to dense representations</li>
+                <li>Equivalent to <div style='color: #50f050; display: inline'>weight-decay</div> for Stochastic Gradient Descent</li>
+              </ul>
+              </div>
+
+              <div style="height: 5vmin"></div>
+              <div class="fragment">
+              <div style="color: #50f050">
+              $$L_1 = \alpha \sum_i | w_i | $$
+              </div>
+              <ul>
+                <li>Requires careful choice of $\alpha$</li>
+                <li>Also called LASSO leads to sparse representations</li>
+              </ul>
+              
+              </div>
+              </div>
+              
+        </section>
         </section>
 				
 				<section style="height: 100%">
@@ -1018,20 +978,24 @@
 
 				</section>
 				
-        <section>
+        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Artificial Neural Networks</div></h3>
           <ul>
             <li>Neural Networks are still <b>universal</b> function approximators</li>
-            <li>Loss function: $\left(y - f(\vec{x})\right)^2$</li>
             <li>Output activation function: linear</li>
+            <li>Loss Function: Square $\left((f(\vec{x}) - y\right)^2$ or Absolute $\left|(f(\vec{x}) - y\right|$</li>
           </ul>
           
-          <div style='height: 5vh'></div>
+          <div style='height: 1vh'></div>
           <div style='color: #50f050'>
           $$f(\vec{x}) = \sum_h w_{oh} \sigma_h \left( \sum_i w_{hi} x_i \right)$$
           </div>
-          <div style='height: 2vh'></div>
+          <div style='height: 1vh'></div>
           <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{N} \rightarrow \mathrm{R}$</b>
+          
+          <div class="fig-container"
+               data-fig-id="neural_network"
+               data-file="animations/regression_loss_functions.html" style="width: 100%; height: 100%"></div>
 
 				</section>
         
