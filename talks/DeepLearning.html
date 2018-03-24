@@ -38,9 +38,9 @@
           Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
 					</p>
         </section>
-        
+				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Artificial Neural Network</div></h3>
+          <h2>Reminder: Artificial Neural Networks</h2>
               <div class="fig-container"
                    data-fig-id="neural_network"
                    data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
@@ -278,9 +278,42 @@
                    data-fig-id="neural_network"
                    data-file="animations/dropout.html" style="position: absolute; top: 30%; left: 15%; width: 70%; height: 70%"></div>
         </section>
+        </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Going Deep</div></h3>
+				<section>
+          <h2><div style='color: #9090f0'>Deep Neural Networks</div> & <div style='color: #f05050'>Vanishing Gradient Problem</div></h2>
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: ResNet</div></h3>
+              
+          <div style="display: flex; width: 100%;">
+          <div style="float: left; width: 50%; height: 80vmin">
+            <img src="images/resnet.png">
+            <br>
+            <a href="https://arxiv.org/abs/1512.03385">K. He, et. al. (12/2015)</a>
+          </div>
+          <div style="float: right; width: 50%; height: 80vmin">
+            <div style="height: 10vmin"></div>
+            <div style="color: #50f050">Techniques</div>
+            <ul>
+              <li>ReLU Activation</li>
+              <li>He Initialisation</li>
+              <li>Batch Normalisation</li>
+              <li>Residual Network</li>
+            </ul>
+            <div style="height: 5vmin"></div>
+            <p align="left">
+            34 layers (authors explored up to 1202 layers) used for image classification
+            </p>
+          </div>
+          </div>
+              
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Vanishing Gradient Problem</div></h3>
               
               <div>
                 Variance of <div style="color: #f05050; display: inline">activation</div> changes during forward propagation through many layers <br><div style="color: #50f050; display: inline">$\rightarrow$ Activation Vanishes or Explodes</div>
@@ -305,7 +338,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Activation Function</div></h3>
+          <h3><div style='color: #9090f0'>ReLU Activation Function</div></h3>
 
               <div style="height: 30vmin">
               <img data-src="images/activation_functions.png" style="background:none; border:none; box-shadow:none;">
@@ -327,7 +360,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Initialization</div></h3>
+          <h3><div style='color: #9090f0'>He Initialization</div></h3>
 
           <div style="height: 5vmin"></div>
               $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
@@ -350,7 +383,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Going Deep:</div><div style='color: #9090f0'>Batch Normalisation</div></h3>
+          <h3><div style='color: #9090f0'>Batch Normalisation</div></h3>
 
           <div style="height: 5vmin"></div>
               $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
@@ -380,6 +413,19 @@
               
         </section>
         
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Residual Network</div></h3>
+          
+          <div>Idea: Split <div style="color: #f05050; display: inline">layer</div> into <div style="color: #30a030; display: inline">identity</div> and <div style="color: #5050f0; display: inline">residual</div></div>
+          $$ H(y_i) = F(y_i) + y_i $$
+
+          <div class="fig-container"
+               data-fig-id="neural_network"
+               data-file="animations/residual.html" style="position: absolute; left: 20%; top: 25%; width: 60%; height: 60%"></div>
+
+          <a href="https://arxiv.org/abs/1512.03385">K. He, et. al. (12/2015)</a>
+        </section>
+        
         </section>
 				
 				<section style="height: 100%">
@@ -389,7 +435,48 @@
           Max Pooling
           Inception
           ResNet
-          Batch Normalisation
+				</section>
+        
+        <section style="height: 100%">
+          
+          <div style="display: flex; width: 100%;">
+          <div style="float: left; width: 50%; height: 27vmin">
+            <img src="images/bird1.png">
+          </div>
+          <div style="float: right; width: 50%; height: 27vmin">
+            <img src="images/bird2.png">
+          </div>
+          </div>
+          <br>
+          <div style="display: flex; width: 100%;">
+          <div style="float: left; width: 50%; height: 27vmin">
+            <img src="images/bird3.png">
+          </div>
+          <div style="float: right; width: 50%; height: 27vmin">
+            <img src="images/bird4.png">
+          </div>
+          </div>
+          <br>
+          <div style="display: flex; width: 100%;">
+          <div style="float: left; width: 50%; height: 27vmin">
+            <img src="images/bird5.png">
+          </div>
+          <div style="float: right; width: 50%; height: 27vmin">
+            <img src="images/bird6.png">
+          </div>
+          </div>
+
+          <div class="fragment" style="position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; background:none; border:none; box-shadow:none;">
+            <img src="images/xkcd.png"><br>
+            <a href="https://xkcd.com/1425/">XKCD</a>
+          </div>
+
+        </section>
+				
+        <section>
+          <h3><div style='color: #9090f0'>State of the Art</div></h3>
+            
+          <a href="https://arxiv.org/abs/1602.07261">C. Szegedy, et. al. (08/2016)</a>
 				</section>
 				</section>
         

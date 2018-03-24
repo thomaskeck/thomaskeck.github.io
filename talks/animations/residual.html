@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+
+.big_text {
+  fill: white;
+  stroke: #fff;
+  font-size: 7vmin;
+  z-index: 100;
+}
+
+.big_axis line{
+  stroke: #fff;
+  stroke-width: 1vmin;
+}
+
+.big_axis path{
+  stroke: #fff;
+  stroke-width: 1vmin;
+}
+
+.big_axis text{
+  fill: #fff;
+  font-size: 7vmin;
+} 
+</style>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 1000
+var height = 500
+
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+
+svg.append("g").attr("id", "outer_layers")
+svg.append("g").attr("id", "inner_layers")
+svg.append("g").attr("id", "text")
+svg.append("g").attr("id", "other")
+svg.append("g").attr("id", "arrows")
+  
+svg.append('defs')
+          .append('marker')
+          .attr('id', 'arrowheadright')
+          .attr('viewBox', '-5 -5 10 10')
+          .attr('refX', 0)
+          .attr('refY', 0)
+          .attr('orient', 'auto')
+          .attr('markerWidth', 2)
+          .attr('markerHeight', 2)
+          .attr('xoverflow', 'visible')
+          .append('svg:path')
+          .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
+          .attr('fill', '#f05050')
+          .style('stroke','none');
+
+svg.append('defs')
+          .append('marker')
+          .attr('id', 'arrowheadright2')
+          .attr('viewBox', '-5 -5 10 10')
+          .attr('refX', 0)
+          .attr('refY', 0)
+          .attr('orient', 'auto')
+          .attr('markerWidth', 2)
+          .attr('markerHeight', 2)
+          .attr('xoverflow', 'visible')
+          .append('svg:path')
+          .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
+          .attr('fill', '#5050f0')
+          .style('stroke','none');
+
+svg.append('defs')
+          .append('marker')
+          .attr('id', 'arrowheadleft')
+          .attr('viewBox', '-5 -5 10 10')
+          .attr('refX', 0)
+          .attr('refY', 0)
+          .attr('orient', 'auto')
+          .attr('markerWidth', 2)
+          .attr('markerHeight', 2)
+          .attr('xoverflow', 'visible')
+          .append('svg:path')
+          .attr('d', 'M 0,0 m 5,5 L -5,0 L 5,-5 Z')
+          .attr('fill', '#50f050')
+          .style('stroke','none');
+
+
+function create_layer(pos, output_label, w_label) {
+  var classname = "layer_" + w_label
+  svg.select("#outer_layers")
+     .append("rect")
+     .attr("class", classname)
+     .style('fill', '#9090f0')
+     .style("opacity", 1.0)
+     .attr('x', pos)
+     .attr('y', 70)
+     .attr('width', "50")
+     .attr('height', "250")
+
+  svg.select("#inner_layers")
+     .append("rect")
+     .attr("class", classname)
+     .style('fill', '#3030a0')
+     .style("opacity", 1.0)
+     .attr('x', (pos+5))
+     .attr('y', 75)
+     .attr('width', "40")
+     .attr('height', "240")
+
+   for(var i = 0; i < 6; ++i) {
+   svg.select("#other").append("circle")
+    .attr("class", "points " + classname)
+    .attr("r", 15)
+    .style("opacity", 1.0)
+    .attr("transform", "translate(" + (pos+25) + "," + (95 + 40*i) + ")")
+    .style("fill", "#fff")
+    .style("stroke", "#fff")
+    .style("stroke-width", "1vmin")
+   }
+
+  svg.select("#text").append("text")
+     .attr("class", "text " + classname)
+     .style("opacity", 1.0)
+     .style("font-size", "8vmin")
+     .attr("transform", "translate(" + (pos+25) + " ," + (50) + ")")
+     .style("text-anchor", "middle")
+     .text(w_label); 
+  
+  svg.select("#text").append("text")
+     .attr("class", "text " + classname)
+     .style("opacity", 1.0)
+     .style("font-size", "8vmin")
+     .attr("transform", "translate(" + (pos+80) + " ," + (170) + ")")
+     .style("text-anchor", "middle")
+     .text(output_label); 
+  
+  svg.select("#arrows").append("line")
+     .attr("id", "arrow_" + classname)
+     .attr("marker-end", "url(#arrowheadright)")
+     .attr("x1", pos+50)
+     .attr("y1", 220)
+     .attr("x2", pos+110)
+     .attr("y2", 220)
+     .style("stroke-width", "3vmin")
+     .style("opacity", 1.0)
+     .style("stroke", "#f05050")
+
+  var data = [ 0.        ,  0.16534698,  0.33069396,  0.49604095,  0.66138793, 0.82673491,  0.99208189,  1.15742887,  1.32277585,  1.48812284,  1.65346982,  1.8188168 ,  1.98416378,  2.14951076,  2.31485774, 2.48020473,  2.64555171,  2.81089869,  2.97624567,  3.14159265]
+  var line = d3.line().x(function(d) { return (pos+25) - 55*Math.cos(d); }).y(function(d) { return 225 + 150*Math.sin(d); }).curve(d3.curveCardinal)
+
+  var plain_path = svg.append('path').attr('id', 'resline' + w_label).attr('d', line(data)).attr('stroke', '#30a030').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0.0)
+  var totalLength = plain_path.node().getTotalLength();
+
+  plain_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+}
+
+function show_arrow(label) {
+  
+  pos = d3.select("#arrow_layer_"+ label).attr('x1')
+  d3.select("#arrow_layer_"+ label).attr('x2', pos)
+  d3.select("#arrow_layer_"+ label).transition().duration(500).style("opacity", 1).transition().duration(1000).ease(d3.easeLinear).attr('x2', parseInt(pos)+80)
+
+}
+
+function hide_arrow(label) {
+  
+  d3.select("#arrow_layer_"+ label).transition().duration(500).style("opacity", 0)
+
+}
+
+function show_layer(label) {
+  
+  show_arrow(label)
+  d3.selectAll(".layer_"+ label).transition().duration(1000).style("opacity", 1)
+
+}
+
+function hide_layer(label) {
+  
+  d3.selectAll(".layer_"+ label).transition().duration(500).style("opacity", 0)
+  hide_arrow(label)
+}
+  
+var itext = svg.select("#text").append("text")
+               .attr("class", "text")
+               .style("opacity", "1")
+               .style("font-size", "8vmin")
+               .attr("transform", "translate(" + 50 + " ," + (170) + ")")
+               .style("text-anchor", "middle")
+               .text("x"); 
+
+var arrow = svg.select("#arrows").append("line")
+               .attr("id", "arrow_layer_input")
+               .attr("marker-end", "url(#arrowheadright")
+               .attr("x1", 20)
+               .attr("y1", 220)
+               .attr("x2", 90)
+               .attr("y2", 220)
+               .style("stroke-width", "3vmin")
+               .style("opacity", "1")
+               .style("stroke", "#f05050")
+
+create_layer(100, 'y1', 'w1')
+create_layer(220, 'y2', 'w2')
+create_layer(340, 'y3', 'w3')
+create_layer(460, 'y4', 'w4')
+create_layer(580, 'y5', 'w5')
+create_layer(700, 'y6', 'w6')
+create_layer(820, 'y7', 'w7')
+  
+d3.select("#arrow_layer_w5").style("opacity", 0)
+d3.selectAll(".layer_w5").style("opacity", 0)
+
+d3.select("#arrow_layer_w6").style("opacity", 0)
+d3.selectAll(".layer_w6").style("opacity", 0)
+
+d3.select("#arrow_layer_w7").style("opacity", 0)
+d3.selectAll(".layer_w7").style("opacity", 0)
+
+// set the ranges
+var dx = d3.scaleLinear().range([width/10, width]);
+var dy = d3.scaleLinear().range([height, 0]);
+dx.domain([1, 34]);
+dy.domain([0.0, 0.26]);
+
+var dsvg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 960 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '80%')
+						.style("height", '50%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "40%")
+						.style("left", "10%");
+
+// Add the X Axis
+dsvg.append("g")
+    .attr("class", "big_axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(dx).ticks(20));
+  
+dsvg.append("text")
+       .attr("class", "big_text")
+       .attr("transform", "translate(" + (width/2) + " ," + (height+80) + ")")
+       .style("text-anchor", "middle")
+       .text("layers");
+
+// Add the Y Axis
+dsvg.append("g")
+    .attr("class", "big_axis")
+    .attr("transform", "translate(" + width/10 + "," + (0) + ")")
+    .call(d3.axisLeft(dy).ticks(8));
+  
+dsvg.append("text")
+           .attr("class", "big_text")
+           .attr("transform", "translate(" + (-10) + " ," + (height/2) + ")" + "rotate(-90)")
+           .style("text-anchor", "middle")
+           .text("final accuracy"); 
+
+var line = d3.line().x(function(d, i) { return dx(5*i+1); }).y(function(d) { return dy(d); }).curve(d3.curveCardinal)
+
+var plain_data = [0.25, 0.21, 0.17, 0.13, 0.15, 0.17, 0.19]
+var res_data = [0.25, 0.22, 0.17, 0.13, 0.11, 0.09, 0.07]
+
+var plain_path = dsvg.append('path').attr('d', line(plain_data)).attr('stroke', '#f05050').attr('stroke-width', "0.8vmin").attr('fill', 'none')
+var res_path = dsvg.append('path').attr('d', line(res_data)).attr('stroke', '#9090f0').attr('stroke-width', "0.8vmin").attr('fill', 'none')
+
+var totalLength = plain_path.node().getTotalLength();
+
+plain_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+          .attr("stroke-dashoffset", totalLength*0.6)
+res_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+          .attr("stroke-dashoffset", totalLength)
+
+var _transitions = [
+  () => {
+    show_layer("w5");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.4)
+  },
+  () => {
+    show_layer("w6");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.2)
+  },
+  () => {
+    show_layer("w7");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", 0.0)
+  },
+  
+  () => {
+    hide_layer("w5");
+    hide_layer("w6");
+    hide_layer("w7");
+    
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.6)
+  },
+  
+  () => {
+  
+    svg.select("#arrow_layer_w5").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
+    svg.select("#arrow_layer_w6").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
+    svg.select("#arrow_layer_w7").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
+    show_layer("w5");
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.4)
+    d3.select('#reslinew5').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
+  },
+  () => {
+    show_layer("w6");
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.2)
+    d3.select('#reslinew6').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
+  },
+  () => {
+    show_layer("w7");
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", 0.0)
+    d3.select('#reslinew7').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
+  },
+]
+
+var _inverse_transitions = [
+  () => {
+    hide_layer("w5");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.6)
+  },
+  () => {
+    hide_layer("w6");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.4)
+  },
+  () => {
+    hide_layer("w7");
+    plain_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.2)
+  },
+  
+  () => {
+    show_layer("w4");
+    show_layer("w5");
+    show_layer("w6");
+    show_layer("w7");
+    
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength)
+  },
+  
+  () => {
+    svg.select("#arrow_layer_w5").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
+    svg.select("#arrow_layer_w6").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
+    svg.select("#arrow_layer_w7").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
+    hide_layer("w5");
+    l = d3.select('#reslinew5').node().getTotalLength()
+    d3.select('#reslinew5').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.6)
+  },
+  () => {
+    hide_layer("w6");
+    l = d3.select('#reslinew6').node().getTotalLength()
+    d3.select('#reslinew6').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.4)
+  },
+  () => {
+    hide_layer("w7");
+    l = d3.select('#reslinew7').node().getTotalLength()
+    d3.select('#reslinew7').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
+    res_path.transition()
+              .duration(1500)
+              .ease(d3.easeLinear)
+              .attr("stroke-dashoffset", totalLength*0.2)
+  },
+]
+  
+</script>
+</div>
+</body>
