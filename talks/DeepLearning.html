@@ -152,24 +152,23 @@
         
         <section style="height: 100%">
           <h3><div style='color: #f05050'>Vanishing Gradient Problem</div></h3>
+          
+              <div style="height: 2vmin"></div>
+                 $$ y_{i+1} = \sigma \left(\sum^{N_i} w_i y_i \right) $$ 
+              <div style="height: 2vmin"></div>
               
-              <div>
-                Variance of <div style="color: #f05050; display: inline">activation</div> changes during forward propagation through many layers <br><div style="color: #50f050; display: inline">$\rightarrow$ Activation Vanishes or Explodes</div>
+              <div class="fragment"> 
+                Activation function is applied for each layer<br> $\rightarrow$ exploding or vanishing <div style="color: #50f050; display: inline">activation</div> / <div style="color: #9090f0; display: inline">gradient
+                </div>
+                <br>
+                $$ y_n = \sigma \left( \dots \sigma \left( \dots \sigma\left( \sum^{N_0} w_0 x \right) \right) \right) $$
               </div>
               
-              <div>
-                Variance of <div style="color: #9090f0; display: inline">gradient</div> changes during backward propagation through many layers <br><div style="color: #50f050; display: inline">$\rightarrow$ Gradient Vanishes or Explodes</div>
-              </div>
-
-              <div>
-              $$ y_{i+1} = \sigma \left( \sum_i w_i y_i \right) $$ 
-              </div>
-              
-              <div class="fig-container"
+              <div class="fig-container fragment"
                    data-fig-id="neural_network"
                    data-file="animations/vanishing_gradient_problem.html" style="width: 100%; height: 50%"></div>
 
-              <div>
+              <div class="fragment" style="position: absolute; left:20%; top: 85%">
                 Training becomes unstable $\rightarrow$ very slow or no convergence
               </div>
               
@@ -183,13 +182,18 @@
               </div>
               <div style="display: flex; width: 100%;">
               <div style="float: left; width: 50%; height: 15vmin">
+
+                <div class="fragment">
                 $$ \frac{\mathrm{d}}{\mathrm{d}x} \tanh = \frac{1}{\cosh^2} \le 1$$
+                </div>
              
                 <div style="height: 5vmin"></div>
                 <div class="fragment" style="color: #50f050">Gradient vanishes in deep networks</div>
               </div>
               <div style="float: right; width: 50%; height: 15vmin">
+                <div class="fragment">
                 $$ \frac{\mathrm{d}}{\mathrm{d}x} \max(0, x) = \left\lbrace \begin{array}{l} 1 \quad \textrm{for x } \gt 0  \\ 0 \quad \textrm{otherwise} \end{array} \right.$$
+                </div>
                 <div style="height: 5vmin"></div>
                 <div class="fragment" style="color: #50f050">Gradient does neither vanish nor explode</div>
               </div>
@@ -201,21 +205,21 @@
           <h3><div style='color: #9090f0'>He Initialization</div></h3>
 
           <div style="height: 5vmin"></div>
-              $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
+             $$ y_{i+1} = \max \left(0,  \sum^{N_i} w_i y_i \right) $$ 
           <div style="height: 2vmin"></div>
               
               <div class="fragment"> 
                 <div style="color: #f05050">
                   Weights can still lead to exploding or vanishing activations/gradients if
                 </div>
-                $$ \frac{1}{2} H_i \mathrm{Var}(w_i) \neq 1 $$
+                $$ \frac{1}{2} N_i \mathrm{Var}(w_i) \neq 1 $$
               </div>
 
           <div style="height: 5vmin"></div>
               
           <div class="fragment">
             <div style="color: #50f050">He Initialization (for ReLU)</div><br>
-              $$ w_i \sim \mathcal{N}\left(0, \frac{2}{H_i} \right) $$ <a href="https://arxiv.org/abs/1502.01852">K. He, et. al. (02/2015)</a>
+              $$ w_i \sim \mathcal{N}\left(0, \frac{2}{N_i} \right) $$ <a href="https://arxiv.org/abs/1502.01852">K. He, et. al. (02/2015)</a>
           </div>
               
         </section>
@@ -224,7 +228,7 @@
           <h3><div style='color: #9090f0'>Batch Normalisation</div></h3>
 
           <div style="height: 5vmin"></div>
-              $$\mathrm{Var} \left( y_{\mathrm{n}} \right) = \mathrm{Var} \left( y_{1} \right) \left( \prod_{i=2}^n \frac{1}{2} H_i \mathrm{Var} \left( w_i \right) \right)$$
+            $$ y_{i+1} = \max \left(0,  \sum^{N_i} w_i y_i \right) \quad \quad  w_i \sim \mathcal{N}\left(0, \frac{2}{N_i} \right)$$ 
           <div style="height: 2vmin"></div>
               
               <div class="fragment"> 

@@ -49,7 +49,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-          .attr('fill', '#f05050')
+          .attr('fill', '#50f050')
           .style('stroke','none');
 
 svg.append('defs')
@@ -126,7 +126,7 @@ function create_layer(pos, output_label, w_label) {
      .attr("y2", 100)
      .style("stroke-width", "3vmin")
      .style("opacity", 0.0)
-     .style("stroke", "#f05050")
+     .style("stroke", "#50f050")
   
    svg.select("#arrows").append("line")
        .attr("id", "backarrow_" + classname)
@@ -201,7 +201,7 @@ var arrow = svg.select("#arrows").append("line")
                .attr("y2", 100)
                .style("stroke-width", "3vmin")
                .style("opacity", "0")
-               .style("stroke", "#f05050")
+               .style("stroke", "#50f050")
 
 svg.select("#other").append("circle")
     .attr("class", "points")
