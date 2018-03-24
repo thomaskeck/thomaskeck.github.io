@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+<div class="reveal">
+<script>
+
+
+
+function gridData() {
+    var data = new Array();
+    var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
+    var ypos = 1;
+    var width = 50;
+    var height = 50;
+
+    // iterate for rows 
+    for (var row = 0; row < 10; row++) {
+        data.push( new Array() );
+
+        // iterate for cells/columns inside rows
+        for (var column = 0; column < 10; column++) {
+            data[row].push({
+                x: xpos,
+                y: ypos,
+                width: width,
+                height: height,
+                weight: Math.random(),
+            })
+            // increment the x position. I.e. move it over by 50 (width variable)
+            xpos += width;
+        }
+        // reset the x position after a row is complete
+        xpos = 1;
+        // increment the y position for the next row. Move it down 50 (height variable)
+        ypos += height; 
+    }
+    return data;
+}
+
+
+function create_grid(color, data) {
+
+	var svg = d3.select("body").append("svg")
+							.attr('viewBox','0 0 500 500')
+							.attr('preserveAspectRatio','none')
+							.attr("overflow", "visible")
+							.style("width", '100%')
+							.style("height", '100%')
+							.style("display", "block")
+							.style("position", "absolute")
+							.style("top", "0%")
+							.style("left", "0%")
+							.style("transform-origin", "bottom center")
+							.style("transform", "rotateX(-30deg) perspective(100px) rotateX(30deg)");
+
+	var row = svg.selectAll(".row")
+			.data(data)
+			.enter().append("g")
+			.attr("class", "row");
+
+	var column = row.selectAll(".square")
+			.data(function(d) { return d; })
+			.enter().append("rect")
+			.attr("class","square")
+			.attr("x", function(d) { return d.x; })
+			.attr("y", function(d) { return d.y; })
+			.attr("width", function(d) { return d.width; })
+			.attr("height", function(d) { return d.height; })
+			.style("fill", color)
+      .style("opacity", function(d) { return d.weight; })
+			.style("stroke", color)
+			.style("stroke-width", "2vmin");
+
+	return svg
+}
+            
+var filter = new Array();
+var xpos = 1; //starting xpos and ypos at 1 so the stroke will show when we make the grid below
+var ypos = 1;
+var width = 50;
+var height = 50;
+var weights = [-1, -1, -1, -1, 8, -1, -1, -1, -1]
+
+var i = 0
+for (var row = 0; row < 3; row++) {
+  filter.push( new Array() );
+  for (var column = 0; column < 3; column++) {
+      filter[row].push({
+          x: xpos,
+          y: ypos,
+          width: width,
+          height: height,
+          weight: weights[i],
+      })
+      i++
+      // increment the x position. I.e. move it over by 50 (width variable)
+      xpos += width;
+  }
+  // reset the x position after a row is complete
+  xpos = 1;
+  // increment the y position for the next row. Move it down 50 (height variable)
+  ypos += height; 
+}
+
+console.log(filter)
+
+var map = create_grid("#fff", gridData()).style("opacity", 0).style("top", "40vmin")
+map.selectAll(".square").style("opacity", 0.5)
+var channel = create_grid("#fff", gridData()).style("opacity", 1).style("top", "40vmin")
+var kernel = create_grid("#ff0000", filter).style("opacity", 1)
+
+
+var _transitions = [
+	
+	() => {
+			bird_picture.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			bird_picture.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (90*d) + "deg) perspective(100px) rotateX(" + (90*d) + "deg)"; }})
+                  .style("opacity", 0.0);
+			
+      r_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			r_channel.transition().duration(2000)
+               .styleTween("transform", function() { return function(d) { return "translateY(" + (100*d) + ") rotateX(-" + (90*d) + "deg) perspective(100px) rotateX(" + (90*d) + "deg)"; }})
+               .style("opacity", 1.0);
+      
+			g_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			g_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (90*d) + "deg) perspective(100px) rotateX(" + (90*d) + "deg)"; }})
+                  .style("opacity", 1.0);
+      
+			b_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			b_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (90*d) + "deg) perspective(100px) rotateX(" + (90*d) + "deg)"; }})
+                  .style("opacity", 1.0);
+			
+	},
+
+	() => {
+	},
+]
+
+var _inverse_transitions = [
+
+]
+  
+</script>
+</div>
+</body>

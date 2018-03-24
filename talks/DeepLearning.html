@@ -375,12 +375,41 @@
         </section>
         
         <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Pixel Representation</div></h3>
+              
+          <div class="fig-container"
+                   data-fig-id="convolution"
+                   data-file="animations/pixel_representation.html" style="width: 100%; height: 100%"></div>
+        </section>
+        
+        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Convolution</div></h3>
-           
+              
+					<div style="display: flex; width: 100%;">
+          <div style="float: left; width: 50%; height: 25vmin">
+          <div class="fig-container"
+                   data-fig-id="convolution"
+                   data-file="animations/convolution.html" style="width: 80%; height: 100%"></div>
+          </div> 
+          <div style="float: left; width: 50%; height: 25vmin; text-align: left">
+          <div style="color: #50f050">Description</div>
 					<ul>
 						<li>Learnable filters (e.g. edge detector) organized in feature maps</li>
 						<li>Each filter scans the image and detects a specific pattern</li>
 					</ul>
+
+          <div style="height: 10vmin"></div>
+
+          <div style="color: #50f050">Hyper-Parameters</div>
+					<ul>
+            <li>depth – number of filters (also known as kernels)</li>
+            <li>size – dimension of the filter e.g. 3 × 3 or 3 × 3 × 4</li>
+            <li>stride – step size while sliding the filter through the input</li>
+            <li>padding – behavior of the convolution near the borders</li>
+          </ul>
+
+          </div>
+          </div>
  
         </section>
         

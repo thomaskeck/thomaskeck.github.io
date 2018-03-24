@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<body>
+
+<div id="desc" style="position: absolute; top:5%; left:40%; font-size: 5vmin; color: #fff">
+647x544x3
+</div>
+
+<div class="reveal">
+<script>
+
+function create_picture(image) {
+	
+  var svg = d3.select("body").append("svg")
+							.attr('viewBox','0 0 500 500')
+							.attr('preserveAspectRatio','none')
+							.attr("overflow", "visible")
+							.style("width", '50%')
+							.style("height", '50%')
+							.style("display", "block")
+							.style("position", "absolute")
+							.style("top", "5%")
+							.style("left", "25%")
+							.style("transform-origin", "bottom center")
+							.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+
+	bird_picture = svg.append('svg:image')
+										.attr('xlink:href', '../images/' + image).attr('x', 0).attr('y', 0).attr('width', 500).attr('height', 500).attr('preserveAspectRatio','none')
+	return svg
+}
+
+picture = create_picture("bird1.png").style("opacity", 1.0)
+b_channel = create_picture("bird1_b.png").style("opacity", 0.0)
+g_channel = create_picture("bird1_g.png").style("opacity", 0.0)
+r_channel = create_picture("bird1_r.png").style("opacity", 0.0)
+
+var _transitions = [
+	
+	() => {
+			picture.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			picture.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*d) + "deg) perspective(100px) rotateX(" + (30*d) + "deg)"; }})
+                  .style("opacity", 0.0);
+			
+      r_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			r_channel.transition().duration(2000)
+               .styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*d) + "deg) translateY(-" + (100*d) + "px) perspective(100px) rotateX(" + (30*d) + "deg)"; }})
+               .style("opacity", 1.0);
+      
+			g_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			g_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*d) + "deg) perspective(100px) rotateX(" + (30*d) + "deg)"; }})
+                .style("opacity", 1.0);
+      
+			b_channel.style("transform", "rotateX(0deg) perspective(100px) rotateX(0deg)");
+			b_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*d) + "deg) translateY(" + (100*d) + "px) perspective(100px) rotateX(" + (30*d) + "deg)"; }})
+                .style("opacity", 1.0);
+			
+	},
+
+]
+
+var _inverse_transitions = [
+	
+  () => {
+			picture.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*(1-d)) + "deg) perspective(100px) rotateX(" + (30*(1-d)) + "deg)"; }})
+                  .style("opacity", 1.0);
+			
+			r_channel.transition().duration(2000)
+               .styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*(1-d)) + "deg) translateY(-" + (100*(1-d)) + "px) perspective(100px) rotateX(" + (30*(1-d)) + "deg)"; }})
+               .style("opacity", 0.0);
+      
+			g_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*(1-d)) + "deg) perspective(100px) rotateX(" + (30*(1-d)) + "deg)"; }})
+                .style("opacity", 0.0);
+      
+			b_channel.transition().duration(2000).styleTween("transform", function() { return function(d) { return "rotateX(-" + (30*(1-d)) + "deg) translateY(" + (100*(1-d)) + "px) perspective(100px) rotateX(" + (30*(1-d)) + "deg)"; }})
+                .style("opacity", 0.0);
+			
+	},
+
+]
+  
+</script>
+</div>
+</body>
