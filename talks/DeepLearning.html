@@ -262,16 +262,28 @@
 
           <a href="https://arxiv.org/abs/1512.03385">K. He, et. al. (12/2015)</a>
         </section>
-        
+
+
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Representation Learning</div></h3>
+
+
+          <div style="height: 10vmin"></div>
+          Why do we want to have a deep neural network?
+          <div style="height: 5vmin"></div>
+
+          <ul>
+            <li><div style="color: #50f050; display: inline">distributed representations</div> – the number of input regions which can be distinguished grows exponentially$</li>
+            <li><div style="color: #50f050; display: inline">depth</div> – the ways to re-use learned features grow exponentially with the depth of the network</li>
+            <li><div style="color: #50f050; display: inline">abstraction</div> – the learned features in the deeper layers are increasingly invariant to most local changes of the input</li>
+            <li><div style="color: #50f050; display: inline">disentangling factors of variation</div> – the learned features represent independent properties of the input data</li>
+          </ul>
+        </section>
         </section>
 				
 				<section style="height: 100%">
 				<section>
           <h2><div style='color: #9090f0'>Convolutional Networks</div> & <div style='color: #f05050'>Image Recognition</div></h2>
-          Convolution
-          Max Pooling
-          Inception
-          ResNet
 				</section>
         
         
@@ -542,8 +554,18 @@
 				<section style="height: 100%">
 				<section>
           <h2><div style='color: #9090f0'>Recurrent Networks</div> & <div style='color: #f05050'>Sequential Data Processing</div></h2>
-          Word Embedding
 				</section>
+				
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Show and Tell</div></h3>
+
+          <div style="width: 100%; height: 60vmin">
+            <img src="images/show_and_tell.png">
+            <br>
+            <a href="https://arxiv.org/abs/1411.4555">O. Vinyals  et. al. (04/2015)</a>
+          </div>
+
+        </section>
 				
 				<section style="height: 100%">
           <h3><div style='color: #f05050'>Animation Recurrent Network</div></h3>
@@ -587,17 +609,100 @@
               
         </section>
 				
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>One-hot Encoding</div></h3>
+
+					  <div style="height: 5vmin"></div>
+          Howto turn text into numbers?
+					  <div style="height: 5vmin"></div>
+
+          <div style="display: flex; width: 100%;">
+          <div style="float: left; width: 25%; height: 60vmin; text-align: left">
+          </div>
+          <div class="fragment" style="float: left; width: 25%; height: 60vmin; text-align: left">
+            <div style="color: #50f050">Categorial Mapping</div>
+            <br>
+					  <div style="height: 2.5vmin"></div>
+            $$ a \rightarrow 0 $$
+					  <div style="height: 8vmin"></div>
+            $$ b \rightarrow 1 $$
+					  <div style="height: 8vmin"></div>
+            $$ c \rightarrow 2 $$
+					  <div style="height: 5vmin"></div>
+            $$ \dots $$
+					  <div style="height: 2.5vmin"></div>
+            $$ z \rightarrow 25 $$
+         </div>
+          <div class="fragment" style="float: left; width: 25%; height: 60vmin; text-align: left">
+            <div style="color: #50f050">One-hot encoding</div>
+            <br>
+            $ 0 \rightarrow $ <div style="font-size: 1.5vmin; display: inline">$\left( \begin{array}{c} 1 \\ 0 \\ 0 \\ \dots \\ 0 \end{array} \right) $</div><br>
+            <div style="height: 1vmin"></div>
+            $ 1 \rightarrow $ <div style="font-size: 1.5vmin; display: inline">$\left( \begin{array}{c} 0 \\ 1 \\ 0 \\ \dots \\ 0 \end{array} \right) $</div><br>
+            <div style="height: 1vmin"></div>
+            $ 2 \rightarrow $ <div style="font-size: 1.5vmin; display: inline">$\left( \begin{array}{c} 0 \\ 0 \\ 1 \\ \dots \\ 0 \end{array} \right) $</div><br>
+            $\dots$ <br>
+            $ 25 \rightarrow $ <div style="font-size: 1.5vmin; display: inline">$\left( \begin{array}{c} 0 \\ 0 \\ 0 \\ \dots \\ 1 \end{array} \right) $</div><br>
+          </div>
+          </div>
+              
+        </section>
+				
 				<section style="height: 100%">
           <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
 
-					Karpathy
+          <div style="width: 100%; height: 80vmin">
+            <img src="images/charseq.png"  style="background:none; border:none; box-shadow:none;">
+            <br>
+            <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">A. Karpathy (05/2015)</a>
+          </div>
 
         </section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Show And Tell</div></h3>
+          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
 
-					Karpathy
+          <div style="width: 100%; height: 80vmin">
+            <img src="images/linuxcode.png"  style="background:none; border:none; box-shadow:none;">
+            <br>
+            <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">A. Karpathy (05/2015)</a>
+          </div>
+
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
+         
+          <div style="height:10vmin"></div>
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 30vmin">
+            <img src="images/rnn_if.png" style="background:none; border:none; box-shadow:none;">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 30vmin">
+            <img src="images/rnn_length.png" style="background:none; border:none; box-shadow:none;">
+          </div>
+          </div>
+          <br>
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 30vmin">
+            <img src="images/rnn_depth.png" style="background:none; border:none; box-shadow:none;">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 30vmin">
+            <img src="images/rnn_comments.png" style="background:none; border:none; box-shadow:none;">
+          </div>
+          </div>
+          <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">A. Karpathy (05/2015)</a>
+
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Word Embedding</div></h3>
+
+          <div style="height:5vmin"></div>
+          One-hot encoding works well for characters ($\sim 26$) but what about words ($\gt 300000$)?<br>
+          $\rightarrow$ <div style="color: #50f050; display: inline">embed</div> high-dimensional <div style="color: #50f050; display: inline">word</div>-space into low-dimensional space with neural network
+          <br>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="70%" height="70%" type="text/html" data-src="http://projector.tensorflow.org/" frameborder="0"> </iframe>
 
         </section>
         </section>
