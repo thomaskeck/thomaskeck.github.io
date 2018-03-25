@@ -73,33 +73,12 @@ function create_layer(pos, output_label, w_label) {
   svg.select("#outer_layers")
      .append("rect")
      .attr("class", classname)
-     .style('fill', '#9090f0')
+     .style('fill', '#3030a0')
      .style("opacity", 1.0)
      .attr('x', pos)
      .attr('y', 30)
      .attr('width', "50")
      .attr('height', "330")
-
-  svg.select("#inner_layers")
-     .append("rect")
-     .attr("class", classname)
-     .style('fill', '#3030a0')
-     .style("opacity", 1.0)
-     .attr('x', (pos+5))
-     .attr('y', 35)
-     .attr('width', "40")
-     .attr('height', "320")
-
-   for(var i = 0; i < 8; ++i) {
-   svg.select("#other").append("circle")
-    .attr("class", "points")
-    .attr("r", 15)
-    .style("opacity", 1.0)
-    .attr("transform", "translate(" + (pos+25) + "," + (55 + 40*i) + ")")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
-    .style("stroke-width", "1vmin")
-   }
 
   svg.select("#text").append("text")
      .attr("class", "text " + classname)
@@ -145,7 +124,7 @@ function show_arrow(label, i) {
   
   pos = d3.select("#arrow_layer_"+ label).attr('x1')
   d3.select("#arrow_layer_"+ label).attr('x2', pos)
-  d3.select("#arrow_layer_"+ label).transition().delay(1500*i).duration(500).style("opacity", 1).transition().duration(1000).attr('x2', parseInt(pos)+80)
+  d3.select("#arrow_layer_"+ label).transition().delay(600*i).duration(100).style("opacity", 1).transition().duration(500).attr('x2', parseInt(pos)+80)
 
 }
 
@@ -159,7 +138,7 @@ function show_back_arrow(label, i) {
   
   pos = d3.select("#backarrow_layer_"+ label).attr('x2')
   d3.select("#backarrow_layer_"+ label).attr('x1', pos)
-  d3.select("#backarrow_layer_"+ label).transition().delay(1500*i).duration(500).style("opacity", 1).transition().duration(1000).attr('x1', parseInt(pos)-80)
+  d3.select("#backarrow_layer_"+ label).transition().delay(600*i).duration(100).style("opacity", 1).transition().duration(500).attr('x1', parseInt(pos)-80)
 
 }
 
@@ -237,7 +216,7 @@ var _transitions = [
     show_arrow("w1", 1)
     show_arrow("w2", 2)
     show_arrow("w3", 3)
-    show_arrow("wn", 5)
+    show_arrow("wn", 4)
   },
   
   () => { 
@@ -257,9 +236,9 @@ var _transitions = [
   },
   
   () => { 
-    show_back_arrow("w1", 4)
-    show_back_arrow("w2", 3)
-    show_back_arrow("w3", 2)
+    show_back_arrow("w1", 3)
+    show_back_arrow("w2", 2)
+    show_back_arrow("w3", 1)
     show_back_arrow("wn", 0)
   },
 

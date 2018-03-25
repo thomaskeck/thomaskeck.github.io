@@ -16,7 +16,7 @@
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -12051,15 +12051,7 @@ a.anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.Operation"><code>tf.Operation</code><a class="anchor-link" href="#tf.Operation">&#182;</a></h2><p>A <code>tf.Operation</code> takes zero or more <code>tf.Tensor</code>s and outputs zero or more <code>tf.Tensor</code>s.
-There are a lot of pre-defined operations:</p>
-<ul>
-<li><code>tf.add</code>, <code>tf.multiply</code>, <code>tf.matmul</code>, ...</li>
-<li><code>tf.reduce_sum</code>, <code>tf.reduce_mean</code>, <code>tf.reduce_max</code>, ...</li>
-<li><code>tf.tanh</code>, <code>tf.nn.relu</code>, <code>tf.nn.softmax</code>, ...</li>
-<li><code>tf.reshape</code>, ...</li>
-<li><code>tf.nn.conv2d</code>, <code>tf.nn.max_pool</code>, <code>tf.nn.dropout</code>, ...</li>
-</ul>
+<h2 id="tf.Operation"><code>tf.Operation</code><a class="anchor-link" href="#tf.Operation">&#182;</a></h2><p>A <code>tf.Operation</code> takes zero or more <code>tf.Tensor</code>s and outputs zero or more <code>tf.Tensor</code>s.</p>
 
 </div>
 </div>
@@ -12248,45 +12240,45 @@ There are a lot of pre-defined operations:</p>
 <path fill="none" stroke="black" d="M250.492,-287.697C250.602,-279.983 250.735,-270.712 250.858,-262.112"/>
 <polygon fill="black" stroke="black" points="254.357,-262.153 251.001,-252.104 247.358,-262.053 254.357,-262.153"/>
 </g>
-<!-- norm_1/mul -->
-<g id="node8" class="node"><title>norm_1/mul</title>
-<ellipse fill="none" stroke="black" cx="55.2451" cy="-378" rx="55.4913" ry="18"/>
-<text text-anchor="middle" x="55.2451" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/mul</text>
-</g>
-<!-- norm_1/mul&#45;&gt;norm_1/Sum -->
-<g id="edge7" class="edge"><title>norm_1/mul&#45;&gt;norm_1/Sum</title>
-<path fill="none" stroke="black" d="M91.0111,-364.161C122.87,-352.724 169.669,-335.925 204.293,-323.496"/>
-<polygon fill="black" stroke="black" points="205.484,-326.787 213.714,-320.114 203.119,-320.198 205.484,-326.787"/>
-</g>
-<!-- norm_1/Sum/reduction_indices -->
-<g id="node9" class="node"><title>norm_1/Sum/reduction_indices</title>
-<ellipse fill="none" stroke="black" cx="250.245" cy="-378" rx="122.379" ry="18"/>
-<text text-anchor="middle" x="250.245" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/Sum/reduction_indices</text>
-</g>
-<!-- norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum -->
-<g id="edge8" class="edge"><title>norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum</title>
-<path fill="none" stroke="black" d="M250.245,-359.697C250.245,-351.983 250.245,-342.712 250.245,-334.112"/>
-<polygon fill="black" stroke="black" points="253.745,-334.104 250.245,-324.104 246.745,-334.104 253.745,-334.104"/>
-</g>
 <!-- norm/mul -->
-<g id="node10" class="node"><title>norm/mul</title>
+<g id="node8" class="node"><title>norm/mul</title>
 <ellipse fill="none" stroke="black" cx="430.245" cy="-306" rx="46.2923" ry="18"/>
 <text text-anchor="middle" x="430.245" y="-302.3" font-family="Times,serif" font-size="14.00">norm/mul</text>
 </g>
 <!-- norm/mul&#45;&gt;norm/Sum -->
-<g id="edge9" class="edge"><title>norm/mul&#45;&gt;norm/Sum</title>
+<g id="edge7" class="edge"><title>norm/mul&#45;&gt;norm/Sum</title>
 <path fill="none" stroke="black" d="M430.245,-287.697C430.245,-279.983 430.245,-270.712 430.245,-262.112"/>
 <polygon fill="black" stroke="black" points="433.745,-262.104 430.245,-252.104 426.745,-262.104 433.745,-262.104"/>
 </g>
 <!-- norm/Sum/reduction_indices -->
-<g id="node11" class="node"><title>norm/Sum/reduction_indices</title>
+<g id="node9" class="node"><title>norm/Sum/reduction_indices</title>
 <ellipse fill="none" stroke="black" cx="608.245" cy="-306" rx="113.98" ry="18"/>
 <text text-anchor="middle" x="608.245" y="-302.3" font-family="Times,serif" font-size="14.00">norm/Sum/reduction_indices</text>
 </g>
 <!-- norm/Sum/reduction_indices&#45;&gt;norm/Sum -->
-<g id="edge10" class="edge"><title>norm/Sum/reduction_indices&#45;&gt;norm/Sum</title>
+<g id="edge8" class="edge"><title>norm/Sum/reduction_indices&#45;&gt;norm/Sum</title>
 <path fill="none" stroke="black" d="M567.854,-289.116C539.194,-277.845 500.832,-262.759 471.893,-251.379"/>
 <polygon fill="black" stroke="black" points="473.055,-248.075 462.468,-247.672 470.494,-254.589 473.055,-248.075"/>
+</g>
+<!-- norm_1/mul -->
+<g id="node10" class="node"><title>norm_1/mul</title>
+<ellipse fill="none" stroke="black" cx="55.2451" cy="-378" rx="55.4913" ry="18"/>
+<text text-anchor="middle" x="55.2451" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/mul</text>
+</g>
+<!-- norm_1/mul&#45;&gt;norm_1/Sum -->
+<g id="edge9" class="edge"><title>norm_1/mul&#45;&gt;norm_1/Sum</title>
+<path fill="none" stroke="black" d="M91.0111,-364.161C122.87,-352.724 169.669,-335.925 204.293,-323.496"/>
+<polygon fill="black" stroke="black" points="205.484,-326.787 213.714,-320.114 203.119,-320.198 205.484,-326.787"/>
+</g>
+<!-- norm_1/Sum/reduction_indices -->
+<g id="node11" class="node"><title>norm_1/Sum/reduction_indices</title>
+<ellipse fill="none" stroke="black" cx="250.245" cy="-378" rx="122.379" ry="18"/>
+<text text-anchor="middle" x="250.245" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/Sum/reduction_indices</text>
+</g>
+<!-- norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum -->
+<g id="edge10" class="edge"><title>norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum</title>
+<path fill="none" stroke="black" d="M250.245,-359.697C250.245,-351.983 250.245,-342.712 250.245,-334.112"/>
+<polygon fill="black" stroke="black" points="253.745,-334.104 250.245,-324.104 246.745,-334.104 253.745,-334.104"/>
 </g>
 <!-- x -->
 <g id="node12" class="node"><title>x</title>
@@ -12348,10 +12340,7 @@ There are a lot of pre-defined operations:</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Automatic-Differentiation">Automatic Differentiation<a class="anchor-link" href="#Automatic-Differentiation">&#182;</a></h3><p>Tensorflow can automatically differentiate a graph with respect to one of its constituents.
-The result will be another graph, which calculates the gradients.</p>
-<p>For the training of arbitrary neural networks this is a huge advantage, because we only have to implement the forward pass of the neural network, and the necessary calculations for the backpropagation can be automatically generated by tensorflow!</p>
-
+<h3 id="Automatic-Differentiation">Automatic Differentiation<a class="anchor-link" href="#Automatic-Differentiation">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -12470,7 +12459,7 @@ The result will be another graph, which calculates the gradients.</p>
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12611,12 +12600,9 @@ Why does tensorflow still calculates the $\tanh$ term and not the derivative?
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="MNIST">MNIST<a class="anchor-link" href="#MNIST">&#182;</a></h1><p>The MNIST database (Modified National Institute of Standards and Technology database) is a <strong>dataset</strong></p>
 
-<pre><code>- 28x29 images showing handwritten digits
+<pre><code>- 28x28 images showing handwritten digits
 - 55K training, 5K validation and 10K test samples
-- multi-class classification task
-
-</code></pre>
-<p><strong>"hello world" task of machine learning</strong></p>
+- multi-class classification task</code></pre>
 
 </div>
 </div>
@@ -12644,9 +12630,13 @@ Why does tensorflow still calculates the $\tanh$ term and not the derivative?
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Extracting MNIST_data/train-images-idx3-ubyte.gz
+<pre>Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.
+Extracting MNIST_data/train-images-idx3-ubyte.gz
+Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.
 Extracting MNIST_data/train-labels-idx1-ubyte.gz
+Successfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.
 Extracting MNIST_data/t10k-images-idx3-ubyte.gz
+Successfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.
 Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 </pre>
 </div>
@@ -12655,7 +12645,7 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
@@ -12708,10 +12698,10 @@ $$ f: R^{784} \rightarrow [0, 1]^{10}$$</p>
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
@@ -12732,7 +12722,7 @@ $$ f: R^{784} \rightarrow [0, 1]^{10}$$</p>
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -12748,48 +12738,48 @@ $$ f: R^{784} \rightarrow [0, 1]^{10}$$</p>
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
 <title>%3</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-256 279.689,-256 279.689,4 -4,4"/>
-<!-- Softmax_1 -->
-<g id="node1" class="node"><title>Softmax_1</title>
-<ellipse fill="none" stroke="black" cx="134.095" cy="-18" rx="50.0912" ry="18"/>
-<text text-anchor="middle" x="134.095" y="-14.3" font-family="Times,serif" font-size="14.00">Softmax_1</text>
+<!-- Softmax -->
+<g id="node1" class="node"><title>Softmax</title>
+<ellipse fill="none" stroke="black" cx="134.095" cy="-18" rx="40.8928" ry="18"/>
+<text text-anchor="middle" x="134.095" y="-14.3" font-family="Times,serif" font-size="14.00">Softmax</text>
 </g>
-<!-- MatMul_2 -->
-<g id="node2" class="node"><title>MatMul_2</title>
+<!-- MatMul_1 -->
+<g id="node2" class="node"><title>MatMul_1</title>
 <ellipse fill="none" stroke="black" cx="134.095" cy="-90" rx="49.2915" ry="18"/>
-<text text-anchor="middle" x="134.095" y="-86.3" font-family="Times,serif" font-size="14.00">MatMul_2</text>
+<text text-anchor="middle" x="134.095" y="-86.3" font-family="Times,serif" font-size="14.00">MatMul_1</text>
 </g>
-<!-- MatMul_2&#45;&gt;Softmax_1 -->
-<g id="edge1" class="edge"><title>MatMul_2&#45;&gt;Softmax_1</title>
+<!-- MatMul_1&#45;&gt;Softmax -->
+<g id="edge1" class="edge"><title>MatMul_1&#45;&gt;Softmax</title>
 <path fill="none" stroke="black" d="M134.095,-71.6966C134.095,-63.9827 134.095,-54.7125 134.095,-46.1124"/>
 <polygon fill="black" stroke="black" points="137.595,-46.1043 134.095,-36.1043 130.595,-46.1044 137.595,-46.1043"/>
 </g>
-<!-- Placeholder_3 -->
-<g id="node3" class="node"><title>Placeholder_3</title>
+<!-- Placeholder_1 -->
+<g id="node3" class="node"><title>Placeholder_1</title>
 <ellipse fill="none" stroke="black" cx="61.0946" cy="-162" rx="61.1893" ry="18"/>
-<text text-anchor="middle" x="61.0946" y="-158.3" font-family="Times,serif" font-size="14.00">Placeholder_3</text>
+<text text-anchor="middle" x="61.0946" y="-158.3" font-family="Times,serif" font-size="14.00">Placeholder_1</text>
 </g>
-<!-- Placeholder_3&#45;&gt;MatMul_2 -->
-<g id="edge2" class="edge"><title>Placeholder_3&#45;&gt;MatMul_2</title>
+<!-- Placeholder_1&#45;&gt;MatMul_1 -->
+<g id="edge2" class="edge"><title>Placeholder_1&#45;&gt;MatMul_1</title>
 <path fill="none" stroke="black" d="M78.3946,-144.411C87.8942,-135.302 99.8196,-123.866 110.196,-113.916"/>
 <polygon fill="black" stroke="black" points="112.626,-116.436 117.421,-106.988 107.781,-111.383 112.626,-116.436"/>
 </g>
-<!-- Variable_2/read -->
-<g id="node4" class="node"><title>Variable_2/read</title>
+<!-- Variable_1/read -->
+<g id="node4" class="node"><title>Variable_1/read</title>
 <ellipse fill="none" stroke="black" cx="208.095" cy="-162" rx="67.6881" ry="18"/>
-<text text-anchor="middle" x="208.095" y="-158.3" font-family="Times,serif" font-size="14.00">Variable_2/read</text>
+<text text-anchor="middle" x="208.095" y="-158.3" font-family="Times,serif" font-size="14.00">Variable_1/read</text>
 </g>
-<!-- Variable_2/read&#45;&gt;MatMul_2 -->
-<g id="edge3" class="edge"><title>Variable_2/read&#45;&gt;MatMul_2</title>
+<!-- Variable_1/read&#45;&gt;MatMul_1 -->
+<g id="edge3" class="edge"><title>Variable_1/read&#45;&gt;MatMul_1</title>
 <path fill="none" stroke="black" d="M190.558,-144.411C180.928,-135.302 168.839,-123.866 158.32,-113.916"/>
 <polygon fill="black" stroke="black" points="160.666,-111.317 150.996,-106.988 155.856,-116.403 160.666,-111.317"/>
 </g>
-<!-- Variable_2 -->
-<g id="node5" class="node"><title>Variable_2</title>
+<!-- Variable_1 -->
+<g id="node5" class="node"><title>Variable_1</title>
 <ellipse fill="none" stroke="black" cx="208.095" cy="-234" rx="50.0912" ry="18"/>
-<text text-anchor="middle" x="208.095" y="-230.3" font-family="Times,serif" font-size="14.00">Variable_2</text>
+<text text-anchor="middle" x="208.095" y="-230.3" font-family="Times,serif" font-size="14.00">Variable_1</text>
 </g>
-<!-- Variable_2&#45;&gt;Variable_2/read -->
-<g id="edge4" class="edge"><title>Variable_2&#45;&gt;Variable_2/read</title>
+<!-- Variable_1&#45;&gt;Variable_1/read -->
+<g id="edge4" class="edge"><title>Variable_1&#45;&gt;Variable_1/read</title>
 <path fill="none" stroke="black" d="M208.095,-215.697C208.095,-207.983 208.095,-198.712 208.095,-190.112"/>
 <polygon fill="black" stroke="black" points="211.595,-190.104 208.095,-180.104 204.595,-190.104 211.595,-190.104"/>
 </g>
@@ -12843,7 +12833,7 @@ $$ \mathcal{L} = \frac{1}{N} \sum_{j=1}^{N} H(y_j,p_j) $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">minimize</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)</span>
@@ -12865,7 +12855,7 @@ $$ \mathcal{L} = \frac{1}{N} \sum_{j=1}^{N} H(y_j,p_j) $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[103]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
@@ -12891,7 +12881,7 @@ $$ \mathcal{L} = \frac{1}{N} \sum_{j=1}^{N} H(y_j,p_j) $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[105]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -12914,8 +12904,8 @@ $$ \mathcal{L} = \frac{1}{N} \sum_{j=1}^{N} H(y_j,p_j) $$</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Train 0.91287273
-Test  0.9164
+<pre>Train 0.91621816
+Test  0.9184
 </pre>
 </div>
 </div>
@@ -12969,17 +12959,17 @@ What is the purpose of the bias?
 
 </div>
 </div>
-</div>
+</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">conv</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
-<span class="n">pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
 <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">TensorflowGraphToDot</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
@@ -12995,7 +12985,7 @@ What is the purpose of the bias?
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[35]:</div>
+<div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -13036,58 +13026,48 @@ What is the purpose of the bias?
 <path fill="none" stroke="black" d="M1077.44,-72.411C1068.17,-63.519 1056.58,-52.4107 1046.38,-42.6309"/>
 <polygon fill="black" stroke="black" points="1048.56,-39.8649 1038.92,-35.4699 1043.71,-44.9174 1048.56,-39.8649"/>
 </g>
-<!-- flatten/Reshape -->
-<g id="node4" class="node"><title>flatten/Reshape</title>
-<ellipse fill="none" stroke="black" cx="796.741" cy="-162" rx="65.7887" ry="18"/>
-<text text-anchor="middle" x="796.741" y="-158.3" font-family="Times,serif" font-size="14.00">flatten/Reshape</text>
-</g>
-<!-- flatten/Reshape&#45;&gt;dense/MatMul -->
-<g id="edge3" class="edge"><title>flatten/Reshape&#45;&gt;dense/MatMul</title>
-<path fill="none" stroke="black" d="M828.976,-146.155C852.004,-135.55 883.163,-121.201 907.926,-109.796"/>
-<polygon fill="black" stroke="black" points="909.454,-112.946 917.073,-105.584 906.526,-106.588 909.454,-112.946"/>
-</g>
-<!-- dense/kernel/read -->
-<g id="node5" class="node"><title>dense/kernel/read</title>
-<ellipse fill="none" stroke="black" cx="952.741" cy="-162" rx="72.5877" ry="18"/>
-<text text-anchor="middle" x="952.741" y="-158.3" font-family="Times,serif" font-size="14.00">dense/kernel/read</text>
-</g>
-<!-- dense/kernel/read&#45;&gt;dense/MatMul -->
-<g id="edge4" class="edge"><title>dense/kernel/read&#45;&gt;dense/MatMul</title>
-<path fill="none" stroke="black" d="M951.752,-143.697C951.312,-135.983 950.782,-126.712 950.29,-118.112"/>
-<polygon fill="black" stroke="black" points="953.783,-117.888 949.718,-108.104 946.795,-118.288 953.783,-117.888"/>
-</g>
 <!-- dense/bias -->
-<g id="node6" class="node"><title>dense/bias</title>
+<g id="node4" class="node"><title>dense/bias</title>
 <ellipse fill="none" stroke="black" cx="1094.74" cy="-162" rx="47.3916" ry="18"/>
 <text text-anchor="middle" x="1094.74" y="-158.3" font-family="Times,serif" font-size="14.00">dense/bias</text>
 </g>
 <!-- dense/bias&#45;&gt;dense/bias/read -->
-<g id="edge5" class="edge"><title>dense/bias&#45;&gt;dense/bias/read</title>
+<g id="edge3" class="edge"><title>dense/bias&#45;&gt;dense/bias/read</title>
 <path fill="none" stroke="black" d="M1094.74,-143.697C1094.74,-135.983 1094.74,-126.712 1094.74,-118.112"/>
 <polygon fill="black" stroke="black" points="1098.24,-118.104 1094.74,-108.104 1091.24,-118.104 1098.24,-118.104"/>
 </g>
-<!-- dense/kernel -->
-<g id="node7" class="node"><title>dense/kernel</title>
-<ellipse fill="none" stroke="black" cx="952.741" cy="-234" rx="55.4913" ry="18"/>
-<text text-anchor="middle" x="952.741" y="-230.3" font-family="Times,serif" font-size="14.00">dense/kernel</text>
+<!-- flatten/Reshape -->
+<g id="node5" class="node"><title>flatten/Reshape</title>
+<ellipse fill="none" stroke="black" cx="796.741" cy="-162" rx="65.7887" ry="18"/>
+<text text-anchor="middle" x="796.741" y="-158.3" font-family="Times,serif" font-size="14.00">flatten/Reshape</text>
 </g>
-<!-- dense/kernel&#45;&gt;dense/kernel/read -->
-<g id="edge6" class="edge"><title>dense/kernel&#45;&gt;dense/kernel/read</title>
-<path fill="none" stroke="black" d="M952.741,-215.697C952.741,-207.983 952.741,-198.712 952.741,-190.112"/>
-<polygon fill="black" stroke="black" points="956.241,-190.104 952.741,-180.104 949.241,-190.104 956.241,-190.104"/>
+<!-- flatten/Reshape&#45;&gt;dense/MatMul -->
+<g id="edge4" class="edge"><title>flatten/Reshape&#45;&gt;dense/MatMul</title>
+<path fill="none" stroke="black" d="M828.976,-146.155C852.004,-135.55 883.163,-121.201 907.926,-109.796"/>
+<polygon fill="black" stroke="black" points="909.454,-112.946 917.073,-105.584 906.526,-106.588 909.454,-112.946"/>
+</g>
+<!-- dense/kernel/read -->
+<g id="node6" class="node"><title>dense/kernel/read</title>
+<ellipse fill="none" stroke="black" cx="952.741" cy="-162" rx="72.5877" ry="18"/>
+<text text-anchor="middle" x="952.741" y="-158.3" font-family="Times,serif" font-size="14.00">dense/kernel/read</text>
+</g>
+<!-- dense/kernel/read&#45;&gt;dense/MatMul -->
+<g id="edge5" class="edge"><title>dense/kernel/read&#45;&gt;dense/MatMul</title>
+<path fill="none" stroke="black" d="M951.752,-143.697C951.312,-135.983 950.782,-126.712 950.29,-118.112"/>
+<polygon fill="black" stroke="black" points="953.783,-117.888 949.718,-108.104 946.795,-118.288 953.783,-117.888"/>
 </g>
 <!-- max_pooling2d/MaxPool -->
-<g id="node8" class="node"><title>max_pooling2d/MaxPool</title>
+<g id="node7" class="node"><title>max_pooling2d/MaxPool</title>
 <ellipse fill="none" stroke="black" cx="790.741" cy="-450" rx="101.282" ry="18"/>
 <text text-anchor="middle" x="790.741" y="-446.3" font-family="Times,serif" font-size="14.00">max_pooling2d/MaxPool</text>
 </g>
 <!-- max_pooling2d/MaxPool&#45;&gt;flatten/Reshape -->
-<g id="edge7" class="edge"><title>max_pooling2d/MaxPool&#45;&gt;flatten/Reshape</title>
+<g id="edge6" class="edge"><title>max_pooling2d/MaxPool&#45;&gt;flatten/Reshape</title>
 <path fill="none" stroke="black" d="M800.695,-431.978C806.013,-421.888 812.013,-408.638 814.741,-396 830.559,-322.725 814.167,-233.849 803.821,-190.062"/>
 <polygon fill="black" stroke="black" points="807.181,-189.067 801.406,-180.184 800.381,-190.729 807.181,-189.067"/>
 </g>
 <!-- flatten/Shape -->
-<g id="node14" class="node"><title>flatten/Shape</title>
+<g id="node13" class="node"><title>flatten/Shape</title>
 <ellipse fill="none" stroke="black" cx="748.741" cy="-378" rx="57.3905" ry="18"/>
 <text text-anchor="middle" x="748.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/Shape</text>
 </g>
@@ -13097,89 +13077,99 @@ What is the purpose of the bias?
 <polygon fill="black" stroke="black" points="766.961,-402.563 758.814,-395.789 760.958,-406.165 766.961,-402.563"/>
 </g>
 <!-- flatten/Reshape/shape -->
-<g id="node9" class="node"><title>flatten/Reshape/shape</title>
+<g id="node8" class="node"><title>flatten/Reshape/shape</title>
 <ellipse fill="none" stroke="black" cx="564.741" cy="-234" rx="87.9851" ry="18"/>
 <text text-anchor="middle" x="564.741" y="-230.3" font-family="Times,serif" font-size="14.00">flatten/Reshape/shape</text>
 </g>
 <!-- flatten/Reshape/shape&#45;&gt;flatten/Reshape -->
-<g id="edge8" class="edge"><title>flatten/Reshape/shape&#45;&gt;flatten/Reshape</title>
+<g id="edge7" class="edge"><title>flatten/Reshape/shape&#45;&gt;flatten/Reshape</title>
 <path fill="none" stroke="black" d="M611.969,-218.75C650.442,-207.142 704.711,-190.768 744.483,-178.768"/>
 <polygon fill="black" stroke="black" points="745.7,-182.056 754.263,-175.817 743.678,-175.355 745.7,-182.056"/>
 </g>
-<!-- conv2d/Relu -->
-<g id="node10" class="node"><title>conv2d/Relu</title>
-<ellipse fill="none" stroke="black" cx="790.741" cy="-522" rx="55.7903" ry="18"/>
-<text text-anchor="middle" x="790.741" y="-518.3" font-family="Times,serif" font-size="14.00">conv2d/Relu</text>
+<!-- dense/kernel -->
+<g id="node9" class="node"><title>dense/kernel</title>
+<ellipse fill="none" stroke="black" cx="952.741" cy="-234" rx="55.4913" ry="18"/>
+<text text-anchor="middle" x="952.741" y="-230.3" font-family="Times,serif" font-size="14.00">dense/kernel</text>
 </g>
-<!-- conv2d/Relu&#45;&gt;max_pooling2d/MaxPool -->
-<g id="edge9" class="edge"><title>conv2d/Relu&#45;&gt;max_pooling2d/MaxPool</title>
-<path fill="none" stroke="black" d="M790.741,-503.697C790.741,-495.983 790.741,-486.712 790.741,-478.112"/>
-<polygon fill="black" stroke="black" points="794.241,-478.104 790.741,-468.104 787.241,-478.104 794.241,-478.104"/>
+<!-- dense/kernel&#45;&gt;dense/kernel/read -->
+<g id="edge8" class="edge"><title>dense/kernel&#45;&gt;dense/kernel/read</title>
+<path fill="none" stroke="black" d="M952.741,-215.697C952.741,-207.983 952.741,-198.712 952.741,-190.112"/>
+<polygon fill="black" stroke="black" points="956.241,-190.104 952.741,-180.104 949.241,-190.104 956.241,-190.104"/>
 </g>
 <!-- flatten/strided_slice -->
-<g id="node11" class="node"><title>flatten/strided_slice</title>
+<g id="node10" class="node"><title>flatten/strided_slice</title>
 <ellipse fill="none" stroke="black" cx="564.741" cy="-306" rx="79.8859" ry="18"/>
 <text text-anchor="middle" x="564.741" y="-302.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice</text>
 </g>
 <!-- flatten/strided_slice&#45;&gt;flatten/Reshape/shape -->
-<g id="edge10" class="edge"><title>flatten/strided_slice&#45;&gt;flatten/Reshape/shape</title>
+<g id="edge9" class="edge"><title>flatten/strided_slice&#45;&gt;flatten/Reshape/shape</title>
 <path fill="none" stroke="black" d="M564.741,-287.697C564.741,-279.983 564.741,-270.712 564.741,-262.112"/>
 <polygon fill="black" stroke="black" points="568.241,-262.104 564.741,-252.104 561.241,-262.104 568.241,-262.104"/>
 </g>
 <!-- flatten/Reshape/shape/1 -->
-<g id="node12" class="node"><title>flatten/Reshape/shape/1</title>
+<g id="node11" class="node"><title>flatten/Reshape/shape/1</title>
 <ellipse fill="none" stroke="black" cx="371.741" cy="-306" rx="94.7833" ry="18"/>
 <text text-anchor="middle" x="371.741" y="-302.3" font-family="Times,serif" font-size="14.00">flatten/Reshape/shape/1</text>
 </g>
 <!-- flatten/Reshape/shape/1&#45;&gt;flatten/Reshape/shape -->
-<g id="edge11" class="edge"><title>flatten/Reshape/shape/1&#45;&gt;flatten/Reshape/shape</title>
+<g id="edge10" class="edge"><title>flatten/Reshape/shape/1&#45;&gt;flatten/Reshape/shape</title>
 <path fill="none" stroke="black" d="M413.619,-289.811C443.158,-279.098 482.877,-264.691 514.183,-253.337"/>
 <polygon fill="black" stroke="black" points="515.4,-256.619 523.608,-249.919 513.014,-250.038 515.4,-256.619"/>
 </g>
-<!-- conv2d/BiasAdd -->
-<g id="node13" class="node"><title>conv2d/BiasAdd</title>
-<ellipse fill="none" stroke="black" cx="790.741" cy="-594" rx="69.5877" ry="18"/>
-<text text-anchor="middle" x="790.741" y="-590.3" font-family="Times,serif" font-size="14.00">conv2d/BiasAdd</text>
+<!-- conv2d/Relu -->
+<g id="node12" class="node"><title>conv2d/Relu</title>
+<ellipse fill="none" stroke="black" cx="790.741" cy="-522" rx="55.7903" ry="18"/>
+<text text-anchor="middle" x="790.741" y="-518.3" font-family="Times,serif" font-size="14.00">conv2d/Relu</text>
 </g>
-<!-- conv2d/BiasAdd&#45;&gt;conv2d/Relu -->
-<g id="edge12" class="edge"><title>conv2d/BiasAdd&#45;&gt;conv2d/Relu</title>
-<path fill="none" stroke="black" d="M790.741,-575.697C790.741,-567.983 790.741,-558.712 790.741,-550.112"/>
-<polygon fill="black" stroke="black" points="794.241,-550.104 790.741,-540.104 787.241,-550.104 794.241,-550.104"/>
+<!-- conv2d/Relu&#45;&gt;max_pooling2d/MaxPool -->
+<g id="edge11" class="edge"><title>conv2d/Relu&#45;&gt;max_pooling2d/MaxPool</title>
+<path fill="none" stroke="black" d="M790.741,-503.697C790.741,-495.983 790.741,-486.712 790.741,-478.112"/>
+<polygon fill="black" stroke="black" points="794.241,-478.104 790.741,-468.104 787.241,-478.104 794.241,-478.104"/>
 </g>
 <!-- flatten/Shape&#45;&gt;flatten/strided_slice -->
-<g id="edge13" class="edge"><title>flatten/Shape&#45;&gt;flatten/strided_slice</title>
+<g id="edge12" class="edge"><title>flatten/Shape&#45;&gt;flatten/strided_slice</title>
 <path fill="none" stroke="black" d="M713.699,-363.669C685.256,-352.848 644.839,-337.472 613.28,-325.466"/>
 <polygon fill="black" stroke="black" points="614.385,-322.141 603.794,-321.857 611.895,-328.684 614.385,-322.141"/>
 </g>
 <!-- flatten/strided_slice/stack -->
-<g id="node15" class="node"><title>flatten/strided_slice/stack</title>
+<g id="node14" class="node"><title>flatten/strided_slice/stack</title>
 <ellipse fill="none" stroke="black" cx="100.741" cy="-378" rx="100.983" ry="18"/>
 <text text-anchor="middle" x="100.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack</text>
 </g>
 <!-- flatten/strided_slice/stack&#45;&gt;flatten/strided_slice -->
-<g id="edge14" class="edge"><title>flatten/strided_slice/stack&#45;&gt;flatten/strided_slice</title>
+<g id="edge13" class="edge"><title>flatten/strided_slice/stack&#45;&gt;flatten/strided_slice</title>
 <path fill="none" stroke="black" d="M173.787,-365.519C186.116,-363.637 198.789,-361.735 210.741,-360 328.367,-342.922 358.435,-343.157 475.741,-324 482.521,-322.893 489.578,-321.669 496.62,-320.4"/>
 <polygon fill="black" stroke="black" points="497.688,-323.762 506.893,-318.517 496.425,-316.877 497.688,-323.762"/>
 </g>
 <!-- flatten/strided_slice/stack_1 -->
-<g id="node16" class="node"><title>flatten/strided_slice/stack_1</title>
+<g id="node15" class="node"><title>flatten/strided_slice/stack_1</title>
 <ellipse fill="none" stroke="black" cx="328.741" cy="-378" rx="109.381" ry="18"/>
 <text text-anchor="middle" x="328.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack_1</text>
 </g>
 <!-- flatten/strided_slice/stack_1&#45;&gt;flatten/strided_slice -->
-<g id="edge15" class="edge"><title>flatten/strided_slice/stack_1&#45;&gt;flatten/strided_slice</title>
+<g id="edge14" class="edge"><title>flatten/strided_slice/stack_1&#45;&gt;flatten/strided_slice</title>
 <path fill="none" stroke="black" d="M379.369,-361.983C417.326,-350.725 469.269,-335.318 508.515,-323.677"/>
 <polygon fill="black" stroke="black" points="509.611,-327.003 518.203,-320.804 507.621,-320.292 509.611,-327.003"/>
 </g>
 <!-- flatten/strided_slice/stack_2 -->
-<g id="node17" class="node"><title>flatten/strided_slice/stack_2</title>
+<g id="node16" class="node"><title>flatten/strided_slice/stack_2</title>
 <ellipse fill="none" stroke="black" cx="564.741" cy="-378" rx="109.381" ry="18"/>
 <text text-anchor="middle" x="564.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack_2</text>
 </g>
 <!-- flatten/strided_slice/stack_2&#45;&gt;flatten/strided_slice -->
-<g id="edge16" class="edge"><title>flatten/strided_slice/stack_2&#45;&gt;flatten/strided_slice</title>
+<g id="edge15" class="edge"><title>flatten/strided_slice/stack_2&#45;&gt;flatten/strided_slice</title>
 <path fill="none" stroke="black" d="M564.741,-359.697C564.741,-351.983 564.741,-342.712 564.741,-334.112"/>
 <polygon fill="black" stroke="black" points="568.241,-334.104 564.741,-324.104 561.241,-334.104 568.241,-334.104"/>
+</g>
+<!-- conv2d/BiasAdd -->
+<g id="node17" class="node"><title>conv2d/BiasAdd</title>
+<ellipse fill="none" stroke="black" cx="790.741" cy="-594" rx="69.5877" ry="18"/>
+<text text-anchor="middle" x="790.741" y="-590.3" font-family="Times,serif" font-size="14.00">conv2d/BiasAdd</text>
+</g>
+<!-- conv2d/BiasAdd&#45;&gt;conv2d/Relu -->
+<g id="edge16" class="edge"><title>conv2d/BiasAdd&#45;&gt;conv2d/Relu</title>
+<path fill="none" stroke="black" d="M790.741,-575.697C790.741,-567.983 790.741,-558.712 790.741,-550.112"/>
+<polygon fill="black" stroke="black" points="794.241,-550.104 790.741,-540.104 787.241,-550.104 794.241,-550.104"/>
 </g>
 <!-- conv2d/Conv2D -->
 <g id="node18" class="node"><title>conv2d/Conv2D</title>
@@ -13231,35 +13221,35 @@ What is the purpose of the bias?
 <path fill="none" stroke="black" d="M869.741,-719.697C869.741,-711.983 869.741,-702.712 869.741,-694.112"/>
 <polygon fill="black" stroke="black" points="873.241,-694.104 869.741,-684.104 866.241,-694.104 873.241,-694.104"/>
 </g>
-<!-- conv2d/kernel -->
-<g id="node23" class="node"><title>conv2d/kernel</title>
-<ellipse fill="none" stroke="black" cx="718.741" cy="-810" rx="61.1893" ry="18"/>
-<text text-anchor="middle" x="718.741" y="-806.3" font-family="Times,serif" font-size="14.00">conv2d/kernel</text>
-</g>
-<!-- conv2d/kernel&#45;&gt;conv2d/kernel/read -->
-<g id="edge23" class="edge"><title>conv2d/kernel&#45;&gt;conv2d/kernel/read</title>
-<path fill="none" stroke="black" d="M717.999,-791.697C717.669,-783.983 717.272,-774.712 716.903,-766.112"/>
-<polygon fill="black" stroke="black" points="720.399,-765.945 716.474,-756.104 713.406,-766.245 720.399,-765.945"/>
-</g>
 <!-- Placeholder -->
-<g id="node24" class="node"><title>Placeholder</title>
+<g id="node23" class="node"><title>Placeholder</title>
 <ellipse fill="none" stroke="black" cx="443.741" cy="-810" rx="51.9908" ry="18"/>
 <text text-anchor="middle" x="443.741" y="-806.3" font-family="Times,serif" font-size="14.00">Placeholder</text>
 </g>
 <!-- Placeholder&#45;&gt;Reshape -->
-<g id="edge24" class="edge"><title>Placeholder&#45;&gt;Reshape</title>
+<g id="edge23" class="edge"><title>Placeholder&#45;&gt;Reshape</title>
 <path fill="none" stroke="black" d="M470.977,-794.666C491.591,-783.816 520.048,-768.838 542.252,-757.152"/>
 <polygon fill="black" stroke="black" points="544.125,-760.121 551.344,-752.367 540.865,-753.927 544.125,-760.121"/>
 </g>
 <!-- Reshape/shape -->
-<g id="node25" class="node"><title>Reshape/shape</title>
+<g id="node24" class="node"><title>Reshape/shape</title>
 <ellipse fill="none" stroke="black" cx="576.741" cy="-810" rx="63.0888" ry="18"/>
 <text text-anchor="middle" x="576.741" y="-806.3" font-family="Times,serif" font-size="14.00">Reshape/shape</text>
 </g>
 <!-- Reshape/shape&#45;&gt;Reshape -->
-<g id="edge25" class="edge"><title>Reshape/shape&#45;&gt;Reshape</title>
+<g id="edge24" class="edge"><title>Reshape/shape&#45;&gt;Reshape</title>
 <path fill="none" stroke="black" d="M576.741,-791.697C576.741,-783.983 576.741,-774.712 576.741,-766.112"/>
 <polygon fill="black" stroke="black" points="580.241,-766.104 576.741,-756.104 573.241,-766.104 580.241,-766.104"/>
+</g>
+<!-- conv2d/kernel -->
+<g id="node25" class="node"><title>conv2d/kernel</title>
+<ellipse fill="none" stroke="black" cx="718.741" cy="-810" rx="61.1893" ry="18"/>
+<text text-anchor="middle" x="718.741" y="-806.3" font-family="Times,serif" font-size="14.00">conv2d/kernel</text>
+</g>
+<!-- conv2d/kernel&#45;&gt;conv2d/kernel/read -->
+<g id="edge25" class="edge"><title>conv2d/kernel&#45;&gt;conv2d/kernel/read</title>
+<path fill="none" stroke="black" d="M717.999,-791.697C717.669,-783.983 717.272,-774.712 716.903,-766.112"/>
+<polygon fill="black" stroke="black" points="720.399,-765.945 716.474,-756.104 713.406,-766.245 720.399,-765.945"/>
 </g>
 </g>
 </svg>
@@ -13285,7 +13275,7 @@ In contrast to the low-level API, the loss is automatically averaged over the cu
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
@@ -13306,7 +13296,7 @@ In contrast to the low-level API, the loss is automatically averaged over the cu
 Here we define two summary objects:</p>
 <ul>
 <li>a scalar summary (<code>tf.summary.scalar</code>), which records the accuracy during the training</li>
-<li>a histogram summary (<code>tf.summary.scalar</code>), which records the distribution of the maximum probability of each sample (a measure on "how confident" our network is in its decision)</li>
+<li>a histogram summary (<code>tf.summary.histogram</code>), which records the distribution of the maximum probability of each sample (a measure on "how confident" our network is in its decision)</li>
 </ul>
 
 </div>
@@ -13314,7 +13304,7 @@ Here we define two summary objects:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -13335,7 +13325,7 @@ Here we define two summary objects:</p>
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
@@ -13358,7 +13348,7 @@ Here we define two summary objects:</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]}))</span>
@@ -13380,7 +13370,7 @@ Here we define two summary objects:</p>
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Train 0.946
-Test  0.9542
+Test  0.9565
 </pre>
 </div>
 </div>
@@ -13416,128 +13406,39 @@ In addition to the current summaries: visualize the loss function (scalar) and t
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="High-Level-Interface---Estimators">High Level Interface - Estimators<a class="anchor-link" href="#High-Level-Interface---Estimators">&#182;</a></h1>
-<pre><code># The remainder of the function contains standard code to fulfill the estimator interface of tensorflow
-# An estimator provides three basic functions: PREDICT, TRAIN and VALIDATE
-# each of them is defined by a EstimatorSpecs</code></pre>
+<h1 id="High-Level-Interface---Estimators">High Level Interface - Estimators<a class="anchor-link" href="#High-Level-Interface---Estimators">&#182;</a></h1><p>Tensorflow is not as easy to use as:</p>
+
+<pre><code>- sklearn
+- tensorflow
+- ...
+
+</code></pre>
+<p>The High-Level Tensorflow API was recently introduced to simplify using tensorflow.</p>
+<p>It provides an sklearn-like estimator interface, which encapsulates the following actions:</p>
+
+<pre><code>- training
+- evaluation
+- prediction
+- export for serving
+
+</code></pre>
+<p>It tries to hide tensoflow-details:</p>
+
+<pre><code>- no need to open a session
+- no explicit training loop</code></pre>
 
 </div>
 </div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
-    <span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">conv</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
-    <span class="n">pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
-    <span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    
-    <span class="n">predictions</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-        <span class="s2">&quot;probabilities&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;softmax_tensor&quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-    
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">ModeKeys</span><span class="o">.</span><span class="n">PREDICT</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">EstimatorSpec</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
-
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">softmax_cross_entropy</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">ModeKeys</span><span class="o">.</span><span class="n">TRAIN</span><span class="p">:</span>
-        <span class="n">minimize</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">global_step</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">get_global_step</span><span class="p">())</span>
-        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">EstimatorSpec</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span> <span class="n">train_op</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
-
-    <span class="n">eval_metric_ops</span> <span class="o">=</span> <span class="p">{</span>
-          <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">[</span><span class="s2">&quot;classes&quot;</span><span class="p">])</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">EstimatorSpec</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">loss</span><span class="p">,</span> <span class="n">eval_metric_ops</span><span class="o">=</span><span class="n">eval_metric_ops</span><span class="p">)</span>
-
-<span class="n">classifier</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">Estimator</span><span class="p">(</span>
-    <span class="n">model_fn</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-    <span class="n">model_dir</span><span class="o">=</span><span class="s1">&#39;/tmp/mymodel&#39;</span><span class="p">,</span>
-    <span class="n">config</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">RunConfig</span><span class="p">(</span><span class="n">session_config</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">ConfigProto</span><span class="p">()),</span>
-<span class="p">);</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Estimator-Interface-vs.-Keras">Estimator-Interface vs. Keras<a class="anchor-link" href="#Estimator-Interface-vs.-Keras">&#182;</a></h2><p>Clearly the estimator interface is aimed to be an alternative to Keras, which is the high-level interface most people is.</p>
+<p><strong>Personal Opinion</strong> The estimator interface is still very confusing, hence we will look into <strong>Keras</strong> for the second part of this workshop!</p>
 
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Using config: {&#39;_save_checkpoints_steps&#39;: None, &#39;_num_ps_replicas&#39;: 0, &#39;_service&#39;: None, &#39;_log_step_count_steps&#39;: 100, &#39;_tf_random_seed&#39;: None, &#39;_save_summary_steps&#39;: 100, &#39;_task_type&#39;: &#39;worker&#39;, &#39;_session_config&#39;: , &#39;_num_worker_replicas&#39;: 1, &#39;_task_id&#39;: 0, &#39;_keep_checkpoint_every_n_hours&#39;: 10000, &#39;_is_chief&#39;: True, &#39;_keep_checkpoint_max&#39;: 5, &#39;_save_checkpoints_secs&#39;: 600, &#39;_model_dir&#39;: &#39;/tmp/mymodel&#39;, &#39;_master&#39;: &#39;&#39;, &#39;_cluster_spec&#39;: &lt;tensorflow.python.training.server_lib.ClusterSpec object at 0x7f7d50db4c88&gt;}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[54]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">numpy_input_fn</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">numpy_input_fn</span>
-<span class="n">classifier</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">input_fn</span><span class="o">=</span><span class="n">numpy_input_fn</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">},</span>
-                                         <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
-                                         <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,),</span>
-                 <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">input_fn</span><span class="o">=</span><span class="n">numpy_input_fn</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">},</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Results out-of-sample&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>INFO:tensorflow:Create CheckpointSaverHook.
-INFO:tensorflow:Restoring parameters from /tmp/mymodel/model.ckpt-100
-INFO:tensorflow:Saving checkpoints for 101 into /tmp/mymodel/model.ckpt.
-INFO:tensorflow:loss = 0.16103384, step = 101
-INFO:tensorflow:Saving checkpoints for 200 into /tmp/mymodel/model.ckpt.
-INFO:tensorflow:Loss for final step: 0.21145731.
-INFO:tensorflow:Starting evaluation at 2018-03-19-04:24:39
-INFO:tensorflow:Restoring parameters from /tmp/mymodel/model.ckpt-200
-INFO:tensorflow:Finished evaluation at 2018-03-19-04:24:45
-INFO:tensorflow:Saving dict for global step 200: accuracy = 0.9608, global_step = 200, loss = 0.13088484
-------------------------------
-Results out-of-sample
-accuracy: 0.9608
-global_step: 200
-loss: 0.13088484
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div></section></section>
 </div>
 </div>
@@ -13563,7 +13464,7 @@ require(
             progress: true,
             history: true,
 
-            transition: "cube",
+            transition: "slide",
 
             // Optional libraries used to extend on reveal.js
             dependencies: [
