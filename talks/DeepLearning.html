@@ -752,14 +752,199 @@
         <section style="height: 100%">
 				<section>
           <h2><div style='color: #9090f0'>Adversarials</div> & <div style='color: #f05050'>???</div></h2>
-          Adversarials after Goodfellow
-          Learning To Attack
+				</section>
+          
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Adversarials in Image Segmentation</div></h3>
+         <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 35vmin">
+            <img src="images/adversarial_segmentation_1.png">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 35vmin">
+            <img src="images/adversarial_segmentation_2.png">
+          </div>
+          </div>
+          <br>
+          <div style="display: flex; width: 100%;">
+          <div class="fragment" style="float: left; width: 50%; height: 35vmin">
+            <img src="images/adversarial_segmentation_3.png">
+          </div>
+          <div class="fragment" style="float: right; width: 50%; height: 35vmin">
+            <img src="images/adversarial_segmentation_4.png">
+          </div>
+          </div>
+            <a href="https://arxiv.org/abs/1704.05712">J. H. Metzen, et. al. (07/2017)</a>
+          
+          <div class="fragment">
+            <b>Adding <div style='color: #50f050; display: inline'>correlated noise</div> can change the output in an arbitrary way!!</b>
+          </div>
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Properties of Adversarials</div></h3>
+
+          <div style="height: 10vmin"></div>
+          <ul>
+            <li>Dense $\rightarrow$ easy to find</li>
+            <li>Artificial $\rightarrow$ do not appear naturally</li>
+            <li>Transferable $\rightarrow$ high probability to fool different networks</li>
+            <li>No effective defend-mechanism known</li>
+          </ul>
+
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Goodfellow's Linearity Hypothesis</div></h3>
+
+          <div style="height: 5vmin"></div>
+          Neural Networks are too linear<br>
+          <a href="https://arxiv.org/abs/1412.6572">I. J. Goodfellow, et. al. (03/2015)</a>
+          <div style="height: 5vmin"></div>
+
+          <div class="fragment">
+          Wiggle on one pixel of an image $\rightarrow$ taylor expansion of network:
+          <br>
+          $$ f(\vec{x} + \epsilon \vec{n})  \approx f(\vec{x}) + \epsilon \frac{\partial \mathcal{f}}{\partial \vec{n}}$$
+          </div>
+          <div style="height: 5vmin"></div>
+          
+          <div class="fragment">
+          Wiggle on $N$ pixels of an image in a correlated way $\rightarrow$ taylor expansion of network:
+          <br>
+          $$ f(\vec{x} + \sum_i \epsilon \vec{n}_i)  \approx f(\vec{x}) + \epsilon \sum_i \frac{\partial \mathcal{f}}{\partial \vec{n}_i} \approx  f(\vec{x}) + N\ \epsilon\ \bar{\partial f}$$
+          </div>
+          <div style="height: 5vmin"></div>
+
+          <div class="fragment">
+            <b>Even if $\epsilon$ is small e.g. 1px, we can change the outcome by $N \cdot \epsilon$ if we coordinate our wiggeling!</b>
+          </div>
+
+
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Off-Manifold Hypothesis</div></h3>
+
+          <div style="height: 5vmin"></div>
+            Adversarials are off-manifold.<br>
+            <a href="https://arxiv.org/abs/1608.07690">T. Tanay, L. Griffin. (08/2016)</a>
+          <div style="height: 5vmin"></div>
+
+          <div class="fragment">
+          <div style="color: #50f050; display: inline">Number of artificial 800x600 images</div>: $N_A = 255^{800 \times 600}$<br>
+          <div style="color: #50f050; display: inline">Number of natural 800x600 images</div>: $N_N \ll N_A$
+          </div>
+
+          <div style="height: 5vmin"></div>
+          <div class="fragment">
+            Off-manifold one can easily cross a mis-aligned class-boundary
+            <div style="width: 100%; height: 40vmin">
+              <img src="images/off_manifold.png">
+              <br>
+              <a href="https://arxiv.org/abs/1608.07690">T. Tanay, L. Griffin. (08/2016)</a>
+            </div>
+          </div>
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Learning To Attack</div></h3>
+          <div style="height: 5vmin"></div>
+          Use neural network to generate adversarials!
+          <br>
+          <ul>
+            <li>Can be targeted to achieve desired mis-classification</li>
+            <li>Less <i>salt and pepper</i> noise</li>
+            <li>Interpretable changes to the image</li>
+            <li>Not transferable</li>
+          </ul>
+
+          <div style="display: flex; width: 100%;">
+            <div class="fragment" style="float: right; width: 10%; height: 40vmin"></div>
+          <div style="float: right; width: 40%; height: 40vmin">
+            <img src="images/dog_vulcano.png">
+          </div>
+          <div class="fragment" style="float: left; width: 40%; height: 40vmin">
+            <img src="images/plane_zebra.png">
+          </div>
+            <div style="float: right; width: 10%; height: 40vmin"></div>
+          </div>
+          <div style="height: 1vmin"></div>
+          <a href="https://arxiv.org/abs/1703.09387">S. Baluya, I. Fischer (03/2017)</a>
+
+				</section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Adversarials for Humans and Computers</div></h3>
+          <div style="height: 5vmin"></div>
+          <div style="display: flex; width: 100%;">
+            <div style="float: right; width: 10%; height: 40vmin"></div>
+          <div class="fragment" style="float: left; width: 40%; height: 60vmin">
+            <img src="images/human_adversarial1.png">
+          </div>
+          <div class="fragment" style="float: right; width: 40%; height: 60vmin">
+            <img src="images/human_adversarial2.png">
+          </div>
+            <div style="float: right; width: 10%; height: 40vmin"></div>
+          </div>
+          <div style="height: 1vmin"></div>
+          <a href="https://arxiv.org/abs/1802.08195">G. F. Elsayad, et. al. (02/2018)</a>
+
+				</section>
+          
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Example: Adversarials in the physical world </div></h3>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.youtube.com/embed/zQ_uMenoBCk" frameborder="0"> </iframe>
+          <a href="https://arxiv.org/abs/1607.02533">A. Kurakin, et. al. (02/2017)</a>
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Solution: ???</div></h3>
+
+          <div style="height: 5vmin"></div>
+          Proposed solutions:
+          <br>
+          <ul>
+            <li>Augment training dataset with adversarials</li>
+            <li>Detect adversarials</li>
+            <li>Better regularisation</li>
+            <li>...</li>
+          </ul>
+
+
+          <div style="height: 10vmin"></div>
+
+          <div class="fragment" style="color: #50f050">
+            Not completely understood and certainly not solved $\rightarrow$ very hot research topic!
+          </div>
 				</section>
 				</section>
 
 				<section style="height: 100%">
 				<section>
           <h2><div style='color: #9090f0'>Outlook</div> & <div style='color: #f05050'>References</div></h2>
+				</section>
+				<section>
+          <h3><div style='color: #9090f0'>Outlook</div></h3>
+
+          <div style='height: 4vh'></div>
+          There will be workshop on <div style='color: #50f050; display: inline'>Tensorflow</div> in the afternoon
+				</section>
+				<section data-markdown>
+          <h3><div style='color: #f05050'>References</div></h3>
+
+            <textarea data-template>
+                An (incomplete) list of interesting books:
+
+                  - Christopher M. Bishop. Pattern Recognition and Machine Learning
+                  - Trevor Hastie, Robert Tibshirani, and Jerome Friedman. The Elements of Statistical Learning.
+                  - J. Han, M. Kamber, J. Pei. Data Mining: Concepts and Techniques 
+                  - O. Behnke, K. Kröninger, G. Scott, T. Schörner-Sadenius. Data Analysis in High Energy Physics: A Practical Guide to Statistical Methods
+                  - [I. Goodfellow, Y. Bengio, A. Courville. Deep Learning (Adaptive Computation and Machine Learning)](http://www.deeplearningbook.org/)
+                  - [R. S. Sutton, and A. G. Barto. Reinforcement Learning: An Introduction](http://incompleteideas.net/book/the-book-2nd.html)
+
+
+                You can find a list of research publications I enjoyed reading [here](https://thomaskeck.github.io/articles/)
+            </textarea>
 				</section>
         </section>
 			</div>
