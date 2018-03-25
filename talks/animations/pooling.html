@@ -96,32 +96,32 @@ function create_grid(color, data, classname, offset, text) {
 	return column
 }
             
-var weights = [0.6, 0.4, 0.7, 0.5, 0.8, 0.5, 0.35, 0.4, 0.65]
+var weights = [0.6, 0.6, 0.6, 0.6]
 
-var map = create_grid("#fff", gridData(8, () =>{ return Math.random(); }), "map", [50, 600], true).style("opacity", 0.5)
+var map = create_grid("#fff", gridData(4, () =>{ return Math.random(); }), "map", [150, 600], true).style("opacity", 0.5)
 d3.selectAll(".textmap").style("opacity", 0.0)
 d3.selectAll(".map").style("opacity", 0.0)
-var channel = create_grid("#fff", gridData(10, () => { return Math.random()}), "channel", [0, 0], true)
-var kernel = create_grid("#ff0000", gridData(3, (i,j) => { return weights[i*3+j] }), "filter", [0,0], false)
+var channel = create_grid("#fff", gridData(8, () => { return Math.random()}), "channel", [50, 50], true)
+var kernel = create_grid("#ff0000", gridData(2, (i,j) => { return weights[i*2+j] }), "filter", [50,50], false)
 
 
 var _transitions = [
 	
 	() => {
-    var dim = 8
+    var dim = 4
     var speed = 500
-    var offset = [0,0]
+    var offset = [50,50]
     for (var row = 0; row < dim; row++) {
         for (var column = 0; column < dim; column++) {
           kernel.transition().delay(row*dim*speed + column*speed).duration(speed)
                 .attr('x', function(d) { return d.x + offset[0]; })
                 .attr('y', function(d) { return d.y + offset[1]; })
-          offset[0] += 50;
+          offset[0] += 100;
           map.transition().delay(row*dim*speed + column*speed).duration(speed).style("opacity", function(d) { if(d.row < row || d.row == row && d.column <= column) return d.weight; else return 0.0; })
           d3.selectAll(".textmap").transition().delay(row*dim*speed + column*speed).duration(speed).style("opacity", function(d) { if(d.row < row || d.row == row && d.column <= column) return d.weight; else return 0.0; })
         }
-        offset[0] = 0;
-        offset[1] += 50;
+        offset[0] = 50;
+        offset[1] += 100;
     }
 			
 	},
@@ -131,8 +131,8 @@ var _inverse_transitions = [
 
 	() => {
     kernel.transition().duration(500)
-            .attr('x', function(d) { return d.x; })
-            .attr('y', function(d) { return d.y; })
+            .attr('x', function(d) { return d.x + 50; })
+            .attr('y', function(d) { return d.y + 50; })
     d3.selectAll(".textmap").transition().duration(500).style("opacity", 0.0)
     d3.selectAll(".map").transition().duration(500).style("opacity", 0.0)
 	},

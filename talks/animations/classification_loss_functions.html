@@ -35,47 +35,15 @@ svg.append("g").attr("id", "func")
 
 var data = d3.range(20).map(function(d) { return d; })
 var cross_line_bkg = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(1-d/20)) }).curve(d3.curveCardinal)
-var cross_path_bkg = svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var cross_path_bkg = svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
 var data = d3.range(1,21).map(function(d) { return d; })
 var cross_line_sig = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(d/20)) }).curve(d3.curveCardinal)
-var cross_path_sig = svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
-
-function show_path(path) {
-    
-  var totalLength = path.node().getTotalLength();
-  path.attr("stroke-dasharray", totalLength + " " + totalLength)
-      .attr("stroke-dashoffset", totalLength)
-      .style("opacity", 1.0)
-      .transition()
-      .duration(2000)
-      .ease(d3.easeLinear)
-      .attr("stroke-dashoffset", 0)
-
-}
-
-function hide_path(path) {
-
-    var totalLength = path.node().getTotalLength();
-    path.attr("stroke-dasharray", totalLength + " " + totalLength)
-        .attr("stroke-dashoffset", 0)
-        .style("opacity", 1.0)
-        .transition()
-        .duration(2000)
-        .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", totalLength)
-        .transition()
-        .style("opacity", 0)
-
-}
+var cross_path_sig = svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
 
 var _transitions = [
-  
-  () => { show_path(cross_path_sig); show_path(cross_path_bkg); },
 ]
 
 var _inverse_transitions = [
-
-  () => { hide_path(cross_path_sig); hide_path(cross_path_bkg); },
 ]
   
 svg.append("g")

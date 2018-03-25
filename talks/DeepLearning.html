@@ -7,7 +7,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-		<title>Machine Learning at Belle II</title>
+		<title>An overview of Deep Learning</title>
 
 		<meta name="description" content="An overview of Deep Learning">
 		<meta name="author" content="Thomas Keck">
@@ -48,14 +48,26 @@
         </section>
         
         <section style="height: 100%">
-          <h3>Automatic Translation</h3>
-          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.deepl.com/translator" frameborder="0"> </iframe>
+          <h3>Reinforcement Learning</h3>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.youtube.com/embed/hx_bgoTF7bs" frameborder="0"> </iframe>
+          <br>
+          <a href="https://arxiv.org/abs/1707.02286">N. Heess, et. al. (07/2017)</a>
         </section>
         
         <section style="height: 100%">
-          <h3>Playing Go</h3>
-          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.youtube.com/embed/vFr3K2DORc8" frameborder="0"> </iframe>
+          <h3>Speech Recognition & Speech Synthesis</h3>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.youtube.com/embed/vmINGWsyWX0" frameborder="0"> </iframe>
         </section>
+        
+        <section style="height: 100%">
+          <h3>Learn More</h3>
+
+          <ul>
+            <li><a href="https://deepmind.com/blog/alphago-zero-learning-scratch/">Playing Go</a></li>
+            <li><a href="https://deepmind.com/blog/wavenet-generative-model-raw-audio/">Speech Synthethis</a></li>
+          </ul>
+        </section>
+        
 				
         <section style="height: 100%">
           <h2>Reminder: Artificial Neural Networks</h2>
@@ -98,35 +110,6 @@
             </ul>
           </ul>
         </section>
-        
-				
-        <section  style="height: 100%">
-          <h3><div style='color: #f05050'>Reminder</div></h3>
-  
-          <div style='height: 5vh'></div>
-          <div style='color: #50f050'>
-          Universal Function Approximator
-          </div>
-            $$f(\vec{x}) = \sigma_{o} \left(\sum_{h_n}^{H_n} w_{oh_n} \dots \sigma_{h_1} \left( \sum_i^I w_{h_1i} x_i \right) \right)$$
-          <div style='height: 3vh'></div>
-          <b>→ can approximate any reasonable function $f: \mathrm{R}^\mathrm{I} \rightarrow \mathrm{R}^\mathrm{O}$</b>
-          <br>
-          <ul>
-            <li>number of inputs $I$</li>
-            <li>number of layers $n$</li>
-            <li>number of neurons in layer $H_i$</li>
-            <li>number of outputs $O$</li>
-          </ul>
-          
-          <div style='height: 5vh'></div>
-          <div style='color: #50f050'>
-          Stochastic Gradient Descent
-          </div>
-          $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
-          <div style='height: 3vh'></div>
-          <b>→ adjust weights iteratively until convergence</b>
-				</section>
-        
         
         </section>
         
@@ -270,12 +253,12 @@
         <section style="height: 100%">
           <h3><div style='color: #9090f0'>Residual Network</div></h3>
           
-          <div>Idea: Split <div style="color: #f05050; display: inline">layer</div> into <div style="color: #30a030; display: inline">identity</div> and <div style="color: #5050f0; display: inline">residual</div></div>
-          $$ H(y_i) = F(y_i) + y_i $$
-
+          <div>Idea: Split layer into <div style="color: #50f050; display: inline">identity</div> and <div style="color: #9090f0; display: inline">residual</div></div><br>
+          $ H(y_i) = $  <div style="color: #9090f0; display: inline">$ F(y_i) $</div> $+$ <div style="color: #50f050; display: inline">$ y_i $</div>
+          <br>
           <div class="fig-container"
                data-fig-id="neural_network"
-               data-file="animations/residual.html" style="position: absolute; left: 20%; top: 25%; width: 60%; height: 60%"></div>
+               data-file="animations/residual.html" style="position: absolute; left: 20%; top: 30%; width: 60%; height: 60%"></div>
 
           <a href="https://arxiv.org/abs/1512.03385">K. He, et. al. (12/2015)</a>
         </section>
@@ -338,6 +321,15 @@
           </div>
         </section>
         
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Pixel Representation</div></h3>
+              
+          <div class="fig-container"
+                   data-fig-id="convolution"
+                   data-file="animations/pixel_representation.html" style="width: 100%; height: 100%"></div>
+        </section>
+        
         <section style="height: 100%">
           <h3><div style='color: #f05050'>Invariance under Transformations</div></h3>
 
@@ -352,7 +344,7 @@
 						<li class="fragment">Extract hand-crafted features that are invariant</li>
 						<li class="fragment">Use transformed copies during the training phase</li>
 						<li class="fragment">Penalize change in the output under input transformation → Tangent propagation</li>
-						<li class="fragment">Build invariance properties into structure of neural network → Convolution</li>
+            <li class="fragment">Build invariance properties into structure of neural network → <div style="color: #50f050; display: inline">Convolution</div></li>
 					</ul>
 					
 					<div style="height: 3vmin"></div>
@@ -375,30 +367,29 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Pixel Representation</div></h3>
-              
-          <div class="fig-container"
-                   data-fig-id="convolution"
-                   data-file="animations/pixel_representation.html" style="width: 100%; height: 100%"></div>
-        </section>
-        
-        <section style="height: 100%">
           <h3><div style='color: #9090f0'>Convolution</div></h3>
               
 					<div style="display: flex; width: 100%;">
-          <div style="float: left; width: 50%; height: 25vmin">
+          <div style="float: left; width: 45%; height: 80vmin">
           <div class="fig-container"
                    data-fig-id="convolution"
                    data-file="animations/convolution.html" style="width: 80%; height: 100%"></div>
           </div> 
-          <div style="float: left; width: 50%; height: 25vmin; text-align: left">
+          <div style="float: left; width: 55%; height: 25vmin; text-align: left">
+          <div style="height: 5vmin"></div>
+
+          $M(x,y) = \sum_c \sum_{ij} $ <div style="color: #f05050; display: inline"> $ K_c(i,j) $ </div> $ P_c(x+i, y+j) $
+          <div style="height: 2vmin"></div>
+
           <div style="color: #50f050">Description</div>
 					<ul>
 						<li>Learnable filters (e.g. edge detector) organized in feature maps</li>
 						<li>Each filter scans the image and detects a specific pattern</li>
+						<li>Convolution refers to the spatial dimensions</li>
+						<li>Input and outputs channels are still fully connected</li>
 					</ul>
 
-          <div style="height: 10vmin"></div>
+          <div style="height: 2vmin"></div>
 
           <div style="color: #50f050">Hyper-Parameters</div>
 					<ul>
@@ -416,17 +407,111 @@
         <section style="height: 100%">
           <h3><div style='color: #9090f0'>Pooling</div></h3>
 
+					<div style="display: flex; width: 100%;">
+          <div style="float: left; width: 45%; height: 80vmin">
+          <div class="fig-container"
+                   data-fig-id="convolution"
+                   data-file="animations/pooling.html" style="width: 80%; height: 100%"></div>
+          </div> 
+          <div style="float: left; width: 55%; height: 25vmin; text-align: left">
+          <div style="height: 5vmin"></div>
+
+          $M(x,y) = $ <div style="color: #f05050; display: inline"> $ \max_{ij} $ </div> $ P(x+i, y+j) $
+          <div style="height: 5vmin"></div>
+
+          <div style="color: #50f050">Description</div>
 					<ul>
 						<li>Takes inputs from small region in the feature maps</li>
 						<li>Reduces resolution and computation in following layers</li>
 						<li>Increases insensitivity against small shifts</li>
 					</ul>
+
+
+          <div style="height: 5vmin"></div>
+
+          <div style="color: #50f050">Hyper-Parameters</div>
+					<ul>
+            <li>depth – number of filters (also known as kernels)</li>
+            <li>size – dimension of the filter e.g. 2 × 2 or 2 × 2 × 4</li>
+            <li>stride – step size while sliding the filter through the input</li>
+            <li>padding – behavior of the pooling near the borders</li>
+          </ul>
+          </div>
+          </div>
     
         </section>
         
         <section style="height: 100%">
           <h3><div style='color: #9090f0'>Inception</div></h3>
+          
+          <div style="height: 5vmin"></div>
+          <div style='color: #f05050'>Convoluted channels are still fully connected</div>
+          <ul>
+            <li>For instance: Kernel size 3x3 with 100 input and 200 output channels</li>
+            <li>Many parameters (3x3x100x200)</li>
+            <li>High computational effort</li>
+          </ul>
+            <br>$\rightarrow$ Most connections will be useless, can we do this in a sparse way?</br>
+          <div style="height: 5vmin"></div>
+					
+          <div class="fragment" style="display: flex; width: 100%;">
+          <div style="float: left; width: 45%; height: 40vmin">
+         
+            Inception-v4 ResNet-v2 Module A
+            <br>
+            <img data-src="images/Inception_v4__module_a.png">
+
+          </div> 
+          <div style="float: left; width: 55%; height: 40vmin; text-align: left">
+
+          <div style="height: 10vmin"></div>
+
+          <div style="color: #50f050">Inception</div>
+					<ul>
+            <li>Use small kernels in parallel (3x3, 7x1, 1x7)</li>
+            <li>Bottleneck Architecture</li>
+            <ul>
+						  <li>Reduce number of channels before convolution (1x1 conv)</li>
+						  <li>Restore number of channels after convolution (1x1 conv)</li>
+					</ul>
+
+          </div>
+          </div>
               
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Global Average Pooling</div></h3>
+          
+          <div style="height: 5vmin"></div>
+					<div style="display: flex; width: 100%;">
+          <div style="float: left; width: 30%; height: 80vmin">
+            <img data-src="images/inception_global.png">
+          </div> 
+          <div style="float: left; width: 70%; height: 80vmin; text-align: left">
+          <div style="height: 5vmin"></div>
+          <div style='color: #f05050'>Fully connected layers at the end are fully connected</div>
+          <ul>
+            <li>For instance: 1792 Channels with a resolution of 8x8</li>
+            <li>Many parameters (8x8x1792)</li>
+            <li>High computational effort</li>
+          </ul>
+          <br>
+          $\rightarrow$ Most connections will be useless, can we do this in a sparse way?
+          <br>
+          <div style="height: 5vmin"></div>
+
+          <div class="fragment">
+          <div style="color: #50f050">Global Average Pooling</div>
+					<ul>
+						<li>Position should be not important in the end</li>
+						<li>Take the average activation over the entire image</li>
+						<li>Reduces computation in following fully-connected layers</li>
+					</ul>
+          </div>
+          </div>
+          </div>
+    
         </section>
         
         <section style="height: 100%">
@@ -440,6 +525,16 @@
               <div class="fig-container"
                    data-fig-id="neural_network"
                    data-file="animations/dropout.html" style="position: absolute; top: 30%; left: 15%; width: 70%; height: 70%"></div>
+        </section>
+        
+        <section style="height: 100%">
+          <h3><div style='color: #9090f0'>Summary: Inception-ResNet-V2</div></h3>
+              
+          <div style="width: 100%; height: 80vmin">
+            <img src="images/inception_resnet.jpeg">
+            <br>
+            <a href="https://arxiv.org/abs/1602.07261">C. Szegedy, et. al. (08/2016)</a>
+          </div>
         </section>
 				
 				</section>

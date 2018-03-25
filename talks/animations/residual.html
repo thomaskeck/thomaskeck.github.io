@@ -70,7 +70,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-          .attr('fill', '#f05050')
+          .attr('fill', '#9090f0')
           .style('stroke','none');
 
 svg.append('defs')
@@ -104,54 +104,59 @@ svg.append('defs')
           .style('stroke','none');
 
 
-function create_layer(pos, output_label, w_label) {
-  var classname = "layer_" + w_label
-  svg.select("#outer_layers")
-     .append("rect")
-     .attr("class", classname)
-     .style('fill', '#9090f0')
-     .style("opacity", 1.0)
-     .attr('x', pos)
-     .attr('y', 70)
-     .attr('width', "50")
-     .attr('height', "250")
+layer_positions = [100, 220, 340, 460, 580, 700, 820]
 
-  svg.select("#inner_layers")
+function create_layer(index) {
+
+  var classname = "layer_" + index
+  var pos = layer_positions[index]
+  svg.select("#outer_layers")
      .append("rect")
      .attr("class", classname)
      .style('fill', '#3030a0')
      .style("opacity", 1.0)
-     .attr('x', (pos+5))
-     .attr('y', 75)
-     .attr('width', "40")
-     .attr('height', "240")
+     .attr('x', pos)
+     .attr('y', 70)
+     .attr('width', "50")
+     .style("opacity", 0.0)
+     .attr('height', "250")
 
-   for(var i = 0; i < 6; ++i) {
-   svg.select("#other").append("circle")
-    .attr("class", "points " + classname)
-    .attr("r", 15)
-    .style("opacity", 1.0)
-    .attr("transform", "translate(" + (pos+25) + "," + (95 + 40*i) + ")")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
-    .style("stroke-width", "1vmin")
-   }
 
   svg.select("#text").append("text")
-     .attr("class", "text " + classname)
+     .attr("class", "text text_" + classname)
      .style("opacity", 1.0)
      .style("font-size", "8vmin")
      .attr("transform", "translate(" + (pos+25) + " ," + (50) + ")")
      .style("text-anchor", "middle")
-     .text(w_label); 
+     .style("opacity", 0.0)
+     .text("H(y" + (index+1) + ")"); 
   
   svg.select("#text").append("text")
-     .attr("class", "text " + classname)
+     .attr("class", "text text2_" + classname)
+     .style("opacity", 1.0)
+     .style("font-size", "8vmin")
+     .attr("transform", "translate(" + (pos+25) + " ," + (50) + ")")
+     .style("text-anchor", "middle")
+     .style("opacity", 0.0)
+     .text("F(y" + (index+1) + ")"); 
+  
+  svg.select("#text").append("text")
+     .attr("class", "text text_" + classname)
      .style("opacity", 1.0)
      .style("font-size", "8vmin")
      .attr("transform", "translate(" + (pos+80) + " ," + (170) + ")")
      .style("text-anchor", "middle")
-     .text(output_label); 
+     .style("opacity", 0.0)
+     .text("y" + (index+1)); 
+  
+  svg.select("#text").append("text")
+     .attr("class", "text text2_" + classname)
+     .style("opacity", 1.0)
+     .style("font-size", "8vmin")
+     .attr("transform", "translate(" + (pos+80) + " ," + (170) + ")")
+     .style("text-anchor", "middle")
+     .style("opacity", 0.0)
+     .text("y" + (index+1)); 
   
   svg.select("#arrows").append("line")
      .attr("id", "arrow_" + classname)
@@ -161,44 +166,65 @@ function create_layer(pos, output_label, w_label) {
      .attr("x2", pos+110)
      .attr("y2", 220)
      .style("stroke-width", "3vmin")
-     .style("opacity", 1.0)
-     .style("stroke", "#f05050")
+     .style("opacity", 0.0)
+     .style("stroke", "#9090f0")
 
   var data = [ 0.        ,  0.16534698,  0.33069396,  0.49604095,  0.66138793, 0.82673491,  0.99208189,  1.15742887,  1.32277585,  1.48812284,  1.65346982,  1.8188168 ,  1.98416378,  2.14951076,  2.31485774, 2.48020473,  2.64555171,  2.81089869,  2.97624567,  3.14159265]
   var line = d3.line().x(function(d) { return (pos+25) - 55*Math.cos(d); }).y(function(d) { return 225 + 150*Math.sin(d); }).curve(d3.curveCardinal)
 
-  var plain_path = svg.append('path').attr('id', 'resline' + w_label).attr('d', line(data)).attr('stroke', '#30a030').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0.0)
+  var plain_path = svg.append('path').attr('id', 'resline' + classname).attr('d', line(data)).attr('stroke', '#30a030').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0.0)
   var totalLength = plain_path.node().getTotalLength();
 
   plain_path.attr("stroke-dasharray", totalLength + " " + totalLength)
             .attr("stroke-dashoffset", totalLength)
 }
 
-function show_arrow(label) {
+function show_layers() {
   
-  pos = d3.select("#arrow_layer_"+ label).attr('x1')
-  d3.select("#arrow_layer_"+ label).attr('x2', pos)
-  d3.select("#arrow_layer_"+ label).transition().duration(500).style("opacity", 1).transition().duration(1000).ease(d3.easeLinear).attr('x2', parseInt(pos)+80)
+  speed = 500
+  for(var index = 0; index < layer_positions.length; ++index) { 
+    var classname = "layer_" + index
+    var pos = layer_positions[index]
+    var delay = speed*index
+
+    d3.select("#arrow_"+ classname).transition().delay(delay+speed).duration(speed/2).style("opacity", 1)
+    d3.selectAll("."+classname).attr('x', 1000)
+    d3.selectAll(".text_"+ classname).transition().delay(delay+speed).duration(speed/2).style("opacity", 1)
+    d3.selectAll("."+classname).transition().delay(delay).duration(speed).style("opacity", 1).attr('x', pos)
+  }
 
 }
 
-function hide_arrow(label) {
+function show_residual_layers() {
   
-  d3.select("#arrow_layer_"+ label).transition().duration(500).style("opacity", 0)
+  speed = 500
+  for(var index = 0; index < layer_positions.length; ++index) { 
+    var classname = "layer_" + index
+    var pos = layer_positions[index]
+    var delay = speed*index
+
+    d3.select("#arrow_"+ classname).transition().delay(delay+speed).duration(speed/2).style("opacity", 1)
+    d3.selectAll(".text2_"+ classname).transition().delay(delay+speed).duration(speed/2).style("opacity", 1)
+    d3.selectAll("."+classname).attr('x', 1000)
+    d3.selectAll("."+classname).transition().delay(delay).duration(speed).style("opacity", 1).attr('x', pos)
+    var totalLength = d3.select("#resline" + classname).node().getTotalLength()
+    d3.select("#resline" + classname).attr("stroke-dashoffset", totalLength)
+    d3.select("#resline" + classname).transition().delay(delay+speed).duration(speed).style("opacity", 1).attr("stroke-dashoffset", 0)
+  }
 
 }
 
-function show_layer(label) {
+function hide_layers() {
   
-  show_arrow(label)
-  d3.selectAll(".layer_"+ label).transition().duration(1000).style("opacity", 1)
-
-}
-
-function hide_layer(label) {
-  
-  d3.selectAll(".layer_"+ label).transition().duration(500).style("opacity", 0)
-  hide_arrow(label)
+  for(var index = 0; index < layer_positions.length; ++index) { 
+    var classname = "layer_" + index
+    var pos = layer_positions[index]
+    d3.select("#arrow_"+ classname).transition().duration(500).style("opacity", 0)
+    d3.selectAll(".text_"+ classname).transition().duration(500).style("opacity", 0)
+    d3.selectAll(".text2_"+ classname).transition().duration(500).style("opacity", 0)
+    d3.selectAll("." + classname).transition().duration(500).style("opacity", 0)
+    d3.select("#resline" + classname).transition().duration(500).style("opacity", 0)
+  }
 }
   
 var itext = svg.select("#text").append("text")
@@ -218,25 +244,18 @@ var arrow = svg.select("#arrows").append("line")
                .attr("y2", 220)
                .style("stroke-width", "3vmin")
                .style("opacity", "1")
-               .style("stroke", "#f05050")
+               .style("stroke", "#9090f0")
 
-create_layer(100, 'y1', 'w1')
-create_layer(220, 'y2', 'w2')
-create_layer(340, 'y3', 'w3')
-create_layer(460, 'y4', 'w4')
-create_layer(580, 'y5', 'w5')
-create_layer(700, 'y6', 'w6')
-create_layer(820, 'y7', 'w7')
+
+
+create_layer(0)
+create_layer(1)
+create_layer(2)
+create_layer(3)
+create_layer(4)
+create_layer(5)
+create_layer(6)
   
-d3.select("#arrow_layer_w5").style("opacity", 0)
-d3.selectAll(".layer_w5").style("opacity", 0)
-
-d3.select("#arrow_layer_w6").style("opacity", 0)
-d3.selectAll(".layer_w6").style("opacity", 0)
-
-d3.select("#arrow_layer_w7").style("opacity", 0)
-d3.selectAll(".layer_w7").style("opacity", 0)
-
 // set the ranges
 var dx = d3.scaleLinear().range([width/10, width]);
 var dy = d3.scaleLinear().range([height, 0]);
@@ -283,145 +302,62 @@ var line = d3.line().x(function(d, i) { return dx(5*i+1); }).y(function(d) { ret
 var plain_data = [0.25, 0.21, 0.17, 0.13, 0.15, 0.17, 0.19]
 var res_data = [0.25, 0.22, 0.17, 0.13, 0.11, 0.09, 0.07]
 
-var plain_path = dsvg.append('path').attr('d', line(plain_data)).attr('stroke', '#f05050').attr('stroke-width', "0.8vmin").attr('fill', 'none')
-var res_path = dsvg.append('path').attr('d', line(res_data)).attr('stroke', '#9090f0').attr('stroke-width', "0.8vmin").attr('fill', 'none')
+var plain_path = dsvg.append('path').attr('d', line(plain_data)).attr('stroke', '#f05050').attr('stroke-width', "1.2vmin").attr('fill', 'none')
+var res_path = dsvg.append('path').attr('d', line(res_data)).attr('stroke', '#9090f0').attr('stroke-width', "1.2vmin").attr('fill', 'none')
 
 var totalLength = plain_path.node().getTotalLength();
 
 plain_path.attr("stroke-dasharray", totalLength + " " + totalLength)
-          .attr("stroke-dashoffset", totalLength*0.6)
+          .attr("stroke-dashoffset", totalLength)
 res_path.attr("stroke-dasharray", totalLength + " " + totalLength)
           .attr("stroke-dashoffset", totalLength)
 
 var _transitions = [
   () => {
-    show_layer("w5");
+    show_layers();
+    plain_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+              .attr("stroke-dashoffset", totalLength)
     plain_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.4)
-  },
-  () => {
-    show_layer("w6");
-    plain_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.2)
-  },
-  () => {
-    show_layer("w7");
-    plain_path.transition()
-              .duration(1500)
+              .duration(7*500)
               .ease(d3.easeLinear)
               .attr("stroke-dashoffset", 0.0)
   },
   
   () => {
-    hide_layer("w5");
-    hide_layer("w6");
-    hide_layer("w7");
-    
-    res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.6)
+    hide_layers()
   },
   
   () => {
-  
-    svg.select("#arrow_layer_w5").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
-    svg.select("#arrow_layer_w6").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
-    svg.select("#arrow_layer_w7").style("stroke", "#5050f0").attr("marker-end", "url(#arrowheadright2)")
-    show_layer("w5");
+    show_residual_layers();
+    res_path.attr("stroke-dasharray", totalLength + " " + totalLength)
+              .attr("stroke-dashoffset", totalLength)
     res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.4)
-    d3.select('#reslinew5').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
-  },
-  () => {
-    show_layer("w6");
-    res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.2)
-    d3.select('#reslinew6').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
-  },
-  () => {
-    show_layer("w7");
-    res_path.transition()
-              .duration(1500)
+              .duration(7*500)
               .ease(d3.easeLinear)
               .attr("stroke-dashoffset", 0.0)
-    d3.select('#reslinew7').style('opacity', 1.0).transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", 0.0)
   },
 ]
 
 var _inverse_transitions = [
   () => {
-    hide_layer("w5");
+    hide_layers()
     plain_path.transition()
-              .duration(1500)
+              .duration(500)
               .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.6)
+              .attr("stroke-dashoffset", totalLength)
   },
+
+  () => { },
+
   () => {
-    hide_layer("w6");
-    plain_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.4)
-  },
-  () => {
-    hide_layer("w7");
-    plain_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.2)
-  },
-  
-  () => {
-    show_layer("w4");
-    show_layer("w5");
-    show_layer("w6");
-    show_layer("w7");
-    
+    hide_layers()
     res_path.transition()
-              .duration(1500)
+              .duration(500)
               .ease(d3.easeLinear)
               .attr("stroke-dashoffset", totalLength)
   },
   
-  () => {
-    svg.select("#arrow_layer_w5").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
-    svg.select("#arrow_layer_w6").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
-    svg.select("#arrow_layer_w7").style("stroke", "#f05050").attr("marker-end", "url(#arrowheadright)")
-    hide_layer("w5");
-    l = d3.select('#reslinew5').node().getTotalLength()
-    d3.select('#reslinew5').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
-    res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.6)
-  },
-  () => {
-    hide_layer("w6");
-    l = d3.select('#reslinew6').node().getTotalLength()
-    d3.select('#reslinew6').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
-    res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.4)
-  },
-  () => {
-    hide_layer("w7");
-    l = d3.select('#reslinew7').node().getTotalLength()
-    d3.select('#reslinew7').transition().duration(1500).ease(d3.easeLinear).attr("stroke-dashoffset", l).transition().style('opacity', 0.0)
-    res_path.transition()
-              .duration(1500)
-              .ease(d3.easeLinear)
-              .attr("stroke-dashoffset", totalLength*0.2)
-  },
+  () => { },
 ]
   
 </script>

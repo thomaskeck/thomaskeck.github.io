@@ -18,7 +18,7 @@ var height = 500
 var x = d3.scaleLinear().range([width/10, width]);
 var y = d3.scaleLinear().range([height*4/5, height*1/5]);
 x.domain([-1.0, 1.0]);
-y.domain([-1.0, 1.0]);
+y.domain([0.0, 1.0]);
 
 var svg = d3.select("body").append("svg")
             .attr('viewBox','0 0 960 500')
@@ -35,9 +35,9 @@ svg.append("g").attr("id", "func")
 
 var data = d3.range(11).map(function(d) { return d - 5; })
 var square_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y((-d/5)*(-d/5)) }).curve(d3.curveCardinal)
-var square_path = svg.select("#func").append('path').attr('d', square_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var square_path = svg.select("#func").append('path').attr('d', square_line(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 var absolute_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(Math.abs(d/5)) }).curve(d3.curveLinear)
-var absolute_path = svg.select("#func").append('path').attr('d', absolute_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var absolute_path = svg.select("#func").append('path').attr('d', absolute_line(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 
 function show_path(path) {
     
@@ -46,7 +46,7 @@ function show_path(path) {
       .attr("stroke-dashoffset", totalLength)
       .style("opacity", 1.0)
       .transition()
-      .duration(2000)
+      .duration(1500)
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0)
 
@@ -59,10 +59,7 @@ function hide_path(path) {
         .attr("stroke-dashoffset", 0)
         .style("opacity", 1.0)
         .transition()
-        .duration(2000)
-        .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", totalLength)
-        .transition()
+        .duration(500)
         .style("opacity", 0)
 
 }
@@ -83,12 +80,12 @@ var _inverse_transitions = [
   
 svg.append("g")
     .attr("class", "axis usual_axis")
-    .attr("transform", "translate(0," + height*0.5 + ")")
+    .attr("transform", "translate(0," + (height*4/5) + ")")
     .call(d3.axisBottom(x).ticks(3));
 
 svg.append("text")
    .attr("class", "text")
-   .attr("transform", "translate(" + (width + 80) + " ," + (height*0.53) + ")")
+   .attr("transform", "translate(" + (width/2) + " ," + (height*9/10) + ")")
    .style("text-anchor", "middle")
    .text("f(x)");
 

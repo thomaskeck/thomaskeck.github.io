@@ -36,15 +36,15 @@ svg.append("g").attr("id", "func")
 var data = d3.range(31).map(function(d) { return d - 15; })
 
 var sigmoid_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(1/(1+Math.exp(-d/5))) }).curve(d3.curveCardinal)
-var sigmoid_path = svg.select("#func").append('path').attr('d', sigmoid_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var sigmoid_path = svg.select("#func").append('path').attr('d', sigmoid_line(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 var tanh_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { return y(Math.tanh(d/5)) }).curve(d3.curveCardinal)
-var tanh_path = svg.select("#func").append('path').attr('d', tanh_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var tanh_path = svg.select("#func").append('path').attr('d', tanh_line(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 
 var relu_line = d3.line().x(function(d) { return x(d/5); }).y(function(d) { if (d <= 0) return y(0); else  return y(d/5) }).curve(d3.curveLinear)
-var relu_path = svg.select("#func").append('path').attr('d', relu_line(data)).attr('stroke', '#50f050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
+var relu_path = svg.select("#func").append('path').attr('d', relu_line(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 0)
 
-var prelu_lhs = svg.select("#func").append("line").attr("x1", x(-3.0)).attr("x2", x(0.0)).attr("y1", y(0.0)).attr("y2", y(0.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#50f050").attr("fill", "none")
-var prelu_rhs = svg.select("#func").append("line").attr("x1", x(0.0)).attr("x2", x(3.0)).attr("y1", y(0.0)).attr("y2", y(3.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#50f050").attr("fill", "none")
+var prelu_lhs = svg.select("#func").append("line").attr("x1", x(-3.0)).attr("x2", x(0.0)).attr("y1", y(0.0)).attr("y2", y(0.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#9090f0").attr("fill", "none")
+var prelu_rhs = svg.select("#func").append("line").attr("x1", x(0.0)).attr("x2", x(3.0)).attr("y1", y(0.0)).attr("y2", y(3.0)).style("stroke-width", "1vmin").style("opacity", "0").style("stroke", "#9090f0").attr("fill", "none")
 
 
 function show_path(path) {
@@ -54,7 +54,7 @@ function show_path(path) {
       .attr("stroke-dashoffset", totalLength)
       .style("opacity", 1.0)
       .transition()
-      .duration(2000)
+      .duration(1500)
       .ease(d3.easeLinear)
       .attr("stroke-dashoffset", 0)
 
@@ -67,10 +67,7 @@ function hide_path(path) {
         .attr("stroke-dashoffset", 0)
         .style("opacity", 1.0)
         .transition()
-        .duration(2000)
-        .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", totalLength)
-        .transition()
+        .duration(500)
         .style("opacity", 0)
 
 }
