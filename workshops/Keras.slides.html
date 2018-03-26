@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>Tensorflow slides</title>
+<title>Keras slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11906,687 +11906,19 @@ a.anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div style="position:relative;">
-<img src=images/tensorflow.png style="width: 60px; float: left" />
+<img src=images/keras.png style="width: 60px; float: left" />
 </div>
 <div style="position:relative;">
-<img src=images/tensorflow.png style="width: 60px; float: right" />
-</div><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tensorflow</h1>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Low-Level-API:-Basic-Building-Blocks">Low-Level API: Basic Building Blocks<a class="anchor-link" href="#Low-Level-API:-Basic-Building-Blocks">&#182;</a></h1>
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.Tensor"><code>tf.Tensor</code><a class="anchor-link" href="#tf.Tensor">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[2]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tf.Tensor &#39;Const:0&#39; shape=(3,) dtype=int32&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[3]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tf.Variable &#39;Variable:0&#39; shape=(3,) dtype=int32_ref&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[4]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tf.Tensor &#39;Placeholder:0&#39; shape=(?, 3) dtype=float32&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.Operation"><code>tf.Operation</code><a class="anchor-link" href="#tf.Operation">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">R</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
-                 <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
-                 <span class="p">[</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
-<span class="n">y</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[6]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tf.Tensor &#39;MatMul:0&#39; shape=(?, 3) dtype=float32&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">invariant</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">invariant</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&lt;tf.Tensor &#39;Equal:0&#39; shape=(?,) dtype=bool&gt;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.Graph"><code>tf.Graph</code><a class="anchor-link" href="#tf.Graph">&#182;</a></h2><p>The <strong>symbolic calculation</strong> is represented by a <code>tf.Graph</code>.</p>
+<img src=images/keras.png style="width: 60px; float: right" />
+</div><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Keras</h1>
+<p><strong>Design Goals:</strong></p>
 <ul>
-<li>Allows optimized execution on CPU, GPU, or even distributed</li>
-<li>Graph can be used for automatic differentation</li>
+<li>User friendliness</li>
+<li>Modularity</li>
+<li>Easy extensibility</li>
+<li>Work with Python</li>
 </ul>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TensorflowGraphToDot</span><span class="p">(</span><span class="n">invariant</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[9]:</div>
-
-
-
-<div class="output_svg output_subarea output_execute_result">
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.38.0 (20140413.2041)
- -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="432pt" height="282pt"
- viewBox="0.00 0.00 432.00 281.69" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.591793 0.591793) rotate(0) translate(4 472)">
-<title>%3</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-472 725.985,-472 725.985,4 -4,4"/>
-<!-- Equal -->
-<g id="node1" class="node"><title>Equal</title>
-<ellipse fill="none" stroke="black" cx="343.245" cy="-18" rx="31.3957" ry="18"/>
-<text text-anchor="middle" x="343.245" y="-14.3" font-family="Times,serif" font-size="14.00">Equal</text>
-</g>
-<!-- norm/Squeeze -->
-<g id="node2" class="node"><title>norm/Squeeze</title>
-<ellipse fill="none" stroke="black" cx="419.245" cy="-90" rx="61.99" ry="18"/>
-<text text-anchor="middle" x="419.245" y="-86.3" font-family="Times,serif" font-size="14.00">norm/Squeeze</text>
-</g>
-<!-- norm/Squeeze&#45;&gt;Equal -->
-<g id="edge1" class="edge"><title>norm/Squeeze&#45;&gt;Equal</title>
-<path fill="none" stroke="black" d="M401.234,-72.411C390.82,-62.8191 377.606,-50.6481 366.423,-40.3479"/>
-<polygon fill="black" stroke="black" points="368.791,-37.7708 359.064,-33.5705 364.049,-42.9197 368.791,-37.7708"/>
-</g>
-<!-- norm_1/Squeeze -->
-<g id="node3" class="node"><title>norm_1/Squeeze</title>
-<ellipse fill="none" stroke="black" cx="268.245" cy="-90" rx="70.3881" ry="18"/>
-<text text-anchor="middle" x="268.245" y="-86.3" font-family="Times,serif" font-size="14.00">norm_1/Squeeze</text>
-</g>
-<!-- norm_1/Squeeze&#45;&gt;Equal -->
-<g id="edge2" class="edge"><title>norm_1/Squeeze&#45;&gt;Equal</title>
-<path fill="none" stroke="black" d="M286.019,-72.411C296.058,-63.0414 308.733,-51.211 319.602,-41.0672"/>
-<polygon fill="black" stroke="black" points="322.21,-43.4202 327.133,-34.0382 317.434,-38.3028 322.21,-43.4202"/>
-</g>
-<!-- norm/Sqrt -->
-<g id="node4" class="node"><title>norm/Sqrt</title>
-<ellipse fill="none" stroke="black" cx="423.245" cy="-162" rx="46.5926" ry="18"/>
-<text text-anchor="middle" x="423.245" y="-158.3" font-family="Times,serif" font-size="14.00">norm/Sqrt</text>
-</g>
-<!-- norm/Sqrt&#45;&gt;norm/Squeeze -->
-<g id="edge3" class="edge"><title>norm/Sqrt&#45;&gt;norm/Squeeze</title>
-<path fill="none" stroke="black" d="M422.256,-143.697C421.816,-135.983 421.286,-126.712 420.794,-118.112"/>
-<polygon fill="black" stroke="black" points="424.287,-117.888 420.222,-108.104 417.299,-118.288 424.287,-117.888"/>
-</g>
-<!-- norm_1/Sqrt -->
-<g id="node5" class="node"><title>norm_1/Sqrt</title>
-<ellipse fill="none" stroke="black" cx="251.245" cy="-234" rx="55.7903" ry="18"/>
-<text text-anchor="middle" x="251.245" y="-230.3" font-family="Times,serif" font-size="14.00">norm_1/Sqrt</text>
-</g>
-<!-- norm_1/Sqrt&#45;&gt;norm_1/Squeeze -->
-<g id="edge4" class="edge"><title>norm_1/Sqrt&#45;&gt;norm_1/Squeeze</title>
-<path fill="none" stroke="black" d="M253.296,-215.871C256.193,-191.67 261.516,-147.211 264.966,-118.393"/>
-<polygon fill="black" stroke="black" points="268.474,-118.534 266.187,-108.189 261.523,-117.702 268.474,-118.534"/>
-</g>
-<!-- norm/Sum -->
-<g id="node6" class="node"><title>norm/Sum</title>
-<ellipse fill="none" stroke="black" cx="430.245" cy="-234" rx="48.9926" ry="18"/>
-<text text-anchor="middle" x="430.245" y="-230.3" font-family="Times,serif" font-size="14.00">norm/Sum</text>
-</g>
-<!-- norm/Sum&#45;&gt;norm/Sqrt -->
-<g id="edge5" class="edge"><title>norm/Sum&#45;&gt;norm/Sqrt</title>
-<path fill="none" stroke="black" d="M428.515,-215.697C427.743,-207.983 426.816,-198.712 425.956,-190.112"/>
-<polygon fill="black" stroke="black" points="429.433,-189.706 424.956,-180.104 422.468,-190.403 429.433,-189.706"/>
-</g>
-<!-- norm_1/Sum -->
-<g id="node7" class="node"><title>norm_1/Sum</title>
-<ellipse fill="none" stroke="black" cx="250.245" cy="-306" rx="57.6901" ry="18"/>
-<text text-anchor="middle" x="250.245" y="-302.3" font-family="Times,serif" font-size="14.00">norm_1/Sum</text>
-</g>
-<!-- norm_1/Sum&#45;&gt;norm_1/Sqrt -->
-<g id="edge6" class="edge"><title>norm_1/Sum&#45;&gt;norm_1/Sqrt</title>
-<path fill="none" stroke="black" d="M250.492,-287.697C250.602,-279.983 250.735,-270.712 250.858,-262.112"/>
-<polygon fill="black" stroke="black" points="254.357,-262.153 251.001,-252.104 247.358,-262.053 254.357,-262.153"/>
-</g>
-<!-- norm_1/mul -->
-<g id="node8" class="node"><title>norm_1/mul</title>
-<ellipse fill="none" stroke="black" cx="55.2451" cy="-378" rx="55.4913" ry="18"/>
-<text text-anchor="middle" x="55.2451" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/mul</text>
-</g>
-<!-- norm_1/mul&#45;&gt;norm_1/Sum -->
-<g id="edge7" class="edge"><title>norm_1/mul&#45;&gt;norm_1/Sum</title>
-<path fill="none" stroke="black" d="M91.0111,-364.161C122.87,-352.724 169.669,-335.925 204.293,-323.496"/>
-<polygon fill="black" stroke="black" points="205.484,-326.787 213.714,-320.114 203.119,-320.198 205.484,-326.787"/>
-</g>
-<!-- norm_1/Sum/reduction_indices -->
-<g id="node9" class="node"><title>norm_1/Sum/reduction_indices</title>
-<ellipse fill="none" stroke="black" cx="250.245" cy="-378" rx="122.379" ry="18"/>
-<text text-anchor="middle" x="250.245" y="-374.3" font-family="Times,serif" font-size="14.00">norm_1/Sum/reduction_indices</text>
-</g>
-<!-- norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum -->
-<g id="edge8" class="edge"><title>norm_1/Sum/reduction_indices&#45;&gt;norm_1/Sum</title>
-<path fill="none" stroke="black" d="M250.245,-359.697C250.245,-351.983 250.245,-342.712 250.245,-334.112"/>
-<polygon fill="black" stroke="black" points="253.745,-334.104 250.245,-324.104 246.745,-334.104 253.745,-334.104"/>
-</g>
-<!-- norm/mul -->
-<g id="node10" class="node"><title>norm/mul</title>
-<ellipse fill="none" stroke="black" cx="430.245" cy="-306" rx="46.2923" ry="18"/>
-<text text-anchor="middle" x="430.245" y="-302.3" font-family="Times,serif" font-size="14.00">norm/mul</text>
-</g>
-<!-- norm/mul&#45;&gt;norm/Sum -->
-<g id="edge9" class="edge"><title>norm/mul&#45;&gt;norm/Sum</title>
-<path fill="none" stroke="black" d="M430.245,-287.697C430.245,-279.983 430.245,-270.712 430.245,-262.112"/>
-<polygon fill="black" stroke="black" points="433.745,-262.104 430.245,-252.104 426.745,-262.104 433.745,-262.104"/>
-</g>
-<!-- norm/Sum/reduction_indices -->
-<g id="node11" class="node"><title>norm/Sum/reduction_indices</title>
-<ellipse fill="none" stroke="black" cx="608.245" cy="-306" rx="113.98" ry="18"/>
-<text text-anchor="middle" x="608.245" y="-302.3" font-family="Times,serif" font-size="14.00">norm/Sum/reduction_indices</text>
-</g>
-<!-- norm/Sum/reduction_indices&#45;&gt;norm/Sum -->
-<g id="edge10" class="edge"><title>norm/Sum/reduction_indices&#45;&gt;norm/Sum</title>
-<path fill="none" stroke="black" d="M567.854,-289.116C539.194,-277.845 500.832,-262.759 471.893,-251.379"/>
-<polygon fill="black" stroke="black" points="473.055,-248.075 462.468,-247.672 470.494,-254.589 473.055,-248.075"/>
-</g>
-<!-- MatMul -->
-<g id="node12" class="node"><title>MatMul</title>
-<ellipse fill="none" stroke="black" cx="430.245" cy="-378" rx="40.0939" ry="18"/>
-<text text-anchor="middle" x="430.245" y="-374.3" font-family="Times,serif" font-size="14.00">MatMul</text>
-</g>
-<!-- MatMul&#45;&gt;norm/mul -->
-<g id="edge11" class="edge"><title>MatMul&#45;&gt;norm/mul</title>
-<path fill="none" stroke="black" d="M424.367,-360.055C423.549,-352.346 423.306,-343.027 423.64,-334.364"/>
-<polygon fill="black" stroke="black" points="427.139,-334.491 424.332,-324.275 420.156,-334.012 427.139,-334.491"/>
-</g>
-<!-- MatMul&#45;&gt;norm/mul -->
-<g id="edge12" class="edge"><title>MatMul&#45;&gt;norm/mul</title>
-<path fill="none" stroke="black" d="M436.123,-360.055C436.941,-352.346 437.184,-343.027 436.85,-334.364"/>
-<polygon fill="black" stroke="black" points="440.334,-334.012 436.158,-324.275 433.351,-334.491 440.334,-334.012"/>
-</g>
-<!-- x -->
-<g id="node13" class="node"><title>x</title>
-<ellipse fill="none" stroke="black" cx="55.2451" cy="-450" rx="27" ry="18"/>
-<text text-anchor="middle" x="55.2451" y="-446.3" font-family="Times,serif" font-size="14.00">x</text>
-</g>
-<!-- x&#45;&gt;norm_1/mul -->
-<g id="edge13" class="edge"><title>x&#45;&gt;norm_1/mul</title>
-<path fill="none" stroke="black" d="M49.4052,-432.411C48.5426,-424.507 48.2932,-414.852 48.657,-405.935"/>
-<polygon fill="black" stroke="black" points="52.1484,-406.179 49.3657,-395.956 45.166,-405.683 52.1484,-406.179"/>
-</g>
-<!-- x&#45;&gt;norm_1/mul -->
-<g id="edge14" class="edge"><title>x&#45;&gt;norm_1/mul</title>
-<path fill="none" stroke="black" d="M61.085,-432.411C61.9476,-424.507 62.197,-414.852 61.8332,-405.935"/>
-<polygon fill="black" stroke="black" points="65.3242,-405.683 61.1245,-395.956 58.3418,-406.179 65.3242,-405.683"/>
-</g>
-<!-- x&#45;&gt;MatMul -->
-<g id="edge15" class="edge"><title>x&#45;&gt;MatMul</title>
-<path fill="none" stroke="black" d="M81.7597,-446.263C137.715,-440.144 271.728,-423.679 381.245,-396 384.388,-395.206 387.616,-394.299 390.843,-393.326"/>
-<polygon fill="black" stroke="black" points="391.975,-396.639 400.434,-390.26 389.843,-389.971 391.975,-396.639"/>
-</g>
-<!-- R -->
-<g id="node14" class="node"><title>R</title>
-<ellipse fill="none" stroke="black" cx="430.245" cy="-450" rx="27" ry="18"/>
-<text text-anchor="middle" x="430.245" y="-446.3" font-family="Times,serif" font-size="14.00">R</text>
-</g>
-<!-- R&#45;&gt;MatMul -->
-<g id="edge16" class="edge"><title>R&#45;&gt;MatMul</title>
-<path fill="none" stroke="black" d="M430.245,-431.697C430.245,-423.983 430.245,-414.712 430.245,-406.112"/>
-<polygon fill="black" stroke="black" points="433.745,-406.104 430.245,-396.104 426.745,-406.104 433.745,-406.104"/>
-</g>
-</g>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Automatic-Differentiation">Automatic Differentiation<a class="anchor-link" href="#Automatic-Differentiation">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">partial_derivative</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">gradients</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="n">TensorflowGraphToDot</span><span class="p">(</span><span class="n">partial_derivative</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[10]:</div>
-
-
-
-<div class="output_svg output_subarea output_execute_result">
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.38.0 (20140413.2041)
- -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="432pt" height="332pt"
- viewBox="0.00 0.00 432.00 331.78" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.999349 0.999349) rotate(0) translate(4 328)">
-<title>%3</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-328 428.281,-328 428.281,4 -4,4"/>
-<!-- gradients/MatMul_grad/MatMul -->
-<g id="node1" class="node"><title>gradients/MatMul_grad/MatMul</title>
-<ellipse fill="none" stroke="black" cx="127.389" cy="-18" rx="127.277" ry="18"/>
-<text text-anchor="middle" x="127.389" y="-14.3" font-family="Times,serif" font-size="14.00">gradients/MatMul_grad/MatMul</text>
-</g>
-<!-- gradients/Fill -->
-<g id="node2" class="node"><title>gradients/Fill</title>
-<ellipse fill="none" stroke="black" cx="175.389" cy="-90" rx="57.6901" ry="18"/>
-<text text-anchor="middle" x="175.389" y="-86.3" font-family="Times,serif" font-size="14.00">gradients/Fill</text>
-</g>
-<!-- gradients/Fill&#45;&gt;gradients/MatMul_grad/MatMul -->
-<g id="edge1" class="edge"><title>gradients/Fill&#45;&gt;gradients/MatMul_grad/MatMul</title>
-<path fill="none" stroke="black" d="M163.769,-72.055C158.134,-63.8373 151.245,-53.7911 144.984,-44.6599"/>
-<polygon fill="black" stroke="black" points="147.776,-42.5432 139.235,-36.2753 142.003,-46.502 147.776,-42.5432"/>
-</g>
-<!-- R -->
-<g id="node3" class="node"><title>R</title>
-<ellipse fill="none" stroke="black" cx="91.3887" cy="-306" rx="27" ry="18"/>
-<text text-anchor="middle" x="91.3887" y="-302.3" font-family="Times,serif" font-size="14.00">R</text>
-</g>
-<!-- R&#45;&gt;gradients/MatMul_grad/MatMul -->
-<g id="edge2" class="edge"><title>R&#45;&gt;gradients/MatMul_grad/MatMul</title>
-<path fill="none" stroke="black" d="M90.7699,-287.756C89.774,-248.731 89.5572,-150.902 108.389,-72 110.454,-63.348 113.451,-54.15 116.458,-45.8875"/>
-<polygon fill="black" stroke="black" points="119.793,-46.9639 120.067,-36.3726 113.248,-44.4811 119.793,-46.9639"/>
-</g>
-<!-- MatMul -->
-<g id="node6" class="node"><title>MatMul</title>
-<ellipse fill="none" stroke="black" cx="169.389" cy="-234" rx="40.0939" ry="18"/>
-<text text-anchor="middle" x="169.389" y="-230.3" font-family="Times,serif" font-size="14.00">MatMul</text>
-</g>
-<!-- R&#45;&gt;MatMul -->
-<g id="edge7" class="edge"><title>R&#45;&gt;MatMul</title>
-<path fill="none" stroke="black" d="M106.799,-291.17C117.506,-281.561 132.014,-268.541 144.366,-257.457"/>
-<polygon fill="black" stroke="black" points="147.005,-259.791 152.11,-250.507 142.33,-254.581 147.005,-259.791"/>
-</g>
-<!-- gradients/Shape -->
-<g id="node4" class="node"><title>gradients/Shape</title>
-<ellipse fill="none" stroke="black" cx="175.389" cy="-162" rx="66.8882" ry="18"/>
-<text text-anchor="middle" x="175.389" y="-158.3" font-family="Times,serif" font-size="14.00">gradients/Shape</text>
-</g>
-<!-- gradients/Shape&#45;&gt;gradients/Fill -->
-<g id="edge3" class="edge"><title>gradients/Shape&#45;&gt;gradients/Fill</title>
-<path fill="none" stroke="black" d="M175.389,-143.697C175.389,-135.983 175.389,-126.712 175.389,-118.112"/>
-<polygon fill="black" stroke="black" points="178.889,-118.104 175.389,-108.104 171.889,-118.104 178.889,-118.104"/>
-</g>
-<!-- gradients/grad_ys_0 -->
-<g id="node5" class="node"><title>gradients/grad_ys_0</title>
-<ellipse fill="none" stroke="black" cx="342.389" cy="-162" rx="81.7856" ry="18"/>
-<text text-anchor="middle" x="342.389" y="-158.3" font-family="Times,serif" font-size="14.00">gradients/grad_ys_0</text>
-</g>
-<!-- gradients/grad_ys_0&#45;&gt;gradients/Fill -->
-<g id="edge4" class="edge"><title>gradients/grad_ys_0&#45;&gt;gradients/Fill</title>
-<path fill="none" stroke="black" d="M306.152,-145.811C280.151,-134.912 245.033,-120.192 217.738,-108.751"/>
-<polygon fill="black" stroke="black" points="219.013,-105.491 208.437,-104.853 216.307,-111.946 219.013,-105.491"/>
-</g>
-<!-- MatMul&#45;&gt;gradients/Shape -->
-<g id="edge5" class="edge"><title>MatMul&#45;&gt;gradients/Shape</title>
-<path fill="none" stroke="black" d="M170.872,-215.697C171.533,-207.983 172.328,-198.712 173.065,-190.112"/>
-<polygon fill="black" stroke="black" points="176.556,-190.367 173.923,-180.104 169.581,-189.769 176.556,-190.367"/>
-</g>
-<!-- x -->
-<g id="node7" class="node"><title>x</title>
-<ellipse fill="none" stroke="black" cx="169.389" cy="-306" rx="27" ry="18"/>
-<text text-anchor="middle" x="169.389" y="-302.3" font-family="Times,serif" font-size="14.00">x</text>
-</g>
-<!-- x&#45;&gt;MatMul -->
-<g id="edge6" class="edge"><title>x&#45;&gt;MatMul</title>
-<path fill="none" stroke="black" d="M169.389,-287.697C169.389,-279.983 169.389,-270.712 169.389,-262.112"/>
-<polygon fill="black" stroke="black" points="172.889,-262.104 169.389,-252.104 165.889,-262.104 172.889,-262.104"/>
-</g>
-</g>
-</svg>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.Session"><code>tf.Session</code><a class="anchor-link" href="#tf.Session">&#182;</a></h2><p>Executes the <code>tf.Operation</code>s of a <code>tf.Graph</code> on different devices (CPUs, GPUs, Distributed, ...).</p>
-<p><strong>If a tf.Graph is like a .py file, a tf.Session is like the python executable.</strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
-<span class="n">session</span><span class="o">.</span><span class="n">list_devices</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[_DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 268435456)]</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([[-2.,  1.,  3.],
-       [-5.,  4.,  6.]], dtype=float32)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">invariant</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">))})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True,  True,  True,  True,  True,
-        True,  True,  True,  True,  True])</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="alert alert-block alert-info">
-<h3>Exercise</h3>
-Modify the above code to calculate a simple percepetron:
-
-$$ y = \tanh(W \cdot x + b) $$
-
-Execute the calculation with numpy and with tensorflow.
-
-<h3>Question</h3>
-Take a look at the partial derivative $\frac{\partial y}{\partial x}$.
-Why does tensorflow still calculates the $\tanh$ term and not the derivative?
-</div>
 </div>
 </div>
 </div></section></section><section><section>
@@ -12606,11 +11938,12 @@ Why does tensorflow still calculates the $\tanh$ term and not the derivative?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="k">import</span> <span class="n">input_data</span>
-<span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;MNIST_data/&quot;</span><span class="p">,</span> <span class="n">one_hot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow.examples.tutorials.mnist</span> <span class="k">import</span> <span class="n">input_data</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">input_data</span><span class="o">.</span><span class="n">read_data_sets</span><span class="p">(</span><span class="s2">&quot;MNIST_data/&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12620,6 +11953,18 @@ Why does tensorflow still calculates the $\tanh$ term and not the derivative?
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/thomas/venv/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+</pre>
+</div>
+</div>
 
 <div class="output_area">
 
@@ -12641,14 +11986,14 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 </div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 </pre></div>
@@ -12679,30 +12024,501 @@ Extracting MNIST_data/t10k-labels-idx1-ubyte.gz
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="tf.keras">tf.keras<a class="anchor-link" href="#tf.keras">&#182;</a></h2><p>Tensorflow officially supports the <strong>keras</strong> API</p>
+
+</div>
+</div>
 </div></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-Model">Linear Model<a class="anchor-link" href="#Linear-Model">&#182;</a></h2><p>In machine learning it is best practise to start with the simplest model to establish the overall procedure.</p>
-<p>We implement a linear model $f$ with weights $W$:
-$$ f: R^{784} \rightarrow [0, 1]^{10}$$</p>
-<p>$$ f(\vec{x}) = \underbrace{\frac{\exp \vec{l}}{\sum_{i=1}^{10} \exp l_i}}_{\mathrm{softmax}(l)} \quad \quad \textrm{where} \quad \vec{l} = W \cdot \vec{x}$$</p>
+<h3 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">]))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                 <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+reshape_1 (Reshape)          (None, 28, 28, 1)         0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 28, 28, 32)        832       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 14, 14, 32)        0         
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 6272)              0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                62730     
+=================================================================
+Total params: 63,562
+Trainable params: 63,562
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compile">Compile<a class="anchor-link" href="#Compile">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">categorical_crossentropy</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>WARNING:tensorflow:From /home/thomas/venv/lib/python3.5/site-packages/tensorflow/python/keras/_impl/keras/backend.py:3086: calling reduce_sum (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /home/thomas/venv/lib/python3.5/site-packages/tensorflow/python/keras/_impl/keras/backend.py:1557: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fitting">Fitting<a class="anchor-link" href="#Fitting">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nevents</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="n">nevents</span><span class="p">],</span>
+          <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="n">nevents</span><span class="p">],</span> <span class="mi">10</span><span class="p">),</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">PlotLosses</span><span class="p">(</span><span class="mi">10</span><span class="p">)],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> 
+                           <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tensorflow.python.keras._impl.keras.callbacks.History at 0x7f5b5be59978&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.1268268010802567, 0.9606]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Prediction">Prediction<a class="anchor-link" href="#Prediction">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;T: </span><span class="si">{}</span><span class="s2">; P: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">prediction</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">()))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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uumm9apOw1u4cGFIX3zxxUD7ezdp0qSQfuSRRwAYNmxYbSpXAbXQRUQSoYAuIpIIdblIO2+++WZIX3/99R2ODxw4MKQfeOABANZYY42Qt+qqqwLwxRdfhLyZM2eG9OOP5zat97MxpLqeeiq3aX3Pnj1D3i677FKv6jSsxYsXAzBiRFPvCd2BWugiIoloqhb6k08+CcAVV1wR8jbZZBMAunfvHvJGjhwZ0uuuu267/0vn4pazf0chbpU/9NBDId2jR48VXuemm24K6WeeeabD8QMOOKAr1ZTIO++8E9LnnnsuACeffHK9qtOw4oH4v/71rwBMmDCh5PPHjx8PtP/2+dWvfjWkt956665WscvUQhcRSYQCuohIIprq1f9tt90WaD/HuRj/mu6gQYO6UnRBW2yxRUifeeaZAPTu3burl22Y16fnz58PtA10Qvuurc7suuuuIf300093OD516tSQ7tu3b6VVLFeSr/77rkiA3XbbDYBp06aFvG222aZWVWmYZ7eQlVdeOaTjueadWbZsWafnxN0sDz74IACbbbZZpVXsjF79FxFpJU01KHr33XcD8OKLL4a8/v37A+1bfH7qFsA//vEPoO23J8CWW24JwOuvv95peaus0nZ7Nt5445CePXt2h8/61vrPfvazzv8STaSSRYjGjBkDwJQpUwoe33fffQHYaqutKq+YtHP22WeHdJ8+fYD23x5b2ZFHHhnScWu7VPEiZ2uuuSbQfhqufzMX2u55PGhaa2qhi4gkQgFdRCQRTTUoWolPPvkEgFmzZoU83+Xy2muvdXpuPBgYd7n48997772Qd9dddwFVmV/d0ANLhbzwwgshPXjwYACWLl0a8uJ7N3HiRKCmA3WxZAZFP/roo5CO37Hw86Ljbskaaphn99VXXwXa/zz6POh8UPScc84J6e985zsh7d++jeeun3TSSR3OHzt2bEjvv//+5VS7MxoUFRFpJQroIiKJaKpZLpVYffXVgcJznfv161fydeKZM/71+HjRIz97oxU98cQTIR13tXjHHXdcSNepqyU5zz//fMH8jOZAN4W4G8pvRv7uu+92ek48j/zoo48G2nejdOvWrcM58cyXSy65JKT9EgzxzBq/afp3v/vdkBfPh682tdBFRBKR/KBoV3z88cchHf8m97+J4zf0qrhEacMMLBXjWzS33357yPOD0PHiUBdddFFIxwPNdZDMoOioUaNC2r+lDPDss88CsOOOO9a8TtT52f3ggw9CeqONNupwPJ6H7nfWiheRi5eBLlU8ADp8+PAO5fjB1/ibQoULBWpQVESklSigi4gkIvlB0a6Iv47NnTs3pNdbbz0ANt9881pXqe4WLVoU0uPGjQPaulkANtxwQwDOOuuskFfnbpak+HcnLrvsspA3ZMiQkI7X55b2/EApwB//+Eegsm6W2D777BPSe++9NwAPP/xwl67ZFWqhi4gkQi30Av79738DcMoppxQ87qfpFRp4SV08/WrevHkdjp944omAdojKim/9xTtL7bDDDiEdLyjXygotxFXO7kSliieV+EW5CpV93nnnhXS841q1qYUuIpIIBXQRkUTo+1kB9957LwCfffZZyIu7Gr785S/XvE719Nxzz4X0pEmTOhw/6KCDQnpF3VRSHX6euVnbtOT4zcRWdv3114d0qTsSdVU8AProo492KNun/ebdWVMLXUQkEQroIiKJUJdLXty94tc2X2211ULexRdfHNJZLq7TSJYsWQK0f7X8008/7fC5nXbaKaQ157z64rn/9913H9B+ZsvOO+9c8zo1oltvvTXT6y9evBiAOXPmhLxC66HH/F4AtYoZaqGLiCRCLfS8G264IaQfe+wxAL73ve+FvFYbCAW45pprgBW/+eYX59JAaLbuvPPOkPYLwx1++OH1qk7Luvzyy4H2c8oLiZeIvueee4DKNlyvhFroIiKJUEAXEUlES3e5xBvp/vjHPw7ptddeG4Dzzz+/5nVqJPECW4X89re/BTQQmjW/FEXMLxAn2Yrn+MfvY3Rm4MCBIR3vo1ALaqGLiCRCAV1EJBEt2eXi51fHMwX8SmkARxxxBNCaM1vK4edHl/OatZ/bH8/Lje99oU2m/b9XsVXq4mv67qJCm/w2mzFjxnTIO/DAA+tQk8YWr3xYaMXDKVOmdMg74IADQnr27NkdjhfaTq6YW265paTPZUEtdBGRRLRMCz3+Tfutb30LgOnTp4e8fv36hXSxeaaSs8kmm5R9znHHHQdAr169Ql68G9TVV1/d9YrRVrdjjz22KterhxkzZgDw1ltv1bkmzeHss88O6REjRnQ4Hm+cXai1XawFXuz4OeecU6yKmVMLXUQkEQroIiKJaJkulw8//DCkC63pHQ88afu0HD84fOONN1btmn45gWLi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6N27bQvINddcs2rXT9nzzz8PwE477RTy7rrrrpDef//9AVhppdZpa3z88cchfeSRR4b0HnvsAcAPfvCDkLf22mVvOl/UJ598AsArr7wS8nbYYYeQXnnllatepmSjdX5qREQSp4AuIpKIJLtcJkyYENL+62Q13XnnnQC89957Ie+qq66qejmpWLJkSUgfdNBBHY4feOCBIf3pp58CrdHl4p/NrbbaKuR9+OGHIb3xxhsD2XazAOy4444AvPPOOyEv7qJcb731ql5+vS1duhSAiy66KORNmTIFgLFjx4a8ZutuSv+nRkSkRSTTQl+2bFlIx4NsWRgyZAgAZ599dsjzLctVV10107Kb0T//+c+QfuONNzocP+GEE0J6lVWSeSQLWrx4cUiPHDkSaP9N7xe/+EVIn3vuuZnV48orrwzp6dOnA3D//feHvBRb5Y8++mhIH3300QC8/vrrHT7nf5YBunfvnn3FqkgtdBGRRCigi4gkwpyr6f6smRU2derUkI7n0P76178G4OSTT65aWbfddhsAI0aMCHkLFiwAYI011ujq5ZPYaPfzzz8P6W984xshPWnSpA6fffHFF0M6/rfLQN03ifbvMEDhv+vChQtDugrPUgdz584FoFevXiHvmGOOAWD06NEhb7XVVqvk8g337PqfS4BtttkmpOfNmweAWccqH3/88SF96aWXhnSdu1+0SbSISCtp+hEoP9Vq6NChIW+77bYL6R/96EdVL/OOO+6o+jVT89Zbb4V0oVZ5PPiZcau8Ifi3Qf23u9j48eNDOstWOcDXvva1Dsf926kVtsobWjz4Gw8+d+bqq68O6fjfy1/rsMMOC3mNNq1RLXQRkUQooIuIJKLpu1wuvPBCoP1g0tNPPx3S1ZoXHr/tePfddwOt8TZjpeK37QoZPnx4jWrSGPw7C1dccUXI22uvvYC29xqy8swzz4T022+/DcCpp54a8vbcc89My6+H+fPnA/Cb3/ym4PFdd90VaL/AXqGu1P/85z8hffrppwNtC8gB9OjRo+uVrSJFJBGRRCigi4gkoim7XJ588smQvvXWWwHYfvvtQ97mm29e9TLjr8q+qyVeaCrFGQJd8dBDDxXM911gl1xySS2rU3d+vnPcTeef02rOlPjss88AuOaaa0Le+eef36Ee/v2MVM2YMQNo63qB9l0lvts0fl/CLwfwk5/8JOT961//Cmk/cyteTO6ee+4J6UZYJkAtdBGRRDRlC/2WW24J6UWLFgFw1llnVb2cjz76KKR///vfh7RvUV1wwQUd8lrda6+9BsC4ceMKHu/ZsycAm2yySc3q1KjGjBkDtB/Qj5fKLfXt5vjbkJ/T/uCDDxb87A9/+MOy69mM/AJb8Zug8WJ6Xvw+hH+jecCAASFv2rRpHc6JdydrtJ97tdBFRBKhgC4ikoim6nLxu6wU+jp5wAEHVL28G2+8MaTffffdkPYbHPft27fqZTa75557rtPj55xzTo1q0lhOOeUUoP1a/X4zcz9ABxAvlnfTTTeVdO34nEKLTcXPqX9vI3U33HBDh7z43YiBAweu8NyHH36402sPHjw4pBtt/wO10EVEEtFULfQvvvgCaL/rTRaLb3l+6tPyOvvt3uomT57cIW/dddcNaT81rNVsttlmQPtBtlmzZgFw3333hTz/NiLARhttBBQfHPWLa0HhweZvfvObIR3/W6TMLwkcf8t57LHHQtov1BXvnfqXv/wFgPfffz/kxffrgw8+AGDUqFEh74gjjgjpDTfcsBpV7xK10EVEEqGALiKSiKbasci/BbfvvvuGPD9QOnHixJDX1Te2/NrV8XzTmB9cGTZsWJfKWYGG2/WlmPhr67bbbgu037R7q622KvjZOqj7jkVZiBeQ8ps777777iHvgQceCOks1luPNMyz6xfT811d0P4++bhXaBD50EMPDemrrroqpP2eC/Gm52eeeWZIZzzgrB2LRERaiQK6iEgimmqWS7du3QDo169fyLvuuuuA9gvmnHvuuSVd7/nnnw/pV199NaT96+uFvo51lt+q4iUS4q4W75BDDqlldVpO/FXfP5t/+MMfQl7G3SwNyXe7PvrooyEv7oaKu1+88847D2jfjRIvDTBy5Eig/Vry8Rrq/l2Des4kUgtdRCQRTTUo6s2bNy+kfWvcL3QEbQOlxcTzRuNWt38rdEX3xg+4+G8MVdYwA0ulOumkk0Lab6Qbt1Lib0JZLG1chmQGRZ944omQjt9cXGuttQB46aWXQl48MJixhn52X3nllZD2b4HHz6lvea/o7U8/KeO4444LefE8d/9zcPnll1enwu1pUFREpJUooIuIJKIpu1wKmTNnTsF0ZwYNGlQw3w9u+O6D5cW7nGSgob+2xhYsWADAOuusE/L8oOjOO+8c8p566qnaVmzFkulyOe2000I63gj5hBNOAFb87GasaZ7droiXt4g32PbdiVOnTg15VdzFSF0uIiKtRAFdRCQRTTUPvTObbrppwXQltt56606Pv/POOwBsvPHGXSqn2b388stA4bnn8Sp0Un233XZbSH/pS18K6bgrRrIRzyo6/vjjQ/rqq68G4Oabbw558YyYWlALXUQkEcm00KvJDxSvaMC41VvmXrxutOfn9h977LG1rk5LuPfeewF4++23Q178PNZwznnLit9ZOeOMM0Laz22P92jwb0mvv/76NambWugiIolQQBcRSYS6XArwX6m0CFfn4s2NPb8e+mqrrVbr6rSESy65BGj/bBYagF66dGlIx0th+KUBpDriLf/8QoHxloBnnXUW0H5d9YyWDAHUQhcRSYZa6AX4xbdiVXzjq6n5jbqh/c4tnp9Ct/LKK9esTq0uvtd+udh4CekBAwaEdEYLRwltO5j1798/5F1//fUA/PKXvwx5vXr1yqwOaqGLiCRCAV1EJBHqcinAL3bkN9wFGD16dL2q01DiwTi/MNGzzz4b8vr27VvzOrW6UaNGhfSll14KwOmnnx7y4h14JDt+Z6h48S6/cJ0fzIZsF05TC11EJBEK6CIiiUhmPfRq8pvBxl9Va9iV0DRrSi9cuBCA888/P+T5hYv8iH+Dafr10GfMmAG0fzaHDh0a0v7ZXX311UNeDWccNc2zWyvDhw8H4P777w95M2fODOl4G8witB66iEgrUQu98aiVk52mb6E3OD27y/Fv7G6//fYhL176eKeddir1Umqhi4i0EgV0EZFEqMul8ehra3bU5ZItPbvZUZeLiEgrUUAXEUmEArqISCIU0EVEElHrQVEREcmIWugiIolQQBcRSYQCuohIIhTQRUQSoYAuIpIIBXQRkUQooIuIJEIBXUQkEQroIiKJUEAXEUmEArqISCIU0EVEEqGALiKSCAV0EZFEKKCLiCRCAV1EJBEK6CIiiVBAFxFJhAK6iEgiFNBFRBKhgC4ikggFdBGRRCigi4gk4v8A+fOfAUIrmIIAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-info">
+<h3>Exercise</h3>
+
+Add regularization to the network by adding
+
+<pre> kernel_regularizer=tf.keras.regularizers.l2(0.001), </pre>
+
+as a parameter to the individual layers.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-info">
+<h3>Exercise</h3>
+
+Increase the depth of the above model by adding more convolution and pooling layers.<br>
+How deep can you go before the training gets unstable.?
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Gaining-Depth">Gaining Depth<a class="anchor-link" href="#Gaining-Depth">&#182;</a></h1><p>In the lecture we discussed the <strong>Vanishing Gradient Problem</strong> and some techniques so avoid it.</p>
+<ul>
+<li><strong>ReLU activation</strong> </li>
+<li><strong>he initialization</strong></li>
+<li><strong>batch normalization</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Reshape</span><span class="p">((</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">]))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">16</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">strides</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+                                     <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">he_normal</span><span class="p">(),</span>
+                                     <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">use_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling2D</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">he_normal</span><span class="p">()))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">BatchNormalization</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">initializers</span><span class="o">.</span><span class="n">he_normal</span><span class="p">(),</span> 
+                                <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+reshape_2 (Reshape)          (None, 28, 28, 1)         0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 28, 28, 16)        144       
+_________________________________________________________________
+batch_normalization_1 (Batch (None, 28, 28, 16)        64        
+_________________________________________________________________
+activation_1 (Activation)    (None, 28, 28, 16)        0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 28, 28, 32)        4608      
+_________________________________________________________________
+batch_normalization_2 (Batch (None, 28, 28, 32)        128       
+_________________________________________________________________
+activation_2 (Activation)    (None, 28, 28, 32)        0         
+_________________________________________________________________
+conv2d_4 (Conv2D)            (None, 28, 28, 48)        13824     
+_________________________________________________________________
+batch_normalization_3 (Batch (None, 28, 28, 48)        192       
+_________________________________________________________________
+activation_3 (Activation)    (None, 28, 28, 48)        0         
+_________________________________________________________________
+global_average_pooling2d_1 ( (None, 48)                0         
+_________________________________________________________________
+dense_2 (Dense)              (None, 64)                3136      
+_________________________________________________________________
+batch_normalization_4 (Batch (None, 64)                256       
+_________________________________________________________________
+activation_4 (Activation)    (None, 64)                0         
+_________________________________________________________________
+dense_3 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 23,002
+Trainable params: 22,682
+Non-trainable params: 320
+_________________________________________________________________
+None
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Callbacks">Callbacks<a class="anchor-link" href="#Callbacks">&#182;</a></h3><p>Callbacks are used in keras to perform specific actions after every batch or after each epoch. Previously we used a callback to update our accuracy plot during the training, now we add two more callbacks:</p>
+<ul>
+<li><code>tf.keras.callbacks.EarlyStopping</code> will automatically stop the training if the accuracy on the validation sample does no longer increase</li>
+<li><code>tf.keras.callbacks.ModelCheckpoint</code> will save the best model automatically</li>
+</ul>
+<p>The <strong>early stopping</strong> provides a cheap and easy way to regularize our model.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_acc&#39;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+             <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;checkpoints&#39;</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_acc&#39;</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+             <span class="n">PlotLosses</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="n">nevents</span><span class="p">],</span>
+          <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="n">nevents</span><span class="p">],</span> <span class="mi">10</span><span class="p">),</span>
+          <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+          <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> 
+                           <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.7459862817764282, 0.727]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="n">W</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">]))</span>
-<span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
-<span class="n">probabilities</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
-<span class="n">TensorflowGraphToDot</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12719,217 +12535,11 @@ $$ f: R^{784} \rightarrow [0, 1]^{10}$$</p>
 
 
 
-<div class="output_svg output_subarea output_execute_result">
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.38.0 (20140413.2041)
- -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="284pt" height="260pt"
- viewBox="0.00 0.00 283.69 260.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 256)">
-<title>%3</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-256 279.689,-256 279.689,4 -4,4"/>
-<!-- Softmax -->
-<g id="node1" class="node"><title>Softmax</title>
-<ellipse fill="none" stroke="black" cx="134.095" cy="-18" rx="40.8928" ry="18"/>
-<text text-anchor="middle" x="134.095" y="-14.3" font-family="Times,serif" font-size="14.00">Softmax</text>
-</g>
-<!-- MatMul_1 -->
-<g id="node2" class="node"><title>MatMul_1</title>
-<ellipse fill="none" stroke="black" cx="134.095" cy="-90" rx="49.2915" ry="18"/>
-<text text-anchor="middle" x="134.095" y="-86.3" font-family="Times,serif" font-size="14.00">MatMul_1</text>
-</g>
-<!-- MatMul_1&#45;&gt;Softmax -->
-<g id="edge1" class="edge"><title>MatMul_1&#45;&gt;Softmax</title>
-<path fill="none" stroke="black" d="M134.095,-71.6966C134.095,-63.9827 134.095,-54.7125 134.095,-46.1124"/>
-<polygon fill="black" stroke="black" points="137.595,-46.1043 134.095,-36.1043 130.595,-46.1044 137.595,-46.1043"/>
-</g>
-<!-- Placeholder_1 -->
-<g id="node3" class="node"><title>Placeholder_1</title>
-<ellipse fill="none" stroke="black" cx="61.0946" cy="-162" rx="61.1893" ry="18"/>
-<text text-anchor="middle" x="61.0946" y="-158.3" font-family="Times,serif" font-size="14.00">Placeholder_1</text>
-</g>
-<!-- Placeholder_1&#45;&gt;MatMul_1 -->
-<g id="edge2" class="edge"><title>Placeholder_1&#45;&gt;MatMul_1</title>
-<path fill="none" stroke="black" d="M78.3946,-144.411C87.8942,-135.302 99.8196,-123.866 110.196,-113.916"/>
-<polygon fill="black" stroke="black" points="112.626,-116.436 117.421,-106.988 107.781,-111.383 112.626,-116.436"/>
-</g>
-<!-- Variable_1/read -->
-<g id="node4" class="node"><title>Variable_1/read</title>
-<ellipse fill="none" stroke="black" cx="208.095" cy="-162" rx="67.6881" ry="18"/>
-<text text-anchor="middle" x="208.095" y="-158.3" font-family="Times,serif" font-size="14.00">Variable_1/read</text>
-</g>
-<!-- Variable_1/read&#45;&gt;MatMul_1 -->
-<g id="edge3" class="edge"><title>Variable_1/read&#45;&gt;MatMul_1</title>
-<path fill="none" stroke="black" d="M190.558,-144.411C180.928,-135.302 168.839,-123.866 158.32,-113.916"/>
-<polygon fill="black" stroke="black" points="160.666,-111.317 150.996,-106.988 155.856,-116.403 160.666,-111.317"/>
-</g>
-<!-- Variable_1 -->
-<g id="node5" class="node"><title>Variable_1</title>
-<ellipse fill="none" stroke="black" cx="208.095" cy="-234" rx="50.0912" ry="18"/>
-<text text-anchor="middle" x="208.095" y="-230.3" font-family="Times,serif" font-size="14.00">Variable_1</text>
-</g>
-<!-- Variable_1&#45;&gt;Variable_1/read -->
-<g id="edge4" class="edge"><title>Variable_1&#45;&gt;Variable_1/read</title>
-<path fill="none" stroke="black" d="M208.095,-215.697C208.095,-207.983 208.095,-198.712 208.095,-190.112"/>
-<polygon fill="black" stroke="black" points="211.595,-190.104 208.095,-180.104 204.595,-190.104 211.595,-190.104"/>
-</g>
-</g>
-</svg>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>[0.7459862817764282, 0.727]</pre>
 </div>
 
-</div>
-
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Loss-function">Loss-function<a class="anchor-link" href="#Loss-function">&#182;</a></h3><p>For <strong>multi-class classification</strong> one usually wants to minimize the <strong>cross-entropy</strong>.</p>
-<p>$$ H(y,p) = - \sum_{i=1}^{10} y_i \log p_i $$</p>
-<p>Keep in mind that we always operate on a batch of images (for instance $N = 100$ images per minimization-step).
-Therefore our loss-function is the average cross-entropy.
-$$ \mathcal{L} = \frac{1}{N} \sum_{j=1}^{N} H(y_j,p_j) $$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cross_entropy</span> <span class="o">=</span> <span class="o">-</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">y</span> <span class="o">*</span> <span class="n">tf</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">probabilities</span> <span class="o">+</span> <span class="mf">0.001</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">loss_function</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">cross_entropy</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&#182;</a></h3><p>We use a simple gradient-descent optimizer.</p>
-<p>$$ \Delta W = - \eta \frac{\partial \mathcal{L}}{\partial W} \quad \quad \textrm{where} \quad \eta = 0.5 $$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">minimize</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Training">Training<a class="anchor-link" href="#Training">&#182;</a></h3><p>Training in tensorflow means just running the <strong>minimize</strong> operation multiple times, here we run 1000 minimization steps. In each step we process a batch of 100 images, and adjusts the weights to minimize the mean cross-entropy of the batch.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Initializing-the-Session">Initializing the Session<a class="anchor-link" href="#Initializing-the-Session">&#182;</a></h3><p>Before the training we have to open a new session and initialize all global variables used by tensorflow internally</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-main-training-loop">The main training loop<a class="anchor-link" href="#The-main-training-loop">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
-    <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minimize</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Direct-Evaluation">Direct Evaluation<a class="anchor-link" href="#Direct-Evaluation">&#182;</a></h3><p>Finally we evaluate the linear model. We are interested in the <strong>accuracy</strong> of our model.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probabilities</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">}))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test &quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">}))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Train 0.9160909
-Test  0.9186
-</pre>
-</div>
 </div>
 
 </div>
@@ -12942,12 +12552,27 @@ Test  0.9186
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-block alert-info">
 <h3>Exercise</h3>
-Add a bias $\vec{b}$ to the linear model
+Modify the above model and observe how the number of parameters change.
+<ul>
+    <li>How many parameters are associated with a convolutional layer (as a function of kernel size, stride, and feature maps)</li>
+    <li>How many parameters are associated with a dense layer (as a function of input and output layers)</li>
+    <li>How many parameters are associated with the batch normalization layer</li>
+    <li>How many parameters are associated with the pooling layer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-info">
+<h3>Exercise</h3>
+Use a different optimizer to train the model. For instance
 
-$$ f(\vec{x}) = \underbrace{\frac{\exp \vec{l}}{\sum_{i=1}^{10} \exp l_i}}_{\mathrm{softmax}(l)} \quad \quad \textrm{where} \quad \vec{l} = W \cdot \vec{x} + \vec{b}$$
+<pre> optimizer=tf.keras.optimizers.Adam(), </pre>
 
-<h3>Question</h3>
-What is the purpose of the bias?
 </div>
 </div>
 </div>
@@ -12956,45 +12581,20 @@ What is the purpose of the bias?
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Neural-Network-in-Tensorflow">Neural Network in Tensorflow<a class="anchor-link" href="#Neural-Network-in-Tensorflow">&#182;</a></h1><ul>
-<li>Automatic Differentiationen $\rightarrow$ you only implement the forward pass</li>
-<li>Graph is automatically compiled for CPU, GPU, TPU, ... $\rightarrow$ you don't have to write C++, CUDA, ...</li>
-<li>Predefined functions for neural network building blocks $\rightarrow$ you don't have to implement convolution yourself</li>
-</ul>
-<p><strong>Let us take a look at those predefined functions</strong></p>
-
+<h1 id="Recurrent-Neural-Network">Recurrent Neural Network<a class="anchor-link" href="#Recurrent-Neural-Network">&#182;</a></h1>
 </div>
 </div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.layers"><code>tf.layers</code><a class="anchor-link" href="#tf.layers">&#182;</a></h2><p>The <code>tf.layers</code> package contains pre-defined layers commonly used in neural networks:</p>
-<ul>
-<li>convolution layers: <code>tf.layers.conv2d</code></li>
-<li>pooling layers: <code>tf.layers.max_pooling2d</code></li>
-<li>dense (or fully-connected) layers: <code>tf.layers.dense</code></li>
-</ul>
-<p><a href="https://www.tensorflow.org/api_docs/python/tf/layers">https://www.tensorflow.org/api_docs/python/tf/layers</a></p>
-<p>Using those layers we can easily build a more complex neural network without having to define the weight variables ourselves (like we did in the low-level exercise).</p>
-
-</div>
-</div>
-</div></section><section>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tf</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">784</span><span class="p">])</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">conv</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">conv2d</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">)</span>
-<span class="n">pool</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">max_pooling2d</span><span class="p">(</span><span class="n">conv</span><span class="p">,</span> <span class="n">pool_size</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">strides</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">flat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span>
-<span class="n">logits</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">dense</span><span class="p">(</span><span class="n">flat</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">TensorflowGraphToDot</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">wikipedia</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="s1">&#39;France&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFKD&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">,</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">text</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -13007,275 +12607,14 @@ What is the purpose of the bias?
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[22]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
-<div class="output_svg output_subarea output_execute_result">
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.38.0 (20140413.2041)
- -->
-<!-- Title: %3 Pages: 1 -->
-<svg width="432pt" height="309pt"
- viewBox="0.00 0.00 432.00 309.28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.369947 0.369947) rotate(0) translate(4 832)">
-<title>%3</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-832 1163.74,-832 1163.74,4 -4,4"/>
-<!-- dense/BiasAdd -->
-<g id="node1" class="node"><title>dense/BiasAdd</title>
-<ellipse fill="none" stroke="black" cx="1021.74" cy="-18" rx="63.8893" ry="18"/>
-<text text-anchor="middle" x="1021.74" y="-14.3" font-family="Times,serif" font-size="14.00">dense/BiasAdd</text>
-</g>
-<!-- dense/MatMul -->
-<g id="node2" class="node"><title>dense/MatMul</title>
-<ellipse fill="none" stroke="black" cx="948.741" cy="-90" rx="63.0888" ry="18"/>
-<text text-anchor="middle" x="948.741" y="-86.3" font-family="Times,serif" font-size="14.00">dense/MatMul</text>
-</g>
-<!-- dense/MatMul&#45;&gt;dense/BiasAdd -->
-<g id="edge1" class="edge"><title>dense/MatMul&#45;&gt;dense/BiasAdd</title>
-<path fill="none" stroke="black" d="M966.041,-72.411C975.314,-63.519 986.899,-52.4107 997.097,-42.6309"/>
-<polygon fill="black" stroke="black" points="999.77,-44.9174 1004.57,-35.4699 994.925,-39.8649 999.77,-44.9174"/>
-</g>
-<!-- dense/bias/read -->
-<g id="node3" class="node"><title>dense/bias/read</title>
-<ellipse fill="none" stroke="black" cx="1094.74" cy="-90" rx="64.9885" ry="18"/>
-<text text-anchor="middle" x="1094.74" y="-86.3" font-family="Times,serif" font-size="14.00">dense/bias/read</text>
-</g>
-<!-- dense/bias/read&#45;&gt;dense/BiasAdd -->
-<g id="edge2" class="edge"><title>dense/bias/read&#45;&gt;dense/BiasAdd</title>
-<path fill="none" stroke="black" d="M1077.44,-72.411C1068.17,-63.519 1056.58,-52.4107 1046.38,-42.6309"/>
-<polygon fill="black" stroke="black" points="1048.56,-39.8649 1038.92,-35.4699 1043.71,-44.9174 1048.56,-39.8649"/>
-</g>
-<!-- dense/bias -->
-<g id="node4" class="node"><title>dense/bias</title>
-<ellipse fill="none" stroke="black" cx="1094.74" cy="-162" rx="47.3916" ry="18"/>
-<text text-anchor="middle" x="1094.74" y="-158.3" font-family="Times,serif" font-size="14.00">dense/bias</text>
-</g>
-<!-- dense/bias&#45;&gt;dense/bias/read -->
-<g id="edge3" class="edge"><title>dense/bias&#45;&gt;dense/bias/read</title>
-<path fill="none" stroke="black" d="M1094.74,-143.697C1094.74,-135.983 1094.74,-126.712 1094.74,-118.112"/>
-<polygon fill="black" stroke="black" points="1098.24,-118.104 1094.74,-108.104 1091.24,-118.104 1098.24,-118.104"/>
-</g>
-<!-- flatten/Reshape -->
-<g id="node5" class="node"><title>flatten/Reshape</title>
-<ellipse fill="none" stroke="black" cx="796.741" cy="-162" rx="65.7887" ry="18"/>
-<text text-anchor="middle" x="796.741" y="-158.3" font-family="Times,serif" font-size="14.00">flatten/Reshape</text>
-</g>
-<!-- flatten/Reshape&#45;&gt;dense/MatMul -->
-<g id="edge4" class="edge"><title>flatten/Reshape&#45;&gt;dense/MatMul</title>
-<path fill="none" stroke="black" d="M828.976,-146.155C852.004,-135.55 883.163,-121.201 907.926,-109.796"/>
-<polygon fill="black" stroke="black" points="909.454,-112.946 917.073,-105.584 906.526,-106.588 909.454,-112.946"/>
-</g>
-<!-- dense/kernel/read -->
-<g id="node6" class="node"><title>dense/kernel/read</title>
-<ellipse fill="none" stroke="black" cx="952.741" cy="-162" rx="72.5877" ry="18"/>
-<text text-anchor="middle" x="952.741" y="-158.3" font-family="Times,serif" font-size="14.00">dense/kernel/read</text>
-</g>
-<!-- dense/kernel/read&#45;&gt;dense/MatMul -->
-<g id="edge5" class="edge"><title>dense/kernel/read&#45;&gt;dense/MatMul</title>
-<path fill="none" stroke="black" d="M951.752,-143.697C951.312,-135.983 950.782,-126.712 950.29,-118.112"/>
-<polygon fill="black" stroke="black" points="953.783,-117.888 949.718,-108.104 946.795,-118.288 953.783,-117.888"/>
-</g>
-<!-- dense/kernel -->
-<g id="node7" class="node"><title>dense/kernel</title>
-<ellipse fill="none" stroke="black" cx="952.741" cy="-234" rx="55.4913" ry="18"/>
-<text text-anchor="middle" x="952.741" y="-230.3" font-family="Times,serif" font-size="14.00">dense/kernel</text>
-</g>
-<!-- dense/kernel&#45;&gt;dense/kernel/read -->
-<g id="edge6" class="edge"><title>dense/kernel&#45;&gt;dense/kernel/read</title>
-<path fill="none" stroke="black" d="M952.741,-215.697C952.741,-207.983 952.741,-198.712 952.741,-190.112"/>
-<polygon fill="black" stroke="black" points="956.241,-190.104 952.741,-180.104 949.241,-190.104 956.241,-190.104"/>
-</g>
-<!-- max_pooling2d/MaxPool -->
-<g id="node8" class="node"><title>max_pooling2d/MaxPool</title>
-<ellipse fill="none" stroke="black" cx="790.741" cy="-450" rx="101.282" ry="18"/>
-<text text-anchor="middle" x="790.741" y="-446.3" font-family="Times,serif" font-size="14.00">max_pooling2d/MaxPool</text>
-</g>
-<!-- max_pooling2d/MaxPool&#45;&gt;flatten/Reshape -->
-<g id="edge7" class="edge"><title>max_pooling2d/MaxPool&#45;&gt;flatten/Reshape</title>
-<path fill="none" stroke="black" d="M800.695,-431.978C806.013,-421.888 812.013,-408.638 814.741,-396 830.559,-322.725 814.167,-233.849 803.821,-190.062"/>
-<polygon fill="black" stroke="black" points="807.181,-189.067 801.406,-180.184 800.381,-190.729 807.181,-189.067"/>
-</g>
-<!-- flatten/Shape -->
-<g id="node14" class="node"><title>flatten/Shape</title>
-<ellipse fill="none" stroke="black" cx="748.741" cy="-378" rx="57.3905" ry="18"/>
-<text text-anchor="middle" x="748.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/Shape</text>
-</g>
-<!-- max_pooling2d/MaxPool&#45;&gt;flatten/Shape -->
-<g id="edge19" class="edge"><title>max_pooling2d/MaxPool&#45;&gt;flatten/Shape</title>
-<path fill="none" stroke="black" d="M780.574,-432.055C775.621,-423.801 769.562,-413.701 764.064,-404.538"/>
-<polygon fill="black" stroke="black" points="766.961,-402.563 758.814,-395.789 760.958,-406.165 766.961,-402.563"/>
-</g>
-<!-- flatten/Reshape/shape -->
-<g id="node9" class="node"><title>flatten/Reshape/shape</title>
-<ellipse fill="none" stroke="black" cx="564.741" cy="-234" rx="87.9851" ry="18"/>
-<text text-anchor="middle" x="564.741" y="-230.3" font-family="Times,serif" font-size="14.00">flatten/Reshape/shape</text>
-</g>
-<!-- flatten/Reshape/shape&#45;&gt;flatten/Reshape -->
-<g id="edge8" class="edge"><title>flatten/Reshape/shape&#45;&gt;flatten/Reshape</title>
-<path fill="none" stroke="black" d="M611.969,-218.75C650.442,-207.142 704.711,-190.768 744.483,-178.768"/>
-<polygon fill="black" stroke="black" points="745.7,-182.056 754.263,-175.817 743.678,-175.355 745.7,-182.056"/>
-</g>
-<!-- conv2d/Relu -->
-<g id="node10" class="node"><title>conv2d/Relu</title>
-<ellipse fill="none" stroke="black" cx="790.741" cy="-522" rx="55.7903" ry="18"/>
-<text text-anchor="middle" x="790.741" y="-518.3" font-family="Times,serif" font-size="14.00">conv2d/Relu</text>
-</g>
-<!-- conv2d/Relu&#45;&gt;max_pooling2d/MaxPool -->
-<g id="edge9" class="edge"><title>conv2d/Relu&#45;&gt;max_pooling2d/MaxPool</title>
-<path fill="none" stroke="black" d="M790.741,-503.697C790.741,-495.983 790.741,-486.712 790.741,-478.112"/>
-<polygon fill="black" stroke="black" points="794.241,-478.104 790.741,-468.104 787.241,-478.104 794.241,-478.104"/>
-</g>
-<!-- flatten/strided_slice -->
-<g id="node11" class="node"><title>flatten/strided_slice</title>
-<ellipse fill="none" stroke="black" cx="564.741" cy="-306" rx="79.8859" ry="18"/>
-<text text-anchor="middle" x="564.741" y="-302.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice</text>
-</g>
-<!-- flatten/strided_slice&#45;&gt;flatten/Reshape/shape -->
-<g id="edge10" class="edge"><title>flatten/strided_slice&#45;&gt;flatten/Reshape/shape</title>
-<path fill="none" stroke="black" d="M564.741,-287.697C564.741,-279.983 564.741,-270.712 564.741,-262.112"/>
-<polygon fill="black" stroke="black" points="568.241,-262.104 564.741,-252.104 561.241,-262.104 568.241,-262.104"/>
-</g>
-<!-- flatten/Reshape/shape/1 -->
-<g id="node12" class="node"><title>flatten/Reshape/shape/1</title>
-<ellipse fill="none" stroke="black" cx="371.741" cy="-306" rx="94.7833" ry="18"/>
-<text text-anchor="middle" x="371.741" y="-302.3" font-family="Times,serif" font-size="14.00">flatten/Reshape/shape/1</text>
-</g>
-<!-- flatten/Reshape/shape/1&#45;&gt;flatten/Reshape/shape -->
-<g id="edge11" class="edge"><title>flatten/Reshape/shape/1&#45;&gt;flatten/Reshape/shape</title>
-<path fill="none" stroke="black" d="M413.619,-289.811C443.158,-279.098 482.877,-264.691 514.183,-253.337"/>
-<polygon fill="black" stroke="black" points="515.4,-256.619 523.608,-249.919 513.014,-250.038 515.4,-256.619"/>
-</g>
-<!-- conv2d/BiasAdd -->
-<g id="node13" class="node"><title>conv2d/BiasAdd</title>
-<ellipse fill="none" stroke="black" cx="790.741" cy="-594" rx="69.5877" ry="18"/>
-<text text-anchor="middle" x="790.741" y="-590.3" font-family="Times,serif" font-size="14.00">conv2d/BiasAdd</text>
-</g>
-<!-- conv2d/BiasAdd&#45;&gt;conv2d/Relu -->
-<g id="edge12" class="edge"><title>conv2d/BiasAdd&#45;&gt;conv2d/Relu</title>
-<path fill="none" stroke="black" d="M790.741,-575.697C790.741,-567.983 790.741,-558.712 790.741,-550.112"/>
-<polygon fill="black" stroke="black" points="794.241,-550.104 790.741,-540.104 787.241,-550.104 794.241,-550.104"/>
-</g>
-<!-- flatten/Shape&#45;&gt;flatten/strided_slice -->
-<g id="edge13" class="edge"><title>flatten/Shape&#45;&gt;flatten/strided_slice</title>
-<path fill="none" stroke="black" d="M713.699,-363.669C685.256,-352.848 644.839,-337.472 613.28,-325.466"/>
-<polygon fill="black" stroke="black" points="614.385,-322.141 603.794,-321.857 611.895,-328.684 614.385,-322.141"/>
-</g>
-<!-- flatten/strided_slice/stack -->
-<g id="node15" class="node"><title>flatten/strided_slice/stack</title>
-<ellipse fill="none" stroke="black" cx="100.741" cy="-378" rx="100.983" ry="18"/>
-<text text-anchor="middle" x="100.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack</text>
-</g>
-<!-- flatten/strided_slice/stack&#45;&gt;flatten/strided_slice -->
-<g id="edge14" class="edge"><title>flatten/strided_slice/stack&#45;&gt;flatten/strided_slice</title>
-<path fill="none" stroke="black" d="M173.787,-365.519C186.116,-363.637 198.789,-361.735 210.741,-360 328.367,-342.922 358.435,-343.157 475.741,-324 482.521,-322.893 489.578,-321.669 496.62,-320.4"/>
-<polygon fill="black" stroke="black" points="497.688,-323.762 506.893,-318.517 496.425,-316.877 497.688,-323.762"/>
-</g>
-<!-- flatten/strided_slice/stack_1 -->
-<g id="node16" class="node"><title>flatten/strided_slice/stack_1</title>
-<ellipse fill="none" stroke="black" cx="328.741" cy="-378" rx="109.381" ry="18"/>
-<text text-anchor="middle" x="328.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack_1</text>
-</g>
-<!-- flatten/strided_slice/stack_1&#45;&gt;flatten/strided_slice -->
-<g id="edge15" class="edge"><title>flatten/strided_slice/stack_1&#45;&gt;flatten/strided_slice</title>
-<path fill="none" stroke="black" d="M379.369,-361.983C417.326,-350.725 469.269,-335.318 508.515,-323.677"/>
-<polygon fill="black" stroke="black" points="509.611,-327.003 518.203,-320.804 507.621,-320.292 509.611,-327.003"/>
-</g>
-<!-- flatten/strided_slice/stack_2 -->
-<g id="node17" class="node"><title>flatten/strided_slice/stack_2</title>
-<ellipse fill="none" stroke="black" cx="564.741" cy="-378" rx="109.381" ry="18"/>
-<text text-anchor="middle" x="564.741" y="-374.3" font-family="Times,serif" font-size="14.00">flatten/strided_slice/stack_2</text>
-</g>
-<!-- flatten/strided_slice/stack_2&#45;&gt;flatten/strided_slice -->
-<g id="edge16" class="edge"><title>flatten/strided_slice/stack_2&#45;&gt;flatten/strided_slice</title>
-<path fill="none" stroke="black" d="M564.741,-359.697C564.741,-351.983 564.741,-342.712 564.741,-334.112"/>
-<polygon fill="black" stroke="black" points="568.241,-334.104 564.741,-324.104 561.241,-334.104 568.241,-334.104"/>
-</g>
-<!-- conv2d/Conv2D -->
-<g id="node18" class="node"><title>conv2d/Conv2D</title>
-<ellipse fill="none" stroke="black" cx="711.741" cy="-666" rx="68.7879" ry="18"/>
-<text text-anchor="middle" x="711.741" y="-662.3" font-family="Times,serif" font-size="14.00">conv2d/Conv2D</text>
-</g>
-<!-- conv2d/Conv2D&#45;&gt;conv2d/BiasAdd -->
-<g id="edge17" class="edge"><title>conv2d/Conv2D&#45;&gt;conv2d/BiasAdd</title>
-<path fill="none" stroke="black" d="M730.463,-648.411C740.597,-639.432 753.281,-628.193 764.396,-618.344"/>
-<polygon fill="black" stroke="black" points="766.99,-620.721 772.154,-611.47 762.348,-615.482 766.99,-620.721"/>
-</g>
-<!-- conv2d/bias/read -->
-<g id="node19" class="node"><title>conv2d/bias/read</title>
-<ellipse fill="none" stroke="black" cx="869.741" cy="-666" rx="70.6878" ry="18"/>
-<text text-anchor="middle" x="869.741" y="-662.3" font-family="Times,serif" font-size="14.00">conv2d/bias/read</text>
-</g>
-<!-- conv2d/bias/read&#45;&gt;conv2d/BiasAdd -->
-<g id="edge18" class="edge"><title>conv2d/bias/read&#45;&gt;conv2d/BiasAdd</title>
-<path fill="none" stroke="black" d="M851.019,-648.411C840.886,-639.432 828.201,-628.193 817.086,-618.344"/>
-<polygon fill="black" stroke="black" points="819.134,-615.482 809.329,-611.47 814.492,-620.721 819.134,-615.482"/>
-</g>
-<!-- conv2d/bias -->
-<g id="node20" class="node"><title>conv2d/bias</title>
-<ellipse fill="none" stroke="black" cx="869.741" cy="-738" rx="53.0913" ry="18"/>
-<text text-anchor="middle" x="869.741" y="-734.3" font-family="Times,serif" font-size="14.00">conv2d/bias</text>
-</g>
-<!-- conv2d/bias&#45;&gt;conv2d/bias/read -->
-<g id="edge20" class="edge"><title>conv2d/bias&#45;&gt;conv2d/bias/read</title>
-<path fill="none" stroke="black" d="M869.741,-719.697C869.741,-711.983 869.741,-702.712 869.741,-694.112"/>
-<polygon fill="black" stroke="black" points="873.241,-694.104 869.741,-684.104 866.241,-694.104 873.241,-694.104"/>
-</g>
-<!-- Reshape -->
-<g id="node21" class="node"><title>Reshape</title>
-<ellipse fill="none" stroke="black" cx="576.741" cy="-738" rx="40.0939" ry="18"/>
-<text text-anchor="middle" x="576.741" y="-734.3" font-family="Times,serif" font-size="14.00">Reshape</text>
-</g>
-<!-- Reshape&#45;&gt;conv2d/Conv2D -->
-<g id="edge21" class="edge"><title>Reshape&#45;&gt;conv2d/Conv2D</title>
-<path fill="none" stroke="black" d="M602.134,-723.834C622.138,-713.461 650.359,-698.828 673.154,-687.008"/>
-<polygon fill="black" stroke="black" points="674.966,-690.011 682.232,-682.301 671.743,-683.797 674.966,-690.011"/>
-</g>
-<!-- conv2d/kernel/read -->
-<g id="node22" class="node"><title>conv2d/kernel/read</title>
-<ellipse fill="none" stroke="black" cx="715.741" cy="-738" rx="78.7863" ry="18"/>
-<text text-anchor="middle" x="715.741" y="-734.3" font-family="Times,serif" font-size="14.00">conv2d/kernel/read</text>
-</g>
-<!-- conv2d/kernel/read&#45;&gt;conv2d/Conv2D -->
-<g id="edge22" class="edge"><title>conv2d/kernel/read&#45;&gt;conv2d/Conv2D</title>
-<path fill="none" stroke="black" d="M714.752,-719.697C714.312,-711.983 713.782,-702.712 713.29,-694.112"/>
-<polygon fill="black" stroke="black" points="716.783,-693.888 712.718,-684.104 709.795,-694.288 716.783,-693.888"/>
-</g>
-<!-- Placeholder -->
-<g id="node23" class="node"><title>Placeholder</title>
-<ellipse fill="none" stroke="black" cx="443.741" cy="-810" rx="51.9908" ry="18"/>
-<text text-anchor="middle" x="443.741" y="-806.3" font-family="Times,serif" font-size="14.00">Placeholder</text>
-</g>
-<!-- Placeholder&#45;&gt;Reshape -->
-<g id="edge23" class="edge"><title>Placeholder&#45;&gt;Reshape</title>
-<path fill="none" stroke="black" d="M470.977,-794.666C491.591,-783.816 520.048,-768.838 542.252,-757.152"/>
-<polygon fill="black" stroke="black" points="544.125,-760.121 551.344,-752.367 540.865,-753.927 544.125,-760.121"/>
-</g>
-<!-- Reshape/shape -->
-<g id="node24" class="node"><title>Reshape/shape</title>
-<ellipse fill="none" stroke="black" cx="576.741" cy="-810" rx="63.0888" ry="18"/>
-<text text-anchor="middle" x="576.741" y="-806.3" font-family="Times,serif" font-size="14.00">Reshape/shape</text>
-</g>
-<!-- Reshape/shape&#45;&gt;Reshape -->
-<g id="edge24" class="edge"><title>Reshape/shape&#45;&gt;Reshape</title>
-<path fill="none" stroke="black" d="M576.741,-791.697C576.741,-783.983 576.741,-774.712 576.741,-766.112"/>
-<polygon fill="black" stroke="black" points="580.241,-766.104 576.741,-756.104 573.241,-766.104 580.241,-766.104"/>
-</g>
-<!-- conv2d/kernel -->
-<g id="node25" class="node"><title>conv2d/kernel</title>
-<ellipse fill="none" stroke="black" cx="718.741" cy="-810" rx="61.1893" ry="18"/>
-<text text-anchor="middle" x="718.741" y="-806.3" font-family="Times,serif" font-size="14.00">conv2d/kernel</text>
-</g>
-<!-- conv2d/kernel&#45;&gt;conv2d/kernel/read -->
-<g id="edge25" class="edge"><title>conv2d/kernel&#45;&gt;conv2d/kernel/read</title>
-<path fill="none" stroke="black" d="M717.999,-791.697C717.669,-783.983 717.272,-774.712 716.903,-766.112"/>
-<polygon fill="black" stroke="black" points="720.399,-765.945 716.474,-756.104 713.406,-766.245 720.399,-765.945"/>
-</g>
-</g>
-</svg>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>(128089,
+ b&#39;France (French: [fs]), officially the French Republic (French: Republique francaise [epyblik fsz]), &#39;)</pre>
 </div>
 
 </div>
@@ -13288,38 +12627,73 @@ What is the purpose of the bias?
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Initalization-and-Regularization">Initalization and Regularization<a class="anchor-link" href="#Initalization-and-Regularization">&#182;</a></h3><p>The layers provided by <code>tf.layers</code> have a common interface to define initalization and regularization.
-Most layers have at least the following arguments:</p>
-<ul>
-<li>activation, the activation function used by this layer  e.g. <code>tf.nn.relu</code></li>
-<li>kernel_initializer, the initalisation function used to intialize the weights of the layer</li>
-<li>kernel_regularizer, the regularizer used to regularize the weights of the layer e.g. $L_2$ or $L_1$</li>
-<li>kernel_constraint, a projection function to enforce certaint constraints on the weights</li>
-</ul>
-<p>We won't go into further detail here. But we will use initialization and regularization in the high-level exercise using <code>tf.keras</code> later.</p>
-
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.losses"><code>tf.losses</code><a class="anchor-link" href="#tf.losses">&#182;</a></h2><p>The <code>tf.losses</code> package contains pre-defined loss-functions commonly used in neural networks.
-In contrast to the low-level API, the loss is automatically averaged over the current batch.</p>
-<p><a href="https://www.tensorflow.org/api_docs/python/tf/losses">https://www.tensorflow.org/api_docs/python/tf/losses</a></p>
-
+<h3 id="One-Hot-Encoding">One-Hot Encoding<a class="anchor-link" href="#One-Hot-Encoding">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="n">loss_function</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">softmax_cross_entropy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">logits</span><span class="p">)</span>
-<span class="n">minimize</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss_function</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">one_hot_encoding</span><span class="p">(</span><span class="n">binary_text</span><span class="p">):</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">binary_text</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">to_categorical</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+
+<span class="n">one_hot_encoded_text</span> <span class="o">=</span> <span class="n">one_hot_encoding</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training-Dataset">Training Dataset<a class="anchor-link" href="#Training-Dataset">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nevents</span> <span class="o">=</span> <span class="mi">30000</span>
+<span class="n">train_x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">one_hot_encoded_text</span><span class="p">)</span><span class="o">-</span><span class="mi">31</span><span class="p">):</span>
+    <span class="n">train_x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">one_hot_encoded_text</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">30</span><span class="p">])</span>
+    <span class="n">train_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">one_hot_encoded_text</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">31</span><span class="p">])</span>
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_x</span><span class="p">[:</span><span class="n">nevents</span><span class="p">])</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_y</span><span class="p">[:</span><span class="n">nevents</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="LSTM-Model">LSTM Model<a class="anchor-link" href="#LSTM-Model">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">128</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
 
 </div>
@@ -13336,14 +12710,21 @@ In contrast to the low-level API, the loss is automatically averaged over the cu
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From /home/thomas/venv/lib/python3.5/site-packages/tensorflow/python/ops/losses/losses_impl.py:691: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+<pre>WARNING:tensorflow:From /home/thomas/venv/lib/python3.5/site-packages/tensorflow/python/keras/_impl/keras/backend.py:1456: calling reduce_sum (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
 Instructions for updating:
-
-Future major versions of TensorFlow will allow gradients to flow
-into the labels input on backprop by default.
-
-See tf.nn.softmax_cross_entropy_with_logits_v2.
-
+keep_dims is deprecated, use keepdims instead
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+lstm_1 (LSTM)                (None, 128)               131584    
+_________________________________________________________________
+dense_1 (Dense)              (None, 128)               16512     
+=================================================================
+Total params: 148,096
+Trainable params: 148,096
+Non-trainable params: 0
+_________________________________________________________________
+None
 </pre>
 </div>
 </div>
@@ -13356,67 +12737,18 @@ See tf.nn.softmax_cross_entropy_with_logits_v2.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="tf.summary"><code>tf.summary</code><a class="anchor-link" href="#tf.summary">&#182;</a></h2><p>During the training you can sample interesting quantities.
-Here we define two summary objects:</p>
-<ul>
-<li>a scalar summary (<code>tf.summary.scalar</code>), which records the accuracy during the training</li>
-<li>a histogram summary (<code>tf.summary.histogram</code>), which records the distribution of the maximum probability of each sample (a measure on "how confident" our network is in its decision)</li>
-</ul>
-
+<h3 id="Compilation">Compilation<a class="anchor-link" href="#Compilation">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">correct_prediction</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span><span class="s1">&#39;summary/accuracy&#39;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="s1">&#39;summary/max_probability&#39;</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">summary</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
-
-<span class="n">train_writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="s1">&#39;train_log&#39;</span><span class="p">)</span>
-<span class="n">train_writer</span><span class="o">.</span><span class="n">add_graph</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">())</span>
-<span class="n">test_writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="s1">&#39;test_log&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div></section><section>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">InteractiveSession</span><span class="p">()</span>
-<span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">batch_xs</span><span class="p">,</span> <span class="n">batch_ys</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">next_batch</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-    <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">minimize</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">batch_xs</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">batch_ys</span><span class="p">})</span>
-
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">train_summary</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]})</span>
-        <span class="n">train_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">train_summary</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="n">test_summary</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]})</span>
-        <span class="n">test_writer</span><span class="o">.</span><span class="n">add_summary</span><span class="p">(</span><span class="n">test_summary</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>    
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train&quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">images</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]}))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test &quot;</span><span class="p">,</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">images</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">mnist</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">labels</span><span class="p">}))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">losses</span><span class="o">.</span><span class="n">categorical_crossentropy</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -13433,8 +12765,9 @@ Here we define two summary objects:</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Train 0.958
-Test  0.9526
+<pre>WARNING:tensorflow:From /home/thomas/venv/lib/python3.5/site-packages/tensorflow/python/keras/_impl/keras/backend.py:1557: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
 </pre>
 </div>
 </div>
@@ -13447,49 +12780,7 @@ Test  0.9526
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Tensorboard"><code>Tensorboard</code><a class="anchor-link" href="#Tensorboard">&#182;</a></h2><ul>
-<li>browser-based application</li>
-<li>visualizes the <code>tf.Summary</code> objects sampled during the training</li>
-<li>inspect, monitor and visualize the learning process of a neural network</li>
-</ul>
-<div class="alert alert-block alert-info">
-<h3>Exercise</h3>
-You can now start tensorboard and inspect your training by executing the following command in `bash` <br>
-<pre> tensorboard --logdir="." </pre>
-
-Afterwards open your browser at:
-http://localhost:6006
-</div><div class="alert alert-block alert-info">
-<h3>Exercise</h3>
-In addition to the current summaries: visualize the loss function (scalar) and the distribution of the weights (histogram) in tensorboard.
-</div>
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="High-Level-Interface---Estimators">High Level Interface - Estimators<a class="anchor-link" href="#High-Level-Interface---Estimators">&#182;</a></h1><p>Tensorflow is not as easy to use as:</p>
-<ul>
-<li>sklearn</li>
-<li>tensorflow</li>
-<li>...</li>
-</ul>
-<p>The High-Level Tensorflow API was recently introduced to simplify using tensorflow.</p>
-<p>It provides an sklearn-like estimator interface, which encapsulates the following actions:</p>
-<ul>
-<li>training</li>
-<li>evaluation</li>
-<li>prediction</li>
-<li>export for serving</li>
-</ul>
-<p>It tries to hide tensoflow-details:</p>
-<ul>
-<li>no need to open a session</li>
-<li>no explicit training loop</li>
-</ul>
-
+<h3 id="Text-Generation-Callback">Text Generation Callback<a class="anchor-link" href="#Text-Generation-Callback">&#182;</a></h3>
 </div>
 </div>
 </div></section><section>
@@ -13497,12 +12788,130 @@ In addition to the current summaries: visualize the loss function (scalar) and t
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Estimator-Interface-vs.-Keras">Estimator-Interface vs. Keras<a class="anchor-link" href="#Estimator-Interface-vs.-Keras">&#182;</a></h2><p>Clearly the estimator interface is aimed to be an alternative to Keras, which is the high-level interface most people is.</p>
-<p><strong>Personal Opinion</strong>: The estimator interface is still very confusing, hence we will look into <strong>Keras</strong> for the second part of this workshop!</p>
+<h3 id="Fitting">Fitting<a class="anchor-link" href="#Fitting">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">TextGeneration</span><span class="p">()],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
-</div></section></section>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.4385 - acc: 0.5871
+a country whose territory consiue nter rien aoot hmeu rpierwsfin nmegorgaeu eand hmtoaoshr eeyat hsaha foc 1vrs sa itani Fars r135,0,wl eih nbt o tytgseinaid o hraae.Aetrur,clnae.I o hsohdCte nrak.A rvmig o erwoe naz,igdrena nrhss
+30000/30000 [==============================]30000/30000 [==============================] - 77s 3ms/step - loss: 1.4387 - acc: 0.5871
+
+Epoch 2/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.3965 - acc: 0.5966
+a country whose territory consiassom o 7&#39;.nI lfdrtdcepid stddee,wrhtin dcnttry etadee  o hrloe fueesios i t femalase edetanesos adt hltre teeietnualc mmeriul foe epliy nesbtocudy e adiheCuhl ernis fudFan t rscile ra nedrbria d eli
+30000/30000 [==============================]30000/30000 [==============================] - 74s 2ms/step - loss: 1.3974 - acc: 0.5962
+
+Epoch 3/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.3633 - acc: 0.6048
+a country whose territory consit foren lte 6etansd hsae fomtacam ryahs t h edtrcvdbintr.ittalin ryuseai,a nmabeslruinu adailnuie nae poel oemnveoie,dsaen,ttr it1uctd n nmeniu yrscoin ntal.Atiae&#39; rvcin adsoiaid.
+n etlgo,ostadih 40.
+30000/30000 [==============================]30000/30000 [==============================] - 67s 2ms/step - loss: 1.3632 - acc: 0.6048
+
+Epoch 4/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.3169 - acc: 0.6164
+a country whose territory consitnu,wetoie cuhrs  uoin =
+
+h ae hreivd frmniswug eihtenugstsnpnkosansah eprvdiin prvnio oy2a o atousy o2196 sa as nmigenRmnrsie fubec aseneytapmntoal nmiles efrpidtpososcos frmairu s rsg,toe dmededyos
+30000/30000 [==============================]30000/30000 [==============================] - 74s 2ms/step - loss: 1.3173 - acc: 0.6162
+
+Epoch 5/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.2877 - acc: 0.6249
+a country whose territory consiue adenohe h trces nteslvry zn.Tebilgns nmeg rsamno feeriisduastrc) Wasws u yagin nredbr o 3i.Aws.I&#39;anes fosih fomtac.I na o mldeeme,edt d ataosial usuhral,
+Fakigcat uatd.Ftt o Furig nmrnusftrvytin f
+30000/30000 [==============================]30000/30000 [==============================] - 76s 3ms/step - loss: 1.2881 - acc: 0.6246
+
+Epoch 6/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.2565 - acc: 0.6341
+a country whose territory consic.wid Guedd ebutey ntil ntluie nae ucenre nmegenaiid o 288 nth asevle h fieios nrakistt foloi nwhre ocuisc npliv oios iatrcetie. o aripia cis rcmnin ntAyassas srutoo fo 7g1 4 9 mlg nee atl ameie nwtn
+30000/30000 [==============================]30000/30000 [==============================] - 74s 2ms/step - loss: 1.2567 - acc: 0.6339
+
+Epoch 7/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.2238 - acc: 0.6399
+a country whose territory consctnai sldvy i o.Alet Do asas) yasblnki.Mrt nmegos yayi o prmsnftny Jl,snet-oe rplii osio oe hsces fodddrsweyanttnr hl nlhiee ndhs epethcil,atrnpn3s ntrhsie frmdais nmlie hetramstlsfenali-osoc nais rcu
+30000/30000 [==============================]30000/30000 [==============================] - 76s 3ms/step - loss: 1.2236 - acc: 0.6400
+
+Epoch 8/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.2011 - acc: 0.6472
+a country whose territory consatothanefedae h eritoyod Fesc itinrC(E eproimnFarpiaiae raeentnel h are.lbtinewar uinettrtias ateCuitdu naeo,mgih,ashrayar rnale rfabintdcnios eale italryhpotdsah nruieeraeatd,atryas etet hmtoin Cahii
+30000/30000 [==============================]30000/30000 [==============================] - 75s 2ms/step - loss: 1.2016 - acc: 0.6471
+
+Epoch 9/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.1807 - acc: 0.6519
+a country whose territory consctrs fo lse h ntoblcuin adsors aderuia frpcciai goeoe soe eioetl Oraceia caryas hmcerete yan xpavlos hsceriy yar,ay hruhoden rtee nmere frmc,soe ) hgeknm n lgds cnrus nmesalycb o aruteie,bi lu
+hdy eta
+30000/30000 [==============================]30000/30000 [==============================] - 74s 2ms/step - loss: 1.1803 - acc: 0.6521
+
+Epoch 10/10
+29952/30000 [============================&gt;.]29952/30000 [============================&gt;.] - ETA: 0s - loss: 1.1576 - acc: 0.6541
+a country whose territory consihssos frmsisins frm oe,asias  rmadca poe o Cah eoad rmenlp.Mihcrali,aie prvst nwih ntepos urye 4l</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/thomas/venv/lib/python3.5/site-packages/ipykernel_launcher.py:13: RuntimeWarning: divide by zero encountered in log
+  del sys.path[0]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dwrl efutos sou i 1 intwrn fud ntig ntay yay.Bt s npeaiafa fo oe atrcmltts eylciilu c  clrii ncadsttnu
+30000/30000 [==============================]30000/30000 [==============================] - 75s 3ms/step - loss: 1.1577 - acc: 0.6539
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[41]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;tensorflow.python.keras._impl.keras.callbacks.History at 0x7f90d6053278&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 </div>
 </div>
 
