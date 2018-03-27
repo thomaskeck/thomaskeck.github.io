@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/custom.css">
+<script src="../../reveal.mod/js/d3.v4.min.js"></script>
+<script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
+<script src="../../reveal.mod/js/d3-scale-chromatic.v1.min.js"></script>
+
+<style>
+
+.bar {
+  fill: #9090f0;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.axis--x text {
+  font-size: 6vmin;
+  fill: #fff;
+}
+
+</style>
+
+<body>
+<div class="reveal">
+<script>
+
+var width = 1000
+var height = 500
+
+var svg = d3.select("body").append("svg")
+            .attr('viewBox','0 0 1000 500')
+						.attr('preserveAspectRatio','none')
+            .attr("overflow", "visible")
+						.style("width", '100%')
+						.style("height", '100%')
+						.style("display", "block")
+						.style("position", "absolute")
+						.style("top", "0%")
+						.style("left", "0%");
+	
+picture1 = svg.append('svg:image').attr('xlink:href', '../images/bird4.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
+picture2 = svg.append('svg:image').attr('xlink:href', '../images/human_adversarial2.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
+picture3 = svg.append('svg:image').attr('xlink:href', '../images/bird1.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
+
+svg.append("g").attr("id", "container")
+
+data = [ {'label': 'dog', 'probability': 0.0},
+         {'label': 'cat', 'probability': 0.0},
+         {'label': 'bird', 'probability': 0.0},
+         {'label': 'frog', 'probability': 0.0},
+         {'label': 'deer', 'probability': 0.0},
+         {'label': 'human', 'probability': 0.0}]
+
+data1 = [ {'label': 'dog', 'probability': 0.1},
+         {'label': 'cat', 'probability': 0.2},
+         {'label': 'bird', 'probability': 0.6},
+         {'label': 'frog', 'probability': 0.4},
+         {'label': 'deer', 'probability': 0.0},
+         {'label': 'human', 'probability': 0.1}]
+
+data2 = [ {'label': 'dog', 'probability': 0.4},
+         {'label': 'cat', 'probability': 0.7},
+         {'label': 'bird', 'probability': 0.2},
+         {'label': 'frog', 'probability': 0.1},
+         {'label': 'deer', 'probability': 0.3},
+         {'label': 'human', 'probability': 0.1}]
+
+data3 = [ {'label': 'dog', 'probability': 0.1},
+         {'label': 'cat', 'probability': 0.25},
+         {'label': 'bird', 'probability': 0.8},
+         {'label': 'frog', 'probability': 0.3},
+         {'label': 'deer', 'probability': 0.1},
+         {'label': 'human', 'probability': 0.0}]
+
+var x = d3.scaleBand().rangeRound([width/2, width])
+var y = d3.scaleLinear().rangeRound([height*1/5, height*4/5]);
+x.domain(data.map(function(d) { return d.label; }));
+y.domain([0, 1.0]);
+
+svg.append("g")
+		.attr("class", "axis axis--x")
+		.attr("transform", "translate(0," + height*9/10 + ")")
+		.call(d3.axisBottom(x));
+
+svg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.label)+x.bandwidth()*0.1; })
+      .attr("y", function(d) { return height*4/5-y(d.probability); })
+      .attr("width", x.bandwidth()*0.8)
+      .attr("height", function(d) { return y(d.probability); });
+
+
+var _transitions = [
+	() => { picture1.transition().duration(500).style('opacity', 1.0)
+					svg.selectAll(".bar")
+							.data(data1)
+							.transition()
+							.delay(500)
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+	() => { picture1.transition().duration(500).style('opacity', 0.0)
+          picture2.transition().duration(500).style('opacity', 1.0)
+           svg.selectAll(".bar")
+							.data(data2)
+							.transition()
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+	() => { picture2.transition().duration(500).style('opacity', 0.0)
+          picture3.transition().duration(500).style('opacity', 1.0)
+           svg.selectAll(".bar")
+							.data(data3)
+							.transition()
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+]
+
+var _inverse_transitions = [
+	
+   () => { picture1.transition().duration(500).style('opacity', 0.0)
+           svg.selectAll(".bar")
+							.data(data)
+							.transition()
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+	() => { picture1.transition().duration(500).style('opacity', 1.0)
+          picture2.transition().duration(500).style('opacity', 0.0)
+           svg.selectAll(".bar")
+							.data(data1)
+							.transition()
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+	() => { picture2.transition().duration(500).style('opacity', 1.0)
+          picture3.transition().duration(500).style('opacity', 0.0)
+           svg.selectAll(".bar")
+							.data(data2)
+							.transition()
+							.duration(1000)
+      				.attr("y", function(d) { return height*4/5-y(d.probability); })
+							.attr("height", function(d) { return y(d.probability); }); },
+
+]
+
+
+</script>
+</div>
+</body>
