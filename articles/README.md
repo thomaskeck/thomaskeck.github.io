@@ -12,6 +12,7 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 2013 [L. Wan et. al. „Regularization of Neural Networks using DropConnect“](http://proceedings.mlr.press/v28/wan13.html)
   - 18.02.2013 [I. J. Goodfellow „Maxout Networks“](https://arxiv.org/abs/1302.4389)
   - 19.02.2014 [Pierre Baldi, Peter Sadowski, and Daniel Whiteson. „Searching for Exotic Particles in High-Energy Physics with Deep Learning“](https://arxiv.org/abs/1402.4735)
+  - 11.02.2015 [S. Ioffe, C. Szegedy „Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift“](https://arxiv.org/abs/1502.03167)
   - 28.05.2015 [Yann Lecun, Yoshua Bengio, and Geoffrey Hinton. „Deep learning“.](https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
   - 05.06.2017 [A. Santoro, et. al „A simple neural network module for relational reasoning“](https://arxiv.org/abs/1706.01427)
   - 24.06.2016 [H. Cheng, et. al. „Wide & Deep Learning for Recommender Systems“](https://arxiv.org/abs/1606.07792)
@@ -20,7 +21,6 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 25.10.2017 [D. Levy, et. al. „Generalizing Hamiltonian Monte Carlo with Neural Networks“](https://arxiv.org/abs/1711.09268)
   - 15.02.2018 [A. S. Morcos et. al. „On the importance of single directions for generalization“](https://openreview.net/forum?id=r1iuQjxCZ&noteId=r1On1W5xf)
   - 22.02.2018 [N. Carlini, et. al. „The Secret Sharer: Measuring Unintended Neural Network Memorization & Extracting Secrets“](https://arxiv.org/abs/1802.08232)
-  - 11.02.2015 [S. Ioffe, C. Szegedy „Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift“](https://arxiv.org/abs/1502.03167)
 
 
 ### Gradient Descent Optimization
@@ -65,13 +65,16 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 17.11.2015 [O. Vinyals, et. al „Show and Tell: A Neural Image Caption Generator“](https://arxiv.org/abs/1411.4555)
   - 10.12.2015 [K. He et. al. „Deep Residual Learning for Image Recognition“](https://arxiv.org/abs/1512.03385)
   - 23.02.2016 [C. Szegedy et. al. „Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning“](https://arxiv.org/abs/1602.07261)
+  - 08.10.2016 [J. Liu, et. al, „Multispectral Deep Neural Networks for Pedestrian Detection“](https://arxiv.org/abs/1611.02644)
+  - 2017 [J. Wagner, et. al. „Learning Semantic Prediction using Pretrained Deep Feedforward Networks“](https://www.ais.uni-bonn.de/papers/ESANN_2017_Wagner.pdf)
   - 21.05.2017 [X. Gastaldi „Shake-Shake regularization“](https://arxiv.org/abs/1705.07485)
+  - 29.06.2017 [W. M. Gondal, et. al. „Weakly-Supervised Localization of Diabetic Retinopathy Lesions in Retinal Fundus Images“](https://arxiv.org/abs/1706.09634)
   - 30.10.2017 [M. Babaeizadeh, et. al. „Stochastic Variational Video Prediction“](https://arxiv.org/abs/1710.11252)
-
 
 ### Adversarial Examples
 
   - 20.12.2014 [I. J. Goodfellow „Explaining and Harnessing Adversarial Examples“](https://arxiv.org/abs/1412.6572)
+  - 14.02.2017 [J. H. Metzen, et. al. „On Detecting Adversarial Perturbations“](https://arxiv.org/abs/1702.04267)
   - 28.03.2017 [S. Baluja, I. Fischer „Adversarial Transformation Networks: Learning to Generate Adversarial Examples“](https://arxiv.org/abs/1703.09387)
   - 09.01.2018 [J. Gilmer et. al. „Adversarial Spheres“](https://arxiv.org/abs/1801.02774)
 
