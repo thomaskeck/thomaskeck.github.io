@@ -398,7 +398,7 @@
                    data-fig-id="convolution"
                    data-file="animations/convolution.html" style="width: 80%; height: 100%"></div>
           </div> 
-          <div style="float: left; width: 55%; height: 25vmin; text-align: left">
+          <div style="float: left; width: 55%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
 
           $M(x,y) = \sum_c \sum_{ij} $ <div style="color: #f05050; display: inline"> $ K_c(i,j) $ </div> $ P_c(x+i, y+j) $
@@ -436,7 +436,7 @@
                    data-fig-id="convolution"
                    data-file="animations/pooling.html" style="width: 80%; height: 100%"></div>
           </div> 
-          <div style="float: left; width: 55%; height: 25vmin; text-align: left">
+          <div style="float: left; width: 55%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
 
           $M(x,y) = $ <div style="color: #f05050; display: inline"> $ \max_{ij} $ </div> $ P(x+i, y+j) $
@@ -579,9 +579,21 @@
         </section>
 				
 				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Animation Recurrent Network</div></h3>
+          <h3><div style='color: #f05050'>Recurrent Network</div></h3>
+          <div style="width: 100%; height: 60vmin">
+            <img src="images/rnn1.png"  style="background:none; border:none; box-shadow:none;">
+          </div>
+        </section>
+				
+        <section style="height: 100%">
+          <h3><div style='color: #f05050'>Recurrent Network</div></h3>
+          <div style="width: 100%; height: 60vmin">
+            <img src="images/rnn2.png"  style="background:none; border:none; box-shadow:none;">
+          </div>
 
-					Animation Recurrent Network          
+          <div style="height: 5vmin"></div>
+          Recurrent networks contain loops;<br>
+          last output of the neuron is used as additional input
 
         </section>
         
@@ -713,52 +725,11 @@
           One-hot encoding works well for characters ($\sim 26$) but what about words ($\gt 300000$)?<br>
           $\rightarrow$ <div style="color: #50f050; display: inline">embed</div> high-dimensional <div style="color: #50f050; display: inline">word</div>-space into low-dimensional space with neural network
           <br>
-          <iframe allowtransparency="false" style="background: #FFFFFF;" width="70%" height="70%" type="text/html" data-src="http://projector.tensorflow.org/" frameborder="0"> </iframe>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="70%" height="70%" type="text/html" data-src="https://projector.tensorflow.org/" frameborder="0"> </iframe>
 
         </section>
         </section>
 				
-        <section style="height: 100%">
-				<section>
-          <h2><div style='color: #9090f0'>Playing Games</div> & <div style='color: #f05050'>Reinforcement Learning</div></h2>
-          Problem: Correlation of Samples
-          Q-Learning and Experience Replace (Value-Based) Bellman-Gleichung
-          Async Advantage Actor Critic (A3C) (Policy-Based)
-          PCL?
-				</section>
-
-				<section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Continuos Control Tasks</div></h3>
-          <iframe width="80%" height="50%" id="ytplayer" type="text/html" data-src="https://www.youtube.com/embed/rAai4QzcYbs" frameborder="0"> </iframe>
-						<br>
-            <a href="https://arxiv.org/abs/1801.00690">Y. Tassa, et. al. (01/2018)</a>
-        </section>
-				
-				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Reinforcement Learning</div></h3>
-
-					<ul>
-						<li>Agent interacts with environment $\Epsilon$</li>
-						<li>Each time step $t$: receive state $s_t$ and select action $a_t \in \mathcal{A}$ and get a scalar reward $r_t$</li>
-						<li>Goal: Maximize discounted return $R_t = \sum_{k=0}^\infty \gamma^k r_{t+k}$</li>
-					</ul>
-
-        </section>
-				
-				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Q-Learning</div></h3>
-
-					<div style="color: #50f050">Action Value Network approximates expected return</div>
-					$$Q^\pi(s, a) = \mathrm{E}(R_t)$$
-        </section>
-				
-				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Advantage Actor-Critic</div></h3>
-
-					<div style="color: #50f050">Action Value Network approximates expected return</div>
-					$$Q^\pi(s, a) = \mathrm{E}(R_t)$$
-        </section>
-				</section>
 				
         <section style="height: 100%">
 				<section>

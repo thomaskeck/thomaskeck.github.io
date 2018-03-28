@@ -98,10 +98,15 @@ function create_grid(color, data, classname, offset, text) {
             
 var weights = [0.6, 0.6, 0.6, 0.6]
 
-var map = create_grid("#fff", gridData(4, () =>{ return Math.random(); }), "map", [150, 600], true).style("opacity", 0.5)
+var channel_grid_data = gridData(8, () => { return Math.random()})
+var map_grid_data = gridData(4, (i,j) =>{ return d3.max([channel_grid_data[2*i][2*j].weight,
+                                                         channel_grid_data[2*i+1][2*j].weight,
+                                                         channel_grid_data[2*i][2*j+1].weight,
+                                                         channel_grid_data[2*i+1][2*j+1].weight]); })
+var map = create_grid("#fff", map_grid_data, "map", [150, 600], true).style("opacity", 0.5)
 d3.selectAll(".textmap").style("opacity", 0.0)
 d3.selectAll(".map").style("opacity", 0.0)
-var channel = create_grid("#fff", gridData(8, () => { return Math.random()}), "channel", [50, 50], true)
+var channel = create_grid("#fff", channel_grid_data, "channel", [50, 50], true)
 var kernel = create_grid("#ff0000", gridData(2, (i,j) => { return weights[i*2+j] }), "filter", [50,50], false)
 
 
