@@ -11915,6 +11915,16 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div style="position:relative;">
+  <img src="images/tensorflow_programming_environment.png" style="width: 80%; float: left" />
+</div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
@@ -13289,12 +13299,12 @@ What is the purpose of the bias?
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Initalization-and-Regularization">Initalization and Regularization<a class="anchor-link" href="#Initalization-and-Regularization">&#182;</a></h3><p>The layers provided by <code>tf.layers</code> have a common interface to define initalization and regularization.
-Most layers have at least the following arguments:</p>
+Most layers have at least the following parameters:</p>
 <ul>
-<li>activation, the activation function used by this layer  e.g. <code>tf.nn.relu</code></li>
-<li>kernel_initializer, the initalisation function used to intialize the weights of the layer</li>
-<li>kernel_regularizer, the regularizer used to regularize the weights of the layer e.g. $L_2$ or $L_1$</li>
-<li>kernel_constraint, a projection function to enforce certaint constraints on the weights</li>
+<li><code>activation</code>, the activation function used by this layer  e.g. <code>tf.nn.relu</code></li>
+<li><code>kernel_initializer</code>, the initalisation function used to intialize the weights of the layer</li>
+<li><code>kernel_regularizer</code>, the regularizer used to regularize the weights of the layer e.g. $L_2$ or $L_1$</li>
+<li><code>kernel_constraint</code>, a projection function to enforce certaint constraints on the weights</li>
 </ul>
 <p>We won't go into further detail here. But we will use initialization and regularization in the high-level exercise using <code>tf.keras</code> later.</p>
 
@@ -13473,10 +13483,18 @@ In addition to the current summaries: visualize the loss function (scalar) and t
 <h1 id="High-Level-Interface---Estimators">High Level Interface - Estimators<a class="anchor-link" href="#High-Level-Interface---Estimators">&#182;</a></h1><p>Tensorflow is not as easy to use as:</p>
 <ul>
 <li>sklearn</li>
-<li>tensorflow</li>
+<li>keras</li>
 <li>...</li>
 </ul>
 <p>The High-Level Tensorflow API was recently introduced to simplify using tensorflow.</p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>It provides an sklearn-like estimator interface, which encapsulates the following actions:</p>
 <ul>
 <li>training</li>
@@ -13497,7 +13515,7 @@ In addition to the current summaries: visualize the loss function (scalar) and t
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Estimator-Interface-vs.-Keras">Estimator-Interface vs. Keras<a class="anchor-link" href="#Estimator-Interface-vs.-Keras">&#182;</a></h2><p>Clearly the estimator interface is aimed to be an alternative to Keras, which is the high-level interface most people is.</p>
+<h2 id="Estimator-Interface-vs.-Keras">Estimator-Interface vs. Keras<a class="anchor-link" href="#Estimator-Interface-vs.-Keras">&#182;</a></h2><p>Clearly the estimator interface is aimed to be an alternative to Keras, which is the high-level interface most people use.</p>
 <p><strong>Personal Opinion</strong>: The estimator interface is still very confusing, hence we will look into <strong>Keras</strong> for the second part of this workshop!</p>
 
 </div>
