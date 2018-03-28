@@ -78,7 +78,7 @@
 				
         <section>
           <h3><div style='color: #9090f0'>History</div></h3>
-          <ul  style="font-size: 3vmin">
+          <ul  style="font-size: 2.8vmin">
             <li style='color: #50f050' class="fragment" data-fragment-index="1">1950-1970</li>
             <ul class="fragment" data-fragment-index="1">
               <li>Simple Perceptron without hidden layers</li>
@@ -163,7 +163,7 @@
                    data-fig-id="neural_network"
                    data-file="animations/vanishing_gradient_problem.html" style="width: 100%; height: 50%"></div>
 
-              <div class="fragment" style="position: absolute; left:20%; top: 85%">
+              <div class="fragment" style="position: absolute; left:10%; top: 85%">
                 Training becomes unstable $\rightarrow$ very slow or no convergence
               </div>
               
@@ -401,11 +401,13 @@
           <div style="float: left; width: 55%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
 
+					<div style="font-size: 3vmin">
           $M(x,y) = \sum_c \sum_{ij} $ <div style="color: #f05050; display: inline"> $ K_c(i,j) $ </div> $ P_c(x+i, y+j) $
+          </div>
           <div style="height: 2vmin"></div>
 
           <div style="color: #50f050">Description</div>
-					<ul>
+					<ul style="font-size: 3vmin">
 						<li>Learnable filters (e.g. edge detector) organized in feature maps</li>
 						<li>Each filter scans the image and detects a specific pattern</li>
 						<li>Convolution refers to the spatial dimensions</li>
@@ -415,7 +417,7 @@
           <div style="height: 2vmin"></div>
 
           <div style="color: #50f050">Hyper-Parameters</div>
-					<ul>
+					<ul style="font-size: 3vmin">
             <li>depth – number of filters (also known as kernels)</li>
             <li>size – dimension of the filter e.g. 3 × 3 or 3 × 3 × 4</li>
             <li>stride – step size while sliding the filter through the input</li>
@@ -443,7 +445,7 @@
           <div style="height: 5vmin"></div>
 
           <div style="color: #50f050">Description</div>
-					<ul>
+					<ul style="font-size: 3vmin">
 						<li>Takes inputs from small region in the feature maps</li>
 						<li>Reduces resolution and computation in following layers</li>
 						<li>Increases insensitivity against small shifts</li>
@@ -453,7 +455,7 @@
           <div style="height: 5vmin"></div>
 
           <div style="color: #50f050">Hyper-Parameters</div>
-					<ul>
+					<ul style="font-size: 3vmin">
             <li>depth – number of filters (also known as kernels)</li>
             <li>size – dimension of the filter e.g. 2 × 2 or 2 × 2 × 4</li>
             <li>stride – step size while sliding the filter through the input</li>
@@ -469,7 +471,7 @@
           
           <div style="height: 5vmin"></div>
           <div style='color: #f05050'>Convoluted channels are still fully connected</div>
-          <ul>
+					<ul style="font-size: 3vmin">
             <li>For instance: Kernel size 3x3 with 100 input and 200 output channels</li>
             <li>Many parameters (3x3x100x200)</li>
             <li>High computational effort</li>
@@ -490,7 +492,7 @@
           <div style="height: 10vmin"></div>
 
           <div style="color: #50f050">Inception</div>
-					<ul>
+					<ul style="font-size: 3vmin">
             <li>Use small kernels in parallel (3x3, 7x1, 1x7)</li>
             <li>Bottleneck Architecture</li>
             <ul>
@@ -511,10 +513,11 @@
           <div style="float: left; width: 30%; height: 80vmin">
             <img data-src="images/inception_global.png">
           </div> 
-          <div style="float: left; width: 70%; height: 80vmin; text-align: left">
+          <div style="float: right; width: 5%; height: 80vmin;"></div>
+          <div style="float: right; width: 65%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
           <div style='color: #f05050'>Fully connected layers at the end are fully connected</div>
-          <ul>
+					<ul style="font-size: 3vmin">
             <li>For instance: 1792 Channels with a resolution of 8x8</li>
             <li>Many parameters (8x8x1792)</li>
             <li>High computational effort</li>
@@ -526,7 +529,7 @@
 
           <div class="fragment">
           <div style="color: #50f050">Global Average Pooling</div>
-					<ul>
+					<ul style="font-size: 3vmin">
 						<li>Position should be not important in the end</li>
 						<li>Take the average activation over the entire image</li>
 						<li>Reduces computation in following fully-connected layers</li>
@@ -721,11 +724,11 @@
         <section style="height: 100%">
           <h3><div style='color: #9090f0'>Word Embedding</div></h3>
 
-          <div style="height:5vmin"></div>
+          <div style="height:1vmin"></div>
           One-hot encoding works well for characters ($\sim 26$) but what about words ($\gt 300000$)?<br>
           $\rightarrow$ <div style="color: #50f050; display: inline">embed</div> high-dimensional <div style="color: #50f050; display: inline">word</div>-space into low-dimensional space with neural network
           <br>
-          <iframe allowtransparency="false" style="background: #FFFFFF;" width="70%" height="70%" type="text/html" data-src="https://projector.tensorflow.org/" frameborder="0"> </iframe>
+          <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="70%" type="text/html" data-src="https://projector.tensorflow.org/" frameborder="0"> </iframe>
 
         </section>
         </section>
