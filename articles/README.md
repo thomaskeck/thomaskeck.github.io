@@ -13,15 +13,16 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 18.02.2013 [I. J. Goodfellow „Maxout Networks“](https://arxiv.org/abs/1302.4389)
   - 19.02.2014 [Pierre Baldi, Peter Sadowski, and Daniel Whiteson. „Searching for Exotic Particles in High-Energy Physics with Deep Learning“](https://arxiv.org/abs/1402.4735)
   - 11.02.2015 [S. Ioffe, C. Szegedy „Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift“](https://arxiv.org/abs/1502.03167)
+  - 26.02.2015 [V. Mnih, et. al. „Human-level control through deep reinforcement learning“](https://www.nature.com/articles/nature14236)
   - 28.05.2015 [Yann Lecun, Yoshua Bengio, and Geoffrey Hinton. „Deep learning“.](https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
   - 05.06.2017 [A. Santoro, et. al „A simple neural network module for relational reasoning“](https://arxiv.org/abs/1706.01427)
   - 24.06.2016 [H. Cheng, et. al. „Wide & Deep Learning for Recommender Systems“](https://arxiv.org/abs/1606.07792)
   - 29.08.2016 [Henry W. Lin, Max Tegmark, and David Rolnick. Why does deep and cheap learning work so well?](https://arxiv.org/abs/1608.08225)
   - 28.10.2017 [A. v.d. Oord, et. al „Parallel WaveNet: Fast High-Fidelity Speech Synthesis“](https://arxiv.org/abs/1711.10433)
   - 25.10.2017 [D. Levy, et. al. „Generalizing Hamiltonian Monte Carlo with Neural Networks“](https://arxiv.org/abs/1711.09268)
+  - 13.12.2017 [R. Vidal, et. al. „Mathematics of Deep Learning“](https://arxiv.org/abs/1712.04741)
   - 15.02.2018 [A. S. Morcos et. al. „On the importance of single directions for generalization“](https://openreview.net/forum?id=r1iuQjxCZ&noteId=r1On1W5xf)
   - 22.02.2018 [N. Carlini, et. al. „The Secret Sharer: Measuring Unintended Neural Network Memorization & Extracting Secrets“](https://arxiv.org/abs/1802.08232)
-
 
 ### Gradient Descent Optimization
   - 22.10.2014 [D. P. Kingma, J. Ba „Adam: A Method for Stochastic Optimization“](https://arxiv.org/abs/1412.6980)
@@ -50,8 +51,10 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 02.01.2018 [Y. Tassa, et. al. „DeepMind Control Suite“](https://arxiv.org/abs/1801.00690)
   - 10.02.2018 [O. Nachum, Y. Chow, M. Ghavamzadeh „Path Consistency Learning in Tsallis Entropy Regularized MDPs“](https://arxiv.org/abs/1802.03501)
   - 15.02.2018 [G. Barth-Maron et al. „Distributed Distributional Deterministic Policy Gradients“](https://openreview.net/forum?id=SyZipzbCb)
+  - 21.02.2018 [N. C. Rabinowitz, et. al. „Machine Theory of Mind“](https://arxiv.org/abs/1802.07740)
   - 22.02.2018 [D. J. Mankowitz, et al. „Unicorn: Continual Learning with a Universal, Off-policy Agent“](https://arxiv.org/abs/1802.08294)
   - 24.02.2018 [P. Chrabaszcz, I. Loshchilov, F. Hutter „Back to Basics: Benchmarking Canonical Evolution Strategies for Playing Atari“](https://arxiv.org/abs/1802.08842)
+  - 28.02.2018 [R. Dubey, et. al. „Investigating Human Priors for Playing Video Games“](https://arxiv.org/abs/1802.10217)
 
 ### Recurrent Neural Networks
   - 11.12.2014 [J. Chung et al. „Empirical Evaluation of Gated Recurrent Neural Networks on Sequence Modeling“](https://arxiv.org/abs/1412.3555)
@@ -69,14 +72,24 @@ Deep Learning is the current revolution ongoing in the field of machine learning
   - 2017 [J. Wagner, et. al. „Learning Semantic Prediction using Pretrained Deep Feedforward Networks“](https://www.ais.uni-bonn.de/papers/ESANN_2017_Wagner.pdf)
   - 21.05.2017 [X. Gastaldi „Shake-Shake regularization“](https://arxiv.org/abs/1705.07485)
   - 29.06.2017 [W. M. Gondal, et. al. „Weakly-Supervised Localization of Diabetic Retinopathy Lesions in Retinal Fundus Images“](https://arxiv.org/abs/1706.09634)
+  - 04.09.2017 [A. Borji, et. al. „Salient Object Detection: A Survey“](https://arxiv.org/abs/1411.5878)
   - 30.10.2017 [M. Babaeizadeh, et. al. „Stochastic Variational Video Prediction“](https://arxiv.org/abs/1710.11252)
 
 ### Adversarial Examples
 
   - 20.12.2014 [I. J. Goodfellow „Explaining and Harnessing Adversarial Examples“](https://arxiv.org/abs/1412.6572)
+  - 14.03.2016 [N. Papernot, et. al. „Distillation as a Defense to Adversarial Perturbations against Deep Neural Networks“](https://arxiv.org/abs/1511.04508)
+  - 27.08.2016 [T. Tanay, L. Griffin „A Boundary Tilting Persepective on the Phenomenon of Adversarial Examples“](https://arxiv.org/abs/1608.07690)
+  - 11.02.2017 [A. Kurakin, et. al. „Adversarial examples in the physical world“](https://arxiv.org/abs/1607.02533)
   - 14.02.2017 [J. H. Metzen, et. al. „On Detecting Adversarial Perturbations“](https://arxiv.org/abs/1702.04267)
+  - 03.03.2017 [V. Fischer, et. al. „Adversarial Examples for Semantic Image Segmentation“](https://arxiv.org/abs/1703.01101)
+  - 09.03.2017 [S.-M. Moosavi-Dezfooli, et. al. „Universal adversarial perturbations“](https://arxiv.org/abs/1610.08401)
   - 28.03.2017 [S. Baluja, I. Fischer „Adversarial Transformation Networks: Learning to Generate Adversarial Examples“](https://arxiv.org/abs/1703.09387)
+  - 31.07.2017 [J. H. Metzen, et. al. „Universal Adversarial Perturbations Against Semantic Image Segmentation“](https://arxiv.org/abs/1704.05712)
+  - 09.11.2017 [A. Madry, et. al. „Towards Deep Learning Models Resistant to Adversarial Attacks“](https://arxiv.org/abs/1706.06083)
   - 09.01.2018 [J. Gilmer et. al. „Adversarial Spheres“](https://arxiv.org/abs/1801.02774)
+  - 30.01.2018 [F. Tramer et. al. „Ensemble Adversarial Training: Attacks and Defenses“](https://arxiv.org/abs/1705.07204)
+  - 27.02.2018 [G. F. Elsayed, et. al. „Adversarial Examples that Fool both Human and Computer Vision“](https://arxiv.org/abs/1802.08195)
 
 
 ### Adversarial Networks
