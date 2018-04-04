@@ -1,6 +1,5 @@
 # Machine Learning Lectures
 
-
 This repository contains an updated version of my lectures and workshops given at:
   - The CERN Computing School in [Mol 2016](https://indico.cern.ch/event/502875/) and in [Madrid 2017](https://indico.cern.ch/event/581756/)
   - The [GRIDKA School in Karlsruhe 2017](https://indico.scc.kit.edu/indico/event/285/)
@@ -13,6 +12,12 @@ The talks are javascript and html-based using [reveal.js](https://revealjs.com/)
   - On [Machine Learning at KIT and Belle II](https://thomaskeck.github.io/talks/MachineLearningAtKIT.html)
 
 The workshops are provided as [jupyter notebooks](http://jupyter.org/), which can be served as [reveal.js](https://revealjs.com/) presentations.
+
+## Howto clone this repository
+
+This repository uses git submodules:
+
+> git clone --recurse-submodules https://github.com/thomaskeck/thomaskeck.github.io
 
 
 ## Deprecated Repositories

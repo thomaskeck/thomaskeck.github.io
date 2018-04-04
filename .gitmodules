@@ -4,3 +4,6 @@
 [submodule "reveal.mod/plugin/reveal.js-d3js-plugin"]
 	path = reveal.mod/plugin/reveal.js-d3js-plugin
 	url = https://github.com/jlegewie/reveal.js-d3js-plugin
+[submodule "reveal.mod/plugin/MathJax"]
+	path = reveal.mod/plugin/MathJax
+	url = https://github.com/mathjax/MathJax.git
