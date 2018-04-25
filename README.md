@@ -9,7 +9,7 @@ This repository contains an updated version of my lectures and workshops given a
 The talks are javascript and html-based using [reveal.js](https://revealjs.com/) and [d3.js](https://d3js.org/). They can be viewed online via github pages:
   - On [Traditional Machine Learning](https://thomaskeck.github.io/talks/MachineLearning.html)
   - On [Deep Learning](https://thomaskeck.github.io/talks/DeepLearning.html)
-  - On [Machine Learning at KIT and Belle II](https://thomaskeck.github.io/talks/MachineLearningAtKIT.html)
+  - On [Machine Learning at KIT and Belle II](https://thomaskeck.github.io/talks/PhDThesis.html)
 
 The workshops are provided as [jupyter notebooks](http://jupyter.org/), which can be served as [reveal.js](https://revealjs.com/) presentations.
 
