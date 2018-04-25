@@ -156,39 +156,119 @@
               <img data-src="images/fei_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
             </div>
             <p class="fragment">
-             One BDT for each decay-channel $\rightarrow$ Over $100$ BDTs
+             One BDT for each decay-channel $\rightarrow$ Currently $177$ BDTs
             </p>
           </section>
-        
+          
+          <section>
+            <h2>Example: $\mathrm{D}^0$</h2>
+            <div style="height: 5vmin"></div>
+            <div style="display: flex; width: 100%;">
+            <div style="float: left; width: 50%; height: 35vmin">
+              25 decay-channels are considered
+              <br>
+              <ul>
+                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \pi^+$</li>
+                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \pi^+ \pi^0$</li>
+                <li>$\mathrm{D}^0 \rightarrow \pi^- \pi^+ \pi^0$</li>
+                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}_s^0 \pi^+ \pi^- \pi^0$</li>
+                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \mathrm{K}^+ \mathrm{K}_s^0$</li>
+                <li>$\dots$</li>
+              </ul>
+            </div>
+            <div style="float: left; width: 50%; height: 35vmin">
+              Uses 35 <b>local</b> features 
+              <br>
+              <ul>
+                <li>kinematics in rest-frame of $\mathrm{D}^0$</li>
+                <li>positions with respect to $\mathrm{D}^0$</li>
+                <li>resonance substructure</li>
+                <li>signal probability of the daughters</li>
+                <li>decay-channels of the daughters</li>
+              </ul>
+            </div>
+            </div>
+            <div style="width: 100%; height: 40vmin">
+              <img data-src="images/dalitz_d_meson.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
+          </section>
+          
+          <section style="height: 100%">
+            <h2>Simple Analogy: Image Recognition</h2>
+            <div style="height: 5vmin"></div>
+
+            Transform from <b>pixel</b> to <b>object</b> space
+            <div style="height: 5vmin"></div>
+          <div class="fig-container"
+                   data-fig-id="convolution"
+                   data-file="animations/image_recognition.html" style="width: 100%; height: 50%"></div>
+          </section>
+          
+          <section style="height: 100%">
+            <h2>Simple Analogy: Image Recognition</h2>
+            <div style="height: 5vmin"></div>
+
+            Transform from <b>detector-data</b> to <b>decay-chain</b> space
+            <div style="height: 5vmin"></div>
+            <div style="float: left; width: 50%; height: 50vmin">
+              <img data-src="images/event_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
+            <div style="float: left; width: 50%; height: 50vmin">
+          
+              <ol>
+              <li class="fragment"> Probability 0.8
+              <div style="background: rgba(22, 22, 120, .90);">
+                Tracks (1, 4, 6, 8, 10)<br>
+                Clusters (3, 5, 10, 12, 16)
+              $$ \mathrm{B}^- \rightarrow \mathrm{D^{0\star}} \mathrm{D}^- \mathrm{K}^0_\mathrm{s} \rightarrow \dots $$
+              </div>
+              </li>
+              <li class="fragment"> Probability 0.6
+              <div style="background: rgba(22, 22, 120, .90);">
+                Tracks (2, 4, 7, 8, 10, 11)<br>
+                Clusters (4, 5, 6, 12, 15)
+                $$ \mathrm{B}^- \rightarrow \mathrm{D^0} \pi^+ \pi^- \pi^- \rightarrow \dots $$
+              </div>
+              </li>
+              <li class="fragment"> Probability 0.1
+              <div style="background: rgba(22, 22, 120, .90);">
+                Tracks (1, 9, 11)<br>
+                Clusters (2, 3, 6, 12, 14)
+                $$ \mathrm{B}^- \rightarrow \mathrm{J}/\psi \mathrm{K}^- \pi^0 \rightarrow \dots $$
+              </div>
+              </li>
+              <li class="fragment"> $\dots$ </li>
+              </ol>
+            </div>
+          </section>
+          
           <section>
           <h2>Result</h2>
             <div style="height: 5vmin"></div>
-            <div style="width: 100%; height: 60vmin">
+            <div style="display: flex; width: 100%;">
+            <div style="float: left; width: 50%; height: 50vmin">
               <img data-src="images/fei_comparison_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
+            <div style="float: left; width: 50%; height: 50vmin">
+              <img data-src="images/fei_comparison_mbc_charged_loose.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
             </div>
 
             Doubles usable efficiency and is faster in direct comparison
           </section>
 				
           <section>
-            <h2>Runtime: FastFit</h2>
-            <div style="width: 100%; height: 60vmin">
-              <img data-src="images/fitter_times.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
-            </div>
-            Simple vertex fitter based on Eigen is one order of magnitude faster
-          </section>
-          <section>
             <h2>Runtime: FastBDT</h2>
-            <div style="height: 10vmin"></div>
+            <div style="height: 5vmin"></div>
             <div style="display: flex; width: 100%;">
-            <div style="float: left; width: 50%; height: 50vmin">
+            <div style="float: left; width: 50%; height: 60vmin">
               Fitting
-              <br/>
+              <br>
               <img data-src="images/fastbdt_fit.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
             </div>
-            <div style="float: left; width: 50%; height: 50vmin">
+            <div style="float: left; width: 50%; height: 60vmin">
               Inference
-              <br/>
+              <br>
               <img data-src="images/fastbdt_inference.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
             </div>
             </div>
@@ -288,14 +368,25 @@
 				<section>
           <h2>Uniformity Constraints</h2>
 					<p>How-to prevent the usage of certain information</p>
-					
+				
+          <p>Example: We want to <b>measure</b> the resonance substructure <b>and</b> increase signal-to-noise ration using a BDT</p>
           <div style="display: flex; width: 100%;">
-          <div class="fragment" style="float: left; width: 50%; height: 60vmin">
+          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
+            Resonance Substructure
+            <br>
             <img data-src="images/dalitz_plot_vertical.png" width="80%" style="background:none; border:none; box-shadow:none;">
           </div>
-          <div class="fragment" style="float: left; width: 50%; height: 60vmin">
-            <div style="width: 100%; height: 10vmin"></div>
-            <img data-src="images/tensorflow_baseline_dalitz_vertical.png" width="85%" style="background:none; border:none; box-shadow:none;">
+          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
+            <div style="width: 100%; height: 5vmin"></div>
+            Feature Correlation Matrix
+            <br>
+            <img data-src="images/dmeson_correlation.png" width="90%" style="background:none; border:none; box-shadow:none;">
+          </div>
+          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
+            <div style="width: 100%; height: 5vmin"></div>
+            Selection Efficiency
+            <br>
+            <img data-src="images/tensorflow_baseline_dalitz_vertical.png" width="90%" style="background:none; border:none; box-shadow:none;">
           </div>
           </div>
 					<p class="fragment">
@@ -368,6 +459,13 @@
               <img data-src="images/equal_frequency_binning.png" style="background:none; border:none; box-shadow:none;">
             </div>
             </div>
+          </section>
+          <section>
+            <h2>Runtime: FastFit</h2>
+            <div style="width: 100%; height: 60vmin">
+              <img data-src="images/fitter_times.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+            </div>
+            Simple vertex fitter based on Eigen is one order of magnitude faster
           </section>
         <section data-background-image="images/cdc.jpg" data-background-size="80%">
           <div class="underground"><h2>Neuro Z Trigger</h2></div>
