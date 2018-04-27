@@ -43,7 +43,7 @@ var svg = d3.select("body").append("svg")
 						.style("top", "0%")
 						.style("left", "0%");
 	
-picture1 = svg.append('svg:image').attr('xlink:href', '../images/bird4.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
+picture1 = svg.append('svg:image').attr('xlink:href', '../images/bird4.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 1.0)
 picture2 = svg.append('svg:image').attr('xlink:href', '../images/human_adversarial2.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
 picture3 = svg.append('svg:image').attr('xlink:href', '../images/bird1.png').attr('x', 0).attr('y', 50).attr('width', width*4/10).attr('height', 400).style('opacity', 0.0)
 
@@ -98,7 +98,7 @@ svg.selectAll(".bar")
 
 
 var _transitions = [
-	() => { picture1.transition().duration(500).style('opacity', 1.0)
+	() => { 
 					svg.selectAll(".bar")
 							.data(data1)
 							.transition()
@@ -126,7 +126,7 @@ var _transitions = [
 
 var _inverse_transitions = [
 	
-   () => { picture1.transition().duration(500).style('opacity', 0.0)
+   () => {
            svg.selectAll(".bar")
 							.data(data)
 							.transition()

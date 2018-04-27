@@ -7,7 +7,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Template</title>
+		<title>Machine Learning at the Belle II Experiment</title>
 
 		<meta name="description" content="PhD Thesis">
 		<meta name="author" content="Thomas Keck">
@@ -28,6 +28,33 @@
     {
       background: rgba(22, 22, 22, .90);
     }
+
+    .rotate {
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+        transform: rotate(90deg);
+    }
+
+    #arrow-wrapper {
+           width: 80vw;
+           height: 6vh;
+           float: left;
+    }
+    #arrow-stem {
+      background: transparent;
+      width: 40vw;
+      border-bottom: 3vh solid white;
+      margin-top: 1.5vh;
+      margin-left: 1vw;
+      float: left;
+    }
+    #arrow-head {
+      border-top: 3vh solid transparent;
+      border-left: 5vw solid white;
+      border-bottom: 3vh solid transparent;
+      margin-right: 1vw;
+      float: left;
+     }
     </style>
 
 	</head>
@@ -39,7 +66,7 @@
             <h1>Machine Learning at the Belle II Experiment</h1>
 
             <p>
-            Thomas Keck (<a href="mailto:thomas.keck2@kit.edu">thomas.keck2@kit.edu</a>)
+            Thomas Keck (<a href="mailto:t.keck@online.de">t.keck@online.de</a>)
             </p>
           </section>
 				<section data-background-image="images/Karlsruhe.jpg" data-background-size="100%" style="height: 100%">
@@ -92,13 +119,51 @@
             <img data-src="images/event_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
           </div>
           <div style="font-size: 5vmin">
+          </div>
           $$ \Upsilon(\mathrm{4S}) \rightarrow \mathrm{B} \bar{\mathrm{B}} $$
+        </section>
+				<section>
+          <h2>Simple Analogy: Uranium</h2>
+
+          <div style="width: 100%; height: 80vmin">
+            <img data-src="images/u235.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
           </div>
         </section>
 				<section>
-          <h2>B Meson Decays</h2>
+          <h2>Simple Analogy: B Meson</h2>
+
+            <div style="height: 5vmin"></div>
           <div style="width: 100%; height: 80vmin">
-            <iframe data-src="images/rpp2016-tab-mesons-bottom.pdf" type="application/pdf" frameborder="0" width="100%" height="100%"></iframe>
+          <iframe data-src="images/rpp2016-tab-mesons-bottom.pdf" type="application/pdf" frameborder="0" width="100%" height="100%"></iframe>
+          </div>
+        </section>
+        </section>
+        
+        <section style="height: 100%">
+				<section>
+          <h1>Machine Learning at Belle II</h1>
+				</section>
+				<section>
+          <h2>Data Acquisition</h2>
+          <div style="display: flex; width: 100%;">
+          <div style="float: right; width: 70%; height: 60vmin">
+            <img src="images/cdc.jpg" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+          </div>
+          <div style="float: right; width: 30%; height: 60vmin">
+            <img data-src="images/fpgaboard.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+          </div>
+          </div>
+        </section>
+				<section>
+          <h2>Event Reconstruction</h2>
+          <div style="height: 75vmin">
+            <img data-src="images/tracking.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+          </div>
+        </section>
+				<section>
+          <h2>Data Analysis</h2>
+          <div style="height: 75vmin">
+            <img data-src="images/flavortaggerdeep.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
           </div>
         </section>
         </section>
@@ -160,85 +225,65 @@
             </p>
           </section>
           
-          <section>
-            <h2>Example: $\mathrm{D}^0$</h2>
-            <div style="height: 5vmin"></div>
-            <div style="display: flex; width: 100%;">
-            <div style="float: left; width: 50%; height: 35vmin">
-              25 decay-channels are considered
-              <br>
-              <ul>
-                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \pi^+$</li>
-                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \pi^+ \pi^0$</li>
-                <li>$\mathrm{D}^0 \rightarrow \pi^- \pi^+ \pi^0$</li>
-                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}_s^0 \pi^+ \pi^- \pi^0$</li>
-                <li>$\mathrm{D}^0 \rightarrow \mathrm{K}^- \mathrm{K}^+ \mathrm{K}_s^0$</li>
-                <li>$\dots$</li>
-              </ul>
-            </div>
-            <div style="float: left; width: 50%; height: 35vmin">
-              Uses 35 <b>local</b> features 
-              <br>
-              <ul>
-                <li>kinematics in rest-frame of $\mathrm{D}^0$</li>
-                <li>positions with respect to $\mathrm{D}^0$</li>
-                <li>resonance substructure</li>
-                <li>signal probability of the daughters</li>
-                <li>decay-channels of the daughters</li>
-              </ul>
-            </div>
-            </div>
-            <div style="width: 100%; height: 40vmin">
-              <img data-src="images/dalitz_d_meson.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
-            </div>
-          </section>
-          
           <section style="height: 100%">
             <h2>Simple Analogy: Image Recognition</h2>
-            <div style="height: 5vmin"></div>
 
-            Transform from <b>pixel</b> to <b>object</b> space
-            <div style="height: 5vmin"></div>
-          <div class="fig-container"
+            <div style="height: 30vmin">
+            <img data-src="images/inception_global_vertical.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
+            <div id="arrow-wrapper">
+              <div style="float: left; margin-left: 5vw; width: 10vw; font-size: 5vmin;">Pixels</div>
+              <div id="arrow-stem"></div>
+              <div id="arrow-head"></div>
+              <div style="float: left; width: 10vw; font-size: 5vmin;">Objects</div>
+            </div>
+
+          <div class="fig-container fragment"
                    data-fig-id="convolution"
                    data-file="animations/image_recognition.html" style="width: 100%; height: 50%"></div>
           </section>
           
           <section style="height: 100%">
             <h2>Simple Analogy: Image Recognition</h2>
-            <div style="height: 5vmin"></div>
+            
+            <div style="height: 30vmin">
+            <img data-src="images/fei_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
+            </div>
+            <div id="arrow-wrapper">
+              <div style="float: left; margin-left: 5vw; width: 10vw; font-size: 5vmin;">Data</div>
+              <div id="arrow-stem"></div>
+              <div id="arrow-head"></div>
+              <div style="float: left; width: 10vw; font-size: 5vmin;">Decays</div>
+            </div>
 
-            Transform from <b>detector-data</b> to <b>decay-chain</b> space
-            <div style="height: 5vmin"></div>
-            <div style="float: left; width: 50%; height: 50vmin">
+            <div style="display: flex; width: 100%;">
+            <div style="float: left; width: 50%; height: 45vmin">
               <img data-src="images/event_transparent.png" style='height: 100%; width: auto; object-fit: contain; background:none; border:none; box-shadow:none;'>
             </div>
-            <div style="float: left; width: 50%; height: 50vmin">
-          
-              <ol>
-              <li class="fragment"> Probability 0.8
-              <div style="background: rgba(22, 22, 120, .90);">
-                Tracks (1, 4, 6, 8, 10)<br>
-                Clusters (3, 5, 10, 12, 16)
-              $$ \mathrm{B}^- \rightarrow \mathrm{D^{0\star}} \mathrm{D}^- \mathrm{K}^0_\mathrm{s} \rightarrow \dots $$
+            <div style="float: left; width: 50%; height: 45vmin">
+              <div style="height: 2vmin"></div>
+              <div class="fragment" style="text-align: left;">
+              Probability 0.8
+              <br>
+              <div style="background: rgba(22, 22, 80, .90);">
+                Tracks (1, 4, 6, ...) and  Clusters (3, 5, 10, ...)<br>
+                $ \mathrm{B}^- \rightarrow \mathrm{D^{0\star}} \mathrm{D}^- \mathrm{K}^0_\mathrm{s} \rightarrow \dots \rightarrow 2 \mathrm{K}\ 7 \pi\ 4 \gamma $
               </div>
-              </li>
-              <li class="fragment"> Probability 0.6
-              <div style="background: rgba(22, 22, 120, .90);">
-                Tracks (2, 4, 7, 8, 10, 11)<br>
-                Clusters (4, 5, 6, 12, 15)
-                $$ \mathrm{B}^- \rightarrow \mathrm{D^0} \pi^+ \pi^- \pi^- \rightarrow \dots $$
               </div>
-              </li>
-              <li class="fragment"> Probability 0.1
-              <div style="background: rgba(22, 22, 120, .90);">
-                Tracks (1, 9, 11)<br>
-                Clusters (2, 3, 6, 12, 14)
-                $$ \mathrm{B}^- \rightarrow \mathrm{J}/\psi \mathrm{K}^- \pi^0 \rightarrow \dots $$
+              <div style="height: 2vmin"></div>
+              <div class="fragment" style="text-align: left;">
+              Probability 0.6
+              <br>
+              <div style="background: rgba(22, 22, 80, .90);">
+                Tracks (2, 4, 7, ...) and Clusters (4, 5, 6, ...)<br>
+                $ \mathrm{B}^- \rightarrow \mathrm{D^0} \pi^+ \pi^- \pi^- \rightarrow \dots \rightarrow 1 \mathrm{K}\ 4 \pi\ 2 \gamma$
               </div>
-              </li>
-              <li class="fragment"> $\dots$ </li>
-              </ol>
+              </div>
+              <div style="height: 2vmin"></div>
+              <div class="fragment">
+              $\dots$
+              </div>
+            </div>
             </div>
           </section>
           
@@ -254,24 +299,26 @@
             </div>
             </div>
 
-            Doubles usable efficiency and is faster in direct comparison
+            Usable efficiency significantly improved and its faster in direct comparison!
+          </section>
+          
+          <section>
+            <h2>Runtime: FastBDT</h2>
+            <div style="height: 5vmin"></div>
+              Inference
+              <br>
+              <img data-src="images/fastbdt_inference.png" style='height: 50vh; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+            <br>
+            <div style="height: 5vmin"></div>
+            Custom BDT implementation: fast, robust, HEP-specific features
           </section>
 				
           <section>
             <h2>Runtime: FastBDT</h2>
             <div style="height: 5vmin"></div>
-            <div style="display: flex; width: 100%;">
-            <div style="float: left; width: 50%; height: 60vmin">
               Fitting
               <br>
-              <img data-src="images/fastbdt_fit.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
-            </div>
-            <div style="float: left; width: 50%; height: 60vmin">
-              Inference
-              <br>
-              <img data-src="images/fastbdt_inference.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
-            </div>
-            </div>
+              <img data-src="images/fastbdt_fit.png" style='height: 50vh; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
             <br>
             <div style="height: 5vmin"></div>
             Custom BDT implementation is (originally) one order of magnitude faster
@@ -279,114 +326,71 @@
             $\rightarrow$ efficient caching and equal-frequency binning
 
           </section>
+          
         </section>
 				
-        <section style="height: 100%">
-          <section>
-            <h1>Flavour Tagging</h1>
-          </section>
-        <section data-background-image="images/cpviolation.png" data-background-size="100%">
-          <h2>CP Violation</h2>
-        </section>
-        <section>
-          <h2>Tradidtional Flavour Tagger</h2>
-          <div style="width: 100%; height: 70vmin">
-          <img data-src="images/flavortaggercategories.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
-          </div>
-        </section>
-				<section>
-          <h2>Deep Flavour Tagger</h2>
-          <div style="width: 100%; height: 70vmin">
-          <img data-src="images/flavortaggerdeep.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
-          </div>
-          Out-of-the-box superior to previous traditional algorithm
-        </section>
-				
-        <section data-background-image="images/tsne/input.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer1.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer4.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer6.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer7.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer8.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer8_bbar.png" data-background-size="100vmin"></section>
-        <section data-background-image="images/tsne/layer8_bbar_tag.png" data-background-size="100vmin"></section>
-        </section>
         
         <section style="height: 100%">
           <section>
             <h1>Deep Learning in HEP</h1>
           </section>
-				<section>
-          <h2>3 key <font color="red">technologies</font></h2>
-					<p>required to use Deep Learning in physics</p>
-        </section>
-        <section>
-          <h2>H-parameter Optimization</h2>
-					<p>How-to optimize the large amount of new h-parameters</p>
-          <div style="width: 100%; height: 70vmin">
-					<img data-src="images/nnparameters.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+				
+          <section>
+          <h2>Data Driven Algorithms</h2>
+          
+            <div style="height: 5vmin"></div>
+          <ol>
+            <li>Train classifier on simulated events</li>
+            <li>Apply classifier to recorded events</li>
+          </ol>
+            <div style="height: 2vmin"></div>
+          <div class="fragment" style="height: 50vmin">
+            <img data-src="images/MVABaseline.png" style="background:none; border:none; box-shadow:none;">
           </div>
-        </section>
-        <section>
-          <h2>H-parameter Optimization</h2>
-          <div style="display: flex; width: 100%;">
-          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
-            <b>Traditional GridSearch</b>
-            <br>
-            <img data-src="images/gridsearch.png" style="background:none; border:none; box-shadow:none;">
-          </div>
-          <div class="fragment" style="float: right; width: 50%; height: 50vmin">
-            <b>Bayesian Optimization</b>
-            <br>
-            <img data-src="images/bayes.png" style="background:none; border:none; box-shadow:none;">
-          </div>
-          </div>
-          <p class="fragment">
-          Equivalent performance in fewer iterations
-          </p>
+            <div style="height: 5vmin"></div>
+					<div class="fragment">Simulated Events and Recorded Events are NOT compatible</div>
         </section>
 				<section>
           <h2>Data Driven Algorithms</h2>
-					<p>How-to reduce the dependency on simulated events</p>
-          
-          <div style="display: flex; width: 100%;">
-          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
-            <img data-src="images/MVABaseline.png" style="background:none; border:none; box-shadow:none;">
-          </div>
-          <div class="fragment" style="float: left; width: 50%; height: 50vmin">
+            <div style="height: 5vmin"></div>
+					<ol>
+					<li> Train classifier A: recorded vs. simulated events </li>
+					<li> Apply classifier A to simulated events </li>
+					<li> Reweight simulated events: $ w = \frac{p}{1-p} $</li>
+					<li> Train classifier B: simulated signal vs. background events </li>
+					<li> Apply classifier B to recorded events </li>
+					</ol>
+            <div style="height: 2vmin"></div>
+          <div style="height: 50vmin" class="fragment">
             <img data-src="images/MVAReweightedTotal.png" style="background:none; border:none; box-shadow:none;">
           </div>
-          </div>
-					<div class="fragment">
-					<ol>
-					<li> Train classifier: recorded vs. simulated events </li>
-					<li> Reweight simulated events: $ w = \frac{p}{1-p} $</li>
-					<li> Train classifier: signal vs. background events </li>
-					</ol>
-					</div>
         </section>
 				<section>
           <h2>Uniformity Constraints</h2>
-					<p>How-to prevent the usage of certain information</p>
-				
-          <p>Example: We want to <b>measure</b> the resonance substructure <b>and</b> increase signal-to-noise ration using a BDT</p>
+            
+          <ol>
+            <li>Train classifier using low-level features</li>
+            <li>Apply classifier to increase signal-to-noise ratio</li>
+            <li>Measure the resonance sub-structure</li>
+          </ol>
+            <div style="height: 2vmin"></div>
           <div style="display: flex; width: 100%;">
-          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
+          <div style="float: left; width: 33%; height: 60vmin">
             Resonance Substructure
             <br>
             <img data-src="images/dalitz_plot_vertical.png" width="80%" style="background:none; border:none; box-shadow:none;">
           </div>
           <div class="fragment" style="float: left; width: 33%; height: 60vmin">
             <div style="width: 100%; height: 5vmin"></div>
-            Feature Correlation Matrix
-            <br>
-            <img data-src="images/dmeson_correlation.png" width="90%" style="background:none; border:none; box-shadow:none;">
-          </div>
-          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
-            <div style="width: 100%; height: 5vmin"></div>
             Selection Efficiency
             <br>
             <img data-src="images/tensorflow_baseline_dalitz_vertical.png" width="90%" style="background:none; border:none; box-shadow:none;">
+          </div>
+          <div class="fragment" style="float: left; width: 33%; height: 60vmin">
+            <div style="width: 100%; height: 5vmin"></div>
+            Feature Correlation Matrix
+            <br>
+            <img data-src="images/dmeson_correlation.png" width="90%" style="background:none; border:none; box-shadow:none;">
           </div>
           </div>
 					<p class="fragment">
@@ -481,6 +485,28 @@
             </ul>
           </div>
         </section>
+        <section>
+          <h2>Traditional Flavour Tagger</h2>
+          <div style="width: 100%; height: 70vmin">
+          <img data-src="images/flavortaggercategories.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+          </div>
+        </section>
+				<section>
+          <h2>Deep Flavour Tagger</h2>
+          <div style="width: 100%; height: 70vmin">
+          <img data-src="images/flavortaggerdeep.png" style='height: 100%; width: auto; object-fit: contain;  background:none; border:none; box-shadow:none;'>
+          </div>
+          Out-of-the-box superior to previous traditional algorithm
+        </section>
+				
+        <section data-background-image="images/tsne/input.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer1.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer4.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer6.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer7.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8_bbar.png" data-background-size="100vmin"></section>
+        <section data-background-image="images/tsne/layer8_bbar_tag.png" data-background-size="100vmin"></section>
         </section>
 			</div>
 		</div>
