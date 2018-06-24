@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -10,7 +10,7 @@
 
 <style>
 .test_dot {
-  fill: #fff
+  fill: var(--default-color)
 }
 </style>
 
@@ -43,10 +43,10 @@ svg.append("g").attr("id", "fits")
 var x_values = d3.range(16).map(function(i) { return i-5; })
 
 var linear_regression = d3.line().x(function(d) { return x(d); }).y(function(d) { return y(4.93*d + 27.4) }).curve(d3.curveCardinal)
-var linear_regression_path = svg.select("#fits").append('path').attr('d', linear_regression(x_values)).attr('stroke', '#9090f0').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
+var linear_regression_path = svg.select("#fits").append('path').attr('d', linear_regression(x_values)).attr('stroke', 'var(--blue-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
 
 var linear_regression2 = d3.line().x(function(d) { return x(d); }).y(function(d) { return y(0.96*d*d + 14.3) }).curve(d3.curveCardinal)
-var linear_regression2_path = svg.select("#fits").append('path').attr('d', linear_regression2(x_values)).attr('stroke', '#f05050').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
+var linear_regression2_path = svg.select("#fits").append('path').attr('d', linear_regression2(x_values)).attr('stroke', 'var(--red-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none').style("opacity", 0)
 
 var _transitions = [
   () => { linear_regression_path.transition().duration(500).style("opacity", 1.0); },

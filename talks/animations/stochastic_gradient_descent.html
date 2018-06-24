@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -36,13 +36,13 @@ svg.append("g").attr("id", "point")
   
 var data = [0.5, 0.4, 0.4, 0.1, 0.4, 0.6, 0.45, 0.3, 0.5, 0.7, 0.6, 0.4, 0.43, 0.45, 0.5, 0.4, 0.25, 0.4, 0.55, 0.7, 0.8]
 var line = d3.line().x(function(d, i) { return x((i-10)/10); }).y(function(d, i) { return y(d) }).curve(d3.curveCardinal)
-var path = svg.select("#loss").append('path').attr('d', line(data)).attr('stroke', '#9090f0').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+var path = svg.select("#loss").append('path').attr('d', line(data)).attr('stroke', 'var(--blue-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none')
 
 var circle = svg.select("#point").append("circle")
     .attr("r", 8)
     .style("opacity", 0)
-    .style("fill", "#f05050")
-    .style("stroke", "#f05050")
+    .style("fill", "var(--red-color)")
+    .style("stroke", "var(--red-color)")
 
 // Returns an attrTween for translating along the specified path element.
 function translateAlong(start, end) {

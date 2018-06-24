@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -60,8 +60,8 @@ svg.append("text")
 var line = d3.line().x(function(d, i) { return x(i+1); }).y(function(d) { return y(d); }).curve(d3.curveCardinal)
 var train_data = [0.251, 0.237, 0.152, 0.132, 0.111, 0.102, 0.077, 0.06, 0.045, 0.038, 0.034, 0.026, 0.024, 0.02, 0.017, 0.014, 0.014, 0.01, 0.01]
 var test_data = [0.2534, 0.2441, 0.1751, 0.1672, 0.1553, 0.1473, 0.1404, 0.1351, 0.1507, 0.1605, 0.1717, 0.1807, 0.187, 0.1973, 0.2052, 0.2166, 0.227, 0.232, 0.2437]
-var train_path = svg.append('path').attr('d', line(train_data)).attr('stroke', '#f05050').attr('stroke-width', "0.8vmin").attr('fill', 'none')
-var test_path = svg.append('path').attr('d', line(test_data)).attr('stroke', '#9090f0').attr('stroke-width', "0.8vmin").attr('fill', 'none')
+var train_path = svg.append('path').attr('d', line(train_data)).attr('stroke', 'var(--red-color)').attr('stroke-width', "0.8vmin").attr('fill', 'none')
+var test_path = svg.append('path').attr('d', line(test_data)).attr('stroke', 'var(--blue-color)').attr('stroke-width', "0.8vmin").attr('fill', 'none')
 var totalLength = train_path.node().getTotalLength();
 train_path.attr("stroke-dasharray", totalLength + " " + totalLength)
           .attr("stroke-dashoffset", totalLength)
@@ -69,7 +69,7 @@ test_path.attr("stroke-dasharray", totalLength + " " + totalLength)
           .attr("stroke-dashoffset", totalLength)
 
 minimum = svg.append("line").attr("x1", x(8)).attr("x2", x(8)).attr("y1", y(0.0)).attr("y2", y(0.25)).style("stroke-width", "0.8vmin")
-             .style("opacity", "0").style("stroke", "#fff").attr("stroke-dasharray", "10 10")
+             .style("opacity", "0").style("stroke", "var(--default-color)").attr("stroke-dasharray", "10 10")
 
 function next_step() {
       train_path.transition()

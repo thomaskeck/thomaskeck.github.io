@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -10,19 +10,19 @@
 
 <style> 
 .train_dot {
-  fill: #fff
+  fill: var(--default-color);
 }
 
 .test_dot {
-  fill: #fff
+  fill: var(--default-color);
 }
 </style>
 <body>
 <div class="reveal">
-<div id="training_data" style="opacity: 0; position: absolute; top: 5%; left: 5%; color: #50f050">
+<div id="training_data" style="opacity: 0; position: absolute; top: 5%; left: 5%; color: var(--green-color)">
   <h3>Training Data</h3>
 </div>
-<div id="test_data" style="opacity: 0; position: absolute; top: 5%; left: 50%; color: #50f050">
+<div id="test_data" style="opacity: 0; position: absolute; top: 5%; left: 50%; color: var(--green-color)">
   <h3>Independent Test Data</h3>
 </div>
 <div id="misclassrate" style="opacity: 0; position: absolute; top: 75%; left: 50%; font-size: 6vmin">
@@ -77,7 +77,7 @@ var train_cut = train_svg.select("#cuts").append("line")
                .attr("y2", 0)
                .style("stroke-width", "0.5vmin")
                .style("opacity", "0")
-               .style("stroke", "#fff")
+               .style("stroke", "var(--default-color)")
 
 var test_cut = test_svg.select("#cuts").append("line")
                .attr("x1", x(0))
@@ -86,7 +86,7 @@ var test_cut = test_svg.select("#cuts").append("line")
                .attr("y2", 0)
                .style("stroke-width", "0.5vmin")
                .style("opacity", "0")
-               .style("stroke", "#fff")
+               .style("stroke", "var(--default-color)")
  
 
 
@@ -96,7 +96,7 @@ var _transitions = [
   () => { d3.selectAll(".train_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 5) },
   () => { d3.select("#training_data").transition().duration(300).style("opacity", 1); d3.select("#test_data").transition().duration(300).style("opacity", 1); },
   () => { train_cut.transition().duration(500).attr("y2", 500).style("opacity", 1); test_cut.transition().duration(500).attr("y2", 500).style("opacity", 1); },
-  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", function(d) { if (d.x > 0) return '#f55'; else return '#9090f0'; }); },
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", function(d) { if (d.x > 0) return 'var(--red-color)'; else return 'var(--blue-color)'; }); },
   () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 1); },
 ]
 var _inverse_transitions = [
@@ -105,7 +105,7 @@ var _inverse_transitions = [
   () => { d3.selectAll(".train_dot").transition().delay(function(d, i) { return Math.log(i+1)*500; }).attr("r", 0) },
   () => { d3.select("#training_data").transition().duration(300).style("opacity", 0); d3.select("#test_data").transition().duration(300).style("opacity", 0); },
   () => { train_cut.transition().duration(500).attr("y2", 0).style("opacity", 0); test_cut.transition().duration(500).attr("y2", 0).style("opacity", 0); },
-  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", '#fff'); },
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", 'var(--default-color)'); },
   () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 0); },
 ]
   
@@ -119,7 +119,7 @@ d3.csv("train_dataset.csv", function(error, data) {
   dots.enter().append("circle")
       .attr("class", "train_dot")
       .attr("r", 0)
-      .style("fill", function(d) { if (d.cls == 1) return '#f55'; else return '#9090f0';})
+      .style("fill", function(d) { if (d.cls == 1) return 'var(--red-color)'; else return 'var(--blue-color)';})
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
 

@@ -13,7 +13,7 @@
 		<meta name="author" content="Thomas Keck">
 
 		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../reveal.mod/css/theme/black.css">
+		<link rel="stylesheet" href="../reveal.mod/css/theme/current.css">
 		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -55,14 +55,14 @@
           <h3>Training / Fitting</h3>
 
 
-          <p style="color: #9090f0;">
+          <p style="color: var(--blue-color);">
           Japanese (hiragana)
           </p>
 					<p style="font-size: 2em;">
 			    ま ち ね ら に ご
 					</p>
           
-          <p style="color: #f05050;">
+          <p style="color: var(--red-color);">
           Chinese (kanji)
           </p>
 					<p style="font-size: 2em;">
@@ -77,19 +77,19 @@
           <p class="fragment" style="font-size: 2em;">
           の
           </p>
-          <p class="fragment" style="color: #9090f0;">
+          <p class="fragment" style="color: var(--blue-color);">
           Japanese (hiragana)
           </p>
           <p class="fragment" style="font-size: 2em;">
           る
           </p>
-          <p class="fragment" style="color: #9090f0;">
+          <p class="fragment" style="color: var(--blue-color);">
           Japanese (hiragana)
           </p>
           <p class="fragment" style="font-size: 2em;">
 			    热
           </p>
-          <p class="fragment" style="color: #f05050;">
+          <p class="fragment" style="color: var(--red-color);">
           Chinese (kanji)
           </p>
           </div>
@@ -97,19 +97,19 @@
           <p class="fragment" style="font-size: 2em;">
 			    时
           </p>
-          <p class="fragment" style="color: #f05050;">
+          <p class="fragment" style="color: var(--red-color);">
           Chinese (kanji)
           </p>
           <p class="fragment" style="font-size: 2em;">
 			    な
           </p>
-          <p class="fragment" style="color: #9090f0;">
+          <p class="fragment" style="color: var(--blue-color);">
           Japanese (hiragana)
           </p>
           <p class="fragment" style="font-size: 2em;">
 			    陸
           </p>
-          <p class="fragment" style="color: #f05050;">
+          <p class="fragment" style="color: var(--red-color);">
           Chinese (kanji)
           </p>
           </div>
@@ -123,7 +123,7 @@
           </p>
           <div style='height: 5vh'></div>
           <b>
-          <p  class="fragment" style="color: #50f050;">
+          <p  class="fragment" style="color: var(--green-color);">
           Let's build a machine that can do this!
           </p>
           </b>
@@ -168,24 +168,24 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Decision Tree</div> & <div style='color: #f05050'>Model Complexity</div></h2>
+          <h2><div style='color: var(--blue-color)'>Decision Tree</div> & <div style='color: var(--red-color)'>Model Complexity</div></h2>
 				</section>
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Decision Tree (Inference)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Decision Tree (Inference)</div></h3>
               <div class="fig-container"
                    data-fig-id="dataset"
                    data-file="animations/decision_tree.html" style="width: 100%; height: 100%"></div>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Decision Tree (Fitting)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Decision Tree (Fitting)</div></h3>
               <div class="fig-container"
                    data-fig-id="dataset"
                    data-file="animations/decision_tree_fitting.html" style="width: 100%; height: 100%"></div>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Decision Tree (Summary)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Decision Tree (Summary)</div></h3>
           <div style="display: flex">
           <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -213,23 +213,23 @@
 				</section>
         
 				<section data-background-image="images/tree_visualization_30.png" data-background-size="60%" style="height: 100%">
-          <h3><div style='color: #f05050'>Model Complexity</div></h3>
+          <h3><div style='color: var(--red-color)'>Model Complexity</div></h3>
           <div style="width: 50%; height: 50vh; float: left" class="fragment">
-            <div style="color: #50f050">Training Dataset</div><br />
-            <img data-src="images/full_contour_train.png" style="background:#222; border:none; box-shadow:none;">
+            <div style="color: var(--green-color)">Training Dataset</div><br />
+            <img data-src="images/full_contour_train.png" style="background:var(--light-background-color); border:none; box-shadow:none;">
             <br />
             Misclassification Rate: 0%
           </div>
           <div style="width: 50%; height: 50vh; float: right" class="fragment">
-            <div style="color: #50f050">Independent Test Dataset</div><br />
-            <img data-src="images/full_contour_test.png" style="background:#222; border:none; box-shadow:none;">
+            <div style="color: var(--green-color)">Independent Test Dataset</div><br />
+            <img data-src="images/full_contour_test.png" style="background:var(--light-background-color); border:none; box-shadow:none;">
             <br />
             Misclassification Rate: 21%
           </div>
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Overfitting</div></h3>
+          <h3><div style='color: var(--red-color)'>Overfitting</div></h3>
           <ul style="font-size: 3vmin">
             <li>Model is too complex</li>
             <li>Statistical fluctuations in the training data dominate predictions</li>
@@ -245,7 +245,7 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Underfitting</div></h3>
+          <h3><div style='color: var(--red-color)'>Underfitting</div></h3>
           <ul style="font-size: 3vmin">
             <li>Model is too simple</li>
             <li>Relevant aspects of the data are ignored</li>
@@ -259,14 +259,14 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Training vs. Test Error</div></h3>
+          <h3><div style='color: var(--blue-color)'>Training vs. Test Error</div></h3>
               <div class="fig-container"
                    data-fig-id="dataset"
                    data-file="animations/decision_tree_depth.html" style="width: 100%; height: 100%"></div>
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Bias-Variance Dilemma</div></h3>
+          <h3><div style='color: var(--red-color)'>Bias-Variance Dilemma</div></h3>
           <ul style="font-size: 3vmin">
             <li>Bias due to wrong modeling of the data (underfitting)</li>
             <li>Variance due to sensitivity to statistical fluctuations (overfitting)</li>
@@ -281,21 +281,21 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Model Complexity</div></h3>
+          <h3><div style='color: var(--red-color)'>Model Complexity</div></h3>
           <b>Number of Degrees of freedom (NDF) of the model<br /> (≈ number of parameters)</b><br />
 
           <ul style="font-size: 3vmin">
-            <li><div style='color: #50f050'>Input dataset</div></li>
+            <li><div style='color: var(--green-color)'>Input dataset</div></li>
             <ul>
               <li>Reduce dimensionality</li>
               <li>Higher statistic</li>
             </ul>
-            <li><div style='color: #50f050'>Hyperparameters (control NDF)</div></li>
+            <li><div style='color: var(--green-color)'>Hyperparameters (control NDF)</div></li>
             <ul>
               <li>E.g. depth of the tree</li>
               <li>Optimized using search-algorithm</li>
             </ul>
-            <li><div style='color: #50f050'>Regularization (reduce effective NDF)</div></li> 
+            <li><div style='color: var(--green-color)'>Regularization (reduce effective NDF)</div></li> 
             <ul>
               <li>E.g. Include tree structure in separation gain measure</li>
               <li>Ensemble methods</li>
@@ -305,21 +305,21 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Model Complexity</div> <br />(All you have to know)</h3>
+          <h3><div style='color: var(--red-color)'>Model Complexity</div> <br />(All you have to know)</h3>
 				
           <div style="height: 10vh"></div>
-          <b><div style="color: #50f050" class="fragment">Always test on an independent test dataset in the end!</div></b>
+          <b><div style="color: var(--green-color)" class="fragment">Always test on an independent test dataset in the end!</div></b>
 
         </section>
         </section>
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Boosted Decision Tree</div> & <div style='color: #f05050'>Ensemble Methods</div></h2>
+          <h2><div style='color: var(--blue-color)'>Boosted Decision Tree</div> & <div style='color: var(--red-color)'>Ensemble Methods</div></h2>
 				</section>
 				
         <section>
-          <h3><div style='color: #f05050'>Ensemble Methods</div></h2>
+          <h3><div style='color: var(--red-color)'>Ensemble Methods</div></h2>
 
           <div style='height: 20vh'></div>
           <b>Average many simple models to obtain a robust complex model</b>
@@ -330,13 +330,13 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Boosting</div></h2>
+          <h3><div style='color: var(--red-color)'>Boosting</div></h2>
               <div class="fig-container"
                    data-fig-id="dataset"
                    data-file="animations/boosting.html" style="width: 100%; height: 100%"></div>
 				</section>
         <section>
-          <h3><div style='color: #f05050'>Boosting</div></h2>
+          <h3><div style='color: var(--red-color)'>Boosting</div></h2>
           <div style="width: 35%; height: 50vh; float: left;">
             <img src="images/boosting_scheme.png" style="background:none; border:none; box-shadow:none;">
           </div>
@@ -357,14 +357,14 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Bagging</div></h2>
+          <h3><div style='color: var(--red-color)'>Bagging</div></h2>
               <div class="fig-container"
                    data-fig-id="dataset"
                    data-file="animations/bagging.html" style="width: 100%; height: 100%"></div>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Bagging</div></h2>
+          <h3><div style='color: var(--red-color)'>Bagging</div></h2>
           <div style="width: 100%; height: 20vh;">
             <img src="images/bagging_scheme.png" style="background:none; border:none; box-shadow:none;">
           </div>
@@ -376,15 +376,15 @@
               <li>Embarrassingly parallel</li>
               <li>Sampling method is crucial:</li>
               <ul>
-                <li><div style='color: #50f050; display: inline'>Bagging:</div> random events with replacements</li>
-                <li><div style='color: #50f050; display: inline'>Pasting:</div> random events without replacement</li>
-                <li><div style='color: #50f050; display: inline'>Random Subspaces:</div> random features</li>
+                <li><div style='color: var(--green-color); display: inline'>Bagging:</div> random events with replacements</li>
+                <li><div style='color: var(--green-color); display: inline'>Pasting:</div> random events without replacement</li>
+                <li><div style='color: var(--green-color); display: inline'>Random Subspaces:</div> random features</li>
               </ul>
             </ul>
 				</section>
         
         <section>
-          <h3><div style='color: #9090f0'>Stochastic Boosted Decision Tree (Summary)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Stochastic Boosted Decision Tree (Summary)</div></h3>
 
           <div style="display: flex">
           <div style="width: 40%; height: 40vh; float: left; align-items: center; display: flex">
@@ -415,17 +415,17 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Further Ensemble Methods</div></h2>
+          <h3><div style='color: var(--red-color)'>Further Ensemble Methods</div></h2>
 
           <div style='height: 5vh'></div>
           <ul style="font-size: 3vmin">
-            <center><b style='color: #50f050'>Categorization</b></center>
+            <center><b style='color: var(--green-color)'>Categorization</b></center>
             <li>Divide feature-space into sub-spaces</li>
             <li>Different behavior of the data in the chosen subspaces</li>
             <li>e.g. train separate classifiers for Barrel and Endcap</li>
             <div style='height: 5vh'></div>
           
-            <center><b style='color: #50f050'>Combination</b></center>
+            <center><b style='color: var(--green-color)'>Combination</b></center>
             <li>Combine different classifiers</li>
             <li>Different regularization methods learn different aspects of the data</li>
             <li>e.g. combine neural network, BDT and SVM</li>
@@ -437,10 +437,10 @@
 				
         <section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Support Vector Machine</div> & <div style='color: #f05050'>Kernel Trick</div></h2>
+          <h2><div style='color: var(--blue-color)'>Support Vector Machine</div> & <div style='color: var(--red-color)'>Kernel Trick</div></h2>
 				</section>
         <section>
-          <h3><div style='color: #9090f0'>Support Vector Machine</div></h3>
+          <h3><div style='color: var(--blue-color)'>Support Vector Machine</div></h3>
           <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
             <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
@@ -452,7 +452,7 @@
           </div>
 				</section>
 				<section>
-          <h3><div style='color: #f05050'>Kernel Trick</div></h3>
+          <h3><div style='color: var(--red-color)'>Kernel Trick</div></h3>
           <ul style="font-size: 3vmin">
             <li>SVM Algorithm depends only on scalar product!</li>
             <li>Replace scalar product with an arbitrary kernel function</li>
@@ -464,22 +464,22 @@
           $$ g(c_1, \dots, c_n)= \sum_i c_i - \frac{1}{2} \sum_i \sum_j y_i c_i (\vec{x}_i \cdot \vec{x}_j) y_j c_j$$
 				</section>
         <section>
-          <h3><div style='color: #f05050'>Kernel Trick</div></h3>
+          <h3><div style='color: var(--red-color)'>Kernel Trick</div></h3>
           <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
-            <div style="color: #50f050">Polynomial Kernel<br /> $k(x_i, x_j) ) = (x_i \cdot x_j)^d$</div><br />
+            <div style="color: var(--green-color)">Polynomial Kernel<br /> $k(x_i, x_j) ) = (x_i \cdot x_j)^d$</div><br />
             <img data-src="images/poly_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
             <br />
             Misclassification Rate: 19%
           </div>
           <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
-            <div style="color: #50f050">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i - x_j||^2)$</div><br />
+            <div style="color: var(--green-color)">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i - x_j||^2)$</div><br />
             <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
             <br />
             Misclassification Rate: 15%
           </div>
 				</section>
         <section>
-          <h3><div style='color: #9090f0'>Support Vector Machine (Summary)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Support Vector Machine (Summary)</div></h3>
           <div style="display: flex">
           <div style="width: 40%; height: 40vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -510,18 +510,18 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Universal Function Approximator</div></h2>
+          <h2><div style='color: var(--blue-color)'>Artificial Neural Networks</div> & <div style='color: var(--red-color)'>Universal Function Approximator</div></h2>
 				</section>
 
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Artificial Neural Network</div></h3>
+          <h3><div style='color: var(--blue-color)'>Artificial Neural Network</div></h3>
               <div class="fig-container"
                    data-fig-id="neural_network"
                    data-file="animations/neural_network.html" style="width: 100%; height: 100%"></div>
         </section>
 				
         <section  style="height: 100%">
-          <h3><div style='color: #f05050'>Universal Function Approximator</div></h3>
+          <h3><div style='color: var(--red-color)'>Universal Function Approximator</div></h3>
   
           <div style='height: 2vh'></div>
           $$f(\vec{x}) = \sigma \left(\sum_h w_{oh} \sigma_h \left( \sum_i w_{hi} x_i \right) \right)$$
@@ -547,18 +547,18 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Activation Functions</div></h3>
+          <h3><div style='color: var(--blue-color)'>Activation Functions</div></h3>
           <div style='height: 2vh'></div>
             $$\sigma (\underbrace{\sum w x}_{a})$$
           <div style='height: 2vh'></div>
           <ul style="font-size: 3vmin">
-           <li><div style='color: #9090f0; display: inline'>Desirable properties</div>: Nonlinear, Differentiable, Monotonic, Smooth</li>
-           <li><div style='color: #9090f0; display: inline'>Examples for the hidden layer</div>:</li>
+           <li><div style='color: var(--blue-color); display: inline'>Desirable properties</div>: Nonlinear, Differentiable, Monotonic, Smooth</li>
+           <li><div style='color: var(--blue-color); display: inline'>Examples for the hidden layer</div>:</li>
               <ul>
-                <li>sigmoid $\frac{1}{1+e^{-a}}$: <div style='color: #f05050; display: inline'>not zero-centered</div>, <div style='color: #f05050; display: inline'>saturates</div> $\rightarrow$ don't use this</li>
-                <li>$\tanh(a)$: <div style='color: #50f050; display: inline'>zero-centered</div>, <div style='color: #f05050; display: inline'>saturates</div> $\rightarrow$ better than sigmoid</li>
-                <li>ReLU $\max(0, a)$: <div style='color: #50f050; display: inline'>constant gradient</div>, <div style='color: #50f050; display: inline'>fast</div>, <div style='color: #f05050; display: inline'>can die out</div></li>
-                <li>PReLU $\max(0, a) - \beta \max(0, -a)$:  <div style='color: #50f050; display: inline'>constant gradient</div>, <div style='color: #50f050; display: inline'>fast</div>, <div style='color: #f05050; display: inline'>additional parameter</div> </li>
+                <li>sigmoid $\frac{1}{1+e^{-a}}$: <div style='color: var(--red-color); display: inline'>not zero-centered</div>, <div style='color: #f05050; display: inline'>saturates</div> $\rightarrow$ don't use this</li>
+                <li>$\tanh(a)$: <div style='color: var(--green-color); display: inline'>zero-centered</div>, <div style='color: var(--red-color); display: inline'>saturates</div> $\rightarrow$ better than sigmoid</li>
+                <li>ReLU $\max(0, a)$: <div style='color: var(--green-color); display: inline'>constant gradient</div>, <div style='color: #50f050; display: inline'>fast</div>, <div style='color: var(--red-color); display: inline'>can die out</div></li>
+                <li>PReLU $\max(0, a) - \beta \max(0, -a)$:  <div style='color: var(--green-color); display: inline'>constant gradient</div>, <div style='color: #50f050; display: inline'>fast</div>, <div style='color: var(--red-color); display: inline'>additional parameter</div> </li>
             </ul>
           </ul>
           <div class="fig-container"
@@ -567,14 +567,14 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Backpropagation of Error</div></h3>
+          <h3><div style='color: var(--red-color)'>Backpropagation of Error</div></h3>
   
           <div style='height: 2vh'></div>
           $$ \Delta w  = - \eta \frac{\mathrm{d}\mathcal{L}}{\mathrm{d}w} $$
           <div style='height: 1vh'></div>
           <b>→ choose weights so that they minimize a loss-function</b>
           <div style='height: 2vh'></div>
-          $ \mathcal{L} = H\left(y, f(\vec{x})\right) = $ <div style='color: #9090f0; display: inline'>$-y \ln (f(\vec{x}))$</div><div style='color: #f05050; display: inline'>$ - (1-y) \ln (1 - f(\vec{x}))$</div> $\quad (\textrm{with }\ y = 0, 1)$
+          $ \mathcal{L} = H\left(y, f(\vec{x})\right) = $ <div style='color: var(--blue-color); display: inline'>$-y \ln (f(\vec{x}))$</div><div style='color: var(--red-color); display: inline'>$ - (1-y) \ln (1 - f(\vec{x}))$</div> $\quad (\textrm{with }\ y = 0, 1)$
           <div class="fig-container"
                data-fig-id="neural_network"
                data-file="animations/classification_loss_functions.html" style="width: 100%; height: 100%"></div>
@@ -582,7 +582,7 @@
         
         
         <section>
-          <h3><div style='color: #9090f0'>Artificial Neural Network (Summary)</div></h3>
+          <h3><div style='color: var(--blue-color)'>Artificial Neural Network (Summary)</div></h3>
           <div style="display: flex">
           <div style="width: 50%; height: 40vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -613,16 +613,16 @@
 				
         <section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Artificial Neural Networks</div> & <div style='color: #f05050'>Stochastic Gradient Descent</div></h2>
+          <h2><div style='color: var(--blue-color)'>Artificial Neural Networks</div> & <div style='color: var(--red-color)'>Stochastic Gradient Descent</div></h2>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
+          <h3><div style='color: var(--red-color)'>Stochastic Gradient Descent</div></h3>
 
           <ol style="font-size: 3vmin">
-            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
-            <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
-            <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
+            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: var(--green-color); display: inline">stochastic</div>)</li>
+            <li>Calculate the <div style="color: var(--green-color); display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
+            <li>Adjust the weights in the opposite direction (<div style="color: var(--green-color); display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
             <li>Repeat until convergence</li>
           </ol>
           
@@ -632,18 +632,18 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Stochastic Gradient Descent</div></h3>
+          <h3><div style='color: var(--red-color)'>Stochastic Gradient Descent</div></h3>
 
           <ol style="font-size: 3vmin">
-            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: #50f050; display: inline">stochastic</div>)</li>
-            <li>Calculate the <div style="color: #50f050; display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
-            <li>Adjust the weights in the opposite direction (<div style="color: #50f050; display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
+            <li>Feed $N$ samples to the network ($N \hat{=} $ batch-size $\rightarrow$ <div style="color: var(--green-color); display: inline">stochastic</div>)</li>
+            <li>Calculate the <div style="color: var(--green-color); display: inline">gradient</div> of the average loss with respect to each weight using the chain-rule of analysis</li>
+            <li>Adjust the weights in the opposite direction (<div style="color: var(--green-color); display: inline">descent</div>) with a small step-size (learning-rate) $\eta$</li>
             <li>Repeat until convergence</li>
           </ol>
         
           <div style="height: 10vmin"></div>
           <div style="text-align: left">
-          <div style="color: #50f050;">
+          <div style="color: var(--green-color);">
             Many more advanced variants of Stochastic Gradient Descent exists
           </div>
             <ul>
@@ -653,7 +653,7 @@
             </ul>
           <div style="height: 10vmin"></div>
 
-          <div style="color: #50f050;">
+          <div style="color: var(--green-color);">
             How should you choose the associated hyper-parameters?
           </div>
             <ul>
@@ -665,7 +665,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Learn-Rate Schedule</div></h3>
+          <h3><div style='color: var(--blue-color)'>Learn-Rate Schedule</div></h3>
           
           <div class="fig-container"
                data-fig-id="sgd"
@@ -673,7 +673,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Learn-Rate vs. Batch-Size vs. Momentum</div></h3>
+          <h3><div style='color: var(--red-color)'>Learn-Rate vs. Batch-Size vs. Momentum</div></h3>
   
           <div style='height: 2vh'></div>
           $$ \Delta w_t  = - \underbrace{\eta}_{\textrm{Learn-Rate}} \cdot \underbrace{ \frac{\mathrm{d}}{\mathrm{d}w} \frac{1}{N} \sum_i^N \mathcal{L}_i}_{\textrm{Gradient averaged over Batch-Size}} + \underbrace{m \cdot \Delta w_{t-1}}_{\textrm{Momentum term}} $$
@@ -692,11 +692,11 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Early Stopping</div></h3>
+          <h3><div style='color: var(--red-color)'>Regularization:</div><div style='color: var(--blue-color)'>Early Stopping</div></h3>
               <p>
               Idea: Prevent overfitting by stopping the training before convergence
               </p>
-              <p style="color: #50f050">
+              <p style="color: var(--green-color)">
               Very effective and simple!
               </p>
               <div class="fig-container"
@@ -705,7 +705,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>$L_1$ and $L_2$ Penalty Terms</div></h3>
+          <h3><div style='color: var(--red-color)'>Regularization:</div><div style='color: var(--blue-color)'>$L_1$ and $L_2$ Penalty Terms</div></h3>
               <p>
               Idea: Prevent overfitting by penalize large weights<br>
               Optimal Brain Damage: Forget unimportant stuff<br>
@@ -715,19 +715,19 @@
           <div style="text-align: left">
               <div style="height: 5vmin"></div>
               <div class="fragment">
-              <div style="color: #50f050">
+              <div style="color: var(--green-color)">
               $$L_2 = \beta \sum_i  w_i^2 $$
               </div>
               <ul>
                 <li>Requires careful choice of $\beta$</li>
                 <li>Also called Ridge leads to dense representations</li>
-                <li>Equivalent to <div style='color: #50f050; display: inline'>weight-decay</div> for Stochastic Gradient Descent</li>
+                <li>Equivalent to <div style='color: var(--green-color); display: inline'>weight-decay</div> for Stochastic Gradient Descent</li>
               </ul>
               </div>
 
               <div style="height: 5vmin"></div>
               <div class="fragment">
-              <div style="color: #50f050">
+              <div style="color: var(--green-color)">
               $$L_1 = \alpha \sum_i | w_i | $$
               </div>
               <ul>
@@ -743,11 +743,11 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Generative Models</div> & <div style='color: #f05050'>Neyman-Pearson Lemma</div></h2>
+          <h2><div style='color: var(--blue-color)'>Generative Models</div> & <div style='color: var(--red-color)'>Neyman-Pearson Lemma</div></h2>
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Neyman-Pearson Lemma</div></h3>
+          <h3><div style='color: var(--red-color)'>Neyman-Pearson Lemma</div></h3>
           
           <blockquote>
           On the Problem of the most Efficient Tests of Statistical Hypotheses
@@ -758,13 +758,13 @@
 
           $$ f\left(\vec{x}\right) = \frac{\mathrm{PDF}\left( \vec{x} | \mathrm{S} \right)}{\mathrm{PDF}\left( \vec{x} | \mathrm{B} \right)} $$
 
-          <p style='color: #50f050'>
+          <p style='color: var(--green-color)'>
           Most powerful test at a given significance level to distinguish between two simple hypotheses (signal or background)
           </p>
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Problem solved? No!</div></h3>
+          <h3><div style='color: var(--red-color)'>Problem solved? No!</div></h3>
           
           <p>
           Signal and Background PDF are usually unknown
@@ -781,12 +781,12 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Solution: Approximate Neyman-Pearson Lemma</div></h3>
+          <h3><div style='color: var(--red-color)'>Solution: Approximate Neyman-Pearson Lemma</div></h3>
           
           <div style="display: flex">
           <div style="width: 50%; height: 10vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
-            <li style="color: #50f050">Neyman-Pearson Lemma</li>
+            <li style="color: var(--green-color)">Neyman-Pearson Lemma</li>
           </ul>
           </div>
           <div style="width: 50%; height: 10vh; float:right">
@@ -797,7 +797,7 @@
           <div style="display: flex" class="fragment">
           <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
-            <li style="color: #50f050">Discriminative Models</li>
+            <li style="color: var(--green-color)">Discriminative Models</li>
             <ul style="font-size: 3vmin">
               <li>(Boosted) Decision Trees</li>
               <li>Support Vector Machines</li>
@@ -814,7 +814,7 @@
           <div style="display: flex" class="fragment">
           <div style="width: 50%; height: 20vh; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
-            <li style="color: #50f050">Generative Models</li>
+            <li style="color: var(--green-color)">Generative Models</li>
             <ul style="font-size: 3vmin">
               <li>Analytical approx. (LDA, QDA)</li>
               <li>Kernel density estimator</li>
@@ -832,7 +832,7 @@
 				</section>
         
         <section>
-          <h3><div style='color: #9090f0'>Linear Discriminant Analysis</div></h3>
+          <h3><div style='color: var(--blue-color)'>Linear Discriminant Analysis</div></h3>
           <div style="display: flex">
           <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -863,7 +863,7 @@
 				</section>
 
         <section>
-          <h3><div style='color: #9090f0'>Quadratic Discriminant Analysis</div></h3>
+          <h3><div style='color: var(--blue-color)'>Quadratic Discriminant Analysis</div></h3>
           <div style="display: flex">
           <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -892,7 +892,7 @@
 				</section>
         
         <section>
-          <h3><div style='color: #9090f0'>Kernel Density Estimator</div></h3>
+          <h3><div style='color: var(--blue-color)'>Kernel Density Estimator</div></h3>
           <div style="display: flex">
           <div style="width: 50%; height: 50vmin; float: left; align-items: center; display: flex">
           <ul style="font-size: 3vmin">
@@ -921,10 +921,10 @@
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Extensions</div> & <div style='color: #f05050'>Multivariate Regression</div></h2>
+          <h2><div style='color: var(--blue-color)'>Extensions</div> & <div style='color: var(--red-color)'>Multivariate Regression</div></h2>
 				</section>
 				<section style="height: 100%">
-          <h3><div style='color: #9090f0'>(Generalized) Linear Regression</div></h3>
+          <h3><div style='color: var(--blue-color)'>(Generalized) Linear Regression</div></h3>
           <ul  style="font-size: 3vmin">
             <li>Linear Regression of Base-Functions</li>
             <li>$y = \beta_0 + \beta_1 \phi_1(x_1) + \dots \beta_n \phi_n(x_n)$</li>
@@ -940,7 +940,7 @@
 				</section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>(Boosted) Decision Trees</div></h3>
+          <h3><div style='color: var(--blue-color)'>(Boosted) Decision Trees</div></h3>
           <ul  style="font-size: 3vmin">
               <li>Various different algorithms exists</li>
               <li>Easiest: calculate average and right of each possible split points</li>
@@ -956,7 +956,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Support Vector Regression</div></h3>
+          <h3><div style='color: var(--blue-color)'>Support Vector Regression</div></h3>
           <ul  style="font-size: 3vmin">
               <li>Search for maximum-margin hyper-band incorporating all data-points</li>
           </ul>
@@ -977,7 +977,7 @@
 				</section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Artificial Neural Networks</div></h3>
+          <h3><div style='color: var(--blue-color)'>Artificial Neural Networks</div></h3>
           <ul>
             <li>Neural Networks are still <b>universal</b> function approximators</li>
             <li>Output activation function: linear</li>
@@ -996,10 +996,10 @@
 				</section>
         
         <section>
-          <h3><div style='color: #f05050'>Summary</div></h3>
+          <h3><div style='color: var(--red-color)'>Summary</div></h3>
           <div style='height: 10vh'></div>
 
-          <p style='color: #50f050'>
+          <p style='color: var(--green-color)'>
           All concepts we encountered are still valid
           </p>
           <ul>
@@ -1014,18 +1014,18 @@
 				
         <section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Outlook</div> & <div style='color: #f05050'>References</div></h2>
+          <h2><div style='color: var(--blue-color)'>Outlook</div> & <div style='color: var(--red-color)'>References</div></h2>
 				</section>
 				<section>
-          <h3><div style='color: #9090f0'>Outlook</div></h3>
+          <h3><div style='color: var(--blue-color)'>Outlook</div></h3>
 
           <div style='height: 10vh'></div>
-          There will be a second lecture on <div style='color: #50f050; display: inline'>Deep Learning</div> after a short break<br />
+          There will be a second lecture on <div style='color: var(--green-color); display: inline'>Deep Learning</div> after a short break<br />
           <div style='height: 4vh'></div>
-          There will be workshop on <div style='color: #50f050; display: inline'>Tensorflow</div> in the afternoon
+          There will be workshop on <div style='color: var(--green-color); display: inline'>Tensorflow</div> in the afternoon
 				</section>
 				<section data-markdown>
-          <h3><div style='color: #f05050'>References</div></h3>
+          <h3><div style='color: var(--red-color)'>References</div></h3>
 
             <textarea data-template>
                 An (incomplete) list of interesting books:

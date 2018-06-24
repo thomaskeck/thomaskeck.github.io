@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -35,10 +35,10 @@ svg.append("g").attr("id", "func")
 
 var data = d3.range(20).map(function(d) { return d; })
 var cross_line_bkg = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(1-d/20)) }).curve(d3.curveCardinal)
-var cross_path_bkg = svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', '#f05050').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
+var cross_path_bkg = svg.select("#func").append('path').attr('d', cross_line_bkg(data)).attr('stroke', 'var(--red-color)').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
 var data = d3.range(1,21).map(function(d) { return d; })
 var cross_line_sig = d3.line().x(function(d) { return x(d/20); }).y(function(d) { return y(-Math.log(d/20)) }).curve(d3.curveCardinal)
-var cross_path_sig = svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', '#9090f0').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
+var cross_path_sig = svg.select("#func").append('path').attr('d', cross_line_sig(data)).attr('stroke', 'var(--blue-color)').attr('stroke-width', "1vmin").attr('fill', 'none').style('opacity', 1.0)
 
 var _transitions = [
 ]

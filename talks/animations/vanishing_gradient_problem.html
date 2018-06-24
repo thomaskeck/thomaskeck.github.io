@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -49,7 +49,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-          .attr('fill', '#50f050')
+          .attr('fill', 'var(--green-color)')
           .style('stroke','none');
 
 svg.append('defs')
@@ -64,7 +64,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m 5,5 L -5,0 L 5,-5 Z')
-          .attr('fill', '#9090f0')
+          .attr('fill', 'var(--blue-color)')
           .style('stroke','none');
 
 
@@ -105,7 +105,7 @@ function create_layer(pos, output_label, w_label) {
      .attr("y2", 100)
      .style("stroke-width", "3vmin")
      .style("opacity", 0.0)
-     .style("stroke", "#50f050")
+     .style("stroke", "var(--green-color)")
   
    svg.select("#arrows").append("line")
        .attr("id", "backarrow_" + classname)
@@ -116,7 +116,7 @@ function create_layer(pos, output_label, w_label) {
        .attr("y2", 300)
        .style("stroke-width", "3vmin")
        .style("opacity", 0.0)
-       .style("stroke", "#9090f0")
+       .style("stroke", "var(--blue-color)")
 
 }
 
@@ -180,29 +180,29 @@ var arrow = svg.select("#arrows").append("line")
                .attr("y2", 100)
                .style("stroke-width", "3vmin")
                .style("opacity", "0")
-               .style("stroke", "#50f050")
+               .style("stroke", "var(--green-color)")
 
 svg.select("#other").append("circle")
     .attr("class", "points")
     .attr("r", 4)
     .style("opacity", 1.0)
     .attr("transform", "translate(650 ,220)")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
+    .style("fill", "var(--default-color)")
+    .style("stroke", "var(--default-color)")
 svg.select("#other").append("circle")
     .attr("class", "points")
     .attr("r", 4)
     .style("opacity", 1.0)
     .attr("transform", "translate(670 ,220)")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
+    .style("fill", "var(--default-color)")
+    .style("stroke", "var(--default-color)")
 svg.select("#other").append("circle")
     .attr("class", "points")
     .attr("r", 4)
     .style("opacity", 1.0)
     .attr("transform", "translate(690 ,220)")
-    .style("fill", "#fff")
-    .style("stroke", "#fff")
+    .style("fill", "var(--default-color)")
+    .style("stroke", "var(--default-color)")
 
 create_layer(100, 'y1', 'w1')
 create_layer(230, 'y2', 'w2')

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -11,7 +11,7 @@
 <style>
 
 .train_dot {
-  fill: #fff
+  fill: var(--default-color);
 }
 
 .box {
@@ -19,8 +19,8 @@
   height: 7%;
   width: 10%;
   float: left;
-  background: #111;
-  border: 0.2vmin solid black !important;
+  background: var(--background-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 
@@ -29,8 +29,8 @@
   height: 7%;
   width: 4%;
   float: left;
-  background: #f55;
-  border: 0.2vmin solid black !important;
+  background: var(--red-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 
@@ -39,8 +39,8 @@
   height: 7%;
   width: 4%;
   float: left;
-  background: #9090f0;
-  border: 0.2vmin solid black !important;
+  background: var(--blue-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 </style>
@@ -128,16 +128,16 @@ svg.append("g").attr("id", "points")
 svg.append("g").attr("id", "tree")
 
 
-svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-2.5)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("id", "xcut")
-svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(2.5)).attr("y1", y(-3.5)).attr("y2", y(-3.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("id", "ycut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-2.5)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("id", "xcut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(2.5)).attr("y1", y(-3.5)).attr("y2", y(-3.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("id", "ycut")
 
-svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut").attr('id', 'first_cut')
-svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut").attr('id', 'second_cut')
-svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut").attr('id', 'first_cut')
+svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut").attr('id', 'second_cut')
+svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
 
 function fitting_x() {
 
@@ -146,7 +146,7 @@ function fitting_x() {
   var t = d3.scaleLinear().domain([0, 10]).range([width/10, width/2]);
   var data = [-3, -2.8, -2.4, -1.5, 0.0, 3.0, 1.0, -1.9, -2.9, -3.0]
   var line = d3.line().x(function(d, i) { return t(i); }).y(function(d) { return y(d) }).curve(d3.curveCardinal)
-  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'var(--default-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none')
   var totalLength = path.node().getTotalLength();
   path.attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
@@ -168,7 +168,7 @@ function fitting_x2() {
   var t = d3.scaleLinear().domain([0, 10]).range([width/10, x(-0.26)]);
   var data = [-3, -2.0, -1.5, -1.2, -1.0, -1.2, -1.4, -1.8, -2.4, -3.0]
   var line = d3.line().x(function(d, i) { return t(i); }).y(function(d) { return y(d) }).curve(d3.curveCardinal)
-  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'var(--default-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none')
   var totalLength = path.node().getTotalLength();
   path.attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
@@ -190,7 +190,7 @@ function fitting_y() {
   var t = d3.scaleLinear().domain([0, 10]).range([height*4/5, height*1/5]);
   var data = [-2.5, -1.0, -0.6, -0.5, -1.0, -1.6, -1.0, -1.5, -2.0, -2.5]
   var line = d3.line().x(function(d) { return x(d); }).y(function(d, i) { return t(i) }).curve(d3.curveCardinal)
-  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'white').attr('stroke-width', "0.5vmin").attr('fill', 'none')
+  var path = svg.append('path').attr('d', line(data)).attr('stroke', 'var(--default-color)').attr('stroke-width', "0.5vmin").attr('fill', 'none')
   var totalLength = path.node().getTotalLength();
   path.attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
@@ -238,7 +238,7 @@ d3.csv("train_dataset.csv", function(error, data) {
       .attr("r", 3)
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
-      .style("fill", function(d) { if (d.cls == 1) return '#f55'; else return '#9090f0';})
+      .style("fill", function(d) { if (d.cls == 1) return 'var(--red-color)'; else return 'var(--blue-color)';})
 
   // Add the X Axis
   svg.append("g")

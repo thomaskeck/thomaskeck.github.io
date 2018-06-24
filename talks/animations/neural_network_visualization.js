@@ -36,7 +36,7 @@ class NeuralNetworkVisualization {
 						.attr('xoverflow', 'visible')
 						.append('svg:path')
 						.attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-						.attr('fill', '#fff')
+						.attr('fill', 'var(--default-color)')
 						.style('stroke','none');
 
     this.update();
@@ -137,6 +137,7 @@ class NeuralNetworkVisualization {
           .attr("y1", function(d) { return d.source_y; })
           .attr("x2", function(d) { return d.target_x; })
           .attr("y2", function(d) { return d.target_y; })
+          .style("stroke", "var(--default-color)")
           .style("stroke-width", "0vmin")
           .style("opacity", 1)
           .transition()
@@ -252,7 +253,7 @@ class NeuralNetworkVisualization {
       link.transition()
           .delay(this.number_of_layers * time_per_layer)
           .duration(2000)
-          .style("stroke", "#fff")
+          .style("stroke", "var(--default-color)")
     }
       
     var arrow = this.svg.select('#arrows')
@@ -263,8 +264,8 @@ class NeuralNetworkVisualization {
                         .attr("y1", this.height-150)
                         .attr("x2", 10)
                         .attr("y2", this.height-150)
-                        .style("stroke", "white")
-                        .style("fill", "white")
+                        .style("stroke", "var(--default-color)")
+                        .style("fill", "var(--default-color)")
                         .style("stroke-width", "0px")
                         .transition()
                         .duration(100)
@@ -341,7 +342,7 @@ class NeuralNetworkVisualization {
       link.transition()
           .delay(this.number_of_layers * time_per_layer)
           .duration(2000)
-          .style("stroke", "#fff")
+          .style("stroke", "var(--default-color)")
     }
     
     var arrow = this.svg.select('#arrows')
@@ -352,8 +353,8 @@ class NeuralNetworkVisualization {
                         .attr("y1", this.height-150)
                         .attr("x2", this.width * (this.number_of_layers - 1) / this.number_of_layers - 10)
                         .attr("y2", this.height-150)
-                        .style("stroke", "white")
-                        .style("fill", "white")
+                        .style("stroke", "var(--default-color)")
+                        .style("fill", "var(--default-color)")
                         .style("stroke-width", "0vmin")
                         .transition()
                         .duration(100)

@@ -10,6 +10,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+
+:root {
+      --light-default-color: #eee;
+      --default-color: #ffffff;
+      --background-color: #111;
+      --light-background-color: #222;
+      --dark-background-color: #000;
+      --blue-color: #9090f0;
+      --red-color: #f05050;
+      --green-color: #50f050;
+}
+
 body {
   background: #111;
   background-color: #111; }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
 <script src="../../reveal.mod/js/d3-interpolate.v1.min.js"></script>
@@ -14,8 +14,8 @@
   height: 35%;
   width: 30%;
   float: left;
-  background: #111;
-  border: 0.2vmin solid black !important;
+  background: var(--background-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 </style>
@@ -26,41 +26,41 @@
 <div id="question" class="box" style="opacity: 1; position: absolute; left: 35%; top: 5%;">
 <center><h3>Question</h3></center>
 <ul>
-  <li> <b style="color: #50f050">Classification</b> Is this a chinese character? </li>
-	<li> <b style="color: #50f050">Regression</b> How many tomatoes are sold?</li>
-  <li> <b style="color: #50f050">Others</b> Clustering, Q-Learning, ...</li>
+  <li> <b style="color: var(--green-color)">Classification</b> Is this a chinese character? </li>
+	<li> <b style="color: var(--green-color)">Regression</b> How many tomatoes are sold?</li>
+  <li> <b style="color: var(--green-color)">Others</b> Clustering, Q-Learning, ...</li>
 </ul>
 </div>
 
 <div id="model" class="box" style="opacity: 0; position: absolute; left: 34%; top: 5%;">
 <center><h3>Model</h3></center>
 <ul>
-<li><b style="color: #50f050">Statistics</b>: Build model using assumptions</li>
-<li><b style="color: #50f050">Machine Learning</b>: Build model using data</li>
+<li><b style="color: var(--green-color)">Statistics</b>: Build model using assumptions</li>
+<li><b style="color: var(--green-color)">Machine Learning</b>: Build model using data</li>
 </ul>
 </div>
 
 <div id="answer" class="box" style="opacity: 0; position: absolute; left: 68%; top: 5%;">
 <center><h3>Answer</h3></center>
 <ul>
-  <li> <b style="color: #50f050">Classification</b> Probability between 0 and 1 </li>
-	<li> <b style="color: #50f050">Regression</b> Single (real) number </li>
-  <li> <b style="color: #50f050">Others</b> label, vector, function, action, ... </li>
+  <li> <b style="color: var(--green-color)">Classification</b> Probability between 0 and 1 </li>
+	<li> <b style="color: var(--green-color)">Regression</b> Single (real) number </li>
+  <li> <b style="color: var(--green-color)">Others</b> label, vector, function, action, ... </li>
 </ul>
 </div>
 
 <div id="training_data" class="box" style="opacity: 0; position: absolute; left: 15%; top: 50%;">
 <center><h3>Training Data</b></center>
-<center><h3 style="color: #9090f0">Answers known</h3></center>
+<center><h3 style="color: var(--blue-color)">Answers known</h3></center>
 <ul>
-  <li> <b style="color: #50f050">Historical Data</b> Industry </li>
-	<li> <b style="color: #50f050">Simulated Data</b> Physics</li>
+  <li> <b style="color: var(--green-color)">Historical Data</b> Industry </li>
+	<li> <b style="color: var(--green-color)">Simulated Data</b> Physics</li>
 </ul>
 </div>
 
 <div id="test_data" class="box" style="position: absolute; left: 35%; top: 50%;">
 <center><h3>Data</h3></center>
-<center><h3 style="color: #f05050">Answers unknown</h3></center>
+<center><h3 style="color: var(--red-color)">Answers unknown</h3></center>
 </div>
 
 
@@ -88,7 +88,7 @@
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-          .attr('fill', '#fff')
+          .attr('fill', 'var(--default-color)')
           .style('stroke','none');
 
   var arrow = svg.append("g").append("line")
@@ -99,7 +99,7 @@
                  .attr("y2", '45%')
                  .style("stroke-width", "2vmin")
                  .style("opacity", "0")
-                 .style("stroke", "#fff")
+                 .style("stroke", "var(--default-color)")
 
   var _transitions = [
      () => {d3.select("#test_data").transition().ease(d3.easeLinear).duration(1000).style("left", "50%"); d3.select("#training_data").transition().duration(1000).style('opacity', '1');},

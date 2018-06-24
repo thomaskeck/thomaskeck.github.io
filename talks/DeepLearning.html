@@ -13,7 +13,7 @@
 		<meta name="author" content="Thomas Keck">
 
 		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../reveal.mod/css/theme/black.css">
+		<link rel="stylesheet" href="../reveal.mod/css/theme/current.css">
 		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
 
 		<!-- Printing and PDF exports -->
@@ -77,22 +77,22 @@
         </section>
 				
         <section>
-          <h3><div style='color: #9090f0'>History</div></h3>
+          <h3><div style='color: var(--blue-color)'>History</div></h3>
           <ul  style="font-size: 2.8vmin">
-            <li style='color: #50f050' class="fragment" data-fragment-index="1">1950-1970</li>
+            <li style='color: var(--green-color)' class="fragment" data-fragment-index="1">1950-1970</li>
             <ul class="fragment" data-fragment-index="1">
               <li>Simple Perceptron without hidden layers</li>
               <li>Assumed incapability to perform operations like exclusive-or (Minsky and Papert 1969)</li>
               <li>Lack of computing power</li>
             </ul>
-            <li style='color: #50f050' class="fragment" data-fragment-index="2">1980-2000</li>
+            <li style='color: var(--green-color)' class="fragment" data-fragment-index="2">1980-2000</li>
             <ul  class="fragment" data-fragment-index="2">
               <li>Invention of Backpropagation $\rightarrow$ Multi Layer Perceptrons</li>
               <li>Assumed incapability to train many layers due to local minima in high-dimensions</li>
               <li>Lack of computing power</li>
               <li>Slowly superseded by methods like SVM and BDTs</li>
             </ul>
-            <li style='color: #50f050' class="fragment" data-fragment-index="3">2000-2010</li>
+            <li style='color: var(--green-color)' class="fragment" data-fragment-index="3">2000-2010</li>
             <ul  class="fragment" data-fragment-index="3">
               <li>Dawn of Deep-Learning ($\approx 10$ layer networks)</li>
               <li>Advances it algorithms (e.g. greedy layer-wise training, ReLU)</li>
@@ -100,7 +100,7 @@
               <li>Massive boost in computing power (due to GPUs)</li>
               <li>Assumed that training even more layers is difficult due to vanishing gradient problem</li>
             </ul>
-            <li style='color: #50f050' class="fragment" data-fragment-index="4">2010-2020</li>
+            <li style='color: var(--green-color)' class="fragment" data-fragment-index="4">2010-2020</li>
             <ul  class="fragment" data-fragment-index="4">
               <li>Deep-Learning (Representation Learning)</li>
               <li>Batch Normalisation and architectures like ResNet allow for 1000 layer networks</li>
@@ -115,11 +115,11 @@
         
         <section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Deep Neural Networks</div> & <div style='color: #f05050'>Vanishing Gradient Problem</div></h2>
+          <h2><div style='color: var(--blue-color)'>Deep Neural Networks</div> & <div style='color: var(--red-color)'>Vanishing Gradient Problem</div></h2>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: ResNet</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: ResNet</div></h3>
               
           <div style="display: flex; width: 100%;">
           <div style="float: left; width: 50%; height: 80vmin">
@@ -129,7 +129,7 @@
           </div>
           <div style="float: right; width: 50%; height: 80vmin">
             <div style="height: 10vmin"></div>
-            <div style="color: #50f050">Techniques</div>
+            <div style="color: var(--green-color)">Techniques</div>
             <ul>
               <li>ReLU Activation</li>
               <li>He Initialisation</li>
@@ -146,14 +146,14 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Vanishing Gradient Problem</div></h3>
+          <h3><div style='color: var(--red-color)'>Vanishing Gradient Problem</div></h3>
           
               <div style="height: 2vmin"></div>
                  $$ y_{i+1} = \sigma \left(\sum^{N_i} w_i y_i \right) $$ 
               <div style="height: 2vmin"></div>
               
               <div class="fragment"> 
-                Activation function is applied for each layer<br> $\rightarrow$ exploding or vanishing <div style="color: #50f050; display: inline">activation</div> / <div style="color: #9090f0; display: inline">gradient
+                Activation function is applied for each layer<br> $\rightarrow$ exploding or vanishing <div style="color: var(--green-color); display: inline">activation</div> / <div style="color: var(--blue-color); display: inline">gradient
                 </div>
                 <br>
                 $$ y_n = \sigma \left( \dots \sigma \left( \dots \sigma\left( \sum^{N_0} w_0 x \right) \right) \right) $$
@@ -170,7 +170,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>ReLU Activation Function</div></h3>
+          <h3><div style='color: var(--blue-color)'>ReLU Activation Function</div></h3>
 
               <div style="height: 30vmin">
               <img data-src="images/activation_functions.png" style="background:none; border:none; box-shadow:none;">
@@ -183,28 +183,28 @@
                 </div>
              
                 <div style="height: 5vmin"></div>
-                <div class="fragment" style="color: #50f050">Gradient vanishes in deep networks</div>
+                <div class="fragment" style="color: var(--green-color)">Gradient vanishes in deep networks</div>
               </div>
               <div style="float: right; width: 50%; height: 15vmin">
                 <div class="fragment">
                 $$ \frac{\mathrm{d}}{\mathrm{d}x} \max(0, x) = \left\lbrace \begin{array}{l} 1 \quad \textrm{for x } \gt 0  \\ 0 \quad \textrm{otherwise} \end{array} \right.$$
                 </div>
                 <div style="height: 5vmin"></div>
-                <div class="fragment" style="color: #50f050">Gradient does neither vanish nor explode</div>
+                <div class="fragment" style="color: var(--green-color)">Gradient does neither vanish nor explode</div>
               </div>
               </div> 
               
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>He Initialization</div></h3>
+          <h3><div style='color: var(--blue-color)'>He Initialization</div></h3>
 
           <div style="height: 5vmin"></div>
              $$ y_{i+1} = \max \left(0,  \sum^{N_i} w_i y_i \right) $$ 
           <div style="height: 2vmin"></div>
               
               <div class="fragment"> 
-                <div style="color: #f05050">
+                <div style="color: var(--red-color)">
                   Weights can still lead to exploding or vanishing activations/gradients if
                 </div>
                 $$ \frac{1}{2} N_i \mathrm{Var}(w_i) \neq 1 $$
@@ -213,14 +213,14 @@
           <div style="height: 5vmin"></div>
               
           <div class="fragment">
-            <div style="color: #50f050">He Initialization (for ReLU)</div><br>
+            <div style="color: var(--green-color)">He Initialization (for ReLU)</div><br>
               $$ w_i \sim \mathcal{N}\left(0, \frac{2}{N_i} \right) $$ <a href="https://arxiv.org/abs/1502.01852">K. He, et. al. (02/2015)</a>
           </div>
               
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Batch Normalisation</div></h3>
+          <h3><div style='color: var(--blue-color)'>Batch Normalisation</div></h3>
 
           <div style="height: 5vmin"></div>
             $$ y_{i+1} = \max \left(0,  \sum^{N_i} w_i y_i \right) \quad \quad  w_i \sim \mathcal{N}\left(0, \frac{2}{N_i} \right)$$ 
@@ -228,7 +228,7 @@
               
               <div class="fragment"> 
                 Weights are adjustable
-                <div style="color: #f05050">
+                <div style="color: var(--red-color)">
                   $\rightarrow$ weights can still lead to exploding or vanishing activations/gradients
                 </div>
               </div>
@@ -236,7 +236,7 @@
           <div style="height: 5vmin"></div>
               
           <div class="fragment">
-            <div style="color: #50f050">Batch Normalisation</div><br>
+            <div style="color: var(--green-color)">Batch Normalisation</div><br>
             $$ \hat{y_i} = \gamma \frac{y_i - \mathrm{E}(y_i)}{\sqrt{\mathrm{Var}(y_i)}} + \beta $$
             <br> 
             <ul style="font-size: 3vmin">
@@ -251,10 +251,10 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Residual Network</div></h3>
+          <h3><div style='color: var(--blue-color)'>Residual Network</div></h3>
           
-          <div>Idea: Split layer into <div style="color: #50f050; display: inline">identity</div> and <div style="color: #9090f0; display: inline">residual</div></div><br>
-          $ H(y_i) = $  <div style="color: #9090f0; display: inline">$ F(y_i) $</div> $+$ <div style="color: #50f050; display: inline">$ y_i $</div>
+          <div>Idea: Split layer into <div style="color: var(--green-color); display: inline">identity</div> and <div style="color: var(--blue-color); display: inline">residual</div></div><br>
+          $ H(y_i) = $  <div style="color: var(--blue-color); display: inline">$ F(y_i) $</div> $+$ <div style="color: var(--green-color); display: inline">$ y_i $</div>
           <br>
           <div class="fig-container"
                data-fig-id="neural_network"
@@ -265,7 +265,7 @@
 
 
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Representation Learning</div></h3>
+          <h3><div style='color: var(--red-color)'>Representation Learning</div></h3>
 
 
           <div style="height: 10vmin"></div>
@@ -273,17 +273,17 @@
           <div style="height: 5vmin"></div>
 
           <ul>
-            <li><div style="color: #50f050; display: inline">distributed representations</div> – the number of input regions which can be distinguished grows exponentially$</li>
-            <li><div style="color: #50f050; display: inline">depth</div> – the ways to re-use learned features grow exponentially with the depth of the network</li>
-            <li><div style="color: #50f050; display: inline">abstraction</div> – the learned features in the deeper layers are increasingly invariant to most local changes of the input</li>
-            <li><div style="color: #50f050; display: inline">disentangling factors of variation</div> – the learned features represent independent properties of the input data</li>
+            <li><div style="color: var(--green-color); display: inline">distributed representations</div> – the number of input regions which can be distinguished grows exponentially$</li>
+            <li><div style="color: var(--green-color); display: inline">depth</div> – the ways to re-use learned features grow exponentially with the depth of the network</li>
+            <li><div style="color: var(--green-color); display: inline">abstraction</div> – the learned features in the deeper layers are increasingly invariant to most local changes of the input</li>
+            <li><div style="color: var(--green-color); display: inline">disentangling factors of variation</div> – the learned features represent independent properties of the input data</li>
           </ul>
         </section>
         </section>
 				
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Convolutional Networks</div> & <div style='color: #f05050'>Image Recognition</div></h2>
+          <h2><div style='color: var(--blue-color)'>Convolutional Networks</div> & <div style='color: var(--red-color)'>Image Recognition</div></h2>
 				</section>
         
         
@@ -324,7 +324,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>State of the Art: Inception-ResNet-V2</div></h3>
+          <h3><div style='color: var(--blue-color)'>State of the Art: Inception-ResNet-V2</div></h3>
               
           <div style="width: 100%; height: 80vmin">
             <img src="images/inception_resnet.jpeg">
@@ -334,7 +334,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Image Recognition</div></h3>
+          <h3><div style='color: var(--blue-color)'>Image Recognition</div></h3>
 
           Multi-class classification task using softmax<br>
           $$ f(\vec{x}) = \underbrace{\frac{\exp \vec{l}}{\sum_{i=1}^{6} \exp l_i}}_{\mathrm{softmax}(l)} \quad \quad \textrm{where} \quad \vec{l} = \mathrm{NN}( \vec{x} )$$
@@ -346,7 +346,7 @@
         
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Pixel Representation</div></h3>
+          <h3><div style='color: var(--blue-color)'>Pixel Representation</div></h3>
               
           <div class="fig-container"
                    data-fig-id="convolution"
@@ -354,7 +354,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Invariance under Transformations</div></h3>
+          <h3><div style='color: var(--red-color)'>Invariance under Transformations</div></h3>
 
 					<div style="height: 5vmin"></div>
 
@@ -367,7 +367,7 @@
 						<li class="fragment">Extract hand-crafted features that are invariant</li>
 						<li class="fragment">Use transformed copies during the training phase</li>
 						<li class="fragment">Penalize change in the output under input transformation → Tangent propagation</li>
-            <li class="fragment">Build invariance properties into structure of neural network → <div style="color: #50f050; display: inline">Convolution</div></li>
+            <li class="fragment">Build invariance properties into structure of neural network → <div style="color: var(--green-color); display: inline">Convolution</div></li>
 					</ul>
 					
 					<div style="height: 3vmin"></div>
@@ -390,7 +390,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Convolution</div></h3>
+          <h3><div style='color: var(--blue-color)'>Convolution</div></h3>
               
 					<div style="display: flex; width: 100%;">
           <div style="float: left; width: 45%; height: 80vmin">
@@ -402,11 +402,11 @@
           <div style="height: 5vmin"></div>
 
 					<div style="font-size: 3vmin">
-          $M(x,y) = \sum_c \sum_{ij} $ <div style="color: #f05050; display: inline"> $ K_c(i,j) $ </div> $ P_c(x+i, y+j) $
+          $M(x,y) = \sum_c \sum_{ij} $ <div style="color: var(--red-color); display: inline"> $ K_c(i,j) $ </div> $ P_c(x+i, y+j) $
           </div>
           <div style="height: 2vmin"></div>
 
-          <div style="color: #50f050">Description</div>
+          <div style="color: var(--green-color)">Description</div>
 					<ul style="font-size: 3vmin">
 						<li>Learnable filters (e.g. edge detector) organized in feature maps</li>
 						<li>Each filter scans the image and detects a specific pattern</li>
@@ -416,7 +416,7 @@
 
           <div style="height: 2vmin"></div>
 
-          <div style="color: #50f050">Hyper-Parameters</div>
+          <div style="color: var(--green-color)">Hyper-Parameters</div>
 					<ul style="font-size: 3vmin">
             <li>depth – number of filters (also known as kernels)</li>
             <li>size – dimension of the filter e.g. 3 × 3 or 3 × 3 × 4</li>
@@ -430,7 +430,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Pooling</div></h3>
+          <h3><div style='color: var(--blue-color)'>Pooling</div></h3>
 
 					<div style="display: flex; width: 100%;">
           <div style="float: left; width: 45%; height: 80vmin">
@@ -441,10 +441,10 @@
           <div style="float: left; width: 55%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
 
-          $M(x,y) = $ <div style="color: #f05050; display: inline"> $ \max_{ij} $ </div> $ P(x+i, y+j) $
+          $M(x,y) = $ <div style="color: var(--red-color); display: inline"> $ \max_{ij} $ </div> $ P(x+i, y+j) $
           <div style="height: 5vmin"></div>
 
-          <div style="color: #50f050">Description</div>
+          <div style="color: var(--green-color)">Description</div>
 					<ul style="font-size: 3vmin">
 						<li>Takes inputs from small region in the feature maps</li>
 						<li>Reduces resolution and computation in following layers</li>
@@ -454,7 +454,7 @@
 
           <div style="height: 5vmin"></div>
 
-          <div style="color: #50f050">Hyper-Parameters</div>
+          <div style="color: var(--green-color)">Hyper-Parameters</div>
 					<ul style="font-size: 3vmin">
             <li>depth – number of filters (also known as kernels)</li>
             <li>size – dimension of the filter e.g. 2 × 2 or 2 × 2 × 4</li>
@@ -467,10 +467,10 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Inception</div></h3>
+          <h3><div style='color: var(--blue-color)'>Inception</div></h3>
           
           <div style="height: 5vmin"></div>
-          <div style='color: #f05050'>Convoluted channels are still fully connected</div>
+          <div style='color: var(--red-color)'>Convoluted channels are still fully connected</div>
 					<ul style="font-size: 3vmin">
             <li>For instance: Kernel size 3x3 with 100 input and 200 output channels</li>
             <li>Many parameters (3x3x100x200)</li>
@@ -491,7 +491,7 @@
 
           <div style="height: 10vmin"></div>
 
-          <div style="color: #50f050">Inception</div>
+          <div style="color: var(--green-color)">Inception</div>
 					<ul style="font-size: 3vmin">
             <li>Use small kernels in parallel (3x3, 7x1, 1x7)</li>
             <li>Bottleneck Architecture</li>
@@ -506,7 +506,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Global Average Pooling</div></h3>
+          <h3><div style='color: var(--blue-color)'>Global Average Pooling</div></h3>
           
           <div style="height: 5vmin"></div>
 					<div style="display: flex; width: 100%;">
@@ -516,7 +516,7 @@
           <div style="float: right; width: 5%; height: 80vmin;"></div>
           <div style="float: right; width: 65%; height: 80vmin; text-align: left">
           <div style="height: 5vmin"></div>
-          <div style='color: #f05050'>Fully connected layers at the end are fully connected</div>
+          <div style='color: var(--red-color)'>Fully connected layers at the end are fully connected</div>
 					<ul style="font-size: 3vmin">
             <li>For instance: 1792 Channels with a resolution of 8x8</li>
             <li>Many parameters (8x8x1792)</li>
@@ -528,7 +528,7 @@
           <div style="height: 5vmin"></div>
 
           <div class="fragment">
-          <div style="color: #50f050">Global Average Pooling</div>
+          <div style="color: var(--green-color)">Global Average Pooling</div>
 					<ul style="font-size: 3vmin">
 						<li>Position should be not important in the end</li>
 						<li>Take the average activation over the entire image</li>
@@ -541,11 +541,11 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Regularization:</div><div style='color: #9090f0'>Dropout</div></h3>
+          <h3><div style='color: var(--red-color)'>Regularization:</div><div style='color: var(--blue-color)'>Dropout</div></h3>
               <p>
               Idea: Prevent overfitting by randomly dropping neurons during the training
               </p>
-              <p style="color: #50f050">
+              <p style="color: var(--green-color)">
               Prevents co-adaption of neurons: <a href="https://arxiv.org/abs/1207.0580">G. E. Hinton, et. al. (06/2012)</a>
               </p>
               <div class="fig-container"
@@ -554,7 +554,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Summary: Inception-ResNet-V2</div></h3>
+          <h3><div style='color: var(--blue-color)'>Summary: Inception-ResNet-V2</div></h3>
               
           <div style="width: 100%; height: 80vmin">
             <img src="images/inception_resnet.jpeg">
@@ -567,11 +567,11 @@
         
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Recurrent Networks</div> & <div style='color: #f05050'>Sequential Data Processing</div></h2>
+          <h2><div style='color: var(--blue-color)'>Recurrent Networks</div> & <div style='color: var(--red-color)'>Sequential Data Processing</div></h2>
 				</section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Show and Tell</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Show and Tell</div></h3>
 
           <div style="width: 100%; height: 60vmin">
             <img src="images/show_and_tell.png">
@@ -582,14 +582,14 @@
         </section>
 				
 				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Recurrent Network</div></h3>
+          <h3><div style='color: var(--red-color)'>Recurrent Network</div></h3>
           <div style="width: 100%; height: 60vmin">
             <img src="images/rnn1.png"  style="background:none; border:none; box-shadow:none;">
           </div>
         </section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Recurrent Network</div></h3>
+          <h3><div style='color: var(--red-color)'>Recurrent Network</div></h3>
           <div style="width: 100%; height: 60vmin">
             <img src="images/rnn2.png"  style="background:none; border:none; box-shadow:none;">
           </div>
@@ -601,7 +601,7 @@
         </section>
         
 				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Backpropagation Through Time</div></h3>
+          <h3><div style='color: var(--red-color)'>Backpropagation Through Time</div></h3>
           
 					<div style="height: 5vmin"></div>
 					<div style="width: 100%; height: 40vmin">
@@ -616,7 +616,7 @@
         </section>
 				
 				<section style="height: 100%">
-          <h3><div style='color: #f05050'>Solution: Long Short-Term Memory (LSTM) Cell</div></h3>
+          <h3><div style='color: var(--red-color)'>Solution: Long Short-Term Memory (LSTM) Cell</div></h3>
           
 					<div style="width: 100%; height: 40vmin">
             <img src="images/lstm.png" style="background:none; border:none; box-shadow:none;">
@@ -636,7 +636,7 @@
         </section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>One-hot Encoding</div></h3>
+          <h3><div style='color: var(--red-color)'>One-hot Encoding</div></h3>
 
 					  <div style="height: 5vmin"></div>
           Howto turn text into numbers?
@@ -646,7 +646,7 @@
           <div style="float: left; width: 25%; height: 60vmin; text-align: left">
           </div>
           <div class="fragment" style="float: left; width: 25%; height: 60vmin; text-align: left">
-            <div style="color: #50f050">Categorial Mapping</div>
+            <div style="color: var(--green-color)">Categorial Mapping</div>
             <br>
 					  <div style="height: 2.5vmin"></div>
             $$ a \rightarrow 0 $$
@@ -660,7 +660,7 @@
             $$ z \rightarrow 25 $$
          </div>
           <div class="fragment" style="float: left; width: 25%; height: 60vmin; text-align: left">
-            <div style="color: #50f050">One-hot encoding</div>
+            <div style="color: var(--green-color)">One-hot encoding</div>
             <br>
             $ 0 \rightarrow $ <div style="font-size: 1.5vmin; display: inline">$\left( \begin{array}{c} 1 \\ 0 \\ 0 \\ \dots \\ 0 \end{array} \right) $</div><br>
             <div style="height: 1vmin"></div>
@@ -675,7 +675,7 @@
         </section>
 				
 				<section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Character-Level Language Model</div></h3>
 
           <div style="width: 100%; height: 80vmin">
             <img src="images/charseq.png"  style="background:none; border:none; box-shadow:none;">
@@ -686,7 +686,7 @@
         </section>
 				
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Character-Level Language Model</div></h3>
 
           <div style="width: 100%; height: 80vmin">
             <img src="images/linuxcode.png"  style="background:none; border:none; box-shadow:none;">
@@ -697,7 +697,7 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Character-Level Language Model</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Character-Level Language Model</div></h3>
          
           <div style="height:10vmin"></div>
           <div style="display: flex; width: 100%;">
@@ -722,11 +722,11 @@
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Word Embedding</div></h3>
+          <h3><div style='color: var(--blue-color)'>Word Embedding</div></h3>
 
           <div style="height:1vmin"></div>
           One-hot encoding works well for characters ($\sim 26$) but what about words ($\gt 300000$)?<br>
-          $\rightarrow$ <div style="color: #50f050; display: inline">embed</div> high-dimensional <div style="color: #50f050; display: inline">word</div>-space into low-dimensional space with neural network
+          $\rightarrow$ <div style="color: var(--green-color); display: inline">embed</div> high-dimensional <div style="color: #50f050; display: inline">word</div>-space into low-dimensional space with neural network
           <br>
           <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="70%" type="text/html" data-src="https://projector.tensorflow.org/" frameborder="0"> </iframe>
 
@@ -736,11 +736,11 @@
 				
         <section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Adversarials</div> & <div style='color: #f05050'>???</div></h2>
+          <h2><div style='color: var(--blue-color)'>Adversarials</div> & <div style='color: var(--red-color)'>???</div></h2>
 				</section>
           
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Adversarials in Image Segmentation</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Adversarials in Image Segmentation</div></h3>
          <div style="display: flex; width: 100%;">
           <div class="fragment" style="float: left; width: 50%; height: 35vmin">
             <img src="images/adversarial_segmentation_1.png">
@@ -761,12 +761,12 @@
             <a href="https://arxiv.org/abs/1704.05712">J. H. Metzen, et. al. (07/2017)</a>
           
           <div class="fragment">
-            <b>Adding <div style='color: #50f050; display: inline'>correlated noise</div> can change the output in an arbitrary way!!</b>
+            <b>Adding <div style='color: var(--green-color); display: inline'>correlated noise</div> can change the output in an arbitrary way!!</b>
           </div>
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Properties of Adversarials</div></h3>
+          <h3><div style='color: var(--blue-color)'>Properties of Adversarials</div></h3>
 
           <div style="height: 10vmin"></div>
           <ul>
@@ -779,7 +779,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Goodfellow's Linearity Hypothesis</div></h3>
+          <h3><div style='color: var(--red-color)'>Goodfellow's Linearity Hypothesis</div></h3>
 
           <div style="height: 5vmin"></div>
           Neural Networks are too linear<br>
@@ -808,7 +808,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #f05050'>Off-Manifold Hypothesis</div></h3>
+          <h3><div style='color: var(--red-color)'>Off-Manifold Hypothesis</div></h3>
 
           <div style="height: 5vmin"></div>
             Adversarials are off-manifold.<br>
@@ -816,8 +816,8 @@
           <div style="height: 5vmin"></div>
 
           <div class="fragment">
-          <div style="color: #50f050; display: inline">Number of artificial 800x600 images</div>: $N_A = 255^{800 \times 600}$<br>
-          <div style="color: #50f050; display: inline">Number of natural 800x600 images</div>: $N_N \ll N_A$
+          <div style="color: var(--green-color); display: inline">Number of artificial 800x600 images</div>: $N_A = 255^{800 \times 600}$<br>
+          <div style="color: var(--green-color); display: inline">Number of natural 800x600 images</div>: $N_N \ll N_A$
           </div>
 
           <div style="height: 5vmin"></div>
@@ -832,7 +832,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Learning To Attack</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Learning To Attack</div></h3>
           <div style="height: 5vmin"></div>
           Use neural network to generate adversarials!
           <br>
@@ -859,7 +859,7 @@
 				</section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Adversarials for Humans and Computers</div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Adversarials for Humans and Computers</div></h3>
           <div style="height: 5vmin"></div>
           <div style="display: flex; width: 100%;">
             <div style="float: right; width: 10%; height: 40vmin"></div>
@@ -877,13 +877,13 @@
 				</section>
           
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Example: Adversarials in the physical world </div></h3>
+          <h3><div style='color: var(--blue-color)'>Example: Adversarials in the physical world </div></h3>
           <iframe allowtransparency="false" style="background: #FFFFFF;" width="100%" height="80%" type="text/html" data-src="https://www.youtube.com/embed/zQ_uMenoBCk" frameborder="0"> </iframe>
           <a href="https://arxiv.org/abs/1607.02533">A. Kurakin, et. al. (02/2017)</a>
         </section>
         
         <section style="height: 100%">
-          <h3><div style='color: #9090f0'>Solution: ???</div></h3>
+          <h3><div style='color: var(--blue-color)'>Solution: ???</div></h3>
 
           <div style="height: 5vmin"></div>
           Proposed solutions:
@@ -898,7 +898,7 @@
 
           <div style="height: 10vmin"></div>
 
-          <div class="fragment" style="color: #50f050">
+          <div class="fragment" style="color: var(--green-color)">
             Not completely understood and certainly not solved $\rightarrow$ very hot research topic!
           </div>
 				</section>
@@ -906,16 +906,16 @@
 
 				<section style="height: 100%">
 				<section>
-          <h2><div style='color: #9090f0'>Outlook</div> & <div style='color: #f05050'>References</div></h2>
+          <h2><div style='color: var(--blue-color)'>Outlook</div> & <div style='color: var(--red-color)'>References</div></h2>
 				</section>
 				<section>
-          <h3><div style='color: #9090f0'>Outlook</div></h3>
+          <h3><div style='color: var(--blue-color)'>Outlook</div></h3>
 
           <div style='height: 4vh'></div>
-          There will be workshop on <div style='color: #50f050; display: inline'>Tensorflow</div> in the afternoon
+          There will be workshop on <div style='color: var(--green-color); display: inline'>Tensorflow</div> in the afternoon
 				</section>
 				<section data-markdown>
-          <h3><div style='color: #f05050'>References</div></h3>
+          <h3><div style='color: var(--red-color)'>References</div></h3>
 
             <textarea data-template>
                 An (incomplete) list of interesting books:

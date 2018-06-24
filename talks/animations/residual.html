@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -11,24 +11,24 @@
 <style>
 
 .big_text {
-  fill: white;
-  stroke: #fff;
+  fill: var(--default-color);
+  stroke: var(--default-color);
   font-size: 7vmin;
   z-index: 100;
 }
 
 .big_axis line{
-  stroke: #fff;
+  stroke: var(--default-color);
   stroke-width: 1vmin;
 }
 
 .big_axis path{
-  stroke: #fff;
+  stroke: var(--default-color);
   stroke-width: 1vmin;
 }
 
 .big_axis text{
-  fill: #fff;
+  fill: var(--default-color);
   font-size: 7vmin;
 } 
 </style>
@@ -70,7 +70,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m -5,-5 L 5,0 L -5,5 Z')
-          .attr('fill', '#9090f0')
+          .attr('fill', 'var(--blue-color)')
           .style('stroke','none');
 
 svg.append('defs')
@@ -100,7 +100,7 @@ svg.append('defs')
           .attr('xoverflow', 'visible')
           .append('svg:path')
           .attr('d', 'M 0,0 m 5,5 L -5,0 L 5,-5 Z')
-          .attr('fill', '#50f050')
+          .attr('fill', 'var(--green-color)')
           .style('stroke','none');
 
 
@@ -167,7 +167,7 @@ function create_layer(index) {
      .attr("y2", 220)
      .style("stroke-width", "3vmin")
      .style("opacity", 0.0)
-     .style("stroke", "#9090f0")
+     .style("stroke", "var(--blue-color)")
 
   var data = [ 0.        ,  0.16534698,  0.33069396,  0.49604095,  0.66138793, 0.82673491,  0.99208189,  1.15742887,  1.32277585,  1.48812284,  1.65346982,  1.8188168 ,  1.98416378,  2.14951076,  2.31485774, 2.48020473,  2.64555171,  2.81089869,  2.97624567,  3.14159265]
   var line = d3.line().x(function(d) { return (pos+25) - 55*Math.cos(d); }).y(function(d) { return 225 + 150*Math.sin(d); }).curve(d3.curveCardinal)
@@ -244,7 +244,7 @@ var arrow = svg.select("#arrows").append("line")
                .attr("y2", 220)
                .style("stroke-width", "3vmin")
                .style("opacity", "1")
-               .style("stroke", "#9090f0")
+               .style("stroke", "var(--blue-color)")
 
 
 
@@ -302,8 +302,8 @@ var line = d3.line().x(function(d, i) { return dx(5*i+1); }).y(function(d) { ret
 var plain_data = [0.25, 0.21, 0.17, 0.13, 0.15, 0.17, 0.19]
 var res_data = [0.25, 0.22, 0.17, 0.13, 0.11, 0.09, 0.07]
 
-var plain_path = dsvg.append('path').attr('d', line(plain_data)).attr('stroke', '#f05050').attr('stroke-width', "1.2vmin").attr('fill', 'none')
-var res_path = dsvg.append('path').attr('d', line(res_data)).attr('stroke', '#9090f0').attr('stroke-width', "1.2vmin").attr('fill', 'none')
+var plain_path = dsvg.append('path').attr('d', line(plain_data)).attr('stroke', 'var(--red-color)').attr('stroke-width', "1.2vmin").attr('fill', 'none')
+var res_path = dsvg.append('path').attr('d', line(res_data)).attr('stroke', 'var(--blue-color)').attr('stroke-width', "1.2vmin").attr('fill', 'none')
 
 var totalLength = plain_path.node().getTotalLength();
 

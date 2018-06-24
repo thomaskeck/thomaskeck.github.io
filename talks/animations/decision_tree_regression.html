@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -10,7 +10,7 @@
 
 <style>
 .test_dot {
-  fill: #fff
+  fill: var(--default-color)
 }
 </style>
 
@@ -40,17 +40,17 @@ var svg = d3.select("body").append("svg")
 svg.append("g").attr("id", "points")
 svg.append("g").attr("id", "fits")
 
-var avgl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(30)).attr("y2", y(30)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
-var avgr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(42)).attr("y2", y(42)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var avgl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(30)).attr("y2", y(30)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)")
+var avgr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(42)).attr("y2", y(42)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)")
 
-var avgl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(5)).attr("y1", y(22)).attr("y2", y(22)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
-var avgr_best = svg.select("#fits").append("line").attr("x1", x(5)).attr("x2", x(10)).attr("y1", y(75)).attr("y2", y(75)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
+var avgl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(5)).attr("y1", y(22)).attr("y2", y(22)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--blue-color)")
+var avgr_best = svg.select("#fits").append("line").attr("x1", x(5)).attr("x2", x(10)).attr("y1", y(75)).attr("y2", y(75)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--red-color)")
 
-var fitl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
-var fitr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(90)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "white")
+var fitl = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(-3)).attr("y1", y(50)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)")
+var fitr = svg.select("#fits").append("line").attr("x1", x(-3)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(90)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)")
 
-var fitl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(0)).attr("y1", y(45)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#9090f0")
-var fitr_best = svg.select("#fits").append("line").attr("x1", x(0)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(100)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#f05050")
+var fitl_best = svg.select("#fits").append("line").attr("x1", x(-5)).attr("x2", x(0)).attr("y1", y(45)).attr("y2", y(0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--blue-color)")
+var fitr_best = svg.select("#fits").append("line").attr("x1", x(0)).attr("x2", x(10)).attr("y1", y(0)).attr("y2", y(100)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--red-color)")
 
 var _transitions = [
   () => { 

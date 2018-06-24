@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-<link rel="stylesheet" href="../../reveal.mod/css/theme/black.css">
+<link rel="stylesheet" href="../../reveal.mod/css/theme/current.css">
 <link rel="stylesheet" href="../../reveal.mod/css/custom.css">
 <script src="../../reveal.mod/js/d3.v4.min.js"></script>
 <script src="../../reveal.mod/js/d3-color.v1.min.js"></script>
@@ -11,7 +11,7 @@
 <style>
 
 .test_dot {
-  fill: #fff
+  fill: var(--default-color)
 }
 
 .box {
@@ -19,8 +19,8 @@
   height: 7%;
   width: 10%;
   float: left;
-  background: #111;
-  border: 0.2vmin solid black !important;
+  background: var(--background-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 
@@ -29,8 +29,8 @@
   height: 7%;
   width: 4%;
   float: left;
-  background: #f55;
-  border: 0.2vmin solid black !important;
+  background: var(--red-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 
@@ -39,8 +39,8 @@
   height: 7%;
   width: 4%;
   float: left;
-  background: #9090f0;
-  border: 0.2vmin solid black !important;
+  background: var(--blue-color);
+  border: 0.2vmin solid var(--dark-background-color) !important;
   box-shadow: 0 0 0.5vmin rgba(0,0,0, .4);
 }
 </style>
@@ -224,13 +224,13 @@ function dt_cls(d) {
   }
 }
 
-svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
-svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "#fff").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(-0.26)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.24)).attr("x2", x(1.24)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.26)).attr("x2", x(1.24)).attr("y1", y(-1.5)).attr("y2", y(-1.5)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(1.9)).attr("x2", x(1.9)).attr("y1", y(-3.5)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-2.5)).attr("x2", x(-0.26)).attr("y1", y(-1.61)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-1.1)).attr("x2", x(-1.1)).attr("y1", y(-3.5)).attr("y2", y(-1.61)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
+svg.select("#tree").append("line").attr("x1", x(-0.68)).attr("x2", x(-0.68)).attr("y1", y(-1.61)).attr("y2", y(4.0)).style("stroke-width", "0.5vmin").style("opacity", "0").style("stroke", "var(--default-color)").attr("class", "cut")
 
 
 function classify_transition() {
@@ -266,7 +266,7 @@ function classify_transition() {
     .ease(d3.easeLinear)
     .attr("cx", function(d) { return x(d.x); })
     .attr("cy", function(d) { return y(d.y); })
-    .style("fill", function(d) { if (dt_cls(d) == 1) return '#f55'; else return '#9090f0';})
+    .style("fill", function(d) { if (dt_cls(d) == 1) return 'var(--red-color)'; else return 'var(--blue-color)';})
 }
 
 var _transitions = [
@@ -275,7 +275,7 @@ var _transitions = [
   () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 1); },
 ]
 var _inverse_transitions = [
-  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", '#fff'); },
+  () => { d3.selectAll(".test_dot").transition().duration(500).style("fill", 'var(--default-color)'); },
   () => { d3.selectAll(".cut").transition().duration(500).style('opacity', 0.0); },
   () => { d3.select("#misclassrate").transition().duration(500).style("opacity", 0); },
 ]
