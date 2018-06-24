@@ -22,6 +22,14 @@ section.has-light-background, section.has-light-background h1, section.has-light
       --green-color: #50f050;
 }
 
+.white_style_image {
+  -webkit-filter: invert(1.0) hue-rotate(180deg);
+  filter: invert(1.0) hue-rotate(180deg);
+}
+
+.black_style_image {
+}
+
 body {
   background: #111;
   background-color: #111; }

@@ -216,13 +216,13 @@
           <h3><div style='color: var(--red-color)'>Model Complexity</div></h3>
           <div style="width: 50%; height: 50vh; float: left" class="fragment">
             <div style="color: var(--green-color)">Training Dataset</div><br />
-            <img data-src="images/full_contour_train.png" style="background:var(--light-background-color); border:none; box-shadow:none;">
+            <img data-src="images/full_contour_train.png" style="background:var(--light-background-color); border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 0%
           </div>
           <div style="width: 50%; height: 50vh; float: right" class="fragment">
             <div style="color: var(--green-color)">Independent Test Dataset</div><br />
-            <img data-src="images/full_contour_test.png" style="background:var(--light-background-color); border:none; box-shadow:none;">
+            <img data-src="images/full_contour_test.png" style="background:var(--light-background-color); border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 21%
           </div>
@@ -239,7 +239,7 @@
 
           <center>
           <div style="width: 60%; height: 50vh">
-            <img data-src="images/full_contour_test.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/full_contour_test.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
           </div>
           </center>
 				</section>
@@ -253,7 +253,7 @@
 
           <center>
           <div style="width: 60%; height: 50vh">
-            <img data-src="images/simple_contour_test.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/simple_contour_test.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
           </div>
           </center>
 				</section>
@@ -276,7 +276,7 @@
           $$ \mathrm{E} \left\lbrack (y- \widehat{f}(\vec{x}))^2 \right\rbrack = \mathrm{Bias} \left\lbrack \widehat{f}(\vec{x}) \right\rbrack^2 + \mathrm{Var} \left\lbrack \widehat{f}(\vec{x}) \right\rbrack + \mathrm{Var} \left\lbrack y \right\rbrack $$
 
           <div style="width: 100%; height: 30vh">
-            <img data-src="images/bias_variance.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/bias_variance.png" style="background:none; border:none; box-shadow:none;" class="black_style_image">
           </div>
 				</section>
         
@@ -338,7 +338,7 @@
         <section>
           <h3><div style='color: var(--red-color)'>Boosting</div></h2>
           <div style="width: 35%; height: 50vh; float: left;">
-            <img src="images/boosting_scheme.png" style="background:none; border:none; box-shadow:none;">
+            <img src="images/boosting_scheme.png" style="background:none; border:none; box-shadow:none;" class="black_style_image">
           </div>
           <div style="width: 65%; height: 50vh; float: right;">
             <div style="height: 5vh"></div>
@@ -366,7 +366,7 @@
         <section style="height: 100%">
           <h3><div style='color: var(--red-color)'>Bagging</div></h2>
           <div style="width: 100%; height: 20vh;">
-            <img src="images/bagging_scheme.png" style="background:none; border:none; box-shadow:none;">
+            <img src="images/bagging_scheme.png" style="background:none; border:none; box-shadow:none;" class="black_style_image">
           </div>
 
             <div style="height: 5vh"></div>
@@ -396,7 +396,7 @@
           </ul>
           </div>
           <div style="width: 60%; height: 40vh; float:right">
-            <img data-src="images/forest_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/forest_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 14.5%
           </div>
@@ -442,11 +442,11 @@
         <section>
           <h3><div style='color: var(--blue-color)'>Support Vector Machine</div></h3>
           <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
-            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;"><br>
+            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none;" class="black_style_image"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
           </div>
           <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
-            <img data-src="images/linear_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/linear_svm_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 24%
           </div>
@@ -467,13 +467,13 @@
           <h3><div style='color: var(--red-color)'>Kernel Trick</div></h3>
           <div style="width: 50%; height: 50vmin; float: left;" class="fragment">
             <div style="color: var(--green-color)">Polynomial Kernel<br /> $k(x_i, x_j) ) = (x_i \cdot x_j)^d$</div><br />
-            <img data-src="images/poly_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/poly_svm_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 19%
           </div>
           <div style="width: 50%; height: 50vmin; float: right;" class="fragment">
             <div style="color: var(--green-color)">Gaussian Kernel<br /> $k(x_i, x_j) ) = \exp(-\gamma ||x_i - x_j||^2)$</div><br />
-            <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 15%
           </div>
@@ -491,7 +491,7 @@
           </ul>
           </div>
           <div style="width: 60%; height: 40vmin; float:right">
-            <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/rbf_svm_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 15%
           </div>
@@ -594,7 +594,7 @@
           </ul>
           </div>
           <div style="width: 50%; height: 40vh; float:right;">
-            <img data-src="images/mpl_classifier.png" style="background:none; border:none; box-shadow:none;"><br/>
+            <img data-src="images/mpl_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image"><br/>
             Misclassification Rate: 15.5%
           </div>
           </div>
@@ -846,7 +846,7 @@
           </ul>
           </div>
           <div style="width: 50%; height: 50vmin; float: right;">
-            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/lda_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br/>
             Misclassification Rate: 24%
           </div>
@@ -876,7 +876,7 @@
           </ul>
           </div>
           <div style="width: 50%; height: 50vmin; float:right">
-            <img data-src="images/qda_classifier.png" style="background:none; border:none; box-shadow:none;"><br />
+            <img data-src="images/qda_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image"><br />
             Misclassification Rate: 21%
           </div>
           </div>
@@ -903,7 +903,7 @@
           </ul>
           </div>
           <div style="width: 50%; height: 50vmin; float:right">
-            <img data-src="images/kde_classifier.png" style="background:none; border:none; box-shadow:none;">
+            <img data-src="images/kde_classifier.png" style="background:none; border:none; box-shadow:none;" class="white_style_image">
             <br />
             Misclassification Rate: 16%
           </div>
@@ -962,11 +962,11 @@
           </ul>
           <br /> 
           <div style="width: 50%; height: 50vh; float: left;" class="fragment">
-            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
+            <img data-src="images/svm-hyperplane.png" style="background:none; border:none; box-shadow:none; height: 70%" class="black_style_image"><br>
             <small><a href="https://en.wikipedia.org/wiki/Support_vector_machine#/media/File:Svm_max_sep_hyperplane_with_margin.png">Wikipedia</a></small>
           </div>
           <div style="width: 50%; height: 50vh; float: right;" class="fragment">
-            <img data-src="images/svr.png" style="background:none; border:none; box-shadow:none; height: 70%"><br>
+            <img data-src="images/svr.png" style="background:none; border:none; box-shadow:none; height: 70%" class="black_style_image"><br>
           <small style="width: 100%">
             <a href="https://www.researchgate.net/figure/Visualization-of-support-vector-regression-framework_fig1_272024714">
               M. Alamaniotis and V. Agarwal: Fuzzy Integration of Support Vector Regressor Models for Anticipatory Control of Complex Energy Systems
