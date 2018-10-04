@@ -33,7 +33,7 @@ First I serve the slides on a local web-server using python
 
 Afterwards I use decktape via docker to create screenshots of each rendered page with a large pause in between the screenshots to ensure that the animations finish.
 
-> docker run --shm-size 2G --rm -t --net=host -v `pwd`:/slides astefanutti/decktape  generic --key=n --screenshots -p 15000 --max-slides 150 http://localhost:8000/talks/MachineLearning.html temp.pdf
+> docker run --shm-size 2G --rm -t --net=host -v `pwd`:/slides astefanutti/decktape  generic --key=n --screenshots -p 15000 -s '1240x874' --max-slides 150 http://localhost:8000/talks/MachineLearning.html temp.pdf
 
 Finally I remove all uninteresting slides by hand to create a clean version of the pdf.
 
